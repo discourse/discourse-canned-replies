@@ -91,11 +91,6 @@ export default Ember.Controller.extend(ModalFunctionality, {
   }.property('pollType', 'pollOptions', 'pollMinValue', 'pollMaxValue'),
 
   submitDisabled: function() {
-    if (this.get("minValueValidation.failed")) return true;
-    if (this.get("maxValueValidation.failed")) return true;
-    if (this.get("stepValueValidation.failed")) return true;
-    if (this.get("optionsValidation.failed")) return true;
-    if (this.get("pollType") !== "number" && Ember.isEmpty(this.get("pollOptions"))) return true;
     return false;
   }.property('pollType', 'pollOptions', 'minValueValidation.failed', 'maxValueValidation.failed', 'stepValueValidation.failed', 'optionsValidation.failed'),
 
