@@ -1,31 +1,20 @@
-# Poll UI Plugin
-This plugin adds support for inserting a poll into the composer window via a UI.
+# template manager plugin
+This plugin adds support for inserting a template into the composer window via a UI.
 
-Composer Window Button
-![](https://raw.githubusercontent.com/cpradio/discourse-plugin-poll-ui/master/screenshot-composer.png)
+Based on cpradio's [Checklist Plugin](https://github.com/cpradio/discourse-plugin-checklist)
 
-Admin Settings
-![](https://raw.githubusercontent.com/cpradio/discourse-plugin-poll-ui/master/screenshot-admin-settings.png)
+## This doesn't work.
 
-In Action
-![](https://raw.githubusercontent.com/cpradio/discourse-plugin-poll-ui/master/screenshot-action.gif)
-
-Still of the Plugin using the With Answers option
-![](https://raw.githubusercontent.com/cpradio/discourse-plugin-poll-ui/master/screenshot-composer-with-answers.png)
-
-## How to Help
-
-- Create a PR with a new translation!
-- Log Issues
-- Submit PRs to help resolve issues
+This is my first attempt at learning Rails, Ruby, Discourse plugins.
+It just might not happen.
 
 ## Installation
 
-Follow the directions at [Install a Plugin](https://meta.discourse.org/t/install-a-plugin/19157) using https://github.com/cpradio/discourse-plugin-poll-ui.git as the repository URL.
+Follow the directions at [Install a Plugin](https://meta.discourse.org/t/install-a-plugin/19157) using https://github.com/pfaffman/discourse-plugin-template-manager.git as the repository URL.
 
 ## Authors
 
-Matthew Wilkin
+Jay Pfaffman
 
 ## License
 
