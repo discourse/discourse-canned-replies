@@ -1,0 +1,4 @@
+fr:
+  site_settings:
+    poll_ui_enabled: 'Activer le plugin Poster un sondage ?'
+    poll_ui_provide_answers: 'Possibilité de rajouter une réponse au sondage'

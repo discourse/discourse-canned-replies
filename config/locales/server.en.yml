@@ -1,0 +1,4 @@
+en:
+  site_settings:
+    poll_ui_enabled: 'Show Insert Poll button on composer window?'
+    poll_ui_provide_answers: 'Provide the ability to provide an answer?'

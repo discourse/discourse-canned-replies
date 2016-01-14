@@ -1,0 +1,4 @@
+es:
+  site_settings:
+    poll_ui_enabled: '¿Mostrar el botón Crear encuesta en el editor de texto?'
+    poll_ui_provide_answers: '¿Añadir la posibilidad de proporcionar la respuesta o una pista?'
