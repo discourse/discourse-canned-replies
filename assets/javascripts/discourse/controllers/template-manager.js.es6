@@ -96,20 +96,20 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
   actions: {
     apply: function() {
-      var name = this.get("pollName"), type = this.get("pollType"),
-        minValue = this.get("pollMinValue"), maxValue = this.get("pollMaxValue"),
-        stepValue = this.get("pollStepValue"), options = this.get("pollOptions"),
-        answerValue = this.get("pollAnswerValue"), self = this, composerOutput = "";
-
+      var name = this.get("pollName"), type = this.get("pollType"), self = this, composerOutput = "";
       if (type == "regular") {
 	composerOutput += "# Regular template:\r\n[] One \r\n []Two \r\n[ ] three";
       }
       else if (type == "stupid") {
-        composerOutput += "# Stupid template:\r\n[] One \r\n []Two \r\n[ ] three";
+        composerOutput += "# Stupid template:\r\n[] Apple \r\n [] Two \r\n[ ] C";
+      }
+      else if (type == "stupid") {
+        composerOutput += "# Stupid template:\r\n[] 1 \r\n [] 2 \r\n[ ] 3";
+      }
+      else if (type == "multiple") {
+        composerOutput += "# Multiple template:\r\n[] A \r\n [] B \r\n[ ] C";
       }
       else {
-	  composerOutput += "# Did you:";
-	  composerOutput += (options && type !== "number") ? "\r\n" + options.replace(/^(.*)/gmi, "* [ ] $1") + "\r\n" : "";
 	  composerOutput += "END OF OPTIONS";
       }
       if (self.composerViewOld)
