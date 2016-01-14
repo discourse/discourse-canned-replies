@@ -6,6 +6,6 @@
 
 enabled_site_setting :poll_ui_enabled
 
-register_asset "javascripts/discourse/templates/poll-ui.hbs"
+register_asset "javascripts/discourse/templates/template-manager.hbs"
 
-register_asset 'stylesheets/poll-ui.scss'
+register_asset 'stylesheets/template-manager.scss'

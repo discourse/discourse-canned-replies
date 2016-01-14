@@ -9,7 +9,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
   pollTypes: [
     { 'title': I18n.t("poll_ui.poll_type.regular"), 'value': "regular" },
     { 'title': I18n.t("poll_ui.poll_type.multiple"), 'value': "multiple" },
-    { 'title': I18n.t("poll_ui.poll_type.number"), 'value': "number" }
+      { 'title': I18n.t("poll_ui.poll_type.number"), 'value': "number" },
+    { 'title': I18n.t("poll_ui.poll_type.stupid"), 'value': "stupid" }
   ],
   pollOptions: "",
   pollAnswerValue: "",
@@ -105,15 +106,17 @@ export default Ember.Controller.extend(ModalFunctionality, {
         stepValue = this.get("pollStepValue"), options = this.get("pollOptions"),
         answerValue = this.get("pollAnswerValue"), self = this, composerOutput = "";
 
-      composerOutput += "# Did you:";
-      composerOutput += (options && type !== "number") ? "\r\n" + options.replace(/^(.*)/gmi, "* [ ] $1") + "\r\n" : "";
-      composerOutput += "END OF OPTIONS";
-
-      if (!Ember.isEmpty(answerValue)) {
-        composerOutput += "\r\n<details><summary>" + I18n.t("poll_ui.poll_answer_summary_title") + "</summary>\r\n";
-        composerOutput += answerValue + "\r\n</details>";
+      if (type == "regular") {
+	composerOutput += "# Regular template:\r\n[] One \r\n []Two \r\n[ ] three";
       }
-
+      else if (type == "stupid") {
+        composerOutput += "# Stupid template:\r\n[] One \r\n []Two \r\n[ ] three";
+      }
+      else {
+	  composerOutput += "# Did you:";
+	  composerOutput += (options && type !== "number") ? "\r\n" + options.replace(/^(.*)/gmi, "* [ ] $1") + "\r\n" : "";
+	  composerOutput += "END OF OPTIONS";
+      }
       if (self.composerViewOld)
         self.composerViewOld.addMarkdown(composerOutput);
       else if (self.composerView) {

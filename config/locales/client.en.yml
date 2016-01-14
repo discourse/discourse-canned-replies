@@ -13,7 +13,7 @@ en:
       poll_min_placeholder: "1,2, 3, ..."
       poll_min_must_be_numeric: "This value must be a number."
       poll_min_must_be_less_than_max: "This value must be less than the Maximum Number/End of Range."
-      poll_max_multiple_label: "Maximum Number of Entries:"
+      poll_max_multiple_label: "MULTIPLE Maximum Number of Entries:"
       poll_max_numeric_label: "End of Range:"
       poll_max_placeholder: "1, 2, 3, ..."
       poll_max_must_be_numeric: "This value must be a number."
@@ -32,6 +32,7 @@ en:
         regular: "Regular"
         multiple: "Multiple"
         number: "Number"
+        stupid: "Stupid"
     template_manager:
       composer_button_text: "Insert Template"
       modal_title: "Insert Template"
@@ -62,3 +63,4 @@ en:
         regular: "Regular"
         multiple: "Multiple"
         number: "Number"
+        stupid: "Stupid"
