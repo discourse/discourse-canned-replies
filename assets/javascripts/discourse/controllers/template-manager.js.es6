@@ -41,7 +41,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   },
 
   onShow: function() {
-    this.setProperties({templateName: "", templateType: "regular", pollAnswerValue: "" });
+    this.setProperties({templateName: "", templateType: "regular"});
   },
 
   init: function () {

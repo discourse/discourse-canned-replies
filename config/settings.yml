@@ -1,10 +1,4 @@
 plugins:
-  poll_ui_enabled:
-    default: true
-    client: true
-  poll_ui_provide_answers:
-    default: false
-    client: true
   template_manager_enabled:
     default: true
     client: true

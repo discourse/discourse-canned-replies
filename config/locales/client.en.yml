@@ -6,7 +6,6 @@ en:
       composer_button_text: "Insert Template"
       modal_title: "Insert Template"
       templatename_label: "Name:"
-      templatename_placeholder: "Enter Poll Name"
       template_type_label: "Template Type:"
       insert_button: "Insert Template"
       template_type:

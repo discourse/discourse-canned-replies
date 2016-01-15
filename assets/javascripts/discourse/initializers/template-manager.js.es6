@@ -15,7 +15,7 @@ export default
       if (NewComposer !== "undefined") {
         NewComposer.reopen({
           actions: {
-            showPollUI: function() {
+            showTemplateButton: function() {
               showModal('template-manager').setProperties({composerView: this});
             }
           }
@@ -26,13 +26,13 @@ export default
             id: "template_manager_button",
             group: "extras",
             icon: "clipboard",
-            action: 'showPollUI'
+            action: 'showTemplateButton'
           });
         });
       } else {
         ApplicationRoute.reopen({
           actions: {
-            showPollUI: function (composerView) {
+            showTemplateButton: function (composerView) {
               showModal('template-manager');
               this.controllerFor('template-manager').setProperties({composerViewOld: composerView});
             }
@@ -47,7 +47,7 @@ export default
             var button_text = I18n.t("template_manager.composer_button_text");
             var btn = $('<button class="wmd-button wmd-template-manager-button" title="' + button_text + '" aria-label="' + button_text + '"></button>');
             btn.click(function () {
-              view.get("controller").send("showPollUI", view);
+              view.get("controller").send("showTemplateButton", view);
             });
             $("#wmd-button-row,.wmd-button-row").append(btn);
           }
