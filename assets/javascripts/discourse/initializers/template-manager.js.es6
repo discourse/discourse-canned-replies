@@ -6,7 +6,7 @@ import NewComposer from 'discourse/components/d-editor';
 
 export default
 {
-  name: 'poll-ui',
+  name: 'template-manager',
   initialize(container)
   {
     const siteSettings = container.lookup('site-settings:main');
@@ -16,7 +16,7 @@ export default
         NewComposer.reopen({
           actions: {
             showPollUI: function() {
-              showModal('poll-ui').setProperties({composerView: this});
+              showModal('template-manager').setProperties({composerView: this});
             }
           }
         });
@@ -33,8 +33,8 @@ export default
         ApplicationRoute.reopen({
           actions: {
             showPollUI: function (composerView) {
-              showModal('poll-ui');
-              this.controllerFor('poll-ui').setProperties({composerViewOld: composerView});
+              showModal('template-manager');
+              this.controllerFor('template-manager').setProperties({composerViewOld: composerView});
             }
           }
         });
@@ -45,7 +45,7 @@ export default
             this._super();
             var view = this;
             var button_text = I18n.t("poll_ui.composer_button_text");
-            var btn = $('<button class="wmd-button wmd-poll-ui-button" title="' + button_text + '" aria-label="' + button_text + '"></button>');
+            var btn = $('<button class="wmd-button wmd-template-manager-button" title="' + button_text + '" aria-label="' + button_text + '"></button>');
             btn.click(function () {
               view.get("controller").send("showPollUI", view);
             });

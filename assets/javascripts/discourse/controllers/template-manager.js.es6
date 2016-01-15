@@ -3,19 +3,16 @@ import ModalFunctionality from 'discourse/mixins/modal-functionality';
 export default Ember.Controller.extend(ModalFunctionality, {
   pollName: "",
   pollType: "regular",
-  pollMinValue: 1,
-  pollMaxValue: 1,
-  pollStepValue: 1,
   pollTypes: [
-    { 'title': I18n.t("poll_ui.poll_type.regular"), 'value': "regular" },
-    { 'title': I18n.t("poll_ui.poll_type.multiple"), 'value': "multiple" },
-      { 'title': I18n.t("poll_ui.poll_type.number"), 'value': "number" },
-    { 'title': I18n.t("poll_ui.poll_type.stupid"), 'value': "stupid" }
+    { 'title': I18n.t("template_manager.poll_type.regular"), 'value': "regular" },
+    { 'title': I18n.t("template_manager.poll_type.multiple"), 'value': "multiple" },
+      { 'title': I18n.t("template_manager.poll_type.number"), 'value': "number" },
+    { 'title': I18n.t("template_manager.poll_type.stupid"), 'value': "stupid" }
   ],
   pollOptions: "",
   pollAnswerValue: "",
-  choicesClass: Discourse.SiteSettings.poll_ui_provide_answers ? "has-answers" : "no-answers",
-  canProvideAnswers: Discourse.SiteSettings.poll_ui_provide_answers,
+  choicesClass: Discourse.SiteSettings.template_manager_provide_answers ? "has-answers" : "no-answers",
+  canProvideAnswers: Discourse.SiteSettings.template_manager_provide_answers,
 
   isNumberPoll: function() {
     return this.get("pollType") === "number";
@@ -33,11 +30,11 @@ export default Ember.Controller.extend(ModalFunctionality, {
       intMinValue = parseInt(this.get('pollMinValue')),
       intMaxValue = parseInt(this.get('pollMaxValue'));
     if (Ember.isEmpty(minValue) || !parseInt(minValue) || !mustBeNumeric.test(minValue)) {
-      return Discourse.InputValidation.create({ failed: true, reason: I18n.t("poll_ui.poll_min_must_be_numeric") });
+      return Discourse.InputValidation.create({ failed: true, reason: I18n.t("template_manager.poll_min_must_be_numeric") });
     }
 
     if (intMinValue > intMaxValue) {
-      return Discourse.InputValidation.create({ failed: true, reason: I18n.t("poll_ui.poll_min_must_be_less_than_max") });
+      return Discourse.InputValidation.create({ failed: true, reason: I18n.t("template_manager.poll_min_must_be_less_than_max") });
     }
 
     return Discourse.InputValidation.create({ok: true});
@@ -48,7 +45,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
     var mustBeNumeric = new RegExp(/^[\d]+$/),
       maxValue = this.get('pollMaxValue');
     if (Ember.isEmpty(maxValue) || !parseInt(maxValue) || !mustBeNumeric.test(maxValue)) {
-      return Discourse.InputValidation.create({ failed: true, reason: I18n.t("poll_ui.poll_max_must_be_numeric") });
+      return Discourse.InputValidation.create({ failed: true, reason: I18n.t("template_manager.poll_max_must_be_numeric") });
     }
 
     return Discourse.InputValidation.create({ok: true});
@@ -61,11 +58,11 @@ export default Ember.Controller.extend(ModalFunctionality, {
       intStepValue = parseInt(this.get('pollStepValue')),
       intMaxValue = parseInt(this.get('pollMaxValue'));
     if (Ember.isEmpty(stepValue) || !parseInt(stepValue) || !mustBeNumeric.test(stepValue)) {
-      return Discourse.InputValidation.create({ failed: true, reason: I18n.t("poll_ui.poll_step_must_be_numeric") });
+      return Discourse.InputValidation.create({ failed: true, reason: I18n.t("template_manager.poll_step_must_be_numeric") });
     }
 
     if (intStepValue > intMaxValue) {
-      return Discourse.InputValidation.create({ failed: true, reason: I18n.t("poll_ui.poll_step_must_be_less_than_max") });
+      return Discourse.InputValidation.create({ failed: true, reason: I18n.t("template_manager.poll_step_must_be_less_than_max") });
     }
 
     return Discourse.InputValidation.create({ok: true});
@@ -82,11 +79,11 @@ export default Ember.Controller.extend(ModalFunctionality, {
       intMaxValue = parseInt(this.get('pollMaxValue'));
 
     if (!Ember.isEmpty(this.get("pollOptions")) && numOptions < 2) {
-      return Discourse.InputValidation.create({ failed: true, reason: I18n.t("poll_ui.poll_options_must_have_two_entries") });
+      return Discourse.InputValidation.create({ failed: true, reason: I18n.t("template_manager.poll_options_must_have_two_entries") });
     }
 
     if (numOptions < intMinValue || numOptions < intMaxValue) {
-      return Discourse.InputValidation.create({ failed: true, reason: I18n.t("poll_ui.poll_options_must_be_greater_than_min_max_values") });
+      return Discourse.InputValidation.create({ failed: true, reason: I18n.t("template_manager.poll_options_must_be_greater_than_min_max_values") });
     }
   }.property('pollType', 'pollOptions', 'pollMinValue', 'pollMaxValue'),
 
