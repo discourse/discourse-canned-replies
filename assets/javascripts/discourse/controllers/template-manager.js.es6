@@ -10,20 +10,24 @@ export default Ember.Controller.extend(ModalFunctionality, {
     { 'title': I18n.t("template_manager.template_type.stupid"), 'value': "stupid" }
   ],
 
+
   actions: {
     apply: function() {
       var name = this.get("templateName"), type = this.get("templateType"), self = this, composerOutput = "";
       if (type == "regular") {
-	composerOutput += "## Regular template:\r\n[] One \r\n []Two \r\n[ ] three\r\n";
+	composerOutput += "## I have:\r\n[] Described my learning process \r\n [] Said how long it took \r\n[ ] linked to my blog!\r\n";
       }
       else if (type == "stupid") {
         composerOutput += "## Stupid template:\r\n[] Apple \r\n [] Two \r\n[ ] C\r\n";
       }
       else if (type == "stupid") {
-        composerOutput += "## Stupid template:\r\n[] 1 \r\n [] 2 \r\n[ ] 3\r\n";
+        composerOutput += "## I have:\r\n[] Described my learning process \r\n [] Said how long it took \r\n[ ] linked to my blog!\r\n";
       }
       else if (type == "multiple") {
-        composerOutput += "## Multiple template:\r\n[] A \r\n [] B \r\n[ ] C\r\n";
+        composerOutput += "## I have:\r\n[] made an anonymous post\r\n [] mustread screen shot \r\n[ ] Liked 3 posts\r\n [ ] Flagged a post\r\n";
+      }
+      else if (type == "fromSettings") {
+        composerOutput += "## settings template should be here\r\n";
       }
       else {
 	  composerOutput += "This is not a template!\r\n";

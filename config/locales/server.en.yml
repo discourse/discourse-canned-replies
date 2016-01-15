@@ -1,4 +1,4 @@
 en:
   site_settings:
     template_manager_enabled: 'Show insert template button on composer window?'
-
+    template_manager_One: 'Text for template one'

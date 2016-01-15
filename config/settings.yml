@@ -2,9 +2,6 @@ plugins:
   template_manager_enabled:
     default: true
     client: true
-  template_manager_provide_answers:
-    default: false
-    client: true
-  template_manager_template:
-    default: "This is a default template"
-    client: "This is a client"
+  template_manager_one:
+    default: '## Requirements\r\n[] One \r\n[ ] Two\r\n[ ]  Three\r\n\r\n'
+    client: ''

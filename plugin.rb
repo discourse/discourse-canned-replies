@@ -1,6 +1,6 @@
 # name: discourse-template-manager
 # about: Add templates through the composer
-# version: 0.001
+# version: 0.1
 # authors: Jay Pfaffman
 # url: https://courses.literatecomputing.com
 

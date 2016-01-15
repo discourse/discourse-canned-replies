@@ -8,9 +8,10 @@ en:
       templatename_label: "Name:"
       template_type_label: "Template Type:"
       insert_button: "Insert Template"
+      template_manager_one: "A custom template!"
       template_type:
-        regular: "Regular"
-        multiple: "Multiple"
+        regular: "Domain of One's One"
+        multiple: "Discourse Basics"
         number: "Number"
-        stupid: "Stupid"
+        stupid: "Taking Control"
 
