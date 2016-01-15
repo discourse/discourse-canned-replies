@@ -3,10 +3,15 @@ This plugin adds support for inserting a template into the composer window via a
 
 Based on cpradio's [Checklist Plugin](https://github.com/cpradio/discourse-plugin-checklist)
 
-## This doesn't work.
+## Still not quite useful
 
-This is my first attempt at learning Rails, Ruby, Discourse plugins.
-It just might not happen.
+I have a working plugin. It puts a button in the composer that will
+let you select from several templates. However, if you want to change
+the templates, you have to edit the code, so I have a bit more to
+learn to make a template editing interface in settings. This isn't bad
+for a days' work, though.
+
+I still don't recommend that anyone use this.
 
 ## Installation
 
