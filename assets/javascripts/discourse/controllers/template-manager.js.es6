@@ -4,10 +4,10 @@ export default Ember.Controller.extend(ModalFunctionality, {
   pollName: "",
   pollType: "regular",
   pollTypes: [
-    { 'title': I18n.t("template_manager.poll_type.regular"), 'value': "regular" },
-    { 'title': I18n.t("template_manager.poll_type.multiple"), 'value': "multiple" },
-      { 'title': I18n.t("template_manager.poll_type.number"), 'value': "number" },
-    { 'title': I18n.t("template_manager.poll_type.stupid"), 'value': "stupid" }
+    { 'title': I18n.t("template_manager.template_type.regular"), 'value': "regular" },
+    { 'title': I18n.t("template_manager.template_type.multiple"), 'value': "multiple" },
+      { 'title': I18n.t("template_manager.template_type.number"), 'value': "number" },
+    { 'title': I18n.t("template_manager.template_type.stupid"), 'value': "stupid" }
   ],
   pollOptions: "",
   pollAnswerValue: "",
