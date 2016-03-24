@@ -3,6 +3,7 @@ import ModalFunctionality from 'discourse/mixins/modal-functionality';
 export default Ember.Controller.extend(ModalFunctionality, {
   templateName: "",
   templateType: "regular",
+  teplateTypeNumber: 1,
   templateTypes: [
     { 'title': I18n.t("template_manager.template_type.regular"), 'value': "regular" },
     { 'title': I18n.t("template_manager.template_type.multiple"), 'value': "multiple" },
@@ -15,7 +16,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
     apply: function() {
       var name = this.get("templateName"), type = this.get("templateType"), self = this, composerOutput = "";
       if (type == "regular") {
-	composerOutput += "## I have:\r\n[] Described my learning process  \r\n [] Said how long it took  \r\n[ ] linked to my blog!  \r\n";
+	       composerOutput += "## I have:\r\n[] Described my learning process  \r\n [] Said how long it took  \r\n[ ] linked to my blog!  \r\n";
       }
       else if (type == "stupid") {
         composerOutput += "## Stupid template:\r\n[] Apple  \r\n [] Two  \r\n[ ] C  \r\n";
@@ -50,7 +51,13 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
   init: function () {
     this._super();
-
+    this.templateTypes = []
+    alert(this.siteSettings.template_number);
+    this.splitArray = this.siteSettings.template_manager_one.split("|");
+    for(this.i=0; this.i<this.siteSettings.template_number ; this.i++){
+      this.templateTypes[this.i] = { 'title': this.i, 'value': this.splitArray[this.i]};
+      //alert(this.splitArray[this.i]);
+    }
     this.addObserver("templateType", function() {
       this.refresh();
     }.bind(this));
