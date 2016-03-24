@@ -2,6 +2,12 @@ plugins:
   template_manager_enabled:
     default: true
     client: true
+  template_manager_number:
+    default: 4
+    client: true
   template_manager_one:
-    default: '## Requirements\r\n[] One \r\n[ ] Two\r\n[ ]  Three\r\n\r\n'
-    client: ''
+    default: 'regular|stupid'
+    client: true
+  template_manager_messages:
+    default: 'This is a regular message|This is a stupid canned reply'
+    client: true
