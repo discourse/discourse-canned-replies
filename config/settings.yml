@@ -6,8 +6,8 @@ plugins:
     default: 4
     client: true
   template_manager_one:
-    default: 'regular|stupid'
+    default: 'regular|stupid|one|two'
     client: true
   template_manager_messages:
-    default: 'This is a regular message|This is a stupid canned reply'
+    default: 'This is a regular message|This is a stupid canned reply|111111|222222'
     client: true
