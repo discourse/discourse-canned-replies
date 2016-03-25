@@ -10,7 +10,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   actions: {
     apply: function() {
       var name = this.get("templateName"), type = this.get("templateType"), self = this, composerOutput = "";
-      for(this.i=0; this.i<this.siteSettings.template_manager_number ; this.i++){
+      for(this.i=0; this.i<this.template_number ; this.i++){
         if(type==this.templateTypes[this.i].value)composerOutput += this.templateTypes[this.i].content;
       }
       if (self.composerViewOld)
@@ -33,13 +33,13 @@ export default Ember.Controller.extend(ModalFunctionality, {
     this._super();
     this.templateTypes = []
     this.splitArray = this.siteSettings.template_manager_one.split("|");
-    for(this.i=0; this.i<this.siteSettings.template_manager_number ; this.i++){
-      this.messageValues = this.splitArray[this.i].split(":");
+    this.template_number = this.splitArray.length;
+    for(this.i=0; this.i<this.template_number ; this.i++){
+      this.messageValues = this.splitArray[this.i].split(/:(.+)/);
       this.templateTypes[this.i] = { 'title': this.messageValues[0], 'value': this.messageValues[0], 'content': this.messageValues[1]};
-      //alert(this.splitArray[this.i]);
     }
     this.addObserver("templateType", function() {
-      this.refresh();
+      this.refresh()
     }.bind(this));
   }
 });
