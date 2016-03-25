@@ -26,7 +26,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   },
 
   onShow: function() {
-    this.setProperties({templateName: "", templateType: "regular"});
+    this.setProperties({templateName: "", templateType: this.templateTypes[0].value});
   },
 
   init: function () {
