@@ -35,7 +35,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
     this.splitArray = this.siteSettings.template_manager_one.split("|");
     this.template_number = this.splitArray.length;
     for(this.i=0; this.i<this.template_number ; this.i++){
-      this.messageValues = this.splitArray[this.i].split(":");
+      this.messageValues = this.splitArray[this.i].split(/:(.+)/);
       this.templateTypes[this.i] = { 'title': this.messageValues[0], 'value': this.messageValues[0], 'content': this.messageValues[1]};
       //alert(this.splitArray[this.i]);
     }
