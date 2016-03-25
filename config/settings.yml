@@ -2,6 +2,9 @@ plugins:
   template_manager_enabled:
     default: true
     client: true
+  template_manager_number:
+    default: 4
+    client: true
   template_manager_one:
-    default: '## Requirements\r\n[] One \r\n[ ] Two\r\n[ ]  Three\r\n\r\n'
-    client: ''
+    default: 'regular:This is a regular message|stupid:This is stupid.|one:1111|two:222'
+    client: true
