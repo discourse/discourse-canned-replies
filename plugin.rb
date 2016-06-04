@@ -49,6 +49,21 @@ after_initialize do
         PluginStore.get(PLUGIN_NAME, STORE_NAME)
       end
 
+      def get_reply(user_id, reply_id)
+        ensureStaff user_id
+
+        replies = PluginStore.get(PLUGIN_NAME, STORE_NAME)
+        replies[reply_id]
+      end
+
+      def remove(user_id, reply_id)
+        ensureStaff user_id
+
+        replies = PluginStore.get(PLUGIN_NAME, STORE_NAME)
+        replies.delete reply_id
+        PluginStore.set(PLUGIN_NAME, STORE_NAME, replies)
+      end
+
       def ensureStaff (user_id)
         user = User.find_by(id: user_id)
 
@@ -70,7 +85,7 @@ after_initialize do
     def add
       title   = params.require(:title)
       content = params.require(:content)
-      user_id = current_user.id
+      user_id  = current_user.id
 
       begin
         record = CannedReply::Reply.add(user_id, title, content)
@@ -80,8 +95,32 @@ after_initialize do
       end
     end
 
+    def remove
+      reply_id = params.require(:reply_id)
+      user_id  = current_user.id
+
+      begin
+        record = CannedReply::Reply.remove(user_id, reply_id)
+        render json: record
+      rescue StandardError => e
+        render_json_error e.message
+      end
+    end
+
+    def reply
+      reply_id = params.require(:reply_id)
+      user_id  = current_user.id
+
+      begin
+        record = CannedReply::Reply.get_reply(user_id, reply_id)
+        render json: record
+      rescue StandardError => e
+        render_json_error e.message
+      end
+    end
+
     def all
-      user_id = current_user.id
+      user_id  = current_user.id
 
       begin
         replies = CannedReply::Reply.all(user_id)
@@ -93,7 +132,9 @@ after_initialize do
   end
 
   CannedReply::Engine.routes.draw do
-    put "/add" => "cannedreplies#add"
+    put "/reply" => "cannedreplies#add"
+    get "/reply" => "cannedreplies#reply"
+    delete "/reply" => "cannedreplies#remove"
     get "/all" => "cannedreplies#all"
   end
 
