@@ -1,21 +1,22 @@
 <div class="modal-body template-manager-modal" style="overflow: visible">
   <div class="details">
-    <table>
-      <tbody>
-        <tr>
-          <td>{{i18n "template_manager.template_type_label"}}</td>
-          <td>{{combo-box name="replies" valueAttribute="id" value=controller.selectedReplyID nameProperty="title" content=replies}}</td>
-        </tr>
-        <tr>
-            <p>
-                {{selectedReply.content}}
-            </p>
-        </tr>
-      </tbody>
-    </table>
+    <div class="reply-selector">
+      <label>{{i18n "canned_replies.insert.title"}}</label>
+      <div class="selector">
+        {{combo-box name="replies" valueAttribute="id" value=controller.selectedReplyID nameProperty="title" content=replies}}
+      </div>
+    </div>
+
+    <div class="content">
+        <label>{{i18n "canned_replies.insert.content"}}</label>
+        <p>
+          {{selectedReply.content}}
+        </p>
+    </div>
+
   </div>
 </div>
 <div class="modal-footer">
-  <button class="btn btn-primary pull-right" {{bind-attr disabled="submitDisabled"}} {{action "apply"}}>{{i18n "template_manager.insert_button"}}</button>
+  <button class="btn btn-primary pull-right" {{bind-attr disabled="submitDisabled"}} {{action "apply"}}>{{i18n "canned_replies.insert.insert_button"}}</button>
 </div>
 

@@ -3,69 +3,38 @@
 }
 
 .template-manager-modal {
-  table {
-    width: 100%;
-
-    td {
-      padding: 0 .5em;
-    }
-
-    td:nth-child(even) {
-      text-align: right;
-    }
-
-    td .select2-choice {
-      text-align: initial;
-    }
-
-    .numeric-field input {
-      width: 3em;
-    }
-  }
-
-  .tip.good {
-    display: none;
-  }
-
   .content {
-    max-height: 300px;
-    min-height: 200px;
-    overflow-y: auto;
-    padding: 0 .5em;
-    clear: both;
+    padding: 20px 0 0 10px;
 
-    .choices {
-      .d-editor {
-        border-width: 0;
+    label {
+      font-size: 1em;
+    }
 
-        .d-editor-container {
-          padding: 0;
+    p {
+      max-height: 300px;
+      min-height: 75px;
+      overflow-y: auto;
+      padding: 0 .5em;
+      clear: both;
+    }
+  }
 
-          .d-editor-button-bar {
-            display: none;
-          }
+  .reply-selector{
+    label {
+      display: inline-block;
+      padding: 5px 0 0 10px;
+      font-size: 1em;
+    }
 
-          .d-editor-preview {
-            display: none;
-          }
-        }
+    .selector {
+      float: right;
+      width: 75%;
+
+      select {
+        width: 90%;
+        margin: 0 0 5px 0;
       }
     }
 
-    .no-answers {
-      textarea {
-        height: 150px;
-      }
-    }
-
-    .answer {
-      .d-editor-container {
-        padding: 0 10px 0 10px;
-      }
-
-      .d-editor-preview {
-        display: none;
-      }
-    }
   }
 }

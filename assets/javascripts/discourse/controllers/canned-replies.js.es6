@@ -1,10 +1,6 @@
 import ModalFunctionality from 'discourse/mixins/modal-functionality';
 
 export default Ember.Controller.extend(ModalFunctionality, {
-  templateName: "",
-  templateType: "regular",
-  teplateTypeNumber: 1,
-  templateTypes: [],
   replies: [],
   selectedReply: "",
   selectedReplyID: "",
@@ -27,7 +23,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   },
 
   onShow: function() {
-    this.setProperties({templateName: "", templateType: "regular"});
+    this.setProperties({selectedReply: "", selectedReplyID: ""});
   },
 
   selectionChange: function () {

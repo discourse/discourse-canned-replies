@@ -1,17 +1,10 @@
 en:
   js:
-    composer:
-      template_manager_button_title: "Insert Template"
-    template_manager:
-      composer_button_text: "Insert Template"
-      modal_title: "Insert Template"
-      templatename_label: "Name:"
-      template_type_label: "Template Type:"
-      insert_button: "Insert Template"
-      template_manager_one: "A custom template!"
-      template_type:
-        regular: "Domain of One's One"
-        multiple: "Discourse Basics"
-        number: "Number"
-        stupid: "Taking Control"
+    canned_replies:
+      insert:
+        content: "Content"
+        title: "Canned replies"
+        insert_button: "Insert"
+      modal:
+        title: "Insert canned reply"
 
