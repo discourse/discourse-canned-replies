@@ -6,9 +6,9 @@
 
 enabled_site_setting :template_manager_enabled
 
-register_asset "javascripts/discourse/templates/template-manager.hbs"
+register_asset "javascripts/discourse/templates/canned-replies.hbs"
 
-register_asset 'stylesheets/template-manager.scss'
+register_asset 'stylesheets/canned-replies.scss'
 
 PLUGIN_NAME ||= "canned_replies".freeze
 STORE_NAME ||= "replies".freeze
@@ -45,7 +45,7 @@ after_initialize do
       end
 
       def all (user_id)
-        ensureStaff user_id
+        # ensureStaff user_id
         PluginStore.get(PLUGIN_NAME, STORE_NAME)
       end
 
@@ -82,7 +82,7 @@ after_initialize do
 
     before_filter :ensure_logged_in
 
-    def add
+    def create
       title   = params.require(:title)
       content = params.require(:content)
       user_id  = current_user.id
@@ -119,12 +119,13 @@ after_initialize do
       end
     end
 
-    def all
+    def index
       user_id  = current_user.id
 
       begin
         replies = CannedReply::Reply.all(user_id)
-        render json: replies
+        puts replies
+        render json: {replies: replies}
       rescue StandardError => e
         render_json_error e.message
       end
@@ -132,10 +133,10 @@ after_initialize do
   end
 
   CannedReply::Engine.routes.draw do
-    put "/reply" => "cannedreplies#add"
+    post "/" => "cannedreplies#create"
     get "/reply" => "cannedreplies#reply"
     delete "/reply" => "cannedreplies#remove"
-    get "/all" => "cannedreplies#all"
+    get "/" => "cannedreplies#index"
   end
 
   Discourse::Application.routes.append do

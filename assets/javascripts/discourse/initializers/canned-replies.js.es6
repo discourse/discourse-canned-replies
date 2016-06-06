@@ -6,17 +6,18 @@ import NewComposer from 'discourse/components/d-editor';
 
 export default
 {
-  name: 'template-manager',
+  name: 'canned-replies',
   initialize(container)
   {
     const siteSettings = container.lookup('site-settings:main');
+    const store = container.lookup('store:main');
 
     if (siteSettings.template_manager_enabled) {
       if (NewComposer !== "undefined") {
         NewComposer.reopen({
           actions: {
             showTemplateButton: function() {
-              showModal('template-manager').setProperties({composerView: this});
+              showModal('canned-replies').setProperties({composerView: this});
             }
           }
         });
@@ -33,8 +34,7 @@ export default
         ApplicationRoute.reopen({
           actions: {
             showTemplateButton: function (composerView) {
-              showModal('template-manager');
-              this.controllerFor('template-manager').setProperties({composerViewOld: composerView});
+              showModal('canned-replies').setProperties({composerViewOld: composerView});
             }
           }
         });
