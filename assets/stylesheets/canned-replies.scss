@@ -8,14 +8,15 @@
 
     label {
       font-size: 1em;
+      font-weight: 600;
     }
 
     p {
       max-height: 300px;
       min-height: 75px;
       overflow-y: auto;
-      padding: 0 .5em;
       clear: both;
+      color: grey;
     }
   }
 
@@ -24,17 +25,39 @@
       display: inline-block;
       padding: 5px 0 0 10px;
       font-size: 1em;
+      font-weight: 600;
     }
 
     .selector {
       float: right;
-      width: 75%;
+      width: 80%;
 
       select {
-        width: 90%;
+        width: 100%;
         margin: 0 0 5px 0;
       }
     }
+  }
 
+  .wrapper {
+    label {
+      display: inline-block;
+      padding: 5px 0 0 10px;
+      font-size: 1em;
+      font-weight: 600;
+    }
+
+    input {
+      width: 80%;
+      margin: 0 0 5px 0;
+      float: right;
+    }
+
+    textarea {
+      width: 97%;
+      margin: 0 0 0 10px;
+      max-height: 300px;
+      min-height: 75px;
+    }
   }
 }

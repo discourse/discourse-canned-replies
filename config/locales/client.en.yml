@@ -5,6 +5,11 @@ en:
         content: "Content"
         title: "Canned replies"
         insert_button: "Insert"
-      modal:
-        title: "Insert canned reply"
-
+        new_button: "New reply"
+        modal_title: "Insert canned reply"
+      add:
+        content: "Content"
+        title: "Reply name"
+        add_button: "Add"
+        use_current_button: "Use current draft"
+        modal_title: "Add canned reply"

@@ -1,4 +1,5 @@
 import ModalFunctionality from 'discourse/mixins/modal-functionality';
+import showModal from 'discourse/lib/show-modal';
 
 export default Ember.Controller.extend(ModalFunctionality, {
   replies: [],
@@ -16,6 +17,10 @@ export default Ember.Controller.extend(ModalFunctionality, {
         self.composerView._addText(self.composerView._getSelected(), composerOutput);
       }
       this.send('closeModal');
+    },
+    newReply: function () {
+      this.send('closeModal');
+      showModal('new-reply').setProperties({composerView: this.composerView, composerViewOld: this.composerViewOld});
     }
   },
 
@@ -41,9 +46,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   init: function () {
     this._super();
     this.replies = [];
-    Discourse.ajax("/cannedreplies", {
-      type: "GET"
-    }).then(results => {
+    Discourse.ajax("/cannedreplies").then(results => {
       const localReplies = [];
       for(var id in results.replies){
         localReplies.push(results.replies[id]);

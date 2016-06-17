@@ -1,0 +1,19 @@
+<div class="modal-body template-manager-modal" style="overflow: visible">
+  <div class="details">
+    <div class="wrapper">
+      <label>{{i18n "canned_replies.add.title"}}</label>
+      {{input name="new_title" valueAttribute="id" value=controller.new_title nameProperty="new_title"}}
+    </div>
+
+    <div class="wrapper">
+        <label>{{i18n "canned_replies.add.content"}}</label>
+        {{textarea name="new_content" value=controller.new_content}}
+    </div>
+
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary pull-left" {{bind-attr disabled="useCurrentDisabled"}} {{action "useCurrent"}}>{{i18n "canned_replies.add.use_current_button"}}</button>
+  <button class="btn btn-primary pull-right" {{bind-attr disabled="submitDisabled"}} {{action "add"}}>{{i18n "canned_replies.add.add_button"}}</button>
+</div>
+
