@@ -29,6 +29,15 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
   onShow: function() {
     this.setProperties({selectedReply: "", selectedReplyID: ""});
+    Discourse.ajax("/cannedreplies").then(results => {
+      const localReplies = [];
+      for(var id in results.replies){
+        localReplies.push(results.replies[id]);
+      }
+      this.set("replies", localReplies);
+    }).catch(() => {
+      bootbox.alert(I18n.t("poll.error_while_casting_votes"));
+    });
   },
 
   selectionChange: function () {
@@ -46,15 +55,6 @@ export default Ember.Controller.extend(ModalFunctionality, {
   init: function () {
     this._super();
     this.replies = [];
-    Discourse.ajax("/cannedreplies").then(results => {
-      const localReplies = [];
-      for(var id in results.replies){
-        localReplies.push(results.replies[id]);
-      }
-      this.set("replies", localReplies);
-    }).catch(() => {
-      bootbox.alert(I18n.t("poll.error_while_casting_votes"));
-    });
 
     this.addObserver("selectedReplyID", function () {
       this.selectionChange();
