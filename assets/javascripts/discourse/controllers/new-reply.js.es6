@@ -15,8 +15,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
       }).then(results => {
         self.send('closeModal');
         showModal('canned-replies');
-      }).catch(() => {
-        bootbox.alert(I18n.t("poll.error_while_casting_votes"));
+      }).catch(e => {
+        bootbox.alert(I18n.t("canned_replies.error.add") + e.errorThrown);
       });
     },
     useCurrent: function () {

@@ -20,3 +20,7 @@ en:
         edit_button: "Save"
         use_current_button: "Use current draft"
         modal_title: "Edit canned reply"
+      error:
+        edit: "There's been an error while editing the reply: "
+        add: "There's been an error while adding the reply: "
+        list: "There's been an error while listing the replies: "

@@ -8,7 +8,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
 
   actions: {
-    add: function() {
+    save: function() {
       var self = this;
       Discourse.ajax("/cannedreplies/reply", {
         type: "POST",
@@ -16,8 +16,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
       }).then(results => {
         self.send('closeModal');
         showModal('canned-replies');
-      }).catch(() => {
-        bootbox.alert(I18n.t("poll.error_while_casting_votes"));
+      }).catch(e => {
+        bootbox.alert(I18n.t("canned_replies.error.edit") + e.errorThrown);
       });
     },
     useCurrent: function () {

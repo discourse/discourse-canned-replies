@@ -45,8 +45,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
         localReplies.push(results.replies[id]);
       }
       this.set("replies", localReplies);
-    }).catch(() => {
-      bootbox.alert(I18n.t("poll.error_while_casting_votes"));
+    }).catch(e => {
+      bootbox.alert(I18n.t("canned_replies.error.list") + e.errorThrown);
     });
   },
 

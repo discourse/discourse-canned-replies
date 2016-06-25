@@ -29,8 +29,8 @@ after_initialize do
         ensureStaff user_id
 
         # TODO add i18n string
-        raise StandardError.new "poll.no_polls_associated_with_this_post" if title.blank?
-        raise StandardError.new "poll.no_poll_with_this_name" if content.blank?
+        raise StandardError.new "replies.missing_title" if title.blank?
+        raise StandardError.new "replies.missing_content" if content.blank?
 
         id = SecureRandom.hex(16)
         record = {id: id, title: title, content: content}
@@ -48,8 +48,9 @@ after_initialize do
         ensureStaff user_id
 
         # TODO add i18n string
-        raise StandardError.new "poll.no_polls_associated_with_this_post" if title.blank?
-        raise StandardError.new "poll.no_poll_with_this_name" if content.blank?
+        raise StandardError.new "replies.missing_title" if title.blank?
+        raise StandardError.new "replies.missing_content" if content.blank?
+        raise StandardError.new "replies.missing_reply" if reply_id.blank?
 
         record = {id: reply_id, title: title, content: content}
         remove(user_id, reply_id)
@@ -87,8 +88,7 @@ after_initialize do
         user = User.find_by(id: user_id)
 
         unless user.try(:staff?)
-          # TODO add i18n string // #I18n.t("poll.only_staff_or_op_can_toggle_status")
-          raise StandardError.new "poll.only_staff_or_op_can_toggle_status"
+          raise StandardError.new "replies.must_be_staff"
         end
       end
     end
