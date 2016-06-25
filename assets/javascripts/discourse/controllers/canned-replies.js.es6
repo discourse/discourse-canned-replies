@@ -21,6 +21,16 @@ export default Ember.Controller.extend(ModalFunctionality, {
     newReply: function () {
       this.send('closeModal');
       showModal('new-reply').setProperties({composerView: this.composerView, composerViewOld: this.composerViewOld});
+    },
+    editReply: function () {
+      this.send('closeModal');
+      showModal('edit-reply').setProperties({
+          composerView: this.composerView,
+          composerViewOld: this.composerViewOld,
+          reply_id: this.selectedReplyID,
+          reply_title: this.selectedReply.title,
+          reply_content: this.selectedReply.content
+        });
     }
   },
 

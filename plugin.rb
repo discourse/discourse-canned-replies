@@ -44,6 +44,25 @@ after_initialize do
         record
       end
 
+      def edit(user_id, reply_id, title, content)
+        ensureStaff user_id
+
+        # TODO add i18n string
+        raise StandardError.new "poll.no_polls_associated_with_this_post" if title.blank?
+        raise StandardError.new "poll.no_poll_with_this_name" if content.blank?
+
+        record = {id: reply_id, title: title, content: content}
+        remove(user_id, reply_id)
+
+        replies = PluginStore.get(PLUGIN_NAME, STORE_NAME)
+        replies = Hash.new if replies == nil
+
+        replies[reply_id] = record
+        PluginStore.set(PLUGIN_NAME, STORE_NAME, replies)
+
+        record
+      end
+
       def all (user_id)
         # ensureStaff user_id
         PluginStore.get(PLUGIN_NAME, STORE_NAME)
@@ -119,6 +138,20 @@ after_initialize do
       end
     end
 
+    def update
+      reply_id = params.require(:reply_id)
+      title   = params.require(:title)
+      content = params.require(:content)
+      user_id  = current_user.id
+
+      begin
+        record = CannedReply::Reply.edit(user_id, reply_id, title, content)
+        render json: record
+      rescue StandardError => e
+        render_json_error e.message
+      end
+    end
+
     def index
       user_id  = current_user.id
 
@@ -133,10 +166,12 @@ after_initialize do
   end
 
   CannedReply::Engine.routes.draw do
+    get "/" => "cannedreplies#index"
     post "/" => "cannedreplies#create"
+
     get "/reply" => "cannedreplies#reply"
     delete "/reply" => "cannedreplies#remove"
-    get "/" => "cannedreplies#index"
+    post "/reply" => "cannedreplies#update"
   end
 
   Discourse::Application.routes.append do
