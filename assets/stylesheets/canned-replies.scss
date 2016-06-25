@@ -11,12 +11,13 @@
       font-weight: 600;
     }
 
-    p {
+    div {
       max-height: 300px;
       min-height: 75px;
       overflow-y: auto;
       clear: both;
       color: grey;
+      white-space: pre-line;
     }
   }
 

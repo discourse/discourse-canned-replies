@@ -6,7 +6,7 @@ en:
         title: "Canned replies"
         insert_button: "Insert"
         new_button: "New reply"
-        edit_button: "Edit"
+        edit_button: "Edit selected"
         modal_title: "Insert canned reply"
       add:
         content: "Content"
@@ -17,6 +17,6 @@ en:
       edit:
         content: "Content"
         title: "Reply name"
-        edit_button: "Edit"
+        edit_button: "Save"
         use_current_button: "Use current draft"
         modal_title: "Edit canned reply"
