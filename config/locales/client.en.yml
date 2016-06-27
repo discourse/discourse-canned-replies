@@ -1,6 +1,7 @@
 en:
   js:
     canned_replies:
+      composer_button_text: "Canned replies"
       insert:
         content: "Content"
         title: "Canned replies"
@@ -19,8 +20,10 @@ en:
         title: "Reply name"
         edit_button: "Save"
         use_current_button: "Use current draft"
+        remove_button: "Remove"
         modal_title: "Edit canned reply"
       error:
         edit: "There's been an error while editing the reply: "
         add: "There's been an error while adding the reply: "
         list: "There's been an error while listing the replies: "
+        remove: "There's been an error while removing the reply: "

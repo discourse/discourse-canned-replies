@@ -45,6 +45,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
         localReplies.push(results.replies[id]);
       }
       this.set("replies", localReplies);
+      // trigger update of the selected reply
+      this.selectionChange();
     }).catch(e => {
       bootbox.alert(I18n.t("canned_replies.error.list") + e.errorThrown);
     });
