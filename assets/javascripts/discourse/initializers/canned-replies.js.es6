@@ -12,7 +12,7 @@ export default
     const siteSettings = container.lookup('site-settings:main');
     const store = container.lookup('store:main');
 
-    if (siteSettings.template_manager_enabled) {
+    if (siteSettings.canned_replies_enabled && Discourse.User.current() != null && Discourse.User.current().staff) {
       if (NewComposer !== "undefined") {
         NewComposer.reopen({
           actions: {

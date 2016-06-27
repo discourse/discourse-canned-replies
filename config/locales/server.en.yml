@@ -1,7 +1,6 @@
 en:
   site_settings:
-    template_manager_enabled: 'Show insert template button on composer window?'
-    template_manager_One: 'Text for template one'
+    canned_replies_enabled: 'Show insert canned reply button on composer window?'
   replies:
     missing_title: "Invalid or missing title"
     missing_content: "Invalid or missing content"

@@ -1,10 +1,10 @@
-# name: discourse-template-manager
-# about: Add templates through the composer
+# name: Canned Replies
+# about: Add canned replies through the composer
 # version: 0.1
-# authors: Jay Pfaffman
-# url: https://courses.literatecomputing.com
+# authors: Jay Pfaffman and André Pereira
+# url: https://github.com/pfaffman/discourse-plugin-template-manager
 
-enabled_site_setting :template_manager_enabled
+enabled_site_setting :canned_replies_enabled
 
 register_asset "javascripts/discourse/templates/canned-replies.hbs"
 
