@@ -26,6 +26,18 @@ export default Ember.Controller.extend(ModalFunctionality, {
       }else if (this.composerView) {
         this.set("new_content", this.composerView.value);
       }
+    },
+    remove: function () {
+      var self = this;
+      Discourse.ajax("/cannedreplies/reply", {
+        type: "DELETE",
+        data: {reply_id: this.reply_id}
+      }).then(results => {
+        self.send('closeModal');
+        showModal('canned-replies');
+      }).catch(e => {
+        bootbox.alert(I18n.t("canned_replies.error.remove") + e.errorThrown);
+      });
     }
   },
 

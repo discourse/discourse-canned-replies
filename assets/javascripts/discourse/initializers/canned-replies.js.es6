@@ -12,7 +12,7 @@ export default
     const siteSettings = container.lookup('site-settings:main');
     const store = container.lookup('store:main');
 
-    if (siteSettings.template_manager_enabled) {
+    if (siteSettings.canned_replies_enabled && Discourse.User.current() != null && Discourse.User.current().staff) {
       if (NewComposer !== "undefined") {
         NewComposer.reopen({
           actions: {
@@ -24,7 +24,7 @@ export default
 
         onToolbarCreate(toolbar => {
           toolbar.addButton({
-            id: "template_manager_button",
+            id: "canned_replies_button",
             group: "extras",
             icon: "clipboard",
             action: 'showTemplateButton'
@@ -44,7 +44,7 @@ export default
             // overwrite and wrap.
             this._super();
             var view = this;
-            var button_text = I18n.t("template_manager.composer_button_text");
+            var button_text = I18n.t("canned_replies.composer_button_text");
             var btn = $('<button class="wmd-button wmd-template-manager-button" title="' + button_text + '" aria-label="' + button_text + '"></button>');
             btn.click(function () {
               view.get("controller").send("showTemplateButton", view);
