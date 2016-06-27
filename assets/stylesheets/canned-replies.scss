@@ -1,0 +1,64 @@
+.wmd-template-manager-button:before {
+  content: "\f080"
+}
+
+.template-manager-modal {
+  .content {
+    padding: 20px 0 0 10px;
+
+    label {
+      font-size: 1em;
+      font-weight: 600;
+    }
+
+    div {
+      max-height: 300px;
+      min-height: 75px;
+      overflow-y: auto;
+      clear: both;
+      color: grey;
+      white-space: pre-line;
+    }
+  }
+
+  .reply-selector{
+    label {
+      display: inline-block;
+      padding: 5px 0 0 10px;
+      font-size: 1em;
+      font-weight: 600;
+    }
+
+    .selector {
+      float: right;
+      width: 80%;
+
+      select {
+        width: 100%;
+        margin: 0 0 5px 0;
+      }
+    }
+  }
+
+  .wrapper {
+    label {
+      display: inline-block;
+      padding: 5px 0 0 10px;
+      font-size: 1em;
+      font-weight: 600;
+    }
+
+    input {
+      width: 80%;
+      margin: 0 0 5px 0;
+      float: right;
+    }
+
+    textarea {
+      width: 97%;
+      margin: 0 0 0 10px;
+      max-height: 300px;
+      min-height: 75px;
+    }
+  }
+}

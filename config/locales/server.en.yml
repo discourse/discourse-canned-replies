@@ -2,3 +2,8 @@ en:
   site_settings:
     template_manager_enabled: 'Show insert template button on composer window?'
     template_manager_One: 'Text for template one'
+  replies:
+    missing_title: "Invalid or missing title"
+    missing_content: "Invalid or missing content"
+    missing_reply: "Invalid or missing reply"
+    must_be_staff: "To use this plugin you must be a member of staff or admin"

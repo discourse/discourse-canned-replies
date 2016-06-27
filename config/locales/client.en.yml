@@ -1,17 +1,26 @@
 en:
   js:
-    composer:
-      template_manager_button_title: "Insert Template"
-    template_manager:
-      composer_button_text: "Insert Template"
-      modal_title: "Insert Template"
-      templatename_label: "Name:"
-      template_type_label: "Template Type:"
-      insert_button: "Insert Template"
-      template_manager_one: "A custom template!"
-      template_type:
-        regular: "Domain of One's One"
-        multiple: "Discourse Basics"
-        number: "Number"
-        stupid: "Taking Control"
-
+    canned_replies:
+      insert:
+        content: "Content"
+        title: "Canned replies"
+        insert_button: "Insert"
+        new_button: "New reply"
+        edit_button: "Edit selected"
+        modal_title: "Insert canned reply"
+      add:
+        content: "Content"
+        title: "Reply name"
+        add_button: "Add"
+        use_current_button: "Use current draft"
+        modal_title: "Add canned reply"
+      edit:
+        content: "Content"
+        title: "Reply name"
+        edit_button: "Save"
+        use_current_button: "Use current draft"
+        modal_title: "Edit canned reply"
+      error:
+        edit: "There's been an error while editing the reply: "
+        add: "There's been an error while adding the reply: "
+        list: "There's been an error while listing the replies: "

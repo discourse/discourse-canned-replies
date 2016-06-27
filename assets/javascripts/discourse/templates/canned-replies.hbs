@@ -1,0 +1,24 @@
+<div class="modal-body template-manager-modal" style="overflow: visible">
+  <div class="details">
+    <div class="reply-selector">
+      <label>{{i18n "canned_replies.insert.title"}}</label>
+      <div class="selector">
+        {{combo-box name="replies" valueAttribute="id" value=controller.selectedReplyID nameProperty="title" content=replies}}
+      </div>
+    </div>
+
+    <div class="content">
+        <label>{{i18n "canned_replies.insert.content"}}</label>
+        <div>
+          {{selectedReply.content}}
+        </div>
+    </div>
+
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary pull-left" {{action "newReply"}}>{{i18n "canned_replies.insert.new_button"}}</button>
+  <button class="btn btn-primary pull-left" {{action "editReply"}}>{{i18n "canned_replies.insert.edit_button"}}</button>
+  <button class="btn btn-primary pull-right" {{bind-attr disabled="submitDisabled"}} {{action "apply"}}>{{i18n "canned_replies.insert.insert_button"}}</button>
+</div>
+
