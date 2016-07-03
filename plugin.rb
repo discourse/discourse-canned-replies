@@ -157,7 +157,6 @@ after_initialize do
 
       begin
         replies = CannedReply::Reply.all(user_id)
-        puts replies
         render json: {replies: replies}
       rescue StandardError => e
         render_json_error e.message

@@ -8,6 +8,7 @@ Follow the directions at [Install a Plugin](https://meta.discourse.org/t/install
 ## Authors
 
 Jay Pfaffman
+
 André Pereira
 
 ## License
