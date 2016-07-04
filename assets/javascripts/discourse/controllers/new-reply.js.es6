@@ -18,13 +18,14 @@ export default Ember.Controller.extend(ModalFunctionality, {
       }).catch(e => {
         bootbox.alert(I18n.t("canned_replies.error.add") + e.errorThrown);
       });
-    },
-    useCurrent: function () {
-      if (this.composerViewOld) {
-        this.set("new_content", this.composerViewOld.value);
-      }else if (this.composerView) {
-        this.set("new_content", this.composerView.value);
-      }
+    }
+  },
+
+  onShow: function() {
+    if (this.composerViewOld) {
+      this.set("new_content", this.composerViewOld.value);
+    }else if (this.composerView) {
+      this.set("new_content", this.composerView.value);
     }
   },
 

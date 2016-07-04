@@ -65,8 +65,15 @@ after_initialize do
       end
 
       def all (user_id)
-        # ensureStaff user_id
-        PluginStore.get(PLUGIN_NAME, STORE_NAME)
+        ensureStaff user_id
+        replies = PluginStore.get(PLUGIN_NAME, STORE_NAME)
+
+        replies.each do |id, value|
+          value['cooked'] = PrettyText.cook(value['content'])
+          replies[id] = value
+        end
+        #sort by title alphabetically
+        replies =  replies.sort_by {|key, value| value['title']}.to_h
       end
 
       def get_reply(user_id, reply_id)

@@ -3,11 +3,9 @@ en:
     canned_replies:
       composer_button_text: "Canned replies"
       insert:
-        content: "Content"
-        title: "Canned replies"
-        insert_button: "Insert"
-        new_button: "New reply"
-        edit_button: "Edit selected"
+        insert_button: "Add"
+        new_button: "New"
+        edit_button: "Edit"
         modal_title: "Insert canned reply"
       add:
         content: "Content"

@@ -4,7 +4,7 @@
 
 .template-manager-modal {
   .content {
-    padding: 20px 0 0 10px;
+    padding: 40px 0 0 10px;
 
     label {
       font-size: 1em;
@@ -16,8 +16,7 @@
       min-height: 75px;
       overflow-y: auto;
       clear: both;
-      color: grey;
-      white-space: pre-line;
+      color: black;
     }
   }
 
@@ -31,13 +30,18 @@
 
     .selector {
       float: right;
-      width: 80%;
+      width: 100%;
 
       select {
         width: 100%;
         margin: 0 0 5px 0;
       }
+
+      .combobox {
+        width: 680px;
+      }
     }
+
   }
 
   .wrapper {
