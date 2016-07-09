@@ -20,23 +20,20 @@ export default Ember.Controller.extend(ModalFunctionality, {
         bootbox.alert(I18n.t("canned_replies.error.edit") + e.errorThrown);
       });
     },
-    useCurrent: function () {
-      if (this.composerViewOld) {
-        this.set("new_content", this.composerViewOld.value);
-      }else if (this.composerView) {
-        this.set("new_content", this.composerView.value);
-      }
-    },
     remove: function () {
       var self = this;
-      Discourse.ajax("/cannedreplies/reply", {
-        type: "DELETE",
-        data: {reply_id: this.reply_id}
-      }).then(results => {
-        self.send('closeModal');
-        showModal('canned-replies');
-      }).catch(e => {
-        bootbox.alert(I18n.t("canned_replies.error.remove") + e.errorThrown);
+      bootbox.confirm(I18n.t("canned_replies.edit.remove_confirm"), function(result) {
+        if (result) {
+          Discourse.ajax("/cannedreplies/reply", {
+            type: "DELETE",
+            data: {reply_id: self.reply_id}
+          }).then(results => {
+            self.send('closeModal');
+            showModal('canned-replies');
+          }).catch(e => {
+            bootbox.alert(I18n.t("canned_replies.error.remove") + e.errorThrown);
+          });
+        }
       });
     }
   },

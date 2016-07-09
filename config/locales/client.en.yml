@@ -20,6 +20,7 @@ en:
         use_current_button: "Use current draft"
         remove_button: "Remove"
         modal_title: "Edit canned reply"
+        remove_confirm: "Are you sure you want to remove this canned reply?"
       error:
         edit: "There's been an error while editing the reply: "
         add: "There's been an error while adding the reply: "
