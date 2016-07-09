@@ -68,6 +68,8 @@ after_initialize do
         ensureStaff user_id
         replies = PluginStore.get(PLUGIN_NAME, STORE_NAME)
 
+        return {} if replies.blank?
+
         replies.each do |id, value|
           value['cooked'] = PrettyText.cook(value['content'])
           replies[id] = value
