@@ -1,6 +1,6 @@
 # name: Canned Replies
 # about: Add canned replies through the composer
-# version: 0.1
+# version: 1.0
 # authors: Jay Pfaffman and André Pereira
 # url: https://github.com/discourse/discourse-canned-replies
 
@@ -68,6 +68,11 @@ after_initialize do
         ensureStaff user_id
         replies = PluginStore.get(PLUGIN_NAME, STORE_NAME)
 
+        if replies.blank?
+          add_default_reply
+          replies = PluginStore.get(PLUGIN_NAME, STORE_NAME)
+        end
+
         return {} if replies.blank?
 
         replies.each do |id, value|
@@ -91,6 +96,13 @@ after_initialize do
         replies = PluginStore.get(PLUGIN_NAME, STORE_NAME)
         replies.delete reply_id
         PluginStore.set(PLUGIN_NAME, STORE_NAME, replies)
+      end
+
+      def add_default_reply()
+        add(1, 'My first canned reply', %q{This is an example canned reply.
+You can user **markdown** to style your replies. Click the **new** button to create new replies or the **edit** button to edit or remove an existing canned reply.
+
+*This canned reply will be added when the replies list is empty.*})
       end
 
       def ensureStaff (user_id)
