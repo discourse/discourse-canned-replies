@@ -2,7 +2,7 @@
 # about: Add canned replies through the composer
 # version: 0.1
 # authors: Jay Pfaffman and André Pereira
-# url: https://github.com/pfaffman/discourse-plugin-template-manager
+# url: https://github.com/discourse/discourse-canned-replies
 
 enabled_site_setting :canned_replies_enabled
 
