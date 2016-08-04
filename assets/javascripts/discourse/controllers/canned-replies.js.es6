@@ -9,24 +9,22 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
   actions: {
     apply: function() {
-      var self = this, composerOutput = this.selectedReply.content;
+      var self = this;
 
-      if (self.composerViewOld)
-        self.composerViewOld.addMarkdown(composerOutput);
-      else if (self.composerView) {
-        self.composerView._addText(self.composerView._getSelected(), composerOutput);
+      if (self.composerModel) {
+        const newReply = self.composerModel.reply + this.selectedReply.content;
+        self.composerModel.setProperties({reply: newReply});
       }
       this.send('closeModal');
     },
     newReply: function () {
       this.send('closeModal');
-      showModal('new-reply').setProperties({composerView: this.composerView, composerViewOld: this.composerViewOld});
+      showModal('new-reply').setProperties({composerModel: this.composerModel});
     },
     editReply: function () {
       this.send('closeModal');
       showModal('edit-reply').setProperties({
-          composerView: this.composerView,
-          composerViewOld: this.composerViewOld,
+          composerModel: this.composerModel,
           reply_id: this.selectedReplyID,
           reply_title: this.selectedReply.title,
           reply_content: this.selectedReply.content

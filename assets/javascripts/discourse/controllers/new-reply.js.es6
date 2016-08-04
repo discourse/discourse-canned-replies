@@ -22,10 +22,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
   },
 
   onShow: function() {
-    if (this.composerViewOld) {
-      this.set("new_content", this.composerViewOld.value);
-    }else if (this.composerView) {
-      this.set("new_content", this.composerView.value);
+    if (this.composerModel) {
+      this.set("new_content", this.composerModel.reply);
     }
   },
 
