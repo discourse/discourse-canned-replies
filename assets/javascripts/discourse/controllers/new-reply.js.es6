@@ -21,12 +21,6 @@ export default Ember.Controller.extend(ModalFunctionality, {
     }
   },
 
-  onShow: function() {
-    if (this.composerModel) {
-      this.set("new_content", this.composerModel.reply);
-    }
-  },
-
   refresh: function() {
   },
 });

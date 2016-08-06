@@ -19,7 +19,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
     },
     newReply: function () {
       this.send('closeModal');
-      showModal('new-reply').setProperties({composerModel: this.composerModel});
+      showModal('new-reply').setProperties({new_content: this.composerModel.reply});
     },
     editReply: function () {
       this.send('closeModal');
