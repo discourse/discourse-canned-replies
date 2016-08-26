@@ -15,8 +15,7 @@
   </div>
 </div>
 <div class="modal-footer">
-  <button class="btn btn-default pull-left" {{action "newReply"}}>{{i18n "canned_replies.insert.new_button"}}</button>
-  <button class="btn btn-default pull-left" {{action "editReply"}}>{{i18n "canned_replies.insert.edit_button"}}</button>
-  <button class="btn btn-primary pull-right" {{bind-attr disabled="submitDisabled"}} {{action "apply"}}>{{i18n "canned_replies.insert.insert_button"}}</button>
+  {{d-button class="btn-default pull-left" action="newReply" icon="plus" label="canned_replies.insert.new_button"}}
+  {{d-button class="btn-default pull-left" action="editReply" icon="pencil" label="canned_replies.insert.edit_button"}}
+  {{d-button class="btn-primary pull-right" action="apply" icon="clipboard" label="canned_replies.insert.insert_button"}}
 </div>
-
