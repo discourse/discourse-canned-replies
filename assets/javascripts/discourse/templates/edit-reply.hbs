@@ -12,7 +12,8 @@
 
   </div>
 </div>
-<div class="modal-footer">
+<div class="modal-footer canned-replies-footer">
   {{d-button class="btn-danger pull-left" action="remove" icon="trash" label="canned_replies.edit.remove_button"}}
-  {{d-button class="btn-primary pull-right" action="save" icon="clipboard" label="canned_replies.edit.edit_button"}}
+  {{d-button class="btn-primary pull-right" action="save" icon="pencil" label="canned_replies.edit.edit_button"}}
+  <a href {{action "cancel"}} class='cancel pull-right'>{{i18n 'cancel'}}</a>
 </div>

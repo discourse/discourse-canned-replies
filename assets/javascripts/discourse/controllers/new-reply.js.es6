@@ -18,6 +18,10 @@ export default Ember.Controller.extend(ModalFunctionality, {
       }).catch(e => {
         bootbox.alert(I18n.t("canned_replies.error.add") + e.errorThrown);
       });
+    },
+    cancel: function () {
+      this.send('closeModal');
+      showModal('canned-replies');
     }
   },
 

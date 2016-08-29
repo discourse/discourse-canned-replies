@@ -35,6 +35,10 @@ export default Ember.Controller.extend(ModalFunctionality, {
           });
         }
       });
+    },
+    cancel: function () {
+      this.send('closeModal');
+      showModal('canned-replies');
     }
   },
 
