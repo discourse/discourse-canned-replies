@@ -15,6 +15,14 @@ export default Ember.Controller.extend(ModalFunctionality, {
         const newReply = self.composerModel.reply + this.selectedReply.content;
         self.composerModel.setProperties({reply: newReply});
       }
+
+      Discourse.ajax("/cannedreplies/reply", {
+        type: "PUT",
+        data: {reply_id: this.selectedReplyID}
+      }).catch(e => {
+        bootbox.alert(I18n.t("canned_replies.error.updatingUsages") + e.errorThrown);
+      });
+
       this.send('closeModal');
     },
     newReply: function () {
@@ -29,6 +37,58 @@ export default Ember.Controller.extend(ModalFunctionality, {
           reply_title: this.selectedReply.title,
           reply_content: this.selectedReply.content
         });
+    },
+    sortAlphabetically: function () {
+      var selectList = $('#repliesComboBox option');
+
+      selectList.sort(function(a,b){
+        a = a.text;
+        b = b.text;
+
+        return a.localeCompare(b);
+      });
+
+      $('#repliesComboBox').html(selectList);
+      $('#sortCannedRepliesAlphabetically').hide();
+      $('#sortCannedRepliesByUsage').show();
+    },
+    sortByUsage: function () {
+      var selectList = $('#repliesComboBox option');
+
+      for(var index = 0; index < selectList.length; index++){
+        var entry = selectList[index];
+        var reply = this.getReplyByID(entry.value);
+        entry.setAttribute("usage", reply.usages);
+      }
+
+      selectList.sort(function(a,b){
+        const usageA = a.getAttribute("usage");
+        const usageB = b.getAttribute("usage");
+
+        if(usageA == usageB == "undefined"){
+          return a.text.localeCompare(b.text);
+        }
+        if (usageA == null && usageB != null){
+          return 1;
+        }
+        if(usageA != null && usageB == null){
+          return -1;
+        }
+        return usageA.localeCompare(usageB) * -1;
+      });
+
+      $('#repliesComboBox').html(selectList);
+      $('#sortCannedRepliesByUsage').hide()
+      $('#sortCannedRepliesAlphabetically').show();
+    }
+  },
+
+  getReplyByID: function (id) {
+    for(var index = 0; index < this.replies.length; index++) {
+      var entry = this.replies[index];
+      if (entry.id == id) {
+        return entry;
+      }
     }
   },
 

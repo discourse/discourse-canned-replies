@@ -2,7 +2,13 @@
   <div class="details">
     <div class="reply-selector">
       <div class="selector">
-        {{combo-box name="replies" valueAttribute="id" value=controller.selectedReplyID nameProperty="title" content=replies}}
+        {{combo-box id="repliesComboBox" name="replies" valueAttribute="id" value=controller.selectedReplyID nameProperty="title" content=replies}}
+        <span id="sortCannedRepliesAlphabetically">
+          {{d-button class="btn-primary pull-right" action="sortAlphabetically" icon="sort-alpha-asc" title="canned_replies.insert.sort.alphabetically"}}
+        </span>
+        <span id="sortCannedRepliesByUsage" style="display: none">
+          {{d-button class="btn-primary pull-right" action="sortByUsage" icon="sort-amount-desc" title="canned_replies.insert.sort.usage"}}
+        </span>
       </div>
     </div>
 

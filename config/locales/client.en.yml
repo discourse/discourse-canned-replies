@@ -7,6 +7,9 @@ en:
         new_button: "New"
         edit_button: "Edit"
         modal_title: "Insert Canned Reply"
+        sort:
+          alphabetically: "Sort alphabetically"
+          usage: "Sort by frequency of use"
       add:
         content: "Content"
         title: "Reply"
@@ -26,3 +29,4 @@ en:
         add: "There's been an error while adding the reply: "
         list: "There's been an error while listing the replies: "
         remove: "There's been an error while removing the reply: "
+        updatingUsages: "There's been an error while updating the usage count of the selected reply"

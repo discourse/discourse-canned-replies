@@ -77,10 +77,11 @@ after_initialize do
 
         replies.each do |id, value|
           value['cooked'] = PrettyText.cook(value['content'])
+          value['usages'] = 0 unless value.key?('usages')
           replies[id] = value
         end
-        #sort by title alphabetically
-        replies =  replies.sort_by {|key, value| value['title']}.to_h
+        #sort by usages
+        replies =  replies.sort_by {|key, value| value['usages']}.reverse.to_h
       end
 
       def get_reply(user_id, reply_id)
@@ -95,6 +96,19 @@ after_initialize do
 
         replies = PluginStore.get(PLUGIN_NAME, STORE_NAME)
         replies.delete reply_id
+        PluginStore.set(PLUGIN_NAME, STORE_NAME, replies)
+      end
+
+      def use(user_id, reply_id)
+        ensureStaff user_id
+
+        replies = PluginStore.get(PLUGIN_NAME, STORE_NAME)
+        reply = replies[reply_id]
+        usages = 0
+        usages = reply['usages'] if reply.key?('usages')
+        usages += 1
+        reply['usages'] = usages
+        replies[reply_id] = reply
         PluginStore.set(PLUGIN_NAME, STORE_NAME, replies)
       end
 
@@ -173,6 +187,18 @@ You can user **markdown** to style your replies. Click the **new** button to cre
       end
     end
 
+    def use
+      reply_id = params.require(:reply_id)
+      user_id  = current_user.id
+
+      begin
+        record = CannedReply::Reply.use(user_id, reply_id)
+        render json: record
+      rescue StandardError => e
+        render_json_error e.message
+      end
+    end
+
     def index
       user_id  = current_user.id
 
@@ -192,6 +218,7 @@ You can user **markdown** to style your replies. Click the **new** button to cre
     get "/reply" => "cannedreplies#reply"
     delete "/reply" => "cannedreplies#remove"
     post "/reply" => "cannedreplies#update"
+    put "/reply" => "cannedreplies#use"
   end
 
   Discourse::Application.routes.append do
