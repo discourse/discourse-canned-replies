@@ -1,0 +1,32 @@
+it:
+  js:
+    canned_replies:
+      composer_button_text: "Risposte preprogrammate"
+      insert:
+        insert_button: "Aggiungi"
+        new_button: "Nuovo"
+        edit_button: "Modifica"
+        modal_title: "Inserisci Risposta Preprogrammata"
+        sort:
+          alphabetically: "Ordina alfabeticamente"
+          usage: "Ordina per frequenza di utilizzo"
+      add:
+        content: "Contenuto"
+        title: "Risposta"
+        add_button: "Salva"
+        use_current_button: "Usa la bozza corrente"
+        modal_title: "Aggiungi Risposta Preprogrammata"
+      edit:
+        content: "Contenuto"
+        title: "Risposta"
+        edit_button: "Salva"
+        use_current_button: "Usa la bozza corrente"
+        remove_button: "Elimina"
+        modal_title: "Modifica Risposta Preprogrammata"
+        remove_confirm: "Sei sicuro di voler eliminare questa risposta preprogrammata?"
+      error:
+        edit: "C'è stato un errore mentre la risposta veniva modificata: "
+        add: "C'è stato un errore mentre la risposta veniva aggiunta: "
+        list: "C'è stato un errore mentre la risposta veniva elaborata: "
+        remove: "C'è stato un errore mentre la risposta veniva eliminata: "
+        updatingUsages: "C'è stato un errore durante l'aggiornamento del conteggio della frequenza di utilizzo della risposta selezionata"
