@@ -1,6 +1,6 @@
 it:
   site_settings:
-    canned_replies_enabled: 'Mostra il pulsante per inserire le risposte preprogrammate nella finestra dell'editor?'
+    canned_replies_enabled: "Mostra il pulsante per inserire le risposte preprogrammate nella finestra dell'editor?"
   replies:
     missing_title: "Titolo non valido o mancante"
     missing_content: "Contenuto non valido o mancante"
