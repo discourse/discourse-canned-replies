@@ -1,0 +1,8 @@
+it:
+  site_settings:
+    canned_replies_enabled: 'Mostra il pulsante per inserire le risposte preprogrammate nella finestra dell'editor?'
+  replies:
+    missing_title: "Titolo non valido o mancante"
+    missing_content: "Contenuto non valido o mancante"
+    missing_reply: "Risposta non valida o mancante"
+    must_be_staff: "Per usare questo plugin devi essere un membro dello staff o un amministratore"
