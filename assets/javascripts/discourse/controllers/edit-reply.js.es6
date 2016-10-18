@@ -13,7 +13,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
       Discourse.ajax("/cannedreplies/reply", {
         type: "POST",
         data: {reply_id: this.reply_id, title: this.reply_title, content: this.reply_content}
-      }).then(results => {
+      }).then(() => {
         self.send('closeModal');
         showModal('canned-replies');
       }).catch(e => {
@@ -27,7 +27,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
           Discourse.ajax("/cannedreplies/reply", {
             type: "DELETE",
             data: {reply_id: self.reply_id}
-          }).then(results => {
+          }).then(() => {
             self.send('closeModal');
             showModal('canned-replies');
           }).catch(e => {

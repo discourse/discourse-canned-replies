@@ -65,7 +65,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
         const usageA = a.getAttribute("usage");
         const usageB = b.getAttribute("usage");
 
-        if(usageA == usageB == "undefined"){
+        if(usageA === usageB === "undefined"){
           return a.text.localeCompare(b.text);
         }
         if (usageA == null && usageB != null){
@@ -78,7 +78,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
       });
 
       $('#repliesComboBox').html(selectList);
-      $('#sortCannedRepliesByUsage').hide()
+      $('#sortCannedRepliesByUsage').hide();
       $('#sortCannedRepliesAlphabetically').show();
     }
   },
@@ -86,7 +86,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   getReplyByID: function (id) {
     for(var index = 0; index < this.replies.length; index++) {
       var entry = this.replies[index];
-      if (entry.id == id) {
+      if (entry.id === id) {
         return entry;
       }
     }
@@ -114,7 +114,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
     const localSelectedReplyID = this.selectedReplyID;
     var localSelectedReply = "";
     this.replies.forEach(function (entry) {
-      if(entry.id == localSelectedReplyID){
+      if(entry.id === localSelectedReplyID){
         localSelectedReply = entry;
         return;
       }

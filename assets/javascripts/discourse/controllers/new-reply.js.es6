@@ -12,7 +12,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
       Discourse.ajax("/cannedreplies", {
         type: "POST",
         data: {title: this.new_title, content: this.new_content}
-      }).then(results => {
+      }).then(() => {
         self.send('closeModal');
         showModal('canned-replies');
       }).catch(e => {
