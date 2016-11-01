@@ -1,5 +1,6 @@
 import ModalFunctionality from 'discourse/mixins/modal-functionality';
 import showModal from 'discourse/lib/show-modal';
+import { ajax } from 'discourse/lib/ajax';
 
 export default Ember.Controller.extend(ModalFunctionality, {
   replies: [],
@@ -16,7 +17,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
         self.composerModel.setProperties({reply: newReply});
       }
 
-      Discourse.ajax("/cannedreplies/reply", {
+      ajax("/cannedreplies/reply", {
         type: "PUT",
         data: {reply_id: this.selectedReplyID}
       }).catch(e => {
@@ -97,7 +98,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
   onShow: function() {
     this.setProperties({selectedReply: "", selectedReplyID: ""});
-    Discourse.ajax("/cannedreplies").then(results => {
+    ajax("/cannedreplies").then(results => {
       const localReplies = [];
       for(var id in results.replies){
         localReplies.push(results.replies[id]);
