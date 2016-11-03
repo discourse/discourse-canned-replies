@@ -1,5 +1,6 @@
 import ModalFunctionality from 'discourse/mixins/modal-functionality';
 import showModal from 'discourse/lib/show-modal';
+import { ajax } from 'discourse/lib/ajax';
 
 export default Ember.Controller.extend(ModalFunctionality, {
   reply_title: "",
@@ -10,7 +11,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   actions: {
     save: function() {
       var self = this;
-      Discourse.ajax("/cannedreplies/reply", {
+      ajax("/cannedreplies/reply", {
         type: "POST",
         data: {reply_id: this.reply_id, title: this.reply_title, content: this.reply_content}
       }).then(() => {
@@ -24,7 +25,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
       var self = this;
       bootbox.confirm(I18n.t("canned_replies.edit.remove_confirm"), function(result) {
         if (result) {
-          Discourse.ajax("/cannedreplies/reply", {
+          ajax("/cannedreplies/reply", {
             type: "DELETE",
             data: {reply_id: self.reply_id}
           }).then(() => {

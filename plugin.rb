@@ -1,6 +1,6 @@
 # name: Canned Replies
 # about: Add canned replies through the composer
-# version: 1.0
+# version: 1.1
 # authors: Jay Pfaffman and André Pereira
 # url: https://github.com/discourse/discourse-canned-replies
 
