@@ -1,0 +1,32 @@
+fi:
+  js:
+    canned_replies:
+      composer_button_text: "Tallennetut vastaukset"
+      insert:
+        insert_button: "Lisää"
+        new_button: "Uusi"
+        edit_button: "Muokkaa"
+        modal_title: "Lisää tallennettu vastaus"
+        sort:
+          alphabetically: "Järjestä aakkosjärjestykseen"
+          usage: "Järjestä käytön mukaan"
+      add:
+        content: "Sisältö"
+        title: "Vastaus"
+        add_button: "Tallenna"
+        use_current_button: "Käytä nykyistä luonnosta"
+        modal_title: "Lisää tallennettu vastaus"
+      edit:
+        content: "Sisältö"
+        title: "Vastaus"
+        edit_button: "Tallenna"
+        use_current_button: "Käytä nykyistä luonnosta"
+        remove_button: "Poistaa"
+        modal_title: "Muokkaa tallennettua vastausta"
+        remove_confirm: "Haluatko varmasti poistaa tämän vastauksen?"
+      error:
+        edit: "Virhe vastauksen muokkauksessa: "
+        add: "Virhe vastauksen lisäyksessä: "
+        list: "Virhe vastausten listauksessa: "
+        remove: "Virhe vastauksen poistossa: "
+        updatingUsages: "Virhe päivittäessä valitun vastauksen käyttötietoja"
