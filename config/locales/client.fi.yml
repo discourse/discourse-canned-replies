@@ -21,7 +21,7 @@ fi:
         title: "Vastaus"
         edit_button: "Tallenna"
         use_current_button: "Käytä nykyistä luonnosta"
-        remove_button: "Poistaa"
+        remove_button: "Poista"
         modal_title: "Muokkaa tallennettua vastausta"
         remove_confirm: "Haluatko varmasti poistaa tämän vastauksen?"
       error:
