@@ -3,6 +3,7 @@ en:
     canned_replies:
       composer_button_text: "Canned replies"
       insert:
+        choose: "(choose a reply)"
         insert_button: "Add"
         new_button: "New"
         edit_button: "Edit"
