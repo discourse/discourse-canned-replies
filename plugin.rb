@@ -6,8 +6,6 @@
 
 enabled_site_setting :canned_replies_enabled
 
-register_asset "javascripts/discourse/templates/canned-replies.hbs"
-
 register_asset 'stylesheets/canned-replies.scss'
 
 PLUGIN_NAME ||= "canned_replies".freeze

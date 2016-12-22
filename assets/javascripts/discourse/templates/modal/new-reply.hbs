@@ -1,4 +1,7 @@
-<div class="modal-body template-manager-modal" style="overflow: visible">
+{{#d-modal-body
+  title="canned_replies.add.modal_title"
+  class="template-manager-modal"
+  style="overflow: visible"}}
   <div class="details">
     <div class="wrapper">
       <label>{{i18n "canned_replies.add.title"}}</label>
@@ -11,7 +14,7 @@
     </div>
 
   </div>
-</div>
+{{/d-modal-body}}
 <div class="modal-footer canned-replies-footer">
   {{d-button class="btn-primary pull-right" action="add" icon="plus" label="canned_replies.add.add_button"}}
   <a href {{action "cancel"}} class='cancel pull-right'>{{i18n 'cancel'}}</a>

@@ -1,8 +1,10 @@
-<div class="modal-body template-manager-modal" style="overflow: visible">
+{{#d-modal-body title="canned_replies.insert.modal_title"
+  class="template-manager-modal"
+  style="overflow: visible"}}
   <div class="details">
     <div class="reply-selector">
       <div class="selector">
-        {{combo-box id="repliesComboBox" name="replies" valueAttribute="id" value=selectedReplyID nameProperty="title" content=replies}}
+        {{combo-box id="repliesComboBox" name="replies" valueAttribute="id" value=selectedReplyID nameProperty="title" content=replies none="canned_replies.insert.choose"}}
         <span id="sortCannedRepliesAlphabetically">
           {{d-button class="btn-primary pull-right" action="sortAlphabetically" icon="sort-alpha-asc" title="canned_replies.insert.sort.alphabetically"}}
         </span>
@@ -19,7 +21,7 @@
     </div>
 
   </div>
-</div>
+{{/d-modal-body}}
 <div class="modal-footer">
   {{d-button class="btn-default pull-left" action="newReply" icon="plus" label="canned_replies.insert.new_button"}}
   {{d-button class="btn-default pull-left" action="editReply" icon="pencil" label="canned_replies.insert.edit_button"}}
