@@ -1,0 +1,33 @@
+fa_IR:
+  js:
+    canned_replies:
+      composer_button_text: "پاسخ های آماده"
+      insert:
+        choose: "(پاسخی انتخاب کن)"
+        insert_button: "اضافه کن"
+        new_button: "جدید"
+        edit_button: "ویرایش"
+        modal_title: "افزودن پاسخ آماده
+        sort:
+          alphabetically: "به ترتیب حروف الفبا"
+          usage: "به ترتیب استفاده"
+      add:
+        content: "محتوا"
+        title: "پاسخ"
+        add_button: "ذخیره کردن"
+        use_current_button: "پیش نویس کنونی را اضافه کن"
+        modal_title: "پاسخ آماده را اضافه کن"
+      edit:
+        content: "محتوا"
+        title: "پاسخ"
+        edit_button: "ذخیره کردن"
+        use_current_button: "پیش نویس کنونی را استفاده کن"
+        remove_button: "حذف"
+        modal_title: "پاسخ آماده را ویرایش کن"
+        remove_confirm: "مطمئنید میخواهید این پاسخ آماده را حذف کنید؟"
+      error:
+        edit: "وقتی پاسخ را ویرایش کردید، خطایی رخ داده: "
+        add: "وقتی پاسخ را اضافه کردید، خطایی رخ داده: "
+        list: "وقتی پاسخها را لیست کردید، خطایی رخ داده: "
+        remove: "وقتی پاسخها را حذف کردید، خطایی رخ داده: "
+        updatingUsages: "موقع آپدیت تعداد استفاده های پاسخ ها، خطایی رخ داده:"
