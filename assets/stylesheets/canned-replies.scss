@@ -1,74 +1,17 @@
-.wmd-template-manager-button:before {
-  content: "\f080"
-}
+.canned-replies-modal {
+  .combobox {
+    width: 100% !important;
+  }
 
-.template-manager-modal {
+  .canned-replies-sort-usage, .canned-replies-sort-alpha {
+    display: inline-block;
+
+    .btn {
+      float: none;
+    }
+  }
+
   .content {
-    padding: 40px 0 0 10px;
-
-    label {
-      font-size: 1em;
-      font-weight: 600;
-    }
-
-    div {
-      max-height: 300px;
-      min-height: 75px;
-      overflow-y: auto;
-      clear: both;
-      color: black;
-    }
-  }
-
-  .reply-selector{
-    label {
-      display: inline-block;
-      padding: 5px 0 0 10px;
-      font-size: 1em;
-      font-weight: 600;
-    }
-
-    .selector {
-      float: right;
-      width: 100%;
-
-      select {
-        width: 100%;
-        margin: 0 0 5px 0;
-      }
-
-      .combobox {
-        width: 640px;
-      }
-    }
-
-  }
-
-  .wrapper {
-    label {
-      display: inline-block;
-      padding: 5px 0 0 10px;
-      font-size: 1em;
-      font-weight: 600;
-    }
-
-    input {
-      width: 80%;
-      margin: 0 0 5px 0;
-      float: right;
-    }
-
-    textarea {
-      width: 97%;
-      margin: 0 0 0 10px;
-      max-height: 300px;
-      min-height: 75px;
-    }
-  }
-}
-
-.canned-replies-footer {
-  a.cancel {
-    padding: 6px 10px 0 0;
+    margin-top: 10px;
   }
 }

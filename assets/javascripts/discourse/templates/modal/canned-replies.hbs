@@ -1,29 +1,46 @@
 {{#d-modal-body title="canned_replies.insert.modal_title"
-  class="template-manager-modal"
-  style="overflow: visible"}}
-  <div class="details">
-    <div class="reply-selector">
-      <div class="selector">
-        {{combo-box id="repliesComboBox" name="replies" valueAttribute="id" value=selectedReplyID nameProperty="title" content=replies none="canned_replies.insert.choose"}}
-        <span id="sortCannedRepliesAlphabetically">
-          {{d-button class="btn-primary pull-right" action="sortAlphabetically" icon="sort-alpha-asc" title="canned_replies.insert.sort.alphabetically"}}
-        </span>
-        <span id="sortCannedRepliesByUsage" style="display: none">
-          {{d-button class="btn-primary pull-right" action="sortByUsage" icon="sort-amount-desc" title="canned_replies.insert.sort.usage"}}
-        </span>
-      </div>
-    </div>
+    class="canned-replies-modal"
+    style="overflow: visible"}}
 
-    <div class="content">
-        <div>
-          {{{selectedReply.cooked}}}
+  {{#conditional-loading-spinner condition=loadingReplies}}
+    <div class="details">
+      <div class="reply-selector">
+        <div class="selector">
+          {{combo-box id="canned-replies-combobox"
+              valueAttribute="id"
+              value=selectedReplyID
+              nameProperty="title"
+              content=replies
+              none="canned_replies.insert.choose"}}
         </div>
-    </div>
+      </div>
 
-  </div>
+      {{#if selectedReply}}
+        <div class="content">
+          <div>
+            {{selectedReply.content}}
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  {{/conditional-loading-spinner}}
 {{/d-modal-body}}
+
 <div class="modal-footer">
-  {{d-button class="btn-default pull-left" action="newReply" icon="plus" label="canned_replies.insert.new_button"}}
-  {{d-button class="btn-default pull-left" action="editReply" icon="pencil" label="canned_replies.insert.edit_button"}}
-  {{d-button class="btn-primary pull-right" action="apply" icon="clipboard" label="canned_replies.insert.insert_button"}}
+  {{d-button class="btn pull-left canned-replies-new"
+      action="newReply"
+      icon="plus"
+      label="canned_replies.insert.new_button"}}
+
+  {{#if hasSelectedReply}}
+    {{d-button class="btn pull-left canned-replies-edit"
+        action="editReply"
+        icon="pencil"
+        label="canned_replies.insert.edit_button"}}
+
+    {{d-button class="btn-primary pull-right canned-replies-apply"
+        action="apply"
+        icon="clipboard"
+        label="canned_replies.insert.insert_button"}}
+  {{/if}}
 </div>

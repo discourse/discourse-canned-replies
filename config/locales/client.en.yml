@@ -2,9 +2,15 @@ en:
   js:
     canned_replies:
       composer_button_text: "Canned replies"
+      title:
+        name: 'Title'
+        invalid: Title can't be empty.
+      content:
+        name: 'Content'
+        invalid: Content can't be empty.
       insert:
         choose: "(choose a reply)"
-        insert_button: "Add"
+        insert_button: "Insert Reply"
         new_button: "New"
         edit_button: "Edit"
         modal_title: "Insert Canned Reply"
@@ -12,22 +18,7 @@ en:
           alphabetically: "Sort alphabetically"
           usage: "Sort by frequency of use"
       add:
-        content: "Content"
-        title: "Reply"
-        add_button: "Save"
-        use_current_button: "Use current draft"
         modal_title: "Add Canned Reply"
       edit:
-        content: "Content"
-        title: "Reply"
-        edit_button: "Save"
-        use_current_button: "Use current draft"
-        remove_button: "Remove"
         modal_title: "Edit Canned Reply"
         remove_confirm: "Are you sure you want to remove this canned reply?"
-      error:
-        edit: "There's been an error while editing the reply: "
-        add: "There's been an error while adding the reply: "
-        list: "There's been an error while listing the replies: "
-        remove: "There's been an error while removing the reply: "
-        updatingUsages: "There's been an error while updating the usage count of the selected reply"

@@ -6,7 +6,7 @@ function initializeCannedRepliesUIBuilder(api) {
   ComposerController.reopen({
     actions: {
       showCannedRepliesButton: function () {
-        showModal('canned-replies').setProperties({composerModel: this.model});
+        showModal('canned-replies').setProperties({ composerModel: this.model });
       }
     }
   });
@@ -22,11 +22,13 @@ function initializeCannedRepliesUIBuilder(api) {
 }
 
 export default {
-  name: "add-cannedreplies-ui-builder",
+  name: "add-canned-replies-ui-builder",
 
   initialize(container) {
     const siteSettings = container.lookup('site-settings:main');
-    if (siteSettings.canned_replies_enabled && Discourse.User.current() != null && Discourse.User.current().staff) {
+    const currentUser = container.lookup('current-user:main');
+
+    if (siteSettings.canned_replies_enabled && currentUser && currentUser.staff) {
       withPluginApi('0.5', initializeCannedRepliesUIBuilder);
     }
   }

@@ -1,21 +1,12 @@
-{{#d-modal-body
-  title="canned_replies.add.modal_title"
-  class="template-manager-modal"
-  style="overflow: visible"}}
-  <div class="details">
-    <div class="wrapper">
-      <label>{{i18n "canned_replies.add.title"}}</label>
-      {{input name="new_title" valueAttribute="id" value=new_title nameProperty="new_title"}}
-    </div>
-
-    <div class="wrapper">
-        <label>{{i18n "canned_replies.add.content"}}</label>
-        {{textarea name="new_content" value=new_content}}
-    </div>
-
-  </div>
+{{#d-modal-body title="canned_replies.add.modal_title" class="canned-replies-modal"}}
+  {{canned-replies-form title=newTitle content=newContent}}
 {{/d-modal-body}}
+
 <div class="modal-footer canned-replies-footer">
-  {{d-button class="btn-primary pull-right" action="add" icon="plus" label="canned_replies.add.add_button"}}
-  <a href {{action "cancel"}} class='cancel pull-right'>{{i18n 'cancel'}}</a>
+  {{d-button class="btn new-reply-save-btn"
+      action="save"
+      label="save"
+      disabled=disableSaveButton}}
+
+  <a href {{action "cancel"}}>{{i18n 'cancel'}}</a>
 </div>

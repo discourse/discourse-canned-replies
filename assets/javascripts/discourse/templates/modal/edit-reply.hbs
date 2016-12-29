@@ -1,19 +1,19 @@
-{{#d-modal-body title="canned_replies.edit.modal_title" class="template-manager-modal" style="overflow: visible"}}
-  <div class="details">
-    <div class="wrapper">
-      <label>{{i18n "canned_replies.edit.title"}}</label>
-      {{input name="reply_title" valueAttribute="id" value=reply_title nameProperty="reply_title"}}
-    </div>
-
-    <div class="wrapper">
-        <label>{{i18n "canned_replies.edit.content"}}</label>
-        {{textarea name="reply_content" value=reply_content}}
-    </div>
-
-  </div>
+{{#d-modal-body title="canned_replies.edit.modal_title" class="canned-replies-modal"}}
+  {{canned-replies-form title=replyTitle content=replyContent}}
 {{/d-modal-body}}
+
 <div class="modal-footer canned-replies-footer">
-  {{d-button class="btn-danger pull-left" action="remove" icon="trash" label="canned_replies.edit.remove_button"}}
-  {{d-button class="btn-primary pull-right" action="save" icon="pencil" label="canned_replies.edit.edit_button"}}
-  <a href {{action "cancel"}} class='cancel pull-right'>{{i18n 'cancel'}}</a>
+  {{d-button class="btn edit-reply-save-btn"
+      action="save"
+      label='save'
+      disabled=disableSaveButton}}
+
+  <a href {{action "cancel"}}>{{i18n 'cancel'}}</a>
+
+  {{#if savingText}}<span>{{savingText}}</span>{{/if}}
+
+  {{d-button class="btn-danger pull-right"
+      action="remove"
+      icon="trash"
+      disabled=saving}}
 </div>

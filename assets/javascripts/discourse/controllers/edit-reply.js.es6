@@ -1,48 +1,52 @@
 import ModalFunctionality from 'discourse/mixins/modal-functionality';
 import showModal from 'discourse/lib/show-modal';
 import { ajax } from 'discourse/lib/ajax';
+import { default as computed } from 'ember-addons/ember-computed-decorators';
+import { popupAjaxError } from 'discourse/lib/ajax-error';
 
 export default Ember.Controller.extend(ModalFunctionality, {
-  reply_title: "",
-  reply_content: "",
-  reply_id: "",
+  replyTitle: "",
+  replyContent: "",
+  replyId: "",
+  saving: null,
 
+  @computed('saving')
+  savingText(saving) {
+    if (saving === null) return;
+    return saving ? I18n.t('saving') : I18n.t('saved') ;
+  },
+
+  @computed('replyTitle', 'replyContent', 'saving')
+  disableSaveButton(replyTitle, replyContent, saving) {
+    return saving || replyTitle === "" || replyContent === "";
+  },
 
   actions: {
-    save: function() {
-      var self = this;
-      ajax("/cannedreplies/reply", {
-        type: "POST",
-        data: {reply_id: this.reply_id, title: this.reply_title, content: this.reply_content}
-      }).then(() => {
-        self.send('closeModal');
-        showModal('canned-replies');
-      }).catch(e => {
-        bootbox.alert(I18n.t("canned_replies.error.edit") + e.errorThrown);
-      });
+    save() {
+      this.set('saving', true);
+
+      ajax(`/canned_replies/${this.get('replyId')}`, {
+        type: "PATCH",
+        data: { title: this.get('replyTitle'), content: this.get('replyContent') }
+      }).catch(popupAjaxError).finally(() => this.set('saving', false));
     },
-    remove: function () {
-      var self = this;
-      bootbox.confirm(I18n.t("canned_replies.edit.remove_confirm"), function(result) {
+
+    remove() {
+      bootbox.confirm(I18n.t("canned_replies.edit.remove_confirm"), result => {
         if (result) {
-          ajax("/cannedreplies/reply", {
-            type: "DELETE",
-            data: {reply_id: self.reply_id}
+          ajax(`/canned_replies/${this.get('replyId')}`, {
+            type: "DELETE"
           }).then(() => {
-            self.send('closeModal');
+            this.send('closeModal');
             showModal('canned-replies');
-          }).catch(e => {
-            bootbox.alert(I18n.t("canned_replies.error.remove") + e.errorThrown);
-          });
+          }).catch(popupAjaxError);
         }
       });
     },
+
     cancel: function () {
       this.send('closeModal');
       showModal('canned-replies');
     }
-  },
-
-  refresh: function() {
-  },
+  }
 });
