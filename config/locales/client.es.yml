@@ -1,0 +1,24 @@
+es:
+  js:
+    canned_replies:
+      composer_button_text: "Respuestas Enlatadas"
+      title:
+        name: 'Título'
+        invalid: El título no puede estar vacío.
+      content:
+        name: 'Contenido'
+        invalid: El contenido no puede estar vacío.
+      insert:
+        choose: "(selecciona una respuesta)"
+        insert_button: "Crear respuesta"
+        new_button: "Nuevo"
+        edit_button: "Editar"
+        modal_title: "Crear nueva respuesta enlatada"
+        sort:
+          alphabetically: "Ordenar alfabéticamente"
+          usage: "Ordenar por frecuencia de uso"
+      add:
+        modal_title: "Agregar respuesta enlatada"
+      edit:
+        modal_title: "Editar respuesta enlatada"
+        remove_confirm: "¿Estás seguro de eliminar esta respuesta enlatada?"
