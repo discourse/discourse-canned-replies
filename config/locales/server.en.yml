@@ -2,7 +2,10 @@ en:
   site_settings:
     canned_replies_enabled: 'Show insert canned reply button on composer window?'
   replies:
-    missing_title: "Invalid or missing title"
-    missing_content: "Invalid or missing content"
-    missing_reply: "Invalid or missing reply"
-    must_be_staff: "To use this plugin you must be a member of staff or admin"
+    default_reply:
+      title: "My first canned reply"
+      body: |
+        This is an example canned reply.
+        You can user **markdown** to style your replies. Click the **new** button to create new replies or the **edit** button to edit or remove an existing canned reply.
+
+        *This canned reply will be added when the replies list is empty.*

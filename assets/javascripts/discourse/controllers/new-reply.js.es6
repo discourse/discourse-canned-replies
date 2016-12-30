@@ -1,31 +1,32 @@
 import ModalFunctionality from 'discourse/mixins/modal-functionality';
 import showModal from 'discourse/lib/show-modal';
 import { ajax } from 'discourse/lib/ajax';
+import { default as computed } from 'ember-addons/ember-computed-decorators';
+import { popupAjaxError } from 'discourse/lib/ajax-error';
 
 export default Ember.Controller.extend(ModalFunctionality, {
-  new_title: "",
-  new_content: "",
+  newTitle: "",
+  newContent: "",
 
+  @computed('newTitle', 'newContent')
+  disableSaveButton(newTitle, newContent) {
+    return newTitle === "" || newContent === "";
+  },
 
   actions: {
-    add: function() {
-      var self = this;
-      ajax("/cannedreplies", {
+    save() {
+      ajax("/canned_replies", {
         type: "POST",
-        data: {title: this.new_title, content: this.new_content}
+        data: { title: this.get('newTitle'), content: this.get('newContent') }
       }).then(() => {
-        self.send('closeModal');
+        this.send('closeModal');
         showModal('canned-replies');
-      }).catch(e => {
-        bootbox.alert(I18n.t("canned_replies.error.add") + e.errorThrown);
-      });
+      }).catch(popupAjaxError);
     },
-    cancel: function () {
+
+    cancel() {
       this.send('closeModal');
       showModal('canned-replies');
     }
-  },
-
-  refresh: function() {
-  },
+  }
 });
