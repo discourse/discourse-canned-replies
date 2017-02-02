@@ -36,7 +36,7 @@ acceptance("Canned Replies", {
           {
             "id": "5317b7fd066d3d4c15acde92d70f0377",
             "title": "This is a test",
-            "content": "Testing testin 123",
+            "content": "Testing testin **123**",
             "usages": 1
           },
           {
@@ -57,11 +57,20 @@ test("Inserting canned replies", () => {
   click('button.options');
   click('.popup-menu .fa-clipboard');
   fillIn('.reply-selector #canned-replies-combobox', 'cd6680d7a04caaac1274e6f37429458c');
+
+  andThen(() => {
+    ok(
+      find('.details .content')[0].innerHTML.includes("<strong>markdown</strong>"),
+      'it should display the right cooked content'
+    );
+  });
+
+
   click('.canned-replies-apply');
 
   andThen(() => {
     ok(
-      find(".d-editor-input").val().includes("This is an example canned reply"),
+      find(".d-editor-input").val().includes("This is an example canned reply."),
       'it should contain the right selected output'
     );
   });
