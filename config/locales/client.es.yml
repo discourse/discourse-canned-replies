@@ -13,7 +13,7 @@ es:
         insert_button: "Crear respuesta"
         new_button: "Nuevo"
         edit_button: "Editar"
-        modal_title: "Crear nueva respuesta enlatada"
+        modal_title: "Seleccionar o crear nueva respuesta enlatada"
         sort:
           alphabetically: "Ordenar alfabéticamente"
           usage: "Ordenar por frecuencia de uso"
