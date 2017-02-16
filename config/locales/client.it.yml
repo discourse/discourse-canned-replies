@@ -1,17 +1,24 @@
 it:
   js:
     canned_replies:
-      composer_button_text: "Risposte preprogrammate"
+      composer_button_text: "Risposte programmate"
+      title:
+        name: 'Titolo'
+        invalid: Il titolo non può essere vuoto.
+      content:
+        name: 'Contenuto'
+        invalid: Il contenuto non può essere vuoto.
       insert:
-        insert_button: "Aggiungi"
+        choose: "(scegli una risposta)"
+        insert_button: "Inserisci Risposta"
         new_button: "Nuovo"
         edit_button: "Modifica"
-        modal_title: "Inserisci Risposta Preprogrammata"
+        modal_title: "Inserisci Risposta Programmata"
         sort:
           alphabetically: "Ordina alfabeticamente"
           usage: "Ordina per frequenza di utilizzo"
       add:
-        modal_title: "Aggiungi Risposta Preprogrammata"
+        modal_title: "Aggiungi Risposta Programmata"
       edit:
-        modal_title: "Modifica Risposta Preprogrammata"
-        remove_confirm: "Sei sicuro di voler eliminare questa risposta preprogrammata?"
+        modal_title: "Modifica Risposta Programmata"
+        remove_confirm: "Sei sicuro di voler eliminare questa risposta programmata?"
