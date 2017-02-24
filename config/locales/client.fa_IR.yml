@@ -7,7 +7,7 @@ fa_IR:
         insert_button: "اضافه کن"
         new_button: "جدید"
         edit_button: "ویرایش"
-        modal_title: "افزودن پاسخ آماده
+        modal_title: "افزودن پاسخ آماده"
         sort:
           alphabetically: "به ترتیب حروف الفبا"
           usage: "به ترتیب استفاده"
