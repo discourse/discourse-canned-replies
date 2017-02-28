@@ -1,0 +1,11 @@
+fi:
+  site_settings:
+    canned_replies_enabled: 'Näytä viestikentän yhteydessä painike, jolla voi asettaa valmis vastauksen?'
+  replies:
+    default_reply:
+      title: "Ensimmäinen valmis vastaukseni"
+      body: |
+        Tämä on esimerkki valmiista vastauksesta.
+        Voit muotoilla **markdownilla** vastauksesi. Luo uusi vastaus **uusi**-painikeella, ja muokkaa tai poista nykyisiä valmiita vastauksia **muokkaa**-painikkeella.
+        
+        *Tämä valmis vastaus lisätään, jos valmiita vastauksia ei ole.*
