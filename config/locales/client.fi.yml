@@ -1,0 +1,24 @@
+fi:
+  js:
+    canned_replies:
+      composer_button_text: "Valmiit vastaukset"
+      title:
+        name: 'Otsikko'
+        invalid: Otsikko on pakollinen.
+      content:
+        name: 'Sisältö'
+        invalid: Viesti ei voi olla tyhjä.
+      insert:
+        choose: "(valitse vastaus)"
+        insert_button: "Aseta vastaus"
+        new_button: "Uusi"
+        edit_button: "Muokkaa"
+        modal_title: "Aseta valmis vastaus"
+        sort:
+          alphabetically: "Järjestä aakkosittain"
+          usage: "Järjestä käytön yleisyyden mukaan"
+      add:
+        modal_title: "Lisää valmis vastaus"
+      edit:
+        modal_title: "Muokkaa valmista vastausta"
+        remove_confirm: "Oletko varma, että haluat poistaa valmiin vastauksen?"
