@@ -20,11 +20,6 @@ export default Ember.Controller.extend(ModalFunctionality, {
     this.selectionChange();
   },
 
-  @computed("selectedReplyID")
-  hasSelectedReply(selectedReplyID) {
-    return selectedReplyID !== "";
-  },
-
   @computed('selectedReply.content')
   selectedReplyCookedContent(content) {
     return cook(content);

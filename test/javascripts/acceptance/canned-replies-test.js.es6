@@ -56,6 +56,12 @@ test("Inserting canned replies", () => {
   click('#create-topic');
   click('button.options');
   click('.popup-menu .fa-clipboard');
+
+  andThen(() => {
+    equal(find(".canned-replies-apply").length, 0, 'it should not display the apply button');
+    equal(find(".canned-replies-edit").length, 0, 'it should not display the apply button');
+  });
+
   fillIn('.reply-selector #canned-replies-combobox', 'cd6680d7a04caaac1274e6f37429458c');
 
   andThen(() => {
