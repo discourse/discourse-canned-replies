@@ -15,18 +15,6 @@ export default Ember.Controller.extend(ModalFunctionality, {
     this.replies = [];
   },
 
-  willDestroyElement() {
-    this._super();
-    this._setup();
-  },
-
-  _setup() {
-    this.setProperties({
-      selectedReply: "",
-      selectedReplyID: ""
-    });
-  },
-
   @observes("selectedReplyID")
   _updateSelection() {
     this.selectionChange();
