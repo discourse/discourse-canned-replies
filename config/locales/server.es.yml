@@ -7,4 +7,5 @@ es:
       body: |
         Esto es un ejemplo de respuesta enlatada.
         Podes usar **markdown** para darle estilo a tus respuestas. Presionando en el botón **Nuevo** podes crear nuevas respuestas enlatadas o bien, una vez que seleccionas una existente, aparece el botón **Editar** para editar o bien eliminar la respuesta enlatada existente. 
+        
         *Esta respuesta enlatada será agregada cuando tu lista de respuestas esté vacía.*
