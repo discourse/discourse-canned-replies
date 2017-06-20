@@ -54,8 +54,11 @@ export default Ember.Controller.extend(ModalFunctionality, {
   actions: {
     apply: function() {
       if (this.composerModel) {
-        const newReply = this.composerModel.reply + this.selectedReply.content;
-        this.composerModel.setProperties({ reply: newReply });
+        const newReply = this.composerModel.get('reply') + this.selectedReply.content;
+        this.composerModel.set('reply', newReply);
+        if (!this.composerModel.get('title')) {
+          this.composerModel.set('title', this.selectedReply.title);
+        }
       }
 
       ajax(`/canned_replies/${this.get('selectedReplyID')}/use`, {
