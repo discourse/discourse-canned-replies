@@ -6,7 +6,11 @@ function initializeCannedRepliesUIBuilder(api) {
   ComposerController.reopen({
     actions: {
       showCannedRepliesButton: function () {
-        showModal('canned-replies').setProperties({ composerModel: this.model });
+        if (this.site.mobileView) {
+          showModal('canned-replies').setProperties({ composerModel: this.model });
+        } else {
+          this.appEvents.trigger('canned-replies:show');
+        }
       }
     }
   });

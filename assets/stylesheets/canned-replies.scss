@@ -19,3 +19,16 @@
 .mobile-view .canned-replies-modal .d-editor-preview-wrapper {
   display: none;
 }
+
+.canned-replies-footer {
+  margin-top: 3px;
+}
+
+.canned-reply {
+  border-bottom: 1px solid dark-light-diff($primary, $secondary, 90%, -60%);
+
+  .canned-reply-title {
+    font-weight: bold;
+    padding: 3px 0px;
+  }
+}

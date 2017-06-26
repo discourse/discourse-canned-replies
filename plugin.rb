@@ -57,12 +57,16 @@ after_initialize do
 
         return [] if replies.blank?
 
-        #sort by usages
-        replies.values.sort_by { |reply| reply['usages'] || 0 }.reverse!
+        replies.each do |id, reply|
+          cooked = PrettyText.cook(reply[:content])
+          reply[:excerpt] = PrettyText.excerpt(cooked, 100) if cooked
+        end
+
+        replies.values.sort_by { |reply| reply['title'] || '' }
       end
 
       def get_reply(user_id, reply_id)
-        replies = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME)
+        replies = all(user_id)
         replies[reply_id]
       end
 

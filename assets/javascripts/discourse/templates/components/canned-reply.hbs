@@ -1,0 +1,27 @@
+<div class="canned-reply">
+
+  <p class="canned-reply-title">
+    {{d-button class="btn-primary canned-replies-apply"
+      action="apply"
+      icon="clipboard"}}
+
+    {{d-button class="btn canned-replies-edit"
+        action="editReply"
+        icon="pencil"}}
+
+    {{reply.title}}
+
+    {{#if isOpen}}
+      <a class="pull-right" {{action "close"}}>{{fa-icon "chevron-up"}}</a>
+    {{else}}
+      <a class="pull-right" {{action "open"}}>{{fa-icon "chevron-down"}}</a>
+    {{/if}}
+  </p>
+
+  {{#if isOpen}}
+    {{{cook-text reply.content}}}
+  {{else}}
+    {{{cook-text reply.excerpt}}}
+  {{/if}}
+
+</div>
