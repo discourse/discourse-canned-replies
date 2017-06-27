@@ -67,7 +67,8 @@ after_initialize do
 
       def get_reply(user_id, reply_id)
         replies = all(user_id)
-        replies[reply_id]
+
+        replies.detect { |reply| reply['id'] == reply_id }
       end
 
       def remove(user_id, reply_id)
