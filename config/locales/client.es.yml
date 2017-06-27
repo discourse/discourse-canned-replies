@@ -1,6 +1,7 @@
 es:
   js:
     canned_replies:
+      filter_hint: 'título...'
       composer_button_text: "Respuestas Enlatadas"
       title:
         name: 'Título'
