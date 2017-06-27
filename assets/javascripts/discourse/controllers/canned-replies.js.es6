@@ -3,7 +3,6 @@ import showModal from 'discourse/lib/show-modal';
 import { ajax } from 'discourse/lib/ajax';
 import { default as computed, observes } from 'ember-addons/ember-computed-decorators';
 import { popupAjaxError } from 'discourse/lib/ajax-error';
-import { cook } from 'discourse/lib/text';
 
 export default Ember.Controller.extend(ModalFunctionality, {
   selectedReply: null,
@@ -18,11 +17,6 @@ export default Ember.Controller.extend(ModalFunctionality, {
   @observes("selectedReplyID")
   _updateSelection() {
     this.selectionChange();
-  },
-
-  @computed('selectedReply.content')
-  selectedReplyCookedContent(content) {
-    return cook(content);
   },
 
   getReplyByID(id) {
