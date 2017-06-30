@@ -33,8 +33,7 @@ export default {
 
   actions: {
     show() {
-      // TODO: Move this line somewhere else where other plugins can use it too?
-      $(".d-editor-cooked").hide();
+      $(".d-editor-preview").hide();
       this.set('isVisible', true);
 
       this.set('loadingReplies', true);
@@ -44,8 +43,7 @@ export default {
     },
 
     hide() {
-      // TODO: Move this line somewhere else where other plugins can use it too?
-      $(".d-editor-cooked").show();
+      $(".d-editor-preview").show();
       this.set('isVisible', false);
     },
 
