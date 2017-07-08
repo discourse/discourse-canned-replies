@@ -20,13 +20,21 @@ export default Ember.Controller.extend(ModalFunctionality, {
         data: { title: this.get('newTitle'), content: this.get('newContent') }
       }).then(() => {
         this.send('closeModal');
-        showModal('canned-replies');
+        if (this.site.mobileView) {
+          showModal('canned-replies');
+        } else {
+          this.appEvents.trigger('canned-replies:show');
+        }
       }).catch(popupAjaxError);
     },
 
     cancel() {
       this.send('closeModal');
-      showModal('canned-replies');
+      if (this.site.mobileView) {
+        showModal('canned-replies');
+      } else {
+        this.appEvents.trigger('canned-replies:show');
+      }
     }
   }
 });

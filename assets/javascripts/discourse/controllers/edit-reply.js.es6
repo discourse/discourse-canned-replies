@@ -38,7 +38,11 @@ export default Ember.Controller.extend(ModalFunctionality, {
             type: "DELETE"
           }).then(() => {
             this.send('closeModal');
-            showModal('canned-replies');
+            if (this.site.mobileView) {
+              showModal('canned-replies');
+            } else {
+              this.appEvents.trigger('canned-replies:show');
+            }
           }).catch(popupAjaxError);
         }
       });
@@ -46,7 +50,11 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
     cancel: function () {
       this.send('closeModal');
-      showModal('canned-replies');
+      if (this.site.mobileView) {
+        showModal('canned-replies');
+      } else {
+        this.appEvents.trigger('canned-replies:show');
+      }
     }
   }
 });
