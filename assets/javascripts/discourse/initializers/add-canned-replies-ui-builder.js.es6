@@ -9,6 +9,7 @@ function initializeCannedRepliesUIBuilder(api) {
         if (this.site.mobileView) {
           showModal('canned-replies').setProperties({ composerModel: this.model });
         } else {
+          this.appEvents.trigger('composer:show-preview');
           this.appEvents.trigger('canned-replies:show');
         }
       }

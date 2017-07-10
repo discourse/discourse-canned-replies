@@ -7,7 +7,7 @@
           label="canned_replies.insert.new_button"}}
       {{text-field value=listFilter placeholder=filterHint}}
       <a class="close pull-right" {{action "hide"}}>{{fa-icon "times"}}</a>
-      {{#each replies as |r|}}
+      {{#each filteredReplies as |r|}}
         {{canned-reply reply=r}}
       {{/each}}
     {{/conditional-loading-spinner}}
