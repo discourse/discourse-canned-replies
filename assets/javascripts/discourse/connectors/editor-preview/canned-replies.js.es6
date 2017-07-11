@@ -37,12 +37,12 @@ export default {
         return reply;
       }).filter(function (reply) {
         /* Filter irrelevant replies. */
-        return reply.score != 0;
+        return reply.score !== 0;
       }).sort(function (a, b) {
         /* Sort replies by relevance and title. */
-        if (a.score != b.score) {
+        if (a.score !== b.score) {
           return a.score > b.score ? -1 : 1; /* descending */
-        } else if (a.title != b.title) {
+        } else if (a.title !== b.title) {
           return a.title < b.title ? -1 : 1; /* ascending */
         }
         return 0;
