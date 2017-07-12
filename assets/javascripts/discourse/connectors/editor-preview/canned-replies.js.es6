@@ -24,6 +24,11 @@ export default {
       });
     }
 
+    component.appEvents.on('composer:will-close', () => {
+      component.appEvents.off('canned-replies:show');
+      component.appEvents.off('canned-replies:hide');
+    });
+
     component.addObserver('listFilter', function () {
       const filterTitle = component.get('listFilter').toLowerCase();
       const filtered = component.get('replies').map(function (reply) {
