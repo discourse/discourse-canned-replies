@@ -3,7 +3,7 @@ import { acceptance } from "helpers/qunit-helpers";
 acceptance("Canned Replies", {
   loggedIn: true,
   settings: { canned_replies_enabled: true },
-  setup() {
+  beforeEach() {
     const response = object => {
       return [
         200,
@@ -28,21 +28,24 @@ acceptance("Canned Replies", {
       return response({
         "replies": [
           {
+            "id": "cd6680d7a04caaac1274e6f37429458c",
+            "title": "My first canned reply",
+            "excerpt": "This is an example canned reply",
+            "content": "This is an example canned reply.\nYou can user **markdown** to style your replies. Click the **new** button to create new replies or the **edit** button to edit or remove an existing canned reply.\n\n*This canned reply will be added when the replies list is empty.*"
+          },
+          {
             "id": "1a1987620aa49135344abe65eb43302d",
             "title": "Testing",
+            "excerpt": "",
             "content": "<script>alert('ahah')</script>",
             "usages": 1
           },
           {
             "id": "5317b7fd066d3d4c15acde92d70f0377",
             "title": "This is a test",
+            "excerpt": "Testing",
             "content": "Testing testin **123**",
             "usages": 1
-          },
-          {
-            "id": "cd6680d7a04caaac1274e6f37429458c",
-            "title": "My first canned reply",
-            "content": "This is an example canned reply.\nYou can user **markdown** to style your replies. Click the **new** button to create new replies or the **edit** button to edit or remove an existing canned reply.\n\n*This canned reply will be added when the replies list is empty.*"
           }
         ]
       });
@@ -50,7 +53,7 @@ acceptance("Canned Replies", {
   }
 });
 
-test("Inserting canned replies", () => {
+QUnit.test("Inserting canned replies", assert => {
   visit("/");
 
   click('#create-topic');
@@ -58,59 +61,67 @@ test("Inserting canned replies", () => {
   click('.popup-menu .fa-clipboard');
 
   andThen(() => {
-    equal(find(".canned-replies-apply").length, 0, 'it should not display the apply button');
-    equal(find(".canned-replies-edit").length, 0, 'it should not display the apply button');
+    click('.canned-replies-toggle-content');
   });
 
-  fillIn('.reply-selector #canned-replies-combobox', 'cd6680d7a04caaac1274e6f37429458c');
-
   andThen(() => {
-    ok(
-      find('.details .content')[0].innerHTML.includes("<strong>markdown</strong>"),
+    assert.ok(
+      find('.canned-replies-content').html().indexOf("<strong>markdown</strong>") !== -1,
       'it should display the right cooked content'
     );
   });
 
-
   click('.canned-replies-apply');
 
   andThen(() => {
-    ok(
-      find(".d-editor-input").val().includes("This is an example canned reply."),
+    assert.ok(
+      find(".d-editor-input").val().indexOf("This is an example canned reply.") !== -1,
       'it should contain the right selected output'
     );
   });
 });
 
-test("Editing a canned reply", () => {
+QUnit.test("Editing a canned reply", assert => {
   visit("/");
 
   click('#create-topic');
   click('button.options');
   click('.popup-menu .fa-clipboard');
-  fillIn('.reply-selector #canned-replies-combobox', 'cd6680d7a04caaac1274e6f37429458c');
-  click('.canned-replies-edit');
+
+  andThen(() => {
+    click('.canned-replies-edit');
+  });
 
   fillIn('.canned-replies-form-title-input', 'Some title');
   fillIn('.canned-replies-form-content-input textarea', 'Some content');
 
-  click('.edit-reply-save-btn');
+  andThen(() => {
+    click('.edit-reply-save-btn');
+  });
 
   andThen(() => {
-    equal(find('.canned-replies-footer span').text(), I18n.t('saved'));
+    assert.equal(find('.canned-replies-footer .msg').text(), I18n.t('saved'));
   });
 });
 
-test("Creating a new canned reply", () => {
+QUnit.test("Creating a new canned reply", assert => {
   visit("/");
 
   click('#create-topic');
   click('button.options');
   click('.popup-menu .fa-clipboard');
-  click('.canned-replies-new');
 
   andThen(() => {
-    equal(
+    click('.canned-replies-new');
+  });
+
+  andThen(() => {
+    fillIn('.canned-replies-form-title-input', '');
+    fillIn('.canned-replies-form-content-input textarea', '');
+  });
+
+  andThen(() => {
+    assert.equal(
       find('.btn.new-reply-save-btn[disabled]').length,
       1,
       'save button should be disabled by default'
@@ -120,7 +131,7 @@ test("Creating a new canned reply", () => {
   fillIn('.canned-replies-form-title-input', 'Some title');
 
   andThen(() => {
-    equal(
+    assert.equal(
       find('.btn.new-reply-save-btn[disabled]').length,
       1,
       'save button should be disabled when content is blank'
@@ -129,12 +140,4 @@ test("Creating a new canned reply", () => {
 
   fillIn('.canned-replies-form-content-input textarea', 'Some content');
   click('.new-reply-save-btn');
-
-  andThen(() => {
-    equal(
-      find('.reply-selector #canned-replies-combobox').length,
-      1,
-      'it should return the user to canned replies selection page'
-    )
-  });
 });

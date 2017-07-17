@@ -12,16 +12,20 @@
     {{reply.title}}
 
     {{#if isOpen}}
-      <a class="pull-right" {{action "close"}}>{{fa-icon "chevron-up"}}</a>
+      <a class="pull-right canned-replies-toggle-content" {{action "close"}}>{{fa-icon "chevron-up"}}</a>
     {{else}}
-      <a class="pull-right" {{action "open"}}>{{fa-icon "chevron-down"}}</a>
+      <a class="pull-right canned-replies-toggle-content" {{action "open"}}>{{fa-icon "chevron-down"}}</a>
     {{/if}}
   </p>
 
   {{#if isOpen}}
-    {{{cook-text reply.content}}}
+    <div class="canned-replies-content">
+      {{{cook-text reply.content}}}
+    </div>
   {{else}}
-    {{{cook-text reply.excerpt}}}
+    <div class="canned-replies-excerpt">
+      {{{cook-text reply.excerpt}}}
+    </div>
   {{/if}}
 
 </div>
