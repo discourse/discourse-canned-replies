@@ -1,0 +1,46 @@
+language: ruby
+
+env:
+  global:
+    - DISCOURSE_HOSTNAME=www.example.com
+    - RUBY_GC_MALLOC_LIMIT=50000000
+    - PLUGIN_NAME='Canned Replies'
+  matrix:
+    - QUNIT_RUN=0
+    - QUNIT_RUN=1
+
+addons:
+  postgresql: 9.5
+  apt:
+    packages:
+    - gifsicle
+    - jpegoptim
+    - optipng
+    - jhead
+
+rvm:
+  - 2.4.1
+  - 2.3.3
+
+services:
+  - redis-server
+
+sudo: required
+dist: trusty
+cache: yarn
+
+before_install:
+  - git clone --depth=1 https://github.com/discourse/discourse.git build ; cd build ; rm -rf plugins/*
+  - gem install bundler
+  - git clone --depth=1 -b $TRAVIS_BRANCH https://github.com/$TRAVIS_REPO_SLUG.git plugins/discourse-canned-replies
+  - yarn global add eslint babel-eslint
+  - eslint --ext .es6 plugins/**/assets/javascripts
+
+before_script:
+  - bundle exec rake db:create db:migrate
+
+install:
+  - bundle install --without development --deployment --retry=3 --jobs=3
+
+script:
+  - bash -c "if [ '$QUNIT_RUN' == '0' ]; then LOAD_PLUGINS=1 bundle exec rake plugin:spec; else bundle exec rake qunit:test FILTER='$PLUGIN_NAME'; fi"
