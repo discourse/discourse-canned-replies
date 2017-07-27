@@ -103,7 +103,7 @@ after_initialize do
     def create
       title   = params.require(:title)
       content = params.require(:content)
-      user_id  = current_user.id
+      user_id = current_user.id
 
       record = CannedReply::Reply.add(user_id, title, content)
       render json: record
@@ -128,7 +128,7 @@ after_initialize do
       reply_id = params.require(:id)
       title   = params.require(:title)
       content = params.require(:content)
-      user_id  = current_user.id
+      user_id = current_user.id
 
       record = CannedReply::Reply.edit(user_id, reply_id, title, content)
       render json: record
@@ -142,7 +142,7 @@ after_initialize do
     end
 
     def index
-      user_id  = current_user.id
+      user_id = current_user.id
       replies = CannedReply::Reply.all(user_id)
       render json: { replies: replies }
     end
