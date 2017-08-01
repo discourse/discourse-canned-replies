@@ -12,19 +12,19 @@ acceptance("Canned Replies", {
       ];
     };
 
-    server.patch('/canned_replies/cd6680d7a04caaac1274e6f37429458c/use', () => {
+    server.patch('/canned_replies/cd6680d7a04caaac1274e6f37429458c/use', () => { // eslint-disable-line no-undef
       return response({});
     });
 
-    server.patch('/canned_replies/cd6680d7a04caaac1274e6f37429458c', () => {
+    server.patch('/canned_replies/cd6680d7a04caaac1274e6f37429458c', () => { // eslint-disable-line no-undef
       return response({});
     });
 
-    server.post('/canned_replies', () => {
+    server.post('/canned_replies', () => { // eslint-disable-line no-undef
       return response({});
     });
 
-    server.get('/canned_replies', () => {
+    server.get('/canned_replies', () => { // eslint-disable-line no-undef
       return response({
         "replies": [
           {
