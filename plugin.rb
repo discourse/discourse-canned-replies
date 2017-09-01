@@ -97,8 +97,8 @@ after_initialize do
   class CannedReply::CannedRepliesController < ::ApplicationController
     requires_plugin CannedReply::PLUGIN_NAME
 
-    before_filter :ensure_logged_in
-    skip_before_filter :check_xhr
+    before_action :ensure_logged_in
+    skip_before_action :check_xhr
 
     def create
       title   = params.require(:title)
