@@ -19,18 +19,23 @@ RSpec.describe CannedReply::CannedRepliesController do
     context 'as a normal user' do
       it 'should raise the right error' do
         user
-        expect { xhr :post, '/canned_replies' }.to raise_error(ActionController::RoutingError)
+
+        expect { post '/canned_replies' }
+          .to raise_error(ActionController::RoutingError)
       end
     end
 
     context 'as a staff' do
       it "should list all replies correctly" do
         moderator
-        xhr :post, '/canned_replies', title: 'Reply test title', content: 'Reply test content'
+
+        post '/canned_replies', params: {
+          title: 'Reply test title', content: 'Reply test content'
+        }
 
         expect(response).to be_success
 
-        xhr :get, '/canned_replies'
+        get '/canned_replies'
 
         expect(response).to be_success
 
@@ -48,20 +53,25 @@ RSpec.describe CannedReply::CannedRepliesController do
     context 'as a normal user' do
       it 'should raise the right error' do
         user
-        expect { xhr :delete, '/canned_replies/someid' }.to raise_error(ActionController::RoutingError)
+
+        expect { delete '/canned_replies/someid' }
+          .to raise_error(ActionController::RoutingError)
       end
     end
 
     context 'as a staff' do
       it 'should be able to remove reply' do
         moderator
-        xhr :post, '/canned_replies', title: 'Reply test title', content: 'Reply test content'
+
+        post '/canned_replies', params: {
+          title: 'Reply test title', content: 'Reply test content'
+        }
 
         expect(response).to be_success
 
         id, new_reply = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME).first
 
-        xhr :delete, "/canned_replies/#{id}"
+        delete "/canned_replies/#{id}"
 
         expect(response).to be_success
         expect(PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME)).to eq({})
@@ -73,20 +83,27 @@ RSpec.describe CannedReply::CannedRepliesController do
     context 'as a normal user' do
       it 'should raise the right error' do
         user
-        expect { xhr :put, '/canned_replies/someid' }.to raise_error(ActionController::RoutingError)
+
+        expect { put '/canned_replies/someid' }
+          .to raise_error(ActionController::RoutingError)
       end
     end
 
     context 'as a staff' do
       it 'should be able to edit a reply' do
         moderator
-        xhr :post, '/canned_replies', title: 'Reply test title', content: 'Reply test content'
+
+        post '/canned_replies', params: {
+          title: 'Reply test title', content: 'Reply test content'
+        }
 
         expect(response).to be_success
 
         id, new_reply = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME).first
 
-        xhr :put, "/canned_replies/#{id}", title: 'new title', content: 'new content'
+        put "/canned_replies/#{id}", params: {
+          title: 'new title', content: 'new content'
+        }
 
         expect(response).to be_success
 
@@ -103,13 +120,16 @@ RSpec.describe CannedReply::CannedRepliesController do
       it 'should raise the right error' do
         canned_reply
         user
-        expect { xhr :patch, "/canned_replies/#{canned_reply[:id]}/use" }.to raise_error(ActionController::RoutingError)
+
+        expect do
+          patch "/canned_replies/#{canned_reply[:id]}/use"
+        end.to raise_error(ActionController::RoutingError)
       end
     end
 
     context 'as a staff' do
       it 'should be able to record a usage' do
-        xhr :patch, "/canned_replies/#{canned_reply[:id]}/use"
+        patch "/canned_replies/#{canned_reply[:id]}/use"
 
         expect(response).to be_success
 
@@ -126,14 +146,14 @@ RSpec.describe CannedReply::CannedRepliesController do
         canned_reply
         user
 
-        expect { xhr :get, "/canned_replies/#{canned_reply[:id]}/reply" }
+        expect { get "/canned_replies/#{canned_reply[:id]}/reply" }
           .to raise_error(ActionController::RoutingError)
       end
     end
 
     context 'as a staff' do
       it 'should fetch the right canned reply' do
-        xhr :get, "/canned_replies/#{canned_reply[:id]}/reply"
+        get "/canned_replies/#{canned_reply[:id]}/reply"
 
         expect(response).to be_success
 
