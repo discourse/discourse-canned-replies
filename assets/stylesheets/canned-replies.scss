@@ -28,11 +28,12 @@
   margin-top: 3px;
 }
 
+.canned-replies-toggle-content {
+}
+
 .canned-reply {
-  border-bottom: 1px solid dark-light-diff($primary, $secondary, 90%, -60%);
 
   .canned-reply-title {
     font-weight: bold;
-    padding: 3px 0px;
   }
 }
