@@ -1,0 +1,25 @@
+ru:
+  js:
+    canned_replies:
+      filter_hint: 'название...'
+      composer_button_text: "Готовые ответы"
+      title:
+        name: 'Название'
+        invalid: Название не может быть пустым.
+      content:
+        name: 'Текст'
+        invalid: Текст не может быть пустым.
+      insert:
+        choose: "(выберите ответ)"
+        insert_button: "Вставить ответ"
+        new_button: "Новый"
+        edit_button: "Редактировать"
+        modal_title: "Вставить готовый ответ"
+        sort:
+          alphabetically: "Сортировать в алфавитном порядке"
+          usage: "Сортировать по частоте использования"
+      add:
+        modal_title: "Добавить готовый ответ"
+      edit:
+        modal_title: "Редактировать готовый ответ"
+        remove_confirm: "Удалить этот готовый ответ?"
