@@ -11,11 +11,9 @@
 
     {{reply.title}}
 
-    {{#if isOpen}}
-      <a class="pull-right canned-replies-toggle-content" {{action "close"}}>{{d-icon "chevron-up"}}</a>
-    {{else}}
-      <a class="pull-right canned-replies-toggle-content" {{action "open"}}>{{d-icon "chevron-down"}}</a>
-    {{/if}}
+    <a class='pull-right canned-replies-toggle-content' {{action "toggle"}}>
+      {{d-icon showContentIcon}}
+    </a>
   </p>
 
   {{#if isOpen}}

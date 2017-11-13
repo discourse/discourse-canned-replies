@@ -1,17 +1,19 @@
 import showModal from 'discourse/lib/show-modal';
 import { ajax } from 'discourse/lib/ajax';
 import { popupAjaxError } from 'discourse/lib/ajax-error';
+import computed from 'ember-addons/ember-computed-decorators';
 
 export default Ember.Component.extend({
   isOpen: false,
 
-  actions: {
-    open: function() {
-      this.set('isOpen', true);
-    },
+  @computed('isOpen')
+  showContentIcon(isOpen) {
+    return isOpen ? 'chevron-down' : 'chevron-left';
+  },
 
-    close: function() {
-      this.set('isOpen', false);
+  actions: {
+    toggle() {
+        this.toggleProperty('isOpen');
     },
 
     apply: function() {
