@@ -1,0 +1,46 @@
+{{#d-modal-body title="canned_replies.insert.modal_title"
+    class="canned-replies-modal"
+    style="overflow: visible"}}
+
+  {{#conditional-loading-spinner condition=loadingReplies}}
+    <div class="details">
+      <div class="reply-selector">
+        <div class="selector">
+          {{combo-box id="canned-replies-combobox"
+              valueAttribute="id"
+              value=selectedReplyID
+              nameProperty="title"
+              content=replies
+              none="canned_replies.insert.choose"}}
+        </div>
+      </div>
+
+      {{#if selectedReply}}
+        <div class="content">
+          <div>
+            {{{cook-text selectedReply.content}}}
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  {{/conditional-loading-spinner}}
+{{/d-modal-body}}
+
+<div class="modal-footer">
+  {{d-button class="btn pull-left canned-replies-new"
+      action="newReply"
+      icon="plus"
+      label="canned_replies.insert.new_button"}}
+
+  {{#if selectedReply}}
+    {{d-button class="btn pull-left canned-replies-edit"
+        action="editReply"
+        icon="pencil"
+        label="canned_replies.insert.edit_button"}}
+
+    {{d-button class="btn-primary pull-right canned-replies-apply"
+        action="apply"
+        icon="clipboard"
+        label="canned_replies.insert.insert_button"}}
+  {{/if}}
+</div>
