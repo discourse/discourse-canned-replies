@@ -60,13 +60,19 @@ export default {
     show() {
       $(".d-editor-preview-wrapper > .d-editor-preview").hide();
       this.set('isVisible', true);
-
       this.set('loadingReplies', true);
+
       ajax("/canned_replies").then(results => {
         this.set("replies", results.replies);
         this.set("filterHint", "");
         this.set("filteredReplies", results.replies);
-      }).catch(popupAjaxError).finally(() => this.set('loadingReplies', false));
+      }).catch(popupAjaxError).finally(() => {
+        this.set('loadingReplies', false);
+
+        Em.run.schedule('afterRender', () => {
+          $(".canned-replies-filter").focus();
+        });
+      });
     },
 
     hide() {
