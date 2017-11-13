@@ -7,6 +7,9 @@
           label="canned_replies.insert.new_button"}}
       {{text-field value=listFilter placeholder=filterHint}}
       <a class="close pull-right" {{action "hide"}}>{{d-icon "times"}}</a>
+
+      <hr/>
+
       {{#each filteredReplies as |r|}}
         {{canned-reply reply=r}}
       {{/each}}

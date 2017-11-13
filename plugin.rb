@@ -56,12 +56,6 @@ after_initialize do
         end
 
         return [] if replies.blank?
-
-        replies.each do |id, reply|
-          cooked = PrettyText.cook(reply[:content])
-          reply[:excerpt] = PrettyText.excerpt(cooked, 100) if cooked
-        end
-
         replies.values.sort_by { |reply| reply['title'] || '' }
       end
 

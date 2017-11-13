@@ -25,18 +25,7 @@
   margin-top: 3px;
 }
 
-.canned-replies-toggle-content {
-  color: dark-light-choose($primary-medium, $secondary-medium);
-}
-
-.canned-replies-edit {
-  background-color: transparent;
-}
-
-.canned-reply {
-
-  .canned-reply-title {
-    font-weight: bold;
-    margin: 0;
-  }
+.canned-reply-title:hover {
+  background-color: #eee;
+  cursor: pointer;
 }
