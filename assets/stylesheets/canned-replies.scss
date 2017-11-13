@@ -1,8 +1,4 @@
 .canned-replies-modal {
-  .combobox {
-    width: 100% !important;
-  }
-
   .canned-replies-sort-usage, .canned-replies-sort-alpha {
     display: inline-block;
 
@@ -22,6 +18,7 @@
 
 .canned-replies {
   height: 100%;
+  width: 100%;
 }
 
 .canned-replies-footer {
