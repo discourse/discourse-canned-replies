@@ -61,7 +61,7 @@ QUnit.test("Inserting canned replies", assert => {
   click('.popup-menu .fa-clipboard');
 
   andThen(() => {
-    click('.canned-replies-toggle-content');
+    click('.canned-reply-title');
   });
 
   andThen(() => {
