@@ -16,11 +16,6 @@
   display: none;
 }
 
-.canned-replies {
-  height: 100%;
-  width: 100%;
-}
-
 .canned-replies-footer {
   margin-top: 3px;
 }
@@ -29,3 +24,17 @@
   background-color: #eee;
   cursor: pointer;
 }
+
+#reply-control {
+  .canned-replies {
+    position: absolute;    
+    height: 100%;
+    width: 50%;
+  }
+  &.edit-title {
+    .canned-replies {
+      height: calc(100% + 74px);
+    }
+  }
+}
+
