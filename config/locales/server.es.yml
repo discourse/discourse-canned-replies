@@ -1,3 +1,10 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
 es:
   site_settings:
     canned_replies_enabled: 'Mostrar el botón insertar respuestas enlatadas en el editor?'
@@ -6,6 +13,6 @@ es:
       title: "Mi primer respuesta enlatada"
       body: |
         Esto es un ejemplo de respuesta enlatada.
-        Podes usar **markdown** para darle estilo a tus respuestas. Presionando en el botón **Nuevo** podes crear nuevas respuestas enlatadas o bien, una vez que seleccionas una existente, aparece el botón **Editar** para editar o bien eliminar la respuesta enlatada existente. 
-        
+        Podes usar **markdown** para darle estilo a tus respuestas. Presionando en el botón **Nuevo** podes crear nuevas respuestas enlatadas o bien, una vez que seleccionas una existente, aparece el botón **Editar** para editar o bien eliminar la respuesta enlatada existente.
+
         *Esta respuesta enlatada será agregada cuando tu lista de respuestas esté vacía.*

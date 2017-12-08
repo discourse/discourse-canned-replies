@@ -1,3 +1,10 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
 fi:
   js:
     canned_replies:
@@ -11,22 +18,7 @@ fi:
           alphabetically: "Järjestä aakkosjärjestykseen"
           usage: "Järjestä käytön mukaan"
       add:
-        content: "Sisältö"
-        title: "Vastaus"
-        add_button: "Tallenna"
-        use_current_button: "Käytä nykyistä luonnosta"
         modal_title: "Lisää tallennettu vastaus"
       edit:
-        content: "Sisältö"
-        title: "Vastaus"
-        edit_button: "Tallenna"
-        use_current_button: "Käytä nykyistä luonnosta"
-        remove_button: "Poista"
         modal_title: "Muokkaa tallennettua vastausta"
         remove_confirm: "Haluatko varmasti poistaa tämän vastauksen?"
-      error:
-        edit: "Virhe vastauksen muokkauksessa: "
-        add: "Virhe vastauksen lisäyksessä: "
-        list: "Virhe vastausten listauksessa: "
-        remove: "Virhe vastauksen poistossa: "
-        updatingUsages: "Virhe päivittäessä valitun vastauksen käyttötietoja"

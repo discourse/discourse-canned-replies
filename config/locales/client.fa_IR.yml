@@ -1,3 +1,10 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
 fa_IR:
   js:
     canned_replies:
@@ -16,10 +23,3 @@ fa_IR:
       edit:
         modal_title: "پاسخ آماده را ویرایش کن"
         remove_confirm: "مطمئنید میخواهید این پاسخ آماده را حذف کنید؟"
-      error:
-        edit: "وقتی پاسخ را ویرایش کردید، خطایی رخ داده: "
-        add: "وقتی پاسخ را اضافه کردید، خطایی رخ داده: "
-        list: "وقتی پاسخها را لیست کردید، خطایی رخ داده: "
-        remove: "وقتی پاسخها را حذف کردید، خطایی رخ داده: "
-        updatingUsages: "موقع آپدیت تعداد استفاده های پاسخ ها، خطایی رخ داده:"
-
