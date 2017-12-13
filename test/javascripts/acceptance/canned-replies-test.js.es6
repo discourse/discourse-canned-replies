@@ -57,8 +57,8 @@ QUnit.test("Inserting canned replies", assert => {
   visit("/");
 
   click('#create-topic');
-  click('button.options');
-  click('.popup-menu .fa-clipboard');
+  expandSelectKit('.toolbar-popup-menu-options');
+  selectKitSelectRow('showCannedRepliesButton', { selector: '.toolbar-popup-menu-options'});
 
   andThen(() => {
     click('.canned-reply-title');
@@ -85,8 +85,8 @@ QUnit.test("Editing a canned reply", assert => {
   visit("/");
 
   click('#create-topic');
-  click('button.options');
-  click('.popup-menu .fa-clipboard');
+  expandSelectKit('.toolbar-popup-menu-options');
+  selectKitSelectRow('showCannedRepliesButton', { selector: '.toolbar-popup-menu-options'});
 
   andThen(() => {
     click('.canned-replies-edit');
@@ -108,8 +108,8 @@ QUnit.test("Creating a new canned reply", assert => {
   visit("/");
 
   click('#create-topic');
-  click('button.options');
-  click('.popup-menu .fa-clipboard');
+  expandSelectKit('.toolbar-popup-menu-options');
+  selectKitSelectRow('showCannedRepliesButton', { selector: '.toolbar-popup-menu-options'});
 
   andThen(() => {
     click('.canned-replies-new');
