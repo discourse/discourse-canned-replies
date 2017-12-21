@@ -1,9 +1,12 @@
 import { acceptance } from "helpers/qunit-helpers";
+import { clearPopupMenuOptionsCallback } from "discourse/controllers/composer";
 
 acceptance("Canned Replies", {
   loggedIn: true,
   settings: { canned_replies_enabled: true },
   beforeEach() {
+    clearPopupMenuOptionsCallback();
+
     const response = object => {
       return [
         200,
@@ -54,11 +57,12 @@ acceptance("Canned Replies", {
 });
 
 QUnit.test("Inserting canned replies", assert => {
+  const popUpMenu = selectKit('.toolbar-popup-menu-options');
+
   visit("/");
 
   click('#create-topic');
-  expandSelectKit('.toolbar-popup-menu-options');
-  selectKitSelectRow('showCannedRepliesButton', { selector: '.toolbar-popup-menu-options'});
+  popUpMenu.expand().selectRowByValue('showCannedRepliesButton');
 
   andThen(() => {
     click('.canned-reply-title');
@@ -82,11 +86,12 @@ QUnit.test("Inserting canned replies", assert => {
 });
 
 QUnit.test("Editing a canned reply", assert => {
+  const popUpMenu = selectKit('.toolbar-popup-menu-options');
+
   visit("/");
 
   click('#create-topic');
-  expandSelectKit('.toolbar-popup-menu-options');
-  selectKitSelectRow('showCannedRepliesButton', { selector: '.toolbar-popup-menu-options'});
+  popUpMenu.expand().selectRowByValue('showCannedRepliesButton');
 
   andThen(() => {
     click('.canned-replies-edit');
@@ -105,11 +110,12 @@ QUnit.test("Editing a canned reply", assert => {
 });
 
 QUnit.test("Creating a new canned reply", assert => {
+  const popUpMenu = selectKit('.toolbar-popup-menu-options');
+
   visit("/");
 
   click('#create-topic');
-  expandSelectKit('.toolbar-popup-menu-options');
-  selectKitSelectRow('showCannedRepliesButton', { selector: '.toolbar-popup-menu-options'});
+  popUpMenu.expand().selectRowByValue('showCannedRepliesButton');
 
   andThen(() => {
     click('.canned-replies-new');
