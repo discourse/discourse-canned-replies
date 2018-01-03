@@ -9,7 +9,7 @@ es:
   js:
     canned_replies:
       filter_hint: 'título...'
-      composer_button_text: "Respuestas Enlatadas"
+      composer_button_text: "Respuestas predefinidas"
       title:
         name: 'Título'
         invalid: El título no puede estar vacío.
@@ -18,15 +18,15 @@ es:
         invalid: El contenido no puede estar vacío.
       insert:
         choose: "(selecciona una respuesta)"
-        insert_button: "Crear respuesta"
+        insert_button: "Insertar respuesta"
         new_button: "Nuevo"
         edit_button: "Editar"
-        modal_title: "Seleccionar o crear nueva respuesta enlatada"
+        modal_title: "Insertar respuesta predefinida"
         sort:
           alphabetically: "Ordenar alfabéticamente"
           usage: "Ordenar por frecuencia de uso"
       add:
-        modal_title: "Agregar respuesta enlatada"
+        modal_title: "Agregar respuesta predefinida"
       edit:
-        modal_title: "Editar respuesta enlatada"
-        remove_confirm: "¿Estás seguro de eliminar esta respuesta enlatada?"
+        modal_title: "Editar respuesta predefinida"
+        remove_confirm: "¿Estás seguro de eliminar esta respuesta predefinid?"

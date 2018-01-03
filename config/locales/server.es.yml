@@ -7,12 +7,12 @@
 
 es:
   site_settings:
-    canned_replies_enabled: 'Mostrar el botón insertar respuestas enlatadas en el editor?'
+    canned_replies_enabled: '¿Mostrar el botón insertar respuestas enlatadas en el editor?'
   replies:
     default_reply:
-      title: "Mi primer respuesta enlatada"
+      title: "Mi primera respuesta predefinida"
       body: |
-        Esto es un ejemplo de respuesta enlatada.
-        Podes usar **markdown** para darle estilo a tus respuestas. Presionando en el botón **Nuevo** podes crear nuevas respuestas enlatadas o bien, una vez que seleccionas una existente, aparece el botón **Editar** para editar o bien eliminar la respuesta enlatada existente.
+        Este es un ejemplo de una respuesta predefinida.
+        Puedes usar **markdown** para formatear tus respuestas. Haz clic en el botón de **nuevo** para crear nuevas respuestas o en el botón de **editar** para editar o borrar alguna respuesta predefinida ya existente.
 
-        *Esta respuesta enlatada será agregada cuando tu lista de respuestas esté vacía.*
+        *Esta respuesta predefinida será añadida cuando la lista de respuestas esté vacía.*
