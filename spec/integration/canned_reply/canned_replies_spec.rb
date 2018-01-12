@@ -20,8 +20,8 @@ RSpec.describe CannedReply::CannedRepliesController do
       it 'should raise the right error' do
         user
 
-        expect { post '/canned_replies' }
-          .to raise_error(ActionController::RoutingError)
+        post '/canned_replies'
+        expect(response.status).to eq(404)
       end
     end
 
@@ -54,8 +54,8 @@ RSpec.describe CannedReply::CannedRepliesController do
       it 'should raise the right error' do
         user
 
-        expect { delete '/canned_replies/someid' }
-          .to raise_error(ActionController::RoutingError)
+        delete '/canned_replies/someid'
+        expect(response.status).to eq(404)
       end
     end
 
@@ -69,7 +69,7 @@ RSpec.describe CannedReply::CannedRepliesController do
 
         expect(response).to be_success
 
-        id, new_reply = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME).first
+        id, _new_reply = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME).first
 
         delete "/canned_replies/#{id}"
 
@@ -84,8 +84,8 @@ RSpec.describe CannedReply::CannedRepliesController do
       it 'should raise the right error' do
         user
 
-        expect { put '/canned_replies/someid' }
-          .to raise_error(ActionController::RoutingError)
+        put '/canned_replies/someid'
+        expect(response.status).to eq(404)
       end
     end
 
@@ -99,7 +99,7 @@ RSpec.describe CannedReply::CannedRepliesController do
 
         expect(response).to be_success
 
-        id, new_reply = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME).first
+        id, _new_reply = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME).first
 
         put "/canned_replies/#{id}", params: {
           title: 'new title', content: 'new content'
@@ -121,9 +121,8 @@ RSpec.describe CannedReply::CannedRepliesController do
         canned_reply
         user
 
-        expect do
-          patch "/canned_replies/#{canned_reply[:id]}/use"
-        end.to raise_error(ActionController::RoutingError)
+        patch "/canned_replies/#{canned_reply[:id]}/use"
+        expect(response.status).to eq(404)
       end
     end
 
@@ -133,7 +132,7 @@ RSpec.describe CannedReply::CannedRepliesController do
 
         expect(response).to be_success
 
-        id, reply = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME).first
+        _id, reply = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME).first
 
         expect(reply["usages"]).to eq(1)
       end
@@ -146,8 +145,8 @@ RSpec.describe CannedReply::CannedRepliesController do
         canned_reply
         user
 
-        expect { get "/canned_replies/#{canned_reply[:id]}/reply" }
-          .to raise_error(ActionController::RoutingError)
+        get "/canned_replies/#{canned_reply[:id]}/reply"
+        expect(response.status).to eq(404)
       end
     end
 
