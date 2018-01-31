@@ -8,3 +8,6 @@
 fi:
   site_settings:
     canned_replies_enabled: 'Näytä lisää tallennettu vastaus viesti-ikkunassa?'
+  replies:
+    default_reply:
+      title: "Ensimmäinen tallennettu vastaukseni"

@@ -7,11 +7,12 @@
 
 it:
   site_settings:
-    canned_replies_enabled: 'Mostra il pulsante per inserire le risposte programmate nella finestra del composer?'
+    canned_replies_enabled: 'Mostrare il pulsante per inserire le risposte predefinite nella finestra di scrittura messaggio?'
   replies:
     default_reply:
-      title: "La mia prima risposta programmata"
+      title: "La mia prima risposta predefinita"
       body: |
-        Questo è un esempio di risposta programmata.
-        Puoi usare **markdown** per formattare le tue risposte. Clicca il pulsante **nuovo** per creare nuove risposte o il pulsante **modifica** per modificare o rimuovere una risposta programmata esistente.
-        *Questa risposta programmata verrà aggiunta quando la lista delle risposte è vuota.*
+        Questo è un esempio di risposta predefinita.
+        Puoi usare **markdown** per formattare le tue risposte. Clicca il pulsante **nuova** per creare nuove risposte o il pulsante **modifica** per modificare o rimuovere una risposta predefinita esistente.
+
+        *Questa risposta predefinita verrà aggiunta quando la lista delle risposte è vuota.*

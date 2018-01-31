@@ -8,7 +8,8 @@
 it:
   js:
     canned_replies:
-      composer_button_text: "Risposte programmate"
+      filter_hint: 'titolo...'
+      composer_button_text: "Risposte predefinite"
       title:
         name: 'Titolo'
         invalid: Il titolo non può essere vuoto.
@@ -20,12 +21,12 @@ it:
         insert_button: "Inserisci Risposta"
         new_button: "Nuovo"
         edit_button: "Modifica"
-        modal_title: "Inserisci Risposta Programmata"
+        modal_title: "Inserisci Risposta Predefinita"
         sort:
           alphabetically: "Ordina alfabeticamente"
           usage: "Ordina per frequenza di utilizzo"
       add:
         modal_title: "Aggiungi Risposta Programmata"
       edit:
-        modal_title: "Modifica Risposta Programmata"
-        remove_confirm: "Sei sicuro di voler eliminare questa risposta programmata?"
+        modal_title: "Modifica Risposta Predefinita"
+        remove_confirm: "Sei sicuro di voler eliminare questa risposta predefinita?"

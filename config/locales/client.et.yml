@@ -5,4 +5,19 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-et: {}
+et:
+  js:
+    canned_replies:
+      filter_hint: 'pealkiri...'
+      title:
+        name: 'Pealkiri'
+        invalid: Pealkiri ei saa olla tühi.
+      content:
+        name: 'Sisu'
+        invalid: Sisu ei saa olla tühi.
+      insert:
+        choose: "(vali vastus)"
+        new_button: "Uus"
+        edit_button: "uuda"
+        sort:
+          alphabetically: "Sorteeri tähestiku järjekorras"

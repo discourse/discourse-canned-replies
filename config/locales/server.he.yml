@@ -5,4 +5,14 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-he: {}
+he:
+  site_settings:
+    canned_replies_enabled: 'להציג כפתור הוספת תגובה מוכנה בחלון כתיבת ההודעה?'
+  replies:
+    default_reply:
+      title: "התגובה המוכנה הראשונה שלי"
+      body: |
+        זו הודעה מוכנה לדוגמה.
+        ניתן להשתמש ב**סימון** כדי לסגנן את התגובות שלך. יש ללחוץ על הכפתור **חדש** כדי ליצור תגובות חדשות או על הכפתור **עריכה** כדי לערוך או להסיר תגובה מוכנה קיימת.
+
+        *תגובה מוכנה זו תתווסף כאשר רשימת התגובות ריקה.*

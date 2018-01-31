@@ -5,4 +5,28 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-ur: {}
+ur:
+  js:
+    canned_replies:
+      filter_hint: 'عنوان...'
+      composer_button_text: "طہ شدہ جوابات"
+      title:
+        name: 'عنوان'
+        invalid: عنوان خالی نہیں ھو سکتا
+      content:
+        name: 'متن'
+        invalid: متن خالی نہیں ھو سکتا
+      insert:
+        choose: "(ایک جواب کا انتخاب کیجیے)"
+        insert_button: "جواب شامل کریں"
+        new_button: "نیا"
+        edit_button: "ترمیم کریں"
+        modal_title: "طہ شدہ جواب شامل کریں"
+        sort:
+          alphabetically: "حروف تہجی ترتیب دیں"
+          usage: "استعمال کی تعدد کے حساب سے ترتیب دیں"
+      add:
+        modal_title: "طہ شدہ جواب شامل کریں"
+      edit:
+        modal_title: "طہ شدہ جواب میں ترمیم کریں"
+        remove_confirm: "کیا آپ واقعی یہ طہ شدہ جواب حذف کرنا چاہتے ہیں؟"

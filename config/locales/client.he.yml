@@ -5,4 +5,28 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-he: {}
+he:
+  js:
+    canned_replies:
+      filter_hint: 'כותרת…'
+      composer_button_text: "תגובות מוכנות"
+      title:
+        name: 'כותרת'
+        invalid: הכותרת לא יכולה להיות ריקה.
+      content:
+        name: 'תוכן'
+        invalid: התוכן לא יכול להיות ריק.
+      insert:
+        choose: "(נא לבחור תגובה)"
+        insert_button: "הוספת תגובה"
+        new_button: "חדש"
+        edit_button: "עריכה"
+        modal_title: "הוספת תגובה מוכנה"
+        sort:
+          alphabetically: "מיון לפי האלפבית"
+          usage: "מיון לפי תדירות השימוש"
+      add:
+        modal_title: "הוספת תגובה מוכנה"
+      edit:
+        modal_title: "עריכת תגובה מוכנה"
+        remove_confirm: "להסיר את התגובה המוכנה הזאת?"
