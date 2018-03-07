@@ -5,4 +5,14 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-fr: {}
+fr:
+  site_settings:
+    canned_replies_enabled: 'Afficher bouton pour insérer réponse pré-définie dans la fenêtre éditeur ?'
+  replies:
+    default_reply:
+      title: "Ma première réponse pré-définie"
+      body: |
+          Ceci est un exemple de réponse pré-définie.
+          Vous pouvez utiliser le **markdown** dans vos réponses. Cliquer sur le bouton 'Nouveau' pour créer de nouvelles réponses ou sur le bouton **modifier** pour modifier ou supprimer une réponse pré-définie existante.
+
+          *Cette réponse pré-définie sera ajoutée quand la liste de réponses est vide.*

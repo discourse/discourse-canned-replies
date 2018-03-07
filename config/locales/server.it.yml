@@ -12,7 +12,7 @@ it:
     default_reply:
       title: "La mia prima risposta predefinita"
       body: |
-        Questo è un esempio di risposta predefinita.
-        Puoi usare **markdown** per formattare le tue risposte. Clicca il pulsante **nuova** per creare nuove risposte o il pulsante **modifica** per modificare o rimuovere una risposta predefinita esistente.
+          Questo è un esempio di risposta predefinita.
+          Puoi usare **markdown** per formattare le tue risposte. Clicca il pulsante **nuova** per creare nuove risposte o il pulsante **modifica** per modificare o rimuovere una risposta predefinita esistente.
 
-        *Questa risposta predefinita verrà aggiunta quando la lista delle risposte è vuota.*
+          *Questa risposta predefinita verrà aggiunta quando la lista delle risposte è vuota.*

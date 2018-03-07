@@ -12,7 +12,7 @@ de:
     default_reply:
       title: "Meine erste vorbereitete Antwort"
       body: |
-        Das ist ein Beispiel für eine vorbereitete Antwort.
-        Du kannst **Markdown** verwenden, um deine Antworten zu formatieren. Klicke die **Neu**-Schaltfläche, um neue Antworten zu erstellen bzw. die **Bearbeiten**-Schaltfläche, um bestehende Antworten zu bearbeiten oder zu entfernen.
+          Das ist ein Beispiel für eine vorbereitete Antwort.
+          Du kannst **Markdown** verwenden, um deine Antworten zu formatieren. Klicke die **Neu**-Schaltfläche, um neue Antworten zu erstellen bzw. die **Bearbeiten**-Schaltfläche, um bestehende Antworten zu bearbeiten oder zu entfernen.
 
-        *Diese vorbereitete Antwort wird hinzugefügt, wenn die Antwortliste leer ist..*
+          *Diese vorbereitete Antwort wird hinzugefügt, wenn die Antwortliste leer ist..*
