@@ -5,4 +5,10 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-zh_CN: {}
+zh_CN:
+  js:
+    canned_replies:
+      filter_hint: '标题'
+      insert:
+        new_button: "新"
+        edit_button: "编辑"

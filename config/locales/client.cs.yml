@@ -10,5 +10,10 @@ cs:
     canned_replies:
       title:
         name: 'Nadpis'
+        invalid: Nadpis nemůže být prázdný.
       content:
         name: 'Obsah'
+        invalid: Obsah nemůže být prázdný.
+      insert:
+        insert_button: "Vložit odpověď"
+        edit_button: "Upravit"

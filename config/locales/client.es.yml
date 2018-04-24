@@ -29,4 +29,4 @@ es:
         modal_title: "Agregar respuesta predefinida"
       edit:
         modal_title: "Editar respuesta predefinida"
-        remove_confirm: "¿Estás seguro de eliminar esta respuesta predefinid?"
+        remove_confirm: "¿Estás seguro de eliminar esta respuesta predefinida?"

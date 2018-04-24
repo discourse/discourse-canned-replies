@@ -8,7 +8,14 @@
 fa_IR:
   js:
     canned_replies:
+      filter_hint: 'عنوان ...'
       composer_button_text: "پاسخ های آماده"
+      title:
+        name: 'عنوان'
+        invalid: عنوان نمیتواند خالی باشد
+      content:
+        name: 'محتوا'
+        invalid: محتوا نمیتوانتد  خالی باشد.
       insert:
         choose: "(پاسخی انتخاب کن)"
         insert_button: "اضافه کن"
