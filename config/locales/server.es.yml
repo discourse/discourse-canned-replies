@@ -12,7 +12,7 @@ es:
     default_reply:
       title: "Mi primera respuesta predefinida"
       body: |
-          Este es un ejemplo de una respuesta predefinida.
-          Puedes usar **markdown** para formatear tus respuestas. Haz clic en el botón de **nuevo** para crear nuevas respuestas o en el botón de **editar** para editar o borrar alguna respuesta predefinida ya existente.
+        Este es un ejemplo de una respuesta predefinida.
+        Puedes usar **markdown** para formatear tus respuestas. Haz clic en el botón de **nuevo** para crear nuevas respuestas o en el botón de **editar** para editar o borrar alguna respuesta predefinida ya existente.
 
-          *Esta respuesta predefinida será añadida cuando la lista de respuestas esté vacía.*
+        *Esta respuesta predefinida será añadida cuando la lista de respuestas esté vacía.*

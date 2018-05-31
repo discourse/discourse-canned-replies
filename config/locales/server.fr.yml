@@ -12,7 +12,7 @@ fr:
     default_reply:
       title: "Ma première réponse pré-définie"
       body: |
-          Ceci est un exemple de réponse pré-définie.
-          Vous pouvez utiliser le **markdown** dans vos réponses. Cliquer sur le bouton 'Nouveau' pour créer de nouvelles réponses ou sur le bouton **modifier** pour modifier ou supprimer une réponse pré-définie existante.
+        Ceci est un exemple de réponse pré-définie.
+        Vous pouvez utiliser le **markdown** dans vos réponses. Cliquer sur le bouton 'Nouveau' pour créer de nouvelles réponses ou sur le bouton **modifier** pour modifier ou supprimer une réponse pré-définie existante.
 
-          *Cette réponse pré-définie sera ajoutée quand la liste de réponses est vide.*
+        *Cette réponse pré-définie sera ajoutée quand la liste de réponses est vide.*
