@@ -58,7 +58,7 @@ export default {
 
   actions: {
     show() {
-      $(".d-editor-preview-wrapper > .d-editor-preview").hide();
+      $("#reply-control .d-editor-preview-wrapper > .d-editor-preview").hide();
       this.set('isVisible', true);
       this.set('loadingReplies', true);
 

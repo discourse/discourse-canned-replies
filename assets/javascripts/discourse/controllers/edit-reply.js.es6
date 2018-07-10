@@ -28,7 +28,10 @@ export default Ember.Controller.extend(ModalFunctionality, {
       ajax(`/canned_replies/${this.get('replyId')}`, {
         type: "PATCH",
         data: { title: this.get('replyTitle'), content: this.get('replyContent') }
-      }).catch(popupAjaxError).finally(() => this.set('saving', false));
+      }).catch(popupAjaxError).finally(() => {
+        this.set('saving', false);
+        this.appEvents.trigger('canned-replies:show');
+      });
     },
 
     remove() {
