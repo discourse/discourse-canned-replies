@@ -5,14 +5,9 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-ca:
-  js:
-    canned_replies:
-      filter_hint: 'títol...'
-      title:
-        name: 'Títol'
-      content:
-        name: 'Contingut'
-      insert:
-        new_button: "Nou"
-        edit_button: "Edita"
+hu:
+  site_settings:
+    canned_replies_enabled: 'Megjelenítse az eltett válaszok beillesztése gombot a szerkesztő ablakon?'
+  replies:
+    default_reply:
+      title: "Első eltett válaszom"

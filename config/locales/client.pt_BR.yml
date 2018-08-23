@@ -5,4 +5,28 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-pt_BR: {}
+pt_BR:
+  js:
+    canned_replies:
+      filter_hint: 'titulo'
+      composer_button_text: "Respostas enlatadas"
+      title:
+        name: 'Titulo'
+        invalid: Titulo não pode estar vazio.
+      content:
+        name: 'conteúdo'
+        invalid: Conteúdo não pode estar vazio.
+      insert:
+        choose: "(escolha uma resposta)"
+        insert_button: "Inserir resposta"
+        new_button: "Novo"
+        edit_button: "Editar"
+        modal_title: "Inserir resposta enlatada"
+        sort:
+          alphabetically: "Ordenar por ordem alfabética"
+          usage: "Ordenar por frequência de uso"
+      add:
+        modal_title: "Adicionar Resposta Enlatada"
+      edit:
+        modal_title: "Editar Resposta Enlatada"
+        remove_confirm: "Tem certeza de que deseja remover esta resposta automática"

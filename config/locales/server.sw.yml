@@ -1,0 +1,18 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
+sw:
+  site_settings:
+    canned_replies_enabled: 'Onyesha Kitufe cha kuweka majibu yaliyohifadhiwa kwenye sehemu ya kuandika? '
+  replies:
+    default_reply:
+      title: "Jibu langu la kwanza lililohifadhiwa"
+      body: |
+        Huu ni mfano wa majibu yaliyohifadhiwa.
+        Tumia **markdown** kuweka mtindo kwenye majibu yako. Bonyeza kitufe cha **mpya** kutengeneza majibu mapya au kitufe cha **hariri** kuhariri ay ondoa jibu ulilo hifadhi.
+
+        *Jibu jipya litahifadhiwa kama orodha ya majibu iko tupu.*

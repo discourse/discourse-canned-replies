@@ -1,0 +1,32 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
+sw:
+  js:
+    canned_replies:
+      filter_hint: 'Kichwa cha habari'
+      composer_button_text: "Majibu ambayo yameifadhiwa"
+      title:
+        name: 'Kichwa cha  Habari'
+        invalid: Kichwa cha habari lazima kiwe na taarifa.
+      content:
+        name: 'Maudhui'
+        invalid: Sehemu ya maudhui lazima iwe na taarifa.
+      insert:
+        choose: "(chagua jibu)"
+        insert_button: "Andika Jibu Lako"
+        new_button: "Mpya"
+        edit_button: "Hariri"
+        modal_title: "Chomeka Jibu Lililohifadhiwa"
+        sort:
+          alphabetically: "Panga kwa alfabeti"
+          usage: "Chuja kwa mara ya utumiaji"
+      add:
+        modal_title: "Ongeza jibu lililohifadhiwa"
+      edit:
+        modal_title: "Hariri Taarifa zilizohifadhiwa"
+        remove_confirm: "Una uhakika kuwa unataka kuondoa jibu lililohifadhiwa?"

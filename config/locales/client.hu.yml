@@ -1,0 +1,32 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
+hu:
+  js:
+    canned_replies:
+      filter_hint: 'cím...'
+      composer_button_text: "Eltett válaszok"
+      title:
+        name: 'Cím'
+        invalid: Cím nem lehet üres.
+      content:
+        name: 'Tartalom'
+        invalid: Tartalom nem lehet üres.
+      insert:
+        choose: "(válasz választása)"
+        insert_button: "Válasz Beillesztése"
+        new_button: "Új"
+        edit_button: "Szerkesztés"
+        modal_title: "Eltett Válasz Beillesztése"
+        sort:
+          alphabetically: "Rendezés betűrendbe"
+          usage: "Rendezés használat gyakorisága szerint"
+      add:
+        modal_title: "Eltett Válasz Hozzáadása"
+      edit:
+        modal_title: "Eltett Válasz Szerkesztése"
+        remove_confirm: "Biztos vagy benne, hogy el akarod távolítani ezt az eltett választ?"
