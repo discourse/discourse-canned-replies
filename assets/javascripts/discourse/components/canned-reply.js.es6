@@ -17,9 +17,11 @@ export default Ember.Component.extend({
       const composer = Discourse.__container__.lookup("controller:composer");
 
       if (composer.model) {
-        const newReply =
-          composer.model.get("reply") + this.get("reply.content");
-        composer.model.set("reply", newReply);
+        this.appEvents.trigger(
+          "composer:insert-block",
+          this.get("reply.content")
+        );
+
         if (!composer.model.get("title")) {
           composer.model.set("title", this.get("reply.title"));
         }
