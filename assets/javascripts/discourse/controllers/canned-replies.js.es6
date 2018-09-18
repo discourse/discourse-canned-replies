@@ -6,7 +6,7 @@ import { popupAjaxError } from "discourse/lib/ajax-error";
 
 export default Ember.Controller.extend(ModalFunctionality, {
   selectedReply: null,
-  selectedReplyID: "",
+  selectedReplyId: "",
   loadingReplies: true,
 
   init() {
@@ -14,13 +14,9 @@ export default Ember.Controller.extend(ModalFunctionality, {
     this.replies = [];
   },
 
-  @observes("selectedReplyID")
+  @observes("selectedReplyId")
   _updateSelection() {
     this.selectionChange();
-  },
-
-  getReplyByID(id) {
-    this.get("replies").find(reply => reply.id === id);
   },
 
   onShow() {
@@ -35,11 +31,11 @@ export default Ember.Controller.extend(ModalFunctionality, {
   },
 
   selectionChange() {
-    const localSelectedReplyID = this.get("selectedReplyID");
-    let localSelectedReply = "";
+    const localSelectedReplyId = this.get("selectedReplyId");
 
+    let localSelectedReply = "";
     this.get("replies").forEach(entry => {
-      if (entry.id === localSelectedReplyID) {
+      if (entry.id === localSelectedReplyId) {
         localSelectedReply = entry;
         return;
       }
@@ -59,7 +55,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
         }
       }
 
-      ajax(`/canned_replies/${this.get("selectedReplyID")}/use`, {
+      ajax(`/canned_replies/${this.get("selectedReplyId")}/use`, {
         type: "PATCH"
       }).catch(popupAjaxError);
 
@@ -68,6 +64,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
     newReply: function() {
       this.send("closeModal");
+
       showModal("new-reply").setProperties({
         newContent: this.composerModel.reply
       });
@@ -77,8 +74,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
       this.send("closeModal");
 
       showModal("edit-reply").setProperties({
-        composerModel: this.composerModel,
-        replyId: this.get("selectedReplyID"),
+        replyId: this.get("selectedReplyId"),
         replyTitle: this.get("selectedReply.title"),
         replyContent: this.get("selectedReply.content")
       });

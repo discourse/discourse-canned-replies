@@ -6,11 +6,6 @@ import computed from "ember-addons/ember-computed-decorators";
 export default Ember.Component.extend({
   isOpen: false,
 
-  @computed("isOpen")
-  showContentIcon(isOpen) {
-    return isOpen ? "chevron-down" : "chevron-left";
-  },
-
   actions: {
     toggle() {
       this.toggleProperty("isOpen");
