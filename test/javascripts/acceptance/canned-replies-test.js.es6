@@ -1,7 +1,7 @@
 import { acceptance } from "helpers/qunit-helpers";
 import { clearPopupMenuOptionsCallback } from "discourse/controllers/composer";
 
-acceptance("Canned Replies", {
+acceptance("discourse-canned-replies", {
   loggedIn: true,
   settings: { canned_replies_enabled: true },
   pretend(server, helper) {
@@ -91,7 +91,12 @@ QUnit.test("Editing a canned reply", async assert => {
 
   await click(".edit-reply-save-btn");
 
-  assert.equal(find(".canned-replies-footer .msg").text(), I18n.t("saved"));
+  assert.equal(
+    find(".canned-replies-footer .btn")
+      .text()
+      .trim(),
+    I18n.t("saved")
+  );
 });
 
 QUnit.test("Creating a new canned reply", async assert => {

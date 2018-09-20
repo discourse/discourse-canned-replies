@@ -11,7 +11,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   onShow() {
     this.setProperties({
       newTitle: "",
-      newContent: "",
+      newContent: ""
     });
   },
 
