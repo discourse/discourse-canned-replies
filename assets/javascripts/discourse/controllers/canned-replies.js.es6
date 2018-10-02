@@ -3,6 +3,7 @@ import showModal from "discourse/lib/show-modal";
 import { ajax } from "discourse/lib/ajax";
 import { observes } from "ember-addons/ember-computed-decorators";
 import { popupAjaxError } from "discourse/lib/ajax-error";
+import applyReply from "discourse/plugins/Canned Replies/lib/apply-reply";
 
 export default Ember.Controller.extend(ModalFunctionality, {
   selectedReply: null,
@@ -46,18 +47,12 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
   actions: {
     apply: function() {
-      if (this.composerModel) {
-        const newReply =
-          this.composerModel.get("reply") + this.selectedReply.content;
-        this.composerModel.set("reply", newReply);
-        if (!this.composerModel.get("title")) {
-          this.composerModel.set("title", this.selectedReply.title);
-        }
-      }
-
-      ajax(`/canned_replies/${this.get("selectedReplyId")}/use`, {
-        type: "PATCH"
-      }).catch(popupAjaxError);
+      applyReply(
+        this.get("selectedReplyId"),
+        this.selectedReply.title,
+        this.selectedReply.content,
+        this.composerModel
+      );
 
       this.send("closeModal");
     },
