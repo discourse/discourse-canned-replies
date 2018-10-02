@@ -11,12 +11,30 @@ acceptance("discourse-canned-replies", {
     server.patch("/canned_replies/cd6680d7a04caaac1274e6f37429458c", () => {
       return helper.response({});
     });
+    server.patch("/canned_replies/ce5fc200ab90dd0d5ac597ca9bb4708b", () => {
+      return helper.response({});
+    });
+    server.patch("/canned_replies/ce5fc200ab90dd0d5ac597ca9bb4708b/use", () => {
+      return helper.response({});
+    });
+    server.patch("/canned_replies/04697870e02acfef3c2130dab92fe6d8", () => {
+      return helper.response({});
+    });
+    server.patch("/canned_replies/04697870e02acfef3c2130dab92fe6d8/use", () => {
+      return helper.response({});
+    });
     server.post("/canned_replies", () => {
       return helper.response({});
     });
     server.get("/canned_replies", () => {
       return helper.response({
         replies: [
+          {
+            id: "ce5fc200ab90dd0d5ac597ca9bb4708b",
+            title: "Small markdown example",
+            excerpt: "markdown",
+            content: "**markdown**"
+          },
           {
             id: "cd6680d7a04caaac1274e6f37429458c",
             title: "My first canned reply",
@@ -37,6 +55,12 @@ acceptance("discourse-canned-replies", {
             excerpt: "Testing",
             content: "Testing testin **123**",
             usages: 1
+          },
+          {
+            id: "04697870e02acfef3c2130dab92fe6d8",
+            title: "Using variables",
+            excerpt: "#{user}",
+            content: "#{user}"
           }
         ]
       });
@@ -53,6 +77,11 @@ QUnit.test("Inserting canned replies", async assert => {
   await visit("/");
 
   await click("#create-topic");
+  await fillIn(".d-editor-input", "beforeafter");
+
+  const editorInput = $(".d-editor-input")[0];
+  editorInput.selectionStart = editorInput.selectionEnd = "before".length;
+
   await popUpMenu.expand();
   await popUpMenu.selectRowByValue("showCannedRepliesButton");
 
@@ -67,10 +96,9 @@ QUnit.test("Inserting canned replies", async assert => {
 
   await click(".canned-replies-apply");
 
-  assert.ok(
-    find(".d-editor-input")
-      .val()
-      .indexOf("This is an example canned reply.") !== -1,
+  assert.equal(
+    find(".d-editor-input").val(),
+    "before\n\n**markdown**\n\nafter",
     "it should contain the right selected output"
   );
 });
@@ -129,4 +157,54 @@ QUnit.test("Creating a new canned reply", async assert => {
 
   await fillIn(".canned-replies-form-content-input textarea", "Some content");
   await click(".new-reply-save-btn");
+});
+
+QUnit.test("Replacing variables", async assert => {
+  const popUpMenu = selectKit(".toolbar-popup-menu-options");
+
+  await visit("/");
+
+  await click("#create-topic");
+  await popUpMenu.expand();
+  await popUpMenu.selectRowByValue("showCannedRepliesButton");
+
+  await click(".canned-replies-apply:eq(4)");
+
+  assert.equal(
+    find(".d-editor-input")
+      .val()
+      .trim(),
+    "eviltrout",
+    "it should replace variables"
+  );
+});
+
+QUnit.test("Reset modal content", async assert => {
+  const popUpMenu = selectKit(".toolbar-popup-menu-options");
+
+  await visit("/");
+
+  await click("#create-topic");
+  await popUpMenu.expand();
+  await popUpMenu.selectRowByValue("showCannedRepliesButton");
+
+  await click(".canned-replies-new");
+
+  await fillIn(".canned-replies-form-title-input", "Some title");
+  await fillIn(".canned-replies-form-content-input textarea", "Some content");
+
+  await click(".canned-replies-footer a");
+
+  await click(".canned-replies-new");
+
+  assert.equal(
+    find(".canned-replies-form-title-input").val(),
+    "",
+    "it should clear title"
+  );
+  assert.equal(
+    find(".canned-replies-form-content-input textarea").val(),
+    "",
+    "it should clear content"
+  );
 });
