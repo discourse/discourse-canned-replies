@@ -1,6 +1,4 @@
 import showModal from "discourse/lib/show-modal";
-import { ajax } from "discourse/lib/ajax";
-import { popupAjaxError } from "discourse/lib/ajax-error";
 import applyReply from "discourse/plugins/Canned Replies/lib/apply-reply";
 
 export default Ember.Component.extend({
