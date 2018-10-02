@@ -10,6 +10,12 @@ export default Ember.Controller.extend(ModalFunctionality, {
   replyId: "",
   saving: null,
 
+  onShow() {
+    this.setProperties({
+      saving: null
+    });
+  },
+
   @computed("saving")
   savingLabel(saving) {
     return saving === null ? "save" : saving ? "saving" : "saved";
