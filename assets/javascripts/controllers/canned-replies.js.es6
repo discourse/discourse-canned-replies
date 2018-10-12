@@ -3,7 +3,7 @@ import showModal from "discourse/lib/show-modal";
 import { ajax } from "discourse/lib/ajax";
 import { observes } from "ember-addons/ember-computed-decorators";
 import { popupAjaxError } from "discourse/lib/ajax-error";
-import applyReply from "discourse/plugins/Canned Replies/lib/apply-reply";
+import applyReply from "discourse/plugins/discourse-canned-replies/lib/apply-reply";
 
 export default Ember.Controller.extend(ModalFunctionality, {
   selectedReply: null,

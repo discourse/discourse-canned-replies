@@ -1,7 +1,7 @@
 import { acceptance } from "helpers/qunit-helpers";
 import { clearPopupMenuOptionsCallback } from "discourse/controllers/composer";
 
-acceptance("discourse-canned-replies", {
+acceptance("Canned Replies", {
   loggedIn: true,
   settings: { canned_replies_enabled: true },
   pretend(server, helper) {

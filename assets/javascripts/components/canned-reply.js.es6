@@ -1,5 +1,5 @@
 import showModal from "discourse/lib/show-modal";
-import applyReply from "discourse/plugins/Canned Replies/lib/apply-reply";
+import applyReply from "discourse/plugins/discourse-canned-replies/lib/apply-reply";
 
 export default Ember.Component.extend({
   isOpen: false,
