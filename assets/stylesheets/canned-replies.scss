@@ -1,5 +1,6 @@
 .canned-replies-modal {
-  .canned-replies-sort-usage, .canned-replies-sort-alpha {
+  .canned-replies-sort-usage,
+  .canned-replies-sort-alpha {
     display: inline-block;
 
     .btn {
@@ -30,7 +31,7 @@
     height: 100%;
     width: 100%;
   }
-  
+
   .canned-reply {
     padding-bottom: 1em;
   }

@@ -1,8 +1,8 @@
-import ModalFunctionality from 'discourse/mixins/modal-functionality';
-import showModal from 'discourse/lib/show-modal';
-import { ajax } from 'discourse/lib/ajax';
-import { observes } from 'ember-addons/ember-computed-decorators';
-import { popupAjaxError } from 'discourse/lib/ajax-error';
+import ModalFunctionality from "discourse/mixins/modal-functionality";
+import showModal from "discourse/lib/show-modal";
+import { ajax } from "discourse/lib/ajax";
+import { observes } from "ember-addons/ember-computed-decorators";
+import { popupAjaxError } from "discourse/lib/ajax-error";
 
 export default Ember.Controller.extend(ModalFunctionality, {
   selectedReply: null,
@@ -20,23 +20,26 @@ export default Ember.Controller.extend(ModalFunctionality, {
   },
 
   getReplyByID(id) {
-    this.get('replies').find(reply => reply.id === id);
+    this.get("replies").find(reply => reply.id === id);
   },
 
   onShow() {
-    ajax("/canned_replies").then(results => {
-      this.set("replies", results.replies);
-      // trigger update of the selected reply
-      this.selectionChange();
-    }).catch(popupAjaxError).finally(() => this.set('loadingReplies', false));
+    ajax("/canned_replies")
+      .then(results => {
+        this.set("replies", results.replies);
+        // trigger update of the selected reply
+        this.selectionChange();
+      })
+      .catch(popupAjaxError)
+      .finally(() => this.set("loadingReplies", false));
   },
 
   selectionChange() {
-    const localSelectedReplyID = this.get('selectedReplyID');
+    const localSelectedReplyID = this.get("selectedReplyID");
     let localSelectedReply = "";
 
-    this.get('replies').forEach(entry => {
-      if(entry.id === localSelectedReplyID){
+    this.get("replies").forEach(entry => {
+      if (entry.id === localSelectedReplyID) {
         localSelectedReply = entry;
         return;
       }
@@ -48,33 +51,36 @@ export default Ember.Controller.extend(ModalFunctionality, {
   actions: {
     apply: function() {
       if (this.composerModel) {
-        const newReply = this.composerModel.get('reply') + this.selectedReply.content;
-        this.composerModel.set('reply', newReply);
-        if (!this.composerModel.get('title')) {
-          this.composerModel.set('title', this.selectedReply.title);
+        const newReply =
+          this.composerModel.get("reply") + this.selectedReply.content;
+        this.composerModel.set("reply", newReply);
+        if (!this.composerModel.get("title")) {
+          this.composerModel.set("title", this.selectedReply.title);
         }
       }
 
-      ajax(`/canned_replies/${this.get('selectedReplyID')}/use`, {
+      ajax(`/canned_replies/${this.get("selectedReplyID")}/use`, {
         type: "PATCH"
       }).catch(popupAjaxError);
 
-      this.send('closeModal');
+      this.send("closeModal");
     },
 
-    newReply: function () {
-      this.send('closeModal');
-      showModal('new-reply').setProperties({ newContent: this.composerModel.reply });
+    newReply: function() {
+      this.send("closeModal");
+      showModal("new-reply").setProperties({
+        newContent: this.composerModel.reply
+      });
     },
 
-    editReply: function () {
-      this.send('closeModal');
+    editReply: function() {
+      this.send("closeModal");
 
-      showModal('edit-reply').setProperties({
+      showModal("edit-reply").setProperties({
         composerModel: this.composerModel,
-        replyId: this.get('selectedReplyID'),
-        replyTitle: this.get('selectedReply.title'),
-        replyContent: this.get('selectedReply.content')
+        replyId: this.get("selectedReplyID"),
+        replyTitle: this.get("selectedReply.title"),
+        replyContent: this.get("selectedReply.content")
       });
     }
   }
