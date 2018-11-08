@@ -59,8 +59,8 @@ acceptance("Canned Replies", {
           {
             id: "04697870e02acfef3c2130dab92fe6d8",
             title: "Using variables",
-            excerpt: "#{user}",
-            content: "#{user}"
+            excerpt: "%{user}",
+            content: "%{user}"
           }
         ]
       });

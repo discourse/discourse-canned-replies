@@ -18,8 +18,8 @@ export default function(replyId, replyTitle, replyContent, model) {
 
     for (var key in vars) {
       if (vars[key]) {
-        replyTitle = replyTitle.replace("#{" + key + "}", vars[key]);
-        replyContent = replyContent.replace("#{" + key + "}", vars[key]);
+        replyTitle = replyTitle.replace("%{" + key + "}", vars[key]);
+        replyContent = replyContent.replace("%{" + key + "}", vars[key]);
       }
     }
   }
