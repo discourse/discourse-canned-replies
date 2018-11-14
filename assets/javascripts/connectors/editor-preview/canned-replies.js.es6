@@ -1,6 +1,5 @@
 import showModal from "discourse/lib/show-modal";
 import { ajax } from "discourse/lib/ajax";
-import { i18n } from "discourse/lib/computed";
 import { popupAjaxError } from "discourse/lib/ajax-error";
 
 export default {
@@ -9,7 +8,6 @@ export default {
     component.set("loadingReplies", false);
     component.set("replies", []);
     component.set("filteredReplies", []);
-    component.set("filterHint", i18n("canned_replies.filter_hint"));
 
     if (!component.appEvents.has("canned-replies:show")) {
       component.appEvents.on("canned-replies:show", () => {
@@ -68,7 +66,6 @@ export default {
       ajax("/canned_replies")
         .then(results => {
           this.set("replies", results.replies);
-          this.set("filterHint", "");
           this.set("filteredReplies", results.replies);
         })
         .catch(popupAjaxError)
@@ -88,12 +85,11 @@ export default {
 
     newReply() {
       // TODO: This is ugly. There _must_ be another way.
-      const composerController = Discourse.__container__.lookup(
-        "controller:composer"
-      );
-      composerController.send("closeModal");
+      const composer = Discourse.__container__.lookup("controller:composer");
+
+      composer.send("closeModal");
       showModal("new-reply").setProperties({
-        newContent: composerController.model.reply
+        newContent: composer.model.reply
       });
     }
   }

@@ -1,6 +1,6 @@
-# name: Canned Replies
+# name: discourse-canned-replies
 # about: Add canned replies through the composer
-# version: 1.1
+# version: 1.2
 # authors: Jay Pfaffman and André Pereira
 # url: https://github.com/discourse/discourse-canned-replies
 
@@ -11,7 +11,7 @@ register_asset 'stylesheets/canned-replies.scss'
 after_initialize do
 
   module ::CannedReply
-    PLUGIN_NAME ||= "canned_replies".freeze
+    PLUGIN_NAME ||= "discourse-canned-replies".freeze
     STORE_NAME ||= "replies".freeze
 
     class Engine < ::Rails::Engine

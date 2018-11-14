@@ -3,10 +3,11 @@ import showModal from "discourse/lib/show-modal";
 import { ajax } from "discourse/lib/ajax";
 import { observes } from "ember-addons/ember-computed-decorators";
 import { popupAjaxError } from "discourse/lib/ajax-error";
+import applyReply from "discourse/plugins/discourse-canned-replies/lib/apply-reply";
 
 export default Ember.Controller.extend(ModalFunctionality, {
   selectedReply: null,
-  selectedReplyID: "",
+  selectedReplyId: "",
   loadingReplies: true,
 
   init() {
@@ -14,13 +15,9 @@ export default Ember.Controller.extend(ModalFunctionality, {
     this.replies = [];
   },
 
-  @observes("selectedReplyID")
+  @observes("selectedReplyId")
   _updateSelection() {
     this.selectionChange();
-  },
-
-  getReplyByID(id) {
-    this.get("replies").find(reply => reply.id === id);
   },
 
   onShow() {
@@ -35,11 +32,11 @@ export default Ember.Controller.extend(ModalFunctionality, {
   },
 
   selectionChange() {
-    const localSelectedReplyID = this.get("selectedReplyID");
-    let localSelectedReply = "";
+    const localSelectedReplyId = this.get("selectedReplyId");
 
+    let localSelectedReply = "";
     this.get("replies").forEach(entry => {
-      if (entry.id === localSelectedReplyID) {
+      if (entry.id === localSelectedReplyId) {
         localSelectedReply = entry;
         return;
       }
@@ -50,24 +47,19 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
   actions: {
     apply: function() {
-      if (this.composerModel) {
-        const newReply =
-          this.composerModel.get("reply") + this.selectedReply.content;
-        this.composerModel.set("reply", newReply);
-        if (!this.composerModel.get("title")) {
-          this.composerModel.set("title", this.selectedReply.title);
-        }
-      }
-
-      ajax(`/canned_replies/${this.get("selectedReplyID")}/use`, {
-        type: "PATCH"
-      }).catch(popupAjaxError);
+      applyReply(
+        this.get("selectedReplyId"),
+        this.selectedReply.title,
+        this.selectedReply.content,
+        this.composerModel
+      );
 
       this.send("closeModal");
     },
 
     newReply: function() {
       this.send("closeModal");
+
       showModal("new-reply").setProperties({
         newContent: this.composerModel.reply
       });
@@ -77,8 +69,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
       this.send("closeModal");
 
       showModal("edit-reply").setProperties({
-        composerModel: this.composerModel,
-        replyId: this.get("selectedReplyID"),
+        replyId: this.get("selectedReplyId"),
         replyTitle: this.get("selectedReply.title"),
         replyContent: this.get("selectedReply.content")
       });

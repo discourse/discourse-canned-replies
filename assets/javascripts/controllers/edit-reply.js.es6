@@ -10,10 +10,15 @@ export default Ember.Controller.extend(ModalFunctionality, {
   replyId: "",
   saving: null,
 
+  onShow() {
+    this.setProperties({
+      saving: null
+    });
+  },
+
   @computed("saving")
-  savingText(saving) {
-    if (saving === null) return;
-    return saving ? I18n.t("saving") : I18n.t("saved");
+  savingLabel(saving) {
+    return saving === null ? "save" : saving ? "saving" : "saved";
   },
 
   @computed("replyTitle", "replyContent", "saving")

@@ -8,6 +8,13 @@ export default Ember.Controller.extend(ModalFunctionality, {
   newTitle: "",
   newContent: "",
 
+  onShow() {
+    this.setProperties({
+      newTitle: "",
+      newContent: ""
+    });
+  },
+
   @computed("newTitle", "newContent")
   disableSaveButton(newTitle, newContent) {
     return newTitle === "" || newContent === "";
