@@ -10,6 +10,8 @@ register_asset 'stylesheets/canned-replies.scss'
 
 after_initialize do
 
+  load File.expand_path('../app/jobs/onceoff/rename_canned_replies.rb', __FILE__)
+
   module ::CannedReply
     PLUGIN_NAME ||= "discourse-canned-replies".freeze
     STORE_NAME ||= "replies".freeze
