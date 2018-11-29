@@ -9,6 +9,24 @@ zh_CN:
   js:
     canned_replies:
       filter_hint: '标题'
+      composer_button_text: "归入方框的回复"
+      title:
+        name: '标题'
+        invalid: 名字不能为空
+      content:
+        name: '内容'
+        invalid: 内容不能为空
       insert:
+        choose: "选择一个回复"
+        insert_button: "插入一个回复"
         new_button: "新"
         edit_button: "编辑"
+        modal_title: "插入一个归入方框的回复"
+        sort:
+          alphabetically: "按照字母表排序"
+          usage: "按照使用频率排序"
+      add:
+        modal_title: "添加一个归入方框的回复"
+      edit:
+        modal_title: "编辑归入方框的回复"
+        remove_confirm: "确认您要移除该方框回复吗？"

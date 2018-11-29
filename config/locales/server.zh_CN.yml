@@ -5,4 +5,14 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-zh_CN: {}
+zh_CN:
+  site_settings:
+    canned_replies_enabled: '在编辑窗口上显示插入预设回复按钮？'
+  replies:
+    default_reply:
+      title: "我的第一个预设回复"
+      body: |
+        这是一个预设回复的例子
+        您可以使用**markdown **来设置回复样式。单击**新**按钮以创建新回复，或单击**编辑**按钮以编辑或删除现有的预设回复。
+
+        *当回复列表为空时，将添加此预设回复。*

@@ -8,6 +8,7 @@
 fi:
   js:
     canned_replies:
+      filter_hint: 'otsikko...'
       composer_button_text: "Tallennetut vastaukset"
       insert:
         insert_button: "Lisää"

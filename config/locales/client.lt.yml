@@ -5,11 +5,9 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-ko:
+lt:
   js:
     canned_replies:
-      filter_hint: '제목...'
+      filter_hint: 'antraštė...'
       title:
-        name: '제목'
-      insert:
-        edit_button: "수정"
+        name: 'Antraštė'
