@@ -11,7 +11,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
   loadingReplies: true,
 
   init() {
-    this._super();
+    this._super(...arguments);
+
     this.replies = [];
   },
 
@@ -46,7 +47,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   },
 
   actions: {
-    apply: function() {
+    apply() {
       applyReply(
         this.get("selectedReplyId"),
         this.selectedReply.title,
@@ -57,7 +58,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
       this.send("closeModal");
     },
 
-    newReply: function() {
+    newReply() {
       this.send("closeModal");
 
       showModal("new-reply").setProperties({
@@ -65,7 +66,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
       });
     },
 
-    editReply: function() {
+    editReply() {
       this.send("closeModal");
 
       showModal("edit-reply").setProperties({

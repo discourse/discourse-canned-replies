@@ -63,7 +63,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
       });
     },
 
-    cancel: function() {
+    cancel() {
       this.send("closeModal");
       if (this.site.mobileView) {
         showModal("canned-replies");
