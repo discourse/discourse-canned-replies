@@ -1,6 +1,6 @@
 # name: discourse-canned-replies
 # about: Add canned replies through the composer
-# version: 1.2
+# version: 1.3
 # authors: Jay Pfaffman and André Pereira
 # url: https://github.com/discourse/discourse-canned-replies
 
@@ -26,15 +26,30 @@ after_initialize do
     class << self
 
       def add(user_id, title, content)
-        id = SecureRandom.hex(16)
-        record = { id: id, title: title, content: content }
 
-        replies = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME) || {}
+        replies = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME)
+        titleAlreadyUsed = false
+        replies.each do
+          |reply|
+          if (reply[1]["title"] == title)
+            titleAlreadyUsed = true
+            break
+          end
+        end
 
-        replies[id] = record
-        PluginStore.set(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME, replies)
+        if (titleAlreadyUsed == false)
+          id = SecureRandom.hex(16)
+          record = { id: id, title: title, content: content }
 
-        record
+          replies = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME) || {}
+
+          replies[id] = record
+          PluginStore.set(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME, replies)
+
+          record
+        else
+          return {error: 'Title already in use!'}
+        end
       end
 
       def edit(user_id, reply_id, title, content)
