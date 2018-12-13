@@ -118,11 +118,7 @@ after_initialize do
 
       record = CannedReply::Reply.add(user_id, title, content)
 
-      if (record[:status] == 500)
-          render json: record, status: 500
-      else
-          render json: record
-      end
+      render json: record, status: record[:status]
     end
 
     def destroy
