@@ -39,7 +39,7 @@ after_initialize do
 
         if (titleAlreadyUsed == false)
           id = SecureRandom.hex(16)
-          record = { id: id, title: title, content: content }
+          record = { status: 200, id: id, title: title, content: content }
 
           replies = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME) || {}
 
@@ -48,7 +48,7 @@ after_initialize do
 
           record
         else
-          return {error: 'Title already in use!'}
+          return {status: 500, error: 'Title already in use!'}
         end
       end
 
@@ -117,7 +117,12 @@ after_initialize do
       user_id = current_user.id
 
       record = CannedReply::Reply.add(user_id, title, content)
-      render json: record
+
+      if (record[:status] == 500)
+          render json: record, status: 500
+      else
+          render json: record
+      end
     end
 
     def destroy
