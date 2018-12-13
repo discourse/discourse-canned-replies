@@ -48,7 +48,7 @@ after_initialize do
 
           record
         else
-          return { status: 500, error: 'Title already in use!' }
+          { status: 500, error: 'Title already in use!' }
         end
       end
 
