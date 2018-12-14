@@ -29,11 +29,13 @@ after_initialize do
 
         replies = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME)
         titleAlreadyUsed = false
-        replies.each do
-          |reply|
-          if (reply[1]["title"] == title)
-            titleAlreadyUsed = true
-            break
+        if replies
+          replies.each do
+            |reply|
+            if (reply[1]["title"] == title)
+              titleAlreadyUsed = true
+              break
+            end
           end
         end
 
