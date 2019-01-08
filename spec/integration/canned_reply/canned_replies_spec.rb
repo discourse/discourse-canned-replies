@@ -33,11 +33,11 @@ RSpec.describe CannedReply::CannedRepliesController do
           title: 'Reply test title', content: 'Reply test content'
         }
 
-        expect(response).to be_success
+        expect(response).to be_successful
 
         get '/canned_replies'
 
-        expect(response).to be_success
+        expect(response).to be_successful
 
         replies = JSON.parse(response.body)["replies"]
         reply = replies.first
@@ -67,13 +67,13 @@ RSpec.describe CannedReply::CannedRepliesController do
           title: 'Reply test title', content: 'Reply test content'
         }
 
-        expect(response).to be_success
+        expect(response).to be_successful
 
         id, _new_reply = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME).first
 
         delete "/canned_replies/#{id}"
 
-        expect(response).to be_success
+        expect(response).to be_successful
         expect(PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME)).to eq({})
       end
     end
@@ -97,7 +97,7 @@ RSpec.describe CannedReply::CannedRepliesController do
           title: 'Reply test title', content: 'Reply test content'
         }
 
-        expect(response).to be_success
+        expect(response).to be_successful
 
         id, _new_reply = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME).first
 
@@ -105,7 +105,7 @@ RSpec.describe CannedReply::CannedRepliesController do
           title: 'new title', content: 'new content'
         }
 
-        expect(response).to be_success
+        expect(response).to be_successful
 
         id, reply = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME).first
 
@@ -130,7 +130,7 @@ RSpec.describe CannedReply::CannedRepliesController do
       it 'should be able to record a usage' do
         patch "/canned_replies/#{canned_reply[:id]}/use"
 
-        expect(response).to be_success
+        expect(response).to be_successful
 
         _id, reply = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME).first
 
@@ -154,7 +154,7 @@ RSpec.describe CannedReply::CannedRepliesController do
       it 'should fetch the right canned reply' do
         get "/canned_replies/#{canned_reply[:id]}/reply"
 
-        expect(response).to be_success
+        expect(response).to be_successful
 
         reply = JSON.parse(response.body)
 
