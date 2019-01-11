@@ -72,7 +72,7 @@ export default {
         .finally(() => {
           this.set("loadingReplies", false);
 
-          Em.run.schedule("afterRender", () => {
+          Ember.run.schedule("afterRender", () => {
             $(".canned-replies-filter").focus();
           });
         });
