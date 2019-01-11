@@ -1,5 +1,6 @@
 .idea
 *.iml
 .DS_Store
+node_modules/
 
 .rubocop-https---raw-githubusercontent-com-discourse-discourse-master--rubocop-yml
