@@ -9,3 +9,17 @@ sl:
   js:
     canned_replies:
       filter_hint: 'naslov...'
+      title:
+        name: 'Naslov'
+        invalid: Naslov ne sme biti prazen.
+      content:
+        name: 'Vsebina'
+        invalid: Vsebina ne sme biti prazna.
+      insert:
+        choose: "(izberi odgovor)"
+        insert_button: "Vstavi odgovor"
+        new_button: "Nov"
+        edit_button: "Uredi"
+        sort:
+          alphabetically: "Uredi po abecednem redu"
+          usage: "Uredi po pogostnosti uporabe"

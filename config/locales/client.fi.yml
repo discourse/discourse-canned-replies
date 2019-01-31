@@ -10,7 +10,14 @@ fi:
     canned_replies:
       filter_hint: 'otsikko...'
       composer_button_text: "Tallennetut vastaukset"
+      title:
+        name: 'Otsikko'
+        invalid: Otsikko ei voi olla tyhjä.
+      content:
+        name: 'Sisältö'
+        invalid: Sisältö ei voi olla tyhjä.
       insert:
+        choose: "(valitse vastaus)"
         insert_button: "Lisää"
         new_button: "Uusi"
         edit_button: "Muokkaa"
