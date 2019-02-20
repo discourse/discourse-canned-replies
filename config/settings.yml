@@ -2,3 +2,7 @@ plugins:
   canned_replies_enabled:
     default: true
     client: true
+  canned_replies_groups:
+    default: ""
+    client: true
+    type: list

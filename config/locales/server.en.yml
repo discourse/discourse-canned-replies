@@ -1,6 +1,7 @@
 en:
   site_settings:
     canned_replies_enabled: 'Show insert canned reply button on composer window?'
+    canned_replies_groups: 'Add access to canned replies for non-staff groups by group name'
   replies:
     default_reply:
       title: "My first canned reply"

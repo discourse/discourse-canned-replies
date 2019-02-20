@@ -7,6 +7,19 @@ RSpec.describe CannedReply::CannedRepliesController do
     user
   end
 
+  let(:privileged_group) do
+    group = Fabricate(:group, users: [privileged_user])
+    group.add(privileged_user)
+    group.save
+    group
+  end
+
+  let(:privileged_user) do
+    user = Fabricate(:user)
+    sign_in(user)
+    user
+  end
+
   let(:user) do
     user = Fabricate(:user)
     sign_in(user)
@@ -25,26 +38,43 @@ RSpec.describe CannedReply::CannedRepliesController do
       end
     end
 
+    let(:list_canned_replies) do
+      post '/canned_replies', params: {
+        title: 'Reply test title', content: 'Reply test content'
+      }
+
+      expect(response).to be_successful
+
+      get '/canned_replies'
+
+      expect(response).to be_successful
+
+      replies = JSON.parse(response.body)["replies"]
+      reply = replies.first
+
+      expect(replies.length).to eq(1)
+      expect(reply['title']).to eq 'Reply test title'
+      expect(reply['content']).to eq 'Reply test content'
+    end
+
     context 'as a staff' do
       it "should list all replies correctly" do
         moderator
 
-        post '/canned_replies', params: {
-          title: 'Reply test title', content: 'Reply test content'
-        }
+        list_canned_replies
+      end
+    end
 
-        expect(response).to be_successful
+    context 'as a privileged user' do
 
-        get '/canned_replies'
+      before do
+        privileged_user
+        privileged_group
+        SiteSetting.canned_replies_groups = privileged_group.name
+      end
 
-        expect(response).to be_successful
-
-        replies = JSON.parse(response.body)["replies"]
-        reply = replies.first
-
-        expect(replies.length).to eq(1)
-        expect(reply['title']).to eq 'Reply test title'
-        expect(reply['content']).to eq 'Reply test content'
+      it "should list all replies correctly" do
+        list_canned_replies
       end
     end
   end
@@ -59,22 +89,38 @@ RSpec.describe CannedReply::CannedRepliesController do
       end
     end
 
+    let(:remove_canned_replies) do
+      post '/canned_replies', params: {
+        title: 'Reply test title', content: 'Reply test content'
+      }
+
+      expect(response).to be_successful
+
+      id, _new_reply = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME).first
+
+      delete "/canned_replies/#{id}"
+
+      expect(response).to be_successful
+      expect(PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME)).to eq({})
+    end
+
     context 'as a staff' do
       it 'should be able to remove reply' do
         moderator
 
-        post '/canned_replies', params: {
-          title: 'Reply test title', content: 'Reply test content'
-        }
+        remove_canned_replies
+      end
+    end
+    context 'as a privileged user' do
 
-        expect(response).to be_successful
+      before do
+        privileged_user
+        privileged_group
+        SiteSetting.canned_replies_groups = privileged_group.name
+      end
 
-        id, _new_reply = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME).first
-
-        delete "/canned_replies/#{id}"
-
-        expect(response).to be_successful
-        expect(PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME)).to eq({})
+      it 'should be able to remove reply' do
+        remove_canned_replies
       end
     end
   end
@@ -89,28 +135,44 @@ RSpec.describe CannedReply::CannedRepliesController do
       end
     end
 
+    let(:edit_canned_reply) do
+      post '/canned_replies', params: {
+        title: 'Reply test title', content: 'Reply test content'
+      }
+
+      expect(response).to be_successful
+
+      id, _new_reply = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME).first
+
+      put "/canned_replies/#{id}", params: {
+        title: 'new title', content: 'new content'
+      }
+
+      expect(response).to be_successful
+
+      id, reply = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME).first
+
+      expect(reply["title"]).to eq('new title')
+      expect(reply["content"]).to eq('new content')
+    end
+
     context 'as a staff' do
       it 'should be able to edit a reply' do
         moderator
 
-        post '/canned_replies', params: {
-          title: 'Reply test title', content: 'Reply test content'
-        }
+        edit_canned_reply
+      end
+    end
+    context 'as a privileged user' do
 
-        expect(response).to be_successful
+      before do
+        privileged_user
+        privileged_group
+        SiteSetting.canned_replies_groups = privileged_group.name
+      end
 
-        id, _new_reply = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME).first
-
-        put "/canned_replies/#{id}", params: {
-          title: 'new title', content: 'new content'
-        }
-
-        expect(response).to be_successful
-
-        id, reply = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME).first
-
-        expect(reply["title"]).to eq('new title')
-        expect(reply["content"]).to eq('new content')
+      it 'should be able to edit a reply' do
+        edit_canned_reply
       end
     end
   end
