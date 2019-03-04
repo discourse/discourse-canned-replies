@@ -5,4 +5,14 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-sl: {}
+sl:
+  site_settings:
+    canned_replies_enabled: 'Prikaži vstavi pripravljen odgovor v oknu urejevalnika?'
+  replies:
+    default_reply:
+      title: "Moj prvi pripravljen odgovor"
+      body: |
+        To je primer pripravljenega odgovora.
+        Uporabite lahko **markdown** za oblikovanje odgovorov. Kliknite na **nov** gumb da ustvarite nove odgovore ali **uredi** gumb za urejanje ali odstranite obstoječi pripravljen odgovor.
+
+        *Ta pripravljen odgovor bo dodan, če je seznam pripravljenih odgovorov prazen.*
