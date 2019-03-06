@@ -6,9 +6,7 @@ export default function(replyId, replyTitle, replyContent, model) {
   if (model) {
     const vars = {
       user: model.get("user.username"),
-      original_poster: model.get("topic.posters")
-        ? model.get("topic.posters")[0].user.get("username")
-        : "",
+      original_poster: model.get("topic.details.created_by.username"),
       reply_to: model.get("post.reply_to_user.username"),
       last_user: model.get("topic.last_poster_username"),
       reply_to_or_last:
