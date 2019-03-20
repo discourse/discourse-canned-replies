@@ -33,6 +33,10 @@ export default {
 
   initialize(container) {
     const siteSettings = container.lookup("site-settings:main");
+    if (!siteSettings.canned_replies_enabled) {
+      return;
+    }
+
     const currentUser = container.lookup("current-user:main");
     let currentUserGroupNames = [];
     if (currentUser && currentUser.groups) {
@@ -45,7 +49,6 @@ export default {
       .filter(x => x)
       .map(x => x.toLowerCase());
     if (
-      siteSettings.canned_replies_enabled &&
       currentUser &&
       (currentUser.staff ||
         currentUserGroupNames.some(group =>
