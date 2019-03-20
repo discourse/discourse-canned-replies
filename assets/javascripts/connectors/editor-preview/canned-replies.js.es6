@@ -1,6 +1,7 @@
 import showModal from "discourse/lib/show-modal";
 import { ajax } from "discourse/lib/ajax";
 import { popupAjaxError } from "discourse/lib/ajax-error";
+import { getOwner } from "discourse-common/lib/get-owner";
 
 export default {
   setupComponent(args, component) {
@@ -84,10 +85,9 @@ export default {
     },
 
     newReply() {
-      // TODO: This is ugly. There _must_ be another way.
-      const composer = Discourse.__container__.lookup("controller:composer");
-
+      const composer = getOwner(this).lookup("controller:composer");
       composer.send("closeModal");
+
       showModal("new-reply").setProperties({
         newContent: composer.model.reply
       });

@@ -1,11 +1,11 @@
 <div class="canned-reply">
   <div {{action "toggle"}} class="canned-reply-title">
     {{d-button class="btn canned-replies-apply"
-        action="apply"
+        action=(action "apply")
         icon="clipboard"}}
 
     {{d-button class="btn canned-replies-edit"
-        action="editReply"
+        action=(action "editReply")
         icon="pencil"}}
 
     <b>{{reply.title}}</b>

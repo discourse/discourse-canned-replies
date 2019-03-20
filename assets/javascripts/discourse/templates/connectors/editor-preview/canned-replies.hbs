@@ -2,7 +2,7 @@
   <div class="d-editor-preview">
     {{#conditional-loading-spinner condition=loadingReplies}}
       {{d-button class="btn canned-replies-new"
-          action="newReply"
+          action=(action "newReply")
           icon="plus"
           label="canned_replies.insert.new_button"}}
       {{text-field class="canned-replies-filter" value=listFilter placeholder=(i18n "canned_replies.filter_hint")}}

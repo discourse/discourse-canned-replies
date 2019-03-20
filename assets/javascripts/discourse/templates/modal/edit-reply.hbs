@@ -5,14 +5,14 @@
 <div class="modal-footer canned-replies-footer">
 
   {{d-button class="btn btn-primary edit-reply-save-btn"
-      action="save"
+      action=(action "save")
       label=savingLabel
       disabled=disableSaveButton}}
 
   <a {{action "cancel"}}>{{i18n 'cancel'}}</a>
 
   {{d-button class="btn-danger pull-right"
-      action="remove"
+      action=(action "remove")
       icon="trash"
       disabled=saving}}
 </div>
