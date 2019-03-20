@@ -34,11 +34,23 @@ export default {
   initialize(container) {
     const siteSettings = container.lookup("site-settings:main");
     const currentUser = container.lookup("current-user:main");
-
+    let currentUserGroupNames = [];
+    if (currentUser && currentUser.groups) {
+      currentUserGroupNames = currentUser.groups.map(group =>
+        group.name.toLowerCase()
+      );
+    }
+    const cannedRepliesGroups = siteSettings.canned_replies_groups
+      .split("|")
+      .filter(x => x)
+      .map(x => x.toLowerCase());
     if (
       siteSettings.canned_replies_enabled &&
       currentUser &&
-      currentUser.staff
+      (currentUser.staff ||
+        currentUserGroupNames.some(group =>
+          cannedRepliesGroups.includes(group)
+        ))
     ) {
       withPluginApi("0.5", initializeCannedRepliesUIBuilder);
     }

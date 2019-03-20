@@ -144,6 +144,19 @@ after_initialize do
     end
   end
 
+  require_dependency 'current_user'
+  class CannedRepliesConstraint
+    def matches?(request)
+      provider = Discourse.current_user_provider.new(request.env)
+      group_list = SiteSetting.canned_replies_groups.split("|")
+      group_list.map!(&:downcase)
+      provider.current_user &&
+        (provider.current_user.staff? || provider.current_user.groups.any? { |group| group_list.include?(group.name.downcase) })
+    rescue Discourse::InvalidAccess, Discourse::ReadOnly
+      false
+    end
+  end
+
   CannedReply::Engine.routes.draw do
     resources :canned_replies, path: '/', only: [:index, :create, :destroy, :update] do
       member do
@@ -154,7 +167,7 @@ after_initialize do
   end
 
   Discourse::Application.routes.append do
-    mount ::CannedReply::Engine, at: "/canned_replies", constraints: StaffConstraint.new
+    mount ::CannedReply::Engine, at: "/canned_replies", constraints: CannedRepliesConstraint.new
   end
 
 end

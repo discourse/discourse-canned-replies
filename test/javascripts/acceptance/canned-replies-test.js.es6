@@ -3,7 +3,10 @@ import { clearPopupMenuOptionsCallback } from "discourse/controllers/composer";
 
 acceptance("Canned Replies", {
   loggedIn: true,
-  settings: { canned_replies_enabled: true },
+  settings: {
+    canned_replies_enabled: true,
+    canned_replies_groups: "test_group"
+  },
   pretend(server, helper) {
     server.patch("/canned_replies/cd6680d7a04caaac1274e6f37429458c/use", () => {
       return helper.response({});
