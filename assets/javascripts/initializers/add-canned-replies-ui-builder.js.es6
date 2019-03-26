@@ -1,15 +1,12 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
 import showModal from "discourse/lib/show-modal";
-import ComposerController from "discourse/controllers/composer";
 
 function initializeCannedRepliesUIBuilder(api) {
-  ComposerController.reopen({
+  api.modifyClass("controller:composer", {
     actions: {
-      showCannedRepliesButton: function() {
+      showCannedRepliesButton() {
         if (this.site.mobileView) {
-          showModal("canned-replies").setProperties({
-            composerModel: this.model
-          });
+          showModal("canned-replies").set("composerModel", this.model);
         } else {
           this.appEvents.trigger("composer:show-preview");
           this.appEvents.trigger("canned-replies:show");
@@ -18,7 +15,7 @@ function initializeCannedRepliesUIBuilder(api) {
     }
   });
 
-  api.addToolbarPopupMenuOptionsCallback(function() {
+  api.addToolbarPopupMenuOptionsCallback(() => {
     return {
       id: "canned_replies_button",
       icon: "clipboard",
