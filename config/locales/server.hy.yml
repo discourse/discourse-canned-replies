@@ -1,0 +1,19 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
+hy:
+  site_settings:
+    canned_replies_enabled: 'Ցուցադրե՞լ Մուտքագրել պահեստավորված պատասխան կոճակը կոմպոզերի պատուհանում:'
+    canned_replies_groups: 'Ավելացնել պահեստավորված պատասխանների հասանելիություն անձնակազմի անդամ չհանդիսացող խմբերի համար՝ ըստ խմբի անվանման'
+  replies:
+    default_reply:
+      title: "Իմ առաջին պահեստավորված պատասխանը"
+      body: |
+        Սա պահեստավորված պատասխանի օրինակ է:
+        Դուք կարող եք օգտագործել **markdown**  Ձեր պատասխանների ոճը կառավարելու համար: Սեղմեք **նոր** կոճակընոր պատասխաններ ստեղծելու կամ **խմբագրել** կոճակը՝ գոյություն ունեցող պահեստավորված պատասխանը խմբագրելու կամ հեռացնելու համար:
+
+        *Այս պահեստավորված պատասխանը կավելացվի, որբ պատասխանների ցանկը լինի դատարկ:*

@@ -7,11 +7,13 @@
 
 pt_BR:
   site_settings:
-    canned_replies_enabled: 'Mostrar inserir resposta enlatada na janela do compositor?'
+    canned_replies_enabled: 'Mostrar botão de inserir resposta pronta na janela do compositor?'
+    canned_replies_groups: 'Adicionar acesso às respostas prontas para grupos não-staff por nome do grupo'
   replies:
     default_reply:
-      title: "Minha primeira resposta enlatada"
+      title: "Minha primeira resposta pronta"
       body: |
-        Este é um exemplo de resposta automática.
-        Você pode usar ** remarcação ** para estilizar suas respostas. Clique no botão ** novo ** para criar novas respostas ou no botão ** editar ** para editar ou remover uma resposta predefinida existente.
-        *Essa resposta automática será adicionada quando a lista de respostas estiver vazia.*
+        Este é um exemplo de resposta pronta.
+        Você pode usar **markdown** para estilizar suas respostas. Clique no botão **novo** para criar novas respostas ou no botão **editar** para editar ou remover uma resposta pronta existente.
+
+        *Esta resposta pronta será adicionada quando a lista de respostas estiver vazia.*

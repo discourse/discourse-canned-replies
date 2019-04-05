@@ -1,0 +1,32 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
+hy:
+  js:
+    canned_replies:
+      filter_hint: 'վերնագիր...'
+      composer_button_text: "Պահեստավորված պատասխաններ"
+      title:
+        name: 'Վերնագիր'
+        invalid: 'Վերնագիրը չի կարող դատարկ լինել:'
+      content:
+        name: 'Բովանդակություն'
+        invalid: 'Բովանդակությունը չի կարող դատարկ լինել:'
+      insert:
+        choose: "(ընտրեք պատասխան)"
+        insert_button: "Մուտքագրել Պատասխան"
+        new_button: "Նոր"
+        edit_button: "Խմբագրել"
+        modal_title: "Մուտքագրեք Պահեստավորված Պատասխանը"
+        sort:
+          alphabetically: "Դասավորել այբբենական կարգով"
+          usage: "Դասավորել ըստ օգտագործման հաճախականության"
+      add:
+        modal_title: "Ավելացնել Պահեստավորված Պատասխան"
+      edit:
+        modal_title: "Խմբագրել Պահեստավորված Պատասխանը"
+        remove_confirm: "Դուք համոզվա՞ծ եք, որ ցանկանում եք ջնջել այս պահեստավորված պատասխանը:"

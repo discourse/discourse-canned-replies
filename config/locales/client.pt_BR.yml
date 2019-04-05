@@ -8,25 +8,25 @@
 pt_BR:
   js:
     canned_replies:
-      filter_hint: 'titulo'
-      composer_button_text: "Respostas enlatadas"
+      filter_hint: 'título...'
+      composer_button_text: "Respostas prontas"
       title:
-        name: 'Titulo'
-        invalid: Titulo não pode estar vazio.
+        name: 'Título'
+        invalid: Título não pode ficar vazio.
       content:
-        name: 'conteúdo'
-        invalid: Conteúdo não pode estar vazio.
+        name: 'Conteúdo'
+        invalid: Conteúdo não pode ficar vazio.
       insert:
         choose: "(escolha uma resposta)"
-        insert_button: "Inserir resposta"
+        insert_button: "Inserir Resposta"
         new_button: "Novo"
         edit_button: "Editar"
-        modal_title: "Inserir resposta enlatada"
+        modal_title: "Inserir Resposta Pronta"
         sort:
-          alphabetically: "Ordenar por ordem alfabética"
+          alphabetically: "Ordenar alfabeticamente"
           usage: "Ordenar por frequência de uso"
       add:
-        modal_title: "Adicionar Resposta Enlatada"
+        modal_title: "Adicionar Resposta Pronta"
       edit:
-        modal_title: "Editar Resposta Enlatada"
-        remove_confirm: "Tem certeza de que deseja remover esta resposta automática"
+        modal_title: "Editar Resposta Pronta"
+        remove_confirm: "Você tem certeza de que deseja remover esta resposta pronta?"

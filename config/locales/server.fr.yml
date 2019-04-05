@@ -8,6 +8,7 @@
 fr:
   site_settings:
     canned_replies_enabled: 'Afficher bouton pour insérer réponse pré-définie dans la fenêtre éditeur ?'
+    canned_replies_groups: 'Ajouter un accès aux réponses prédéfinies pour les groupes ne faisant pas partie des responsables par nom de groupe'
   replies:
     default_reply:
       title: "Ma première réponse pré-définie"

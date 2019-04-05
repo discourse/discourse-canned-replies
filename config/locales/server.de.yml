@@ -8,6 +8,7 @@
 de:
   site_settings:
     canned_replies_enabled: 'Zeige eine Editor-Schaltfläche zum Einfügen vorbereiteter Antworten'
+    canned_replies_groups: 'Zugriff auf konservierte Antworten für Nicht-Team Gruppen nach Gruppenname gewähren'
   replies:
     default_reply:
       title: "Meine erste vorbereitete Antwort"
