@@ -9,6 +9,10 @@
         icon="pencil"}}
 
     <b>{{reply.title}}</b>
+
+    {{#each reply.tags as |t|}}
+      <span class="badge badge-notification">{{t}}</span>
+    {{/each}}
   </div>
 
   {{#if isOpen}}

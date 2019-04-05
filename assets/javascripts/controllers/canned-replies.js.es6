@@ -14,6 +14,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
     this._super(...arguments);
 
     this.replies = [];
+    this.tags = [];
   },
 
   @observes("selectedReplyId")
@@ -25,6 +26,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
     ajax("/canned_replies")
       .then(results => {
         this.set("replies", results.replies);
+        this.set("tags", results.tags);
         // trigger update of the selected reply
         this.selectionChange();
       })

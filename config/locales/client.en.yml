@@ -6,6 +6,8 @@ en:
       title:
         name: 'Title'
         invalid: Title can't be empty.
+      tags:
+        name: 'Tags'
       content:
         name: 'Content'
         invalid: Content can't be empty.

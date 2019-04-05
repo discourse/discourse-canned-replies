@@ -8,6 +8,7 @@ export default {
     component.set("isVisible", false);
     component.set("loadingReplies", false);
     component.set("replies", []);
+    component.set("tags", []);
     component.set("filteredReplies", []);
 
     if (!component.appEvents.has("canned-replies:show")) {
@@ -67,6 +68,7 @@ export default {
       ajax("/canned_replies")
         .then(results => {
           this.set("replies", results.replies);
+          this.set("tags", results.tags);
           this.set("filteredReplies", results.replies);
         })
         .catch(popupAjaxError)
@@ -84,12 +86,13 @@ export default {
       this.set("isVisible", false);
     },
 
-    newReply() {
+    newReply(tags) {
       const composer = getOwner(this).lookup("controller:composer");
       composer.send("closeModal");
 
       showModal("new-reply").setProperties({
-        newContent: composer.model.reply
+        newContent: composer.model.reply,
+        allTags: this.get("tags")
       });
     }
   }

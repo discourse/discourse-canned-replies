@@ -25,9 +25,9 @@ after_initialize do
   class CannedReply::Reply
     class << self
 
-      def add(user_id, title, content)
+      def add(user_id, title, content, tags)
         id = SecureRandom.hex(16)
-        record = { id: id, title: title, content: content }
+        record = { id: id, title: title, content: content, tags: tags }
 
         replies = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME) || {}
 
@@ -61,6 +61,14 @@ after_initialize do
         replies.values.sort_by { |reply| reply['title'] || '' }
       end
 
+      def all_tags(user_id)
+        replies = all(user_id)
+
+        tags = replies.collect{|reply| reply.key?(:tags) ? reply['tags'] : []}
+        tags = tags.flatten.uniq.sort
+        return tags
+      end
+
       def get_reply(user_id, reply_id)
         replies = all(user_id)
 
@@ -83,7 +91,7 @@ after_initialize do
       end
 
       def add_default_reply()
-        add(1, I18n.t("replies.default_reply.title"), I18n.t("replies.default_reply.body"))
+        add(1, I18n.t("replies.default_reply.title"), I18n.t("replies.default_reply.body"), [])
       end
     end
   end
@@ -99,9 +107,10 @@ after_initialize do
     def create
       title   = params.require(:title)
       content = params.require(:content)
+      tags = params.require(:tags)
       user_id = current_user.id
 
-      record = CannedReply::Reply.add(user_id, title, content)
+      record = CannedReply::Reply.add(user_id, title, content, tags)
       render json: record
     end
 
@@ -140,7 +149,8 @@ after_initialize do
     def index
       user_id = current_user.id
       replies = CannedReply::Reply.all(user_id)
-      render json: { replies: replies }
+      all_tags = CannedReply::Reply.all_tags(user_id)
+      render json: { replies: replies, tags: all_tags }
     end
   end
 

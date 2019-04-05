@@ -7,9 +7,12 @@ import { popupAjaxError } from "discourse/lib/ajax-error";
 export default Ember.Controller.extend(ModalFunctionality, {
   newTitle: "",
   newContent: "",
+  newTags: null,
+  allTags: null,
 
   onShow() {
     this.setProperties({
+      newTags: [],
       newTitle: "",
       newContent: ""
     });
@@ -24,7 +27,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
     save() {
       ajax("/canned_replies", {
         type: "POST",
-        data: { title: this.get("newTitle"), content: this.get("newContent") }
+        data: { title: this.get("newTitle"), content: this.get("newContent"), tags: this.get("newTags") }
       })
         .then(() => {
           this.send("closeModal");

@@ -3,6 +3,10 @@
     <label><strong>{{i18n "canned_replies.title.name"}}</strong></label>
     {{input class="canned-replies-form-title-input" value=title}}
   </div>
+  <div>
+    <label><strong>{{i18n "canned_replies.tags.name"}}</strong></label>
+    {{multi-select class="canned-replies-form-labels-input" maximum=5 content=allTags values=tags}}
+  </div>
 
   <div>
     <label><strong>{{i18n "canned_replies.content.name"}}</strong></label>
