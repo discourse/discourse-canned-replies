@@ -8,7 +8,9 @@ export default Ember.Controller.extend(ModalFunctionality, {
   replyTitle: "",
   replyContent: "",
   replyId: "",
+  replyTags: [],
   saving: null,
+  allTags: null,
 
   onShow() {
     this.setProperties({
@@ -34,7 +36,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
         type: "PATCH",
         data: {
           title: this.get("replyTitle"),
-          content: this.get("replyContent")
+          content: this.get("replyContent"),
+          tags: this.get("replyTags")
         }
       })
         .catch(popupAjaxError)

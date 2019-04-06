@@ -37,8 +37,8 @@ after_initialize do
         record
       end
 
-      def edit(user_id, reply_id, title, content)
-        record = { id: reply_id, title: title, content: content }
+      def edit(user_id, reply_id, title, content, tags)
+        record = { id: reply_id, title: title, content: content, tags: tags }
         remove(user_id, reply_id)
 
         replies = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME) || {}
@@ -133,9 +133,10 @@ after_initialize do
       reply_id = params.require(:id)
       title   = params.require(:title)
       content = params.require(:content)
+      tags = params.require(:tags)
       user_id = current_user.id
 
-      record = CannedReply::Reply.edit(user_id, reply_id, title, content)
+      record = CannedReply::Reply.edit(user_id, reply_id, title, content, tags)
       render json: record
     end
 

@@ -30,7 +30,9 @@ export default Ember.Component.extend({
         composerModel: composer.composerModel,
         replyId: this.get("reply.id"),
         replyTitle: this.get("reply.title"),
-        replyContent: this.get("reply.content")
+        replyContent: this.get("reply.content"),
+        replyTags: this.get("reply.tags"),
+        allTags: this.get("allTags")
       });
     }
   }

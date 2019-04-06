@@ -11,7 +11,7 @@
       <hr/>
 
       {{#each filteredReplies as |r|}}
-        {{canned-reply reply=r}}
+        {{canned-reply reply=r allTags=tags}}
       {{/each}}
     {{/conditional-loading-spinner}}
   </div>

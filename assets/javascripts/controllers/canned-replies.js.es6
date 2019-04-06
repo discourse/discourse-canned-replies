@@ -74,7 +74,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
       showModal("edit-reply").setProperties({
         replyId: this.get("selectedReplyId"),
         replyTitle: this.get("selectedReply.title"),
-        replyContent: this.get("selectedReply.content")
+        replyContent: this.get("selectedReply.content"),
+        replyTags: this.get("selectedReply.tags")
       });
     }
   }
