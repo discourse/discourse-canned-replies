@@ -33,14 +33,7 @@ export default {
       const filtered = component
         .get("replies")
         .map(function(reply) {
-          /* Give a relevant score to each reply. */
-          reply.score = 0;
-          if (reply.title.toLowerCase().indexOf(filterTitle) !== -1) {
-            reply.score += 2;
-          } else if (reply.content.toLowerCase().indexOf(filterTitle) !== -1) {
-            reply.score += 1;
-          }
-          return reply;
+          return computeReplySearchScore(reply, filterTitle);
         })
         .filter(function(reply) {
           /* Filter irrelevant replies. */
@@ -57,7 +50,50 @@ export default {
         });
       component.set("filteredReplies", filtered);
     });
+
+    function computeReplySearchScore(reply, filterTitle){
+      /* Give a relevant score to each reply. */
+      reply.score = 0;
+      let tagsScore = 0;
+      let matchedTags = false;
+
+      // match tags
+      const filterWords = filterTitle.split(" ");
+      for (let i = filterWords.length - 1; i >= 0; i--) {
+        const word = filterWords[i];
+        if(word && reply.tags){
+          for (let j = reply.tags.length - 1; j >= 0; j--) {
+            const tag = reply.tags[j];
+            if (tag && tag.toLowerCase().indexOf(word) !== -1) {
+              tagsScore += 3;
+              // Remove from list if it perfectly matches the tag.
+              // This is to allow the user to refine their search inside the tag results
+              if(tag.toLowerCase() === word){
+                filterWords.splice(i, 1);
+                matchedTags = true;
+                break;
+              }
+            }
+          }
+        }
+      }
+
+      // Search in the title and content for the text without the matched tags
+      const filterTitleAfterTags = filterWords.join(" ");
+      if (reply.title.toLowerCase().indexOf(filterTitleAfterTags) !== -1) {
+        reply.score += 2;
+      } else if (reply.content.toLowerCase().indexOf(filterTitleAfterTags) !== -1) {
+        reply.score += 1;
+      }
+
+      if(!matchedTags || (matchedTags && reply.score > 0)){
+        reply.score += tagsScore;
+      }
+
+      return reply;
+    }
   },
+
 
   actions: {
     show() {

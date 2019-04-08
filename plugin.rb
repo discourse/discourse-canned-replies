@@ -64,7 +64,7 @@ after_initialize do
       def all_tags(user_id)
         replies = all(user_id)
 
-        tags = replies.collect{|reply| reply.key?(:tags) ? reply['tags'] : []}
+        tags = replies.collect{|reply| reply.key?(:tags) && !reply[:tags].nil? ? reply[:tags] : []}
         tags = tags.flatten.uniq.sort
         return tags
       end
@@ -107,7 +107,7 @@ after_initialize do
     def create
       title   = params.require(:title)
       content = params.require(:content)
-      tags = params.require(:tags)
+      tags = params[:tags]
       user_id = current_user.id
 
       record = CannedReply::Reply.add(user_id, title, content, tags)
@@ -133,7 +133,7 @@ after_initialize do
       reply_id = params.require(:id)
       title   = params.require(:title)
       content = params.require(:content)
-      tags = params.require(:tags)
+      tags = params[:tags]
       user_id = current_user.id
 
       record = CannedReply::Reply.edit(user_id, reply_id, title, content, tags)

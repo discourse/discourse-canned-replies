@@ -1,7 +1,7 @@
 en:
   js:
     canned_replies:
-      filter_hint: 'title...'
+      filter_hint: 'Title or tags...'
       composer_button_text: "Canned replies"
       title:
         name: 'Title'
