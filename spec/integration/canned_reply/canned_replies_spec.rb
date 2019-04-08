@@ -26,7 +26,7 @@ RSpec.describe CannedReply::CannedRepliesController do
     user
   end
 
-  let(:canned_reply) { CannedReply::Reply.add(moderator, 'some title', 'some content') }
+  let(:canned_reply) { CannedReply::Reply.add(moderator, 'some title', 'some content', %w(tag1, tag2)) }
 
   describe 'listing canned replies' do
     context 'as a normal user' do
@@ -40,7 +40,7 @@ RSpec.describe CannedReply::CannedRepliesController do
 
     let(:list_canned_replies) do
       post '/canned_replies', params: {
-        title: 'Reply test title', content: 'Reply test content'
+        title: 'Reply test title', content: 'Reply test content', tags: %w(tag1, tag2)
       }
 
       expect(response).to be_successful
@@ -55,6 +55,7 @@ RSpec.describe CannedReply::CannedRepliesController do
       expect(replies.length).to eq(1)
       expect(reply['title']).to eq 'Reply test title'
       expect(reply['content']).to eq 'Reply test content'
+      expect(reply['tags']).to eq %w(tag1, tag2)
     end
 
     context 'as a staff' do
@@ -137,7 +138,7 @@ RSpec.describe CannedReply::CannedRepliesController do
 
     let(:edit_canned_reply) do
       post '/canned_replies', params: {
-        title: 'Reply test title', content: 'Reply test content'
+        title: 'Reply test title', content: 'Reply test content', tags: %w(tag1, tag2)
       }
 
       expect(response).to be_successful
@@ -145,7 +146,7 @@ RSpec.describe CannedReply::CannedRepliesController do
       id, _new_reply = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME).first
 
       put "/canned_replies/#{id}", params: {
-        title: 'new title', content: 'new content'
+        title: 'new title', content: 'new content', tags: %w(tag1, tag4)
       }
 
       expect(response).to be_successful
@@ -154,6 +155,7 @@ RSpec.describe CannedReply::CannedRepliesController do
 
       expect(reply["title"]).to eq('new title')
       expect(reply["content"]).to eq('new content')
+      expect(reply["tags"]).to eq(%w(tag1, tag4))
     end
 
     context 'as a staff' do
