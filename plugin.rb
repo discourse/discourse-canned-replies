@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # name: discourse-canned-replies
 # about: Add canned replies through the composer
 # version: 1.2

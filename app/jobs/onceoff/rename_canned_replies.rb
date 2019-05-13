@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Jobs
   class RenameCannedReplies < Jobs::Onceoff
     OLD_PLUGIN_NAME = "canned_replies"
