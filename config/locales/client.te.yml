@@ -5,4 +5,11 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-te: {}
+te:
+  js:
+    canned_replies:
+      title:
+        name: 'శీర్షిక'
+      insert:
+        new_button: "కొత్త"
+        edit_button: "సవరించు"

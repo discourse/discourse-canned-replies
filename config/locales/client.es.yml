@@ -17,7 +17,7 @@ es:
         name: 'Contenido'
         invalid: El contenido no puede estar vacío.
       insert:
-        choose: "(selecciona una respuesta)"
+        choose: "(elige una respuesta)"
         insert_button: "Insertar respuesta"
         new_button: "Nuevo"
         edit_button: "Editar"
@@ -26,7 +26,7 @@ es:
           alphabetically: "Ordenar alfabéticamente"
           usage: "Ordenar por frecuencia de uso"
       add:
-        modal_title: "Agregar respuesta predefinida"
+        modal_title: "Añadir respuesta predefinida"
       edit:
         modal_title: "Editar respuesta predefinida"
-        remove_confirm: "¿Estás seguro de eliminar esta respuesta predefinida?"
+        remove_confirm: "¿Estás seguro de que quieres eliminar esta respuesta predefinida?"

@@ -11,3 +11,6 @@ lt:
       filter_hint: 'antraštė...'
       title:
         name: 'Antraštė'
+      insert:
+        new_button: "Naujas"
+        edit_button: "Redaguoti"

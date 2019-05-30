@@ -5,4 +5,13 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-zh_TW: {}
+zh_TW:
+  js:
+    canned_replies:
+      title:
+        name: '標題'
+      content:
+        name: '內容'
+      insert:
+        new_button: "新使用者"
+        edit_button: "編輯"

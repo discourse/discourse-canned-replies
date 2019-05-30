@@ -5,4 +5,11 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-vi: {}
+vi:
+  js:
+    canned_replies:
+      title:
+        name: 'Tiêu đề'
+      insert:
+        new_button: "Mới"
+        edit_button: "Sửa"

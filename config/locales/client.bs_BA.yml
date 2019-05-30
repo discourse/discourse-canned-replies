@@ -5,4 +5,11 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-bs_BA: {}
+bs_BA:
+  js:
+    canned_replies:
+      title:
+        name: 'Naslov'
+      insert:
+        new_button: "New"
+        edit_button: "Izmijeni"

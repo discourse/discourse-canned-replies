@@ -5,4 +5,20 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-nl: {}
+nl:
+  js:
+    canned_replies:
+      filter_hint: 'titel....'
+      title:
+        name: 'Titel'
+        invalid: Titel kan niet leeg zijn.
+      content:
+        name: 'Teksten'
+        invalid: Inhoud kan niet leeg zijn.
+      insert:
+        choose: "(kies een antwoord)"
+        insert_button: "Antwoord Invoegen"
+        new_button: "Nieuw"
+        edit_button: "Bewerken"
+        sort:
+          alphabetically: "Sorteer alfabetisch"

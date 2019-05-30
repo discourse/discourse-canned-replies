@@ -11,5 +11,8 @@ ko:
       filter_hint: '제목...'
       title:
         name: '제목'
+      content:
+        name: '사이트 컨텐츠'
       insert:
+        new_button: "새값"
         edit_button: "수정"
