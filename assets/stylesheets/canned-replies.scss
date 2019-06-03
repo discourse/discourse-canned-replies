@@ -1,7 +1,5 @@
 .canned-replies-modal {
-  width: 80vw !important; // needed due to core specificity
   max-width: 1080px;
-  max-height: 80vh !important; // overrides important in core
   .canned-replies-sort-usage,
   .canned-replies-sort-alpha {
     display: inline-block;
@@ -38,4 +36,8 @@
   .canned-reply {
     padding-bottom: 1em;
   }
+}
+
+.canned-replies-form-title-input {
+  width: 100%;
 }
