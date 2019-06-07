@@ -146,14 +146,21 @@ after_initialize do
     end
   end
 
+  add_to_class(:user, :can_use_canned_replies?) do
+    return true if staff?
+    group_list = SiteSetting.canned_replies_groups.split("|").map(&:downcase)
+    groups.any? { |group| group_list.include?(group.name.downcase) }
+  end
+
+  add_to_serializer(:current_user, :can_use_canned_replies) do
+    object.can_use_canned_replies?
+  end
+
   require_dependency 'current_user'
   class CannedRepliesConstraint
     def matches?(request)
       provider = Discourse.current_user_provider.new(request.env)
-      group_list = SiteSetting.canned_replies_groups.split("|")
-      group_list.map!(&:downcase)
-      provider.current_user &&
-        (provider.current_user.staff? || provider.current_user.groups.any? { |group| group_list.include?(group.name.downcase) })
+      provider.current_user&.can_use_canned_replies?
     rescue Discourse::InvalidAccess, Discourse::ReadOnly
       false
     end
