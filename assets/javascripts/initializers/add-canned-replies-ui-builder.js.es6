@@ -18,7 +18,7 @@ function initializeCannedRepliesUIBuilder(api) {
   api.addToolbarPopupMenuOptionsCallback(() => {
     return {
       id: "canned_replies_button",
-      icon: "clipboard",
+      icon: "far-clipboard",
       action: "showCannedRepliesButton",
       label: "canned_replies.composer_button_text"
     };

@@ -10,6 +10,8 @@ enabled_site_setting :canned_replies_enabled
 
 register_asset 'stylesheets/canned-replies.scss'
 
+register_svg_icon "far-clipboard" if respond_to?(:register_svg_icon)
+
 after_initialize do
 
   load File.expand_path('../app/jobs/onceoff/rename_canned_replies.rb', __FILE__)
