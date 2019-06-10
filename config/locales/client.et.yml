@@ -17,6 +17,7 @@ et:
         invalid: Sisu ei saa olla tühi.
       insert:
         choose: "(vali vastus)"
+        insert_button: "Sisesta vastus"
         new_button: "Uus"
         edit_button: "uuda"
         sort:
