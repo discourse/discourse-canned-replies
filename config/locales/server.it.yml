@@ -8,6 +8,7 @@
 it:
   site_settings:
     canned_replies_enabled: 'Mostrare il pulsante per inserire le risposte predefinite nella finestra di scrittura messaggio?'
+    canned_replies_groups: 'Aggiungi accesso alle risposte predefinite per i gruppi non-staff per nome di gruppo'
   replies:
     default_reply:
       title: "La mia prima risposta predefinita"

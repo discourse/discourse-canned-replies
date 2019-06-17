@@ -8,6 +8,7 @@
 zh_CN:
   site_settings:
     canned_replies_enabled: '在编辑窗口上显示插入预设回复按钮？'
+    canned_replies_groups: '按群组名添加对非管理组的预设回复的访问权限'
   replies:
     default_reply:
       title: "我的第一个预设回复"
