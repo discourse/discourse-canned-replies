@@ -5,4 +5,15 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-ca: {}
+ca:
+  site_settings:
+    canned_replies_enabled: 'Mostra el botó d&#39;inserció de resposta enllaunada en la finestra de redacció?'
+    canned_replies_groups: 'Afegeix accés a les respostes enllaunades per a grups que no siguin de l''equip responsable, per nom de grup'
+  replies:
+    default_reply:
+      title: "La meva primera resposta enllaunada"
+      body: |
+        Aquest és un exemple de resposta enllaunada.
+        Podeu fer servir **markdown*** per a formatar les respostes. Feu clic en el botó **Nova** per a crear noves respostes o el botó **Edita** per a editar o eliminar una resposta enllaunada existent.
+
+        * Aquesta resposta enllaunada s’afegirà quan la llista de respostes estigui buida.*

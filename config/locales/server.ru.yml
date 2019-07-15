@@ -8,6 +8,7 @@
 ru:
   site_settings:
     canned_replies_enabled: 'Отображать кнопку для вставки готовых ответов в редакторе?'
+    canned_replies_groups: 'Добавить доступ к готовым ответам для групп, не связанных с персоналом, по имени группы'
   replies:
     default_reply:
       title: "Мой первый готовый ответ"

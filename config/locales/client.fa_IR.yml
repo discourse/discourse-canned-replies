@@ -15,7 +15,7 @@ fa_IR:
         invalid: عنوان نمیتواند خالی باشد
       content:
         name: 'محتوا'
-        invalid: محتوا نمیتوانتد  خالی باشد.
+        invalid: محتوا نمیتوانتد خالی باشد.
       insert:
         choose: "(پاسخی انتخاب کن)"
         insert_button: "اضافه کن"

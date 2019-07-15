@@ -9,10 +9,24 @@ ca:
   js:
     canned_replies:
       filter_hint: 'títol...'
+      composer_button_text: "Respostes enllaunades"
       title:
         name: 'Títol'
+        invalid: El títol no pot estar buit.
       content:
         name: 'Contingut'
+        invalid: El contingut no pot estar buit.
       insert:
+        choose: "(trieu una resposta)"
+        insert_button: "Insereix una resposta"
         new_button: "Nou"
         edit_button: "Edita"
+        modal_title: "Introduïu una resposta enllaunada"
+        sort:
+          alphabetically: "Ordena alfabèticament"
+          usage: "Ordena per freqüència d&#39;ús"
+      add:
+        modal_title: "Afegeix una resposta enllaunada"
+      edit:
+        modal_title: "Edita la resposta enllaunada"
+        remove_confirm: "Esteu segur que voleu eliminar aquesta resposta enllaunada?"

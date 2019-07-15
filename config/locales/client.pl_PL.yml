@@ -8,10 +8,25 @@
 pl_PL:
   js:
     canned_replies:
+      filter_hint: 'tytuł…'
+      composer_button_text: "Sugerowane odpowiedzi"
       title:
         name: 'Tytuł'
+        invalid: Tytuł nie może być pusty.
       content:
         name: 'Teksty'
+        invalid: Zawartość nie może być pusta.
       insert:
-        new_button: "Nowi"
+        choose: "(wybierz odpowiedź)"
+        insert_button: "Wstaw odpowiedź"
+        new_button: "Nowa"
         edit_button: "Edytuj"
+        modal_title: "Wstaw sugerowaną odpowiedź"
+        sort:
+          alphabetically: "Sortuj alfabetycznie"
+          usage: "Sortuj wg częstotliwości używania"
+      add:
+        modal_title: "Dodaj sugerowaną odpowiedź"
+      edit:
+        modal_title: "Edytuj sugerowaną odpowiedź"
+        remove_confirm: "Czy na pewno chcesz usunąć tę sugerowaną odpowiedź?"

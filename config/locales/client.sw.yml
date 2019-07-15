@@ -11,7 +11,7 @@ sw:
       filter_hint: 'Kichwa cha habari'
       composer_button_text: "Majibu ambayo yameifadhiwa"
       title:
-        name: 'Kichwa cha  Habari'
+        name: 'Kichwa cha Habari'
         invalid: Kichwa cha habari lazima kiwe na taarifa.
       content:
         name: 'Maudhui'
