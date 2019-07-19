@@ -11,9 +11,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   saving: null,
 
   onShow() {
-    this.setProperties({
-      saving: null
-    });
+    this.set("saving", null);
   },
 
   @computed("saving")
@@ -30,11 +28,11 @@ export default Ember.Controller.extend(ModalFunctionality, {
     save() {
       this.set("saving", true);
 
-      ajax(`/canned_replies/${this.get("replyId")}`, {
+      ajax(`/canned_replies/${this.replyId}`, {
         type: "PATCH",
         data: {
-          title: this.get("replyTitle"),
-          content: this.get("replyContent")
+          title: this.replyTitle,
+          content: this.replyContent
         }
       })
         .catch(popupAjaxError)
@@ -47,7 +45,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
     remove() {
       bootbox.confirm(I18n.t("canned_replies.edit.remove_confirm"), result => {
         if (result) {
-          ajax(`/canned_replies/${this.get("replyId")}`, {
+          ajax(`/canned_replies/${this.replyId}`, {
             type: "DELETE"
           })
             .then(() => {

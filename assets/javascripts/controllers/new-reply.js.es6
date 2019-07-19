@@ -24,7 +24,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
     save() {
       ajax("/canned_replies", {
         type: "POST",
-        data: { title: this.get("newTitle"), content: this.get("newContent") }
+        data: { title: this.newTitle, content: this.newContent }
       })
         .then(() => {
           this.send("closeModal");

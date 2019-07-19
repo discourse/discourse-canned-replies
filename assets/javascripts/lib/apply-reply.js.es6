@@ -14,17 +14,17 @@ export default function(replyId, replyTitle, replyContent, model) {
         model.get("topic.last_poster_username")
     };
 
-    for (var key in vars) {
+    for (let key in vars) {
       if (vars[key]) {
-        replyTitle = replyTitle.replace("%{" + key + "}", vars[key]);
-        replyContent = replyContent.replace("%{" + key + "}", vars[key]);
+        replyTitle = replyTitle.replace(`%{${key}}`, vars[key]);
+        replyContent = replyContent.replace(`%{${key}}`, vars[key]);
       }
     }
   }
 
   // Finally insert canned reply.
   model.appEvents.trigger("composer:insert-block", replyContent);
-  if (model && !model.get("title")) {
+  if (model && !model.title) {
     model.set("title", replyTitle);
   }
 
