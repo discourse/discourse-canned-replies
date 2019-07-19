@@ -1,12 +1,11 @@
 import selectKit from "helpers/select-kit-helper";
-import { acceptance } from "helpers/qunit-helpers";
+import { acceptance, updateCurrentUser } from "helpers/qunit-helpers";
 import { clearPopupMenuOptionsCallback } from "discourse/controllers/composer";
 
 acceptance("Canned Replies", {
   loggedIn: true,
   settings: {
-    canned_replies_enabled: true,
-    canned_replies_groups: "test_group"
+    canned_replies_enabled: true
   },
   pretend(server, helper) {
     server.patch("/canned_replies/cd6680d7a04caaac1274e6f37429458c/use", () => {
@@ -76,6 +75,7 @@ acceptance("Canned Replies", {
 });
 
 QUnit.test("Inserting canned replies", async assert => {
+  updateCurrentUser({ can_use_canned_replies: true });
   const popUpMenu = selectKit(".toolbar-popup-menu-options");
 
   await visit("/");
@@ -108,6 +108,7 @@ QUnit.test("Inserting canned replies", async assert => {
 });
 
 QUnit.test("Editing a canned reply", async assert => {
+  updateCurrentUser({ can_use_canned_replies: true });
   const popUpMenu = selectKit(".toolbar-popup-menu-options");
 
   await visit("/");
@@ -132,6 +133,7 @@ QUnit.test("Editing a canned reply", async assert => {
 });
 
 QUnit.test("Creating a new canned reply", async assert => {
+  updateCurrentUser({ can_use_canned_replies: true });
   const popUpMenu = selectKit(".toolbar-popup-menu-options");
 
   await visit("/");
@@ -164,6 +166,7 @@ QUnit.test("Creating a new canned reply", async assert => {
 });
 
 QUnit.test("Replacing variables", async assert => {
+  updateCurrentUser({ can_use_canned_replies: true });
   const popUpMenu = selectKit(".toolbar-popup-menu-options");
 
   await visit("/");
@@ -184,6 +187,7 @@ QUnit.test("Replacing variables", async assert => {
 });
 
 QUnit.test("Reset modal content", async assert => {
+  updateCurrentUser({ can_use_canned_replies: true });
   const popUpMenu = selectKit(".toolbar-popup-menu-options");
 
   await visit("/");
