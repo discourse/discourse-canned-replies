@@ -9,7 +9,7 @@ export default Ember.Component.extend({
       this.toggleProperty("isOpen");
     },
 
-    apply: function() {
+    apply() {
       const composer = Discourse.__container__.lookup("controller:composer");
 
       applyReply(
@@ -22,7 +22,7 @@ export default Ember.Component.extend({
       this.appEvents.trigger("canned-replies:hide");
     },
 
-    editReply: function() {
+    editReply() {
       const composer = Discourse.__container__.lookup("controller:composer");
 
       composer.send("closeModal");

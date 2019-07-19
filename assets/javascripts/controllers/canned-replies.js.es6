@@ -61,16 +61,14 @@ export default Ember.Controller.extend(ModalFunctionality, {
     newReply() {
       this.send("closeModal");
 
-      showModal("new-reply").setProperties({
-        newContent: this.composerModel.reply
-      });
+      showModal("new-reply").set("newContent", this.composerModel.reply);
     },
 
     editReply() {
       this.send("closeModal");
 
       showModal("edit-reply").setProperties({
-        replyId: this.get("selectedReplyId"),
+        replyId: this.selectedReplyId,
         replyTitle: this.get("selectedReply.title"),
         replyContent: this.get("selectedReply.content")
       });
