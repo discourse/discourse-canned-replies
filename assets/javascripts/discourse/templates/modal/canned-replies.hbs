@@ -38,14 +38,14 @@
   {{#if selectedReply}}
     {{d-button
       class="pull-left canned-replies-edit"
-      action="editReply"
+      action=(action "editReply")
       icon="pencil-alt"
       label="canned_replies.insert.edit_button"
     }}
 
     {{d-button
       class="btn-primary pull-right canned-replies-apply"
-      action="apply"
+      action=(action "apply")
       icon="far-clipboard"
       label="canned_replies.insert.insert_button"
     }}
