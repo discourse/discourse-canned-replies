@@ -14,8 +14,13 @@
   }
 }
 
-.mobile-view .canned-replies-modal .d-editor-preview-wrapper {
-  display: none;
+.mobile-view .canned-replies-modal {
+  .content {
+    max-height: 50vh;
+  }
+  .d-editor-preview-wrapper {
+    display: none;
+  }
 }
 
 .canned-replies-footer {
