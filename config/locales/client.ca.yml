@@ -24,7 +24,7 @@ ca:
         modal_title: "Introduïu una resposta enllaunada"
         sort:
           alphabetically: "Ordena alfabèticament"
-          usage: "Ordena per freqüència d&#39;ús"
+          usage: "Ordena per freqüència d'ús"
       add:
         modal_title: "Afegeix una resposta enllaunada"
       edit:

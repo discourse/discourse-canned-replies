@@ -8,6 +8,7 @@
 fi:
   site_settings:
     canned_replies_enabled: 'Näytä lisää tallennettu vastaus viesti-ikkunassa?'
+    canned_replies_groups: 'Lisää pääsy tallennettuihin vastauksiin ei-henkilöstö ryhmille ryhmän nimen perusteella'
   replies:
     default_reply:
       title: "Ensimmäinen tallennettu vastaukseni"
