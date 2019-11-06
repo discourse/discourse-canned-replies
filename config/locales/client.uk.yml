@@ -8,10 +8,25 @@
 uk:
   js:
     canned_replies:
+      filter_hint: 'назва...'
+      composer_button_text: "Готові відповіді"
       title:
         name: 'Назва'
+        invalid: Назва не може бути порожньою.
       content:
         name: 'Вміст'
+        invalid: Вміст не може бути порожнім.
       insert:
+        choose: "(виберіть відповідь)"
+        insert_button: "Вставити відповідь"
         new_button: "Новий"
         edit_button: "Редагувати"
+        modal_title: "Вставити готову відповідь"
+        sort:
+          alphabetically: "Сортування за алфавітом"
+          usage: "Сортувати за частотою використання"
+      add:
+        modal_title: "Додати готову відповідь"
+      edit:
+        modal_title: "Редагувати готову відповідь"
+        remove_confirm: "Ви впевнені, що хочете видалити цю готову відповідь?"
