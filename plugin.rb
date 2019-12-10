@@ -126,7 +126,7 @@ after_initialize do
 
     def update
       reply_id = params.require(:id)
-      title   = params.require(:title)
+      title = params.require(:title)
       content = params.require(:content)
       user_id = current_user.id
 
