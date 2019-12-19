@@ -7,4 +7,13 @@
 
 nl:
   site_settings:
-    canned_replies_enabled: 'De standaard antwoordknop in het bewerk venster tonen?'
+    canned_replies_enabled: 'Knop Sjabloonantwoord invoegen in editorvenster tonen?'
+    canned_replies_groups: 'Toegang tot sjabloonantwoorden voor niet-stafgroepen toevoegen op groepsnaam'
+  replies:
+    default_reply:
+      title: "Mijn eerste sjabloonantwoord"
+      body: |
+        Dit is een voorbeeld van een sjabloonantwoord.
+        U kunt **markdown** gebruiken om stijlen aan uw antwoorden te geven. Klik op de knop **Nieuw** om nieuwe antwoorden te maken of op de knop **Bewerken** om een bestaand sjabloonantwoord te bewerken of te verwijderen.
+
+        *Dit sjabloonantwoord wordt toegevoegd wanneer de antwoordenlijst leeg is.*

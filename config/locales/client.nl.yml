@@ -8,17 +8,25 @@
 nl:
   js:
     canned_replies:
-      filter_hint: 'titel....'
+      filter_hint: 'titel...'
+      composer_button_text: "Sjabloonantwoorden"
       title:
         name: 'Titel'
         invalid: Titel kan niet leeg zijn.
       content:
-        name: 'Teksten'
+        name: 'Inhoud'
         invalid: Inhoud kan niet leeg zijn.
       insert:
         choose: "(kies een antwoord)"
-        insert_button: "Antwoord Invoegen"
+        insert_button: "Antwoord invoegen"
         new_button: "Nieuw"
         edit_button: "Bewerken"
+        modal_title: "Sjabloonantwoord invoegen"
         sort:
-          alphabetically: "Sorteer alfabetisch"
+          alphabetically: "Alfabetisch sorteren"
+          usage: "Sorteren op gebruiksfrequentie"
+      add:
+        modal_title: "Sjabloonantwoord toevoegen"
+      edit:
+        modal_title: "Sjabloonantwoord bewerken"
+        remove_confirm: "Weet u zeker dat u dit sjabloonantwoord wilt verwijderen?"
