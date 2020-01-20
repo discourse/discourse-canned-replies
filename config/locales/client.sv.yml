@@ -8,10 +8,25 @@
 sv:
   js:
     canned_replies:
+      filter_hint: 'rubrik...'
+      composer_button_text: "Förberedda svar"
       title:
         name: 'Rubrik'
+        invalid: Rubriken kan inte vara tom.
       content:
-        name: 'Sidinnehåll'
+        name: 'Innehåll'
+        invalid: Innehållet kan inte vara tomt.
       insert:
+        choose: "(välj ett svar)"
+        insert_button: "Infoga svar"
         new_button: "Ny"
         edit_button: "Redigera"
+        modal_title: "Infoga förberett svar"
+        sort:
+          alphabetically: "Sortera alfabetiskt"
+          usage: "Sortera efter användningsfrekvens"
+      add:
+        modal_title: "Lägg till förberett svar"
+      edit:
+        modal_title: "Redigera förberett svar"
+        remove_confirm: "Är du säker på att du vill ta bort detta förberedda svar?"
