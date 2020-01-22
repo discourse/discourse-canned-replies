@@ -13,21 +13,14 @@ export default {
     });
 
     if (!component.appEvents.has("canned-replies:show")) {
-      component.appEvents.on("canned-replies:show", () => {
-        component.send("show");
-      });
+      this.showCanned = () => component.send("show");
+      component.appEvents.on("canned-replies:show", this, this.showCanned);
     }
 
     if (!component.appEvents.has("canned-replies:hide")) {
-      component.appEvents.on("canned-replies:hide", () => {
-        component.send("hide");
-      });
+      this.hideCanned = () => component.send("hide");
+      component.appEvents.on("canned-replies:hide", this, this.hideCanned);
     }
-
-    component.appEvents.on("composer:will-close", () => {
-      component.appEvents.off("canned-replies:show");
-      component.appEvents.off("canned-replies:hide");
-    });
 
     component.addObserver("listFilter", function() {
       const filterTitle = component.listFilter.toLowerCase();
@@ -54,6 +47,13 @@ export default {
         });
       component.set("filteredReplies", filtered);
     });
+  },
+
+  teardownComponent(component) {
+    if (component.appEvents.has("canned-replies:show") && this.showCanned) {
+      component.appEvents.off("canned-replies:show", this, this.showCanned);
+      component.appEvents.off("canned-replies:hide", this, this.hideCanned);
+    }
   },
 
   actions: {
