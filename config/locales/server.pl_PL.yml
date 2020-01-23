@@ -13,7 +13,7 @@ pl_PL:
     default_reply:
       title: "Moja pierwsza sugerowana odpowiedź"
       body: |
-        To jest przykłąd sugerowanej odpowiedzi.
+        To jest przykład sugerowanej odpowiedzi.
         Możesz użyć **markdown**, by stylizować swoje odpowiedzi. Naciśnij przycisk **nowa**, by stworzyć nową odpowiedź lub **edytuj*, by edytować lub usunąć sugerowaną odpowiedź.
 
         *Ta odpowiedź sugerowana będzie dodana, gdy lista odpowiedzi jest pusta.*
