@@ -88,7 +88,6 @@ QUnit.test("Inserting canned replies", async assert => {
 
   await popUpMenu.expand();
   await popUpMenu.selectRowByValue("showCannedRepliesButton");
-
   await click(".canned-reply-title");
 
   assert.ok(
@@ -100,11 +99,15 @@ QUnit.test("Inserting canned replies", async assert => {
 
   await click(".canned-replies-apply");
 
-  assert.equal(
-    find(".d-editor-input").val(),
-    "before\n\n**markdown**\n\nafter",
-    "it should contain the right selected output"
-  );
+  const done = assert.async();
+  setTimeout(function() {
+    assert.equal(
+      find(".d-editor-input").val(),
+      "before\n\n**markdown**\n\nafter",
+      "it should contain the right selected output"
+    );
+    done();
+  }, 10);
 });
 
 QUnit.test("Editing a canned reply", async assert => {
