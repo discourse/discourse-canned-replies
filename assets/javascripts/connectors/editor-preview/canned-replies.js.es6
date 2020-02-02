@@ -2,6 +2,7 @@ import showModal from "discourse/lib/show-modal";
 import { ajax } from "discourse/lib/ajax";
 import { popupAjaxError } from "discourse/lib/ajax-error";
 import { getOwner } from "discourse-common/lib/get-owner";
+import { action } from "@ember/object";
 
 export default {
   shouldRender(args) {
@@ -16,11 +17,8 @@ export default {
       filteredReplies: []
     });
 
-    this.showCanned = () => component.send("show");
-    component.appEvents.on("canned-replies:show", this, this.showCanned);
-
-    this.hideCanned = () => component.send("hide");
-    component.appEvents.on("canned-replies:hide", this, this.hideCanned);
+    component.appEvents.on("canned-replies:show", this, this.show);
+    component.appEvents.on("canned-replies:hide", this, this.hide);
 
     component.addObserver("listFilter", function() {
       const filterTitle = component.listFilter.toLowerCase();
@@ -50,42 +48,43 @@ export default {
   },
 
   teardownComponent(component) {
-    component.appEvents.off("canned-replies:show", this, this.showCanned);
-    component.appEvents.off("canned-replies:hide", this, this.hideCanned);
+    component.appEvents.off("canned-replies:show", this, this.show);
+    component.appEvents.off("canned-replies:hide", this, this.hide);
   },
 
-  actions: {
-    show() {
-      $("#reply-control .d-editor-preview-wrapper > .d-editor-preview").hide();
-      this.setProperties({ isVisible: true, loadingReplies: true });
+  @action
+  show() {
+    $("#reply-control .d-editor-preview-wrapper > .d-editor-preview").hide();
+    this.setProperties({ isVisible: true, loadingReplies: true });
 
-      ajax("/canned_replies")
-        .then(results => {
-          this.setProperties({
-            replies: results.replies,
-            filteredReplies: results.replies
-          });
-        })
-        .catch(popupAjaxError)
-        .finally(() => {
-          this.set("loadingReplies", false);
-
-          Ember.run.schedule("afterRender", () =>
-            document.querySelector(".canned-replies-filter").focus()
-          );
+    ajax("/canned_replies")
+      .then(results => {
+        this.setProperties({
+          replies: results.replies,
+          filteredReplies: results.replies
         });
-    },
+      })
+      .catch(popupAjaxError)
+      .finally(() => {
+        this.set("loadingReplies", false);
 
-    hide() {
-      $(".d-editor-preview-wrapper > .d-editor-preview").show();
-      this.set("isVisible", false);
-    },
+        Ember.run.schedule("afterRender", () =>
+          document.querySelector(".canned-replies-filter").focus()
+        );
+      });
+  },
 
-    newReply() {
-      const composer = getOwner(this).lookup("controller:composer");
-      composer.send("closeModal");
+  @action
+  hide() {
+    $(".d-editor-preview-wrapper > .d-editor-preview").show();
+    this.set("isVisible", false);
+  },
 
-      showModal("new-reply").set("newContent", composer.model.reply);
-    }
+  @action
+  newReply() {
+    const composer = getOwner(this).lookup("controller:composer");
+    composer.send("closeModal");
+
+    showModal("new-reply").set("newContent", composer.model.reply);
   }
 };
