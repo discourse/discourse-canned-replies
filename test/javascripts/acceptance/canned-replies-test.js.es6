@@ -107,7 +107,7 @@ QUnit.test("Inserting canned replies", async assert => {
       "it should contain the right selected output"
     );
     done();
-  }, 10);
+  }, 50);
 });
 
 QUnit.test("Editing a canned reply", async assert => {
