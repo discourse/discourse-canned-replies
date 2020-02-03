@@ -100,14 +100,14 @@ QUnit.test("Inserting canned replies", async assert => {
   await click(".canned-replies-apply");
 
   const done = assert.async();
-  setTimeout(function() {
+  Ember.run.later(() => {
     assert.equal(
       find(".d-editor-input").val(),
       "before\n\n**markdown**\n\nafter",
       "it should contain the right selected output"
     );
     done();
-  }, 50);
+  }, 10);
 });
 
 QUnit.test("Editing a canned reply", async assert => {
