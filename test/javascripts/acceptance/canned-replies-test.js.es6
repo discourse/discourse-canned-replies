@@ -91,23 +91,21 @@ QUnit.test("Inserting canned replies", async assert => {
   await click(".canned-reply-title");
 
   assert.ok(
-    find(".canned-replies-content")
+    find("#canned-reply-ce5fc200ab90dd0d5ac597ca9bb4708b")
       .html()
       .indexOf("<strong>markdown</strong>") !== -1,
     "it should display the right cooked content"
   );
 
-  await click(".canned-replies-apply");
+  await click(
+    "#canned-reply-ce5fc200ab90dd0d5ac597ca9bb4708b .canned-replies-apply"
+  );
 
-  const done = assert.async();
-  Ember.run.later(() => {
-    assert.equal(
-      find(".d-editor-input").val(),
-      "before\n\n**markdown**\n\nafter",
-      "it should contain the right selected output"
-    );
-    done();
-  }, 10);
+  assert.equal(
+    find(".d-editor-input").val(),
+    "before\n\n**markdown**\n\nafter",
+    "it should contain the right selected output"
+  );
 });
 
 QUnit.test("Editing a canned reply", async assert => {
