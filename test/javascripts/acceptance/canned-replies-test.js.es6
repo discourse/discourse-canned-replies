@@ -91,7 +91,7 @@ QUnit.test("Inserting canned replies", async assert => {
   await click(".canned-reply-title");
 
   assert.ok(
-    find("#canned-reply-ce5fc200ab90dd0d5ac597ca9bb4708b")
+    find(".canned-replies-content")
       .html()
       .indexOf("<strong>markdown</strong>") !== -1,
     "it should display the right cooked content"
