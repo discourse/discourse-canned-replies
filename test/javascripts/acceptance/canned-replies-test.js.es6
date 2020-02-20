@@ -62,8 +62,8 @@ acceptance("Canned Replies", {
           {
             id: "04697870e02acfef3c2130dab92fe6d8",
             title: "Using variables",
-            excerpt: "%{user}",
-            content: "%{user}"
+            excerpt: "Hi %{reply_to_username,fallback:there}, regards %{my_username}.",
+            content: "Hi %{reply_to_username,fallback:there}, regards %{my_username}."
           }
         ]
       });
@@ -182,7 +182,7 @@ QUnit.test("Replacing variables", async assert => {
     find(".d-editor-input")
       .val()
       .trim(),
-    "eviltrout",
+    "Hi there, regards eviltrout.",
     "it should replace variables"
   );
 });
