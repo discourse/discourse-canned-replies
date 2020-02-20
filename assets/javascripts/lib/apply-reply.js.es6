@@ -13,19 +13,30 @@ export default function(replyId, replyTitle, replyContent, model) {
       reply_to_name: model.get("post.name"),
       last_poster_username: model.get("topic.last_poster_username"),
       reply_to_or_last_poster_username:
-        model.get("post.username") ||
-        model.get("topic.last_poster_username")
+        model.get("post.username") || model.get("topic.last_poster_username")
     };
 
     for (let key in vars) {
       if (vars[key]) {
-        replyTitle = replyTitle.replace(new RegExp(`%{${key}(,fallback:.[^}]*)?}`, 'g'), vars[key]);
-        replyContent = replyContent.replace(new RegExp(`%{${key}(,fallback:.[^}]*)?}`, 'g'), vars[key]);
+        replyTitle = replyTitle.replace(
+          new RegExp(`%{${key}(,fallback:.[^}]*)?}`, "g"),
+          vars[key]
+        );
+        replyContent = replyContent.replace(
+          new RegExp(`%{${key}(,fallback:.[^}]*)?}`, "g"),
+          vars[key]
+        );
       } else {
-        replyTitle = replyTitle.replace(new RegExp(`%{${key},fallback:(.[^}]*)}`, 'g'), '$1');
-        replyTitle = replyTitle.replace(new RegExp(`%{${key}}`, 'g'), "");
-        replyContent = replyContent.replace(new RegExp(`%{${key},fallback:(.[^}]*)}`, 'g'), '$1');
-        replyContent = replyContent.replace(new RegExp(`%{${key}}`, 'g'), "");
+        replyTitle = replyTitle.replace(
+          new RegExp(`%{${key},fallback:(.[^}]*)}`, "g"),
+          "$1"
+        );
+        replyTitle = replyTitle.replace(new RegExp(`%{${key}}`, "g"), "");
+        replyContent = replyContent.replace(
+          new RegExp(`%{${key},fallback:(.[^}]*)}`, "g"),
+          "$1"
+        );
+        replyContent = replyContent.replace(new RegExp(`%{${key}}`, "g"), "");
       }
     }
   }
