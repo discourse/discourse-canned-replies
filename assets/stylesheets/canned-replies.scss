@@ -15,8 +15,17 @@
 }
 
 .mobile-view .canned-replies-modal {
+  min-height: 50vh;
+  box-sizing: border-box;
+  width: 100vw;
+  overflow-x: hidden;
+
   .content {
     max-height: 50vh;
+  }
+
+  .select-kit {
+    width: 100%;
   }
   .d-editor-preview-wrapper {
     display: none;
