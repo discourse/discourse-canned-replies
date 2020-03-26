@@ -3,13 +3,26 @@ import { ajax } from "discourse/lib/ajax";
 import { popupAjaxError } from "discourse/lib/ajax-error";
 import { getOwner } from "discourse-common/lib/get-owner";
 
+//const siteSettings = Discourse.SiteSettings
+
 export default {
+
   setupComponent(args, component) {
+    
+    const currentUser = this.get('currentUser');
+    const everyoneCanEdit = this.get("siteSettings.canned_replies_everyone_enabled") && this.get("siteSettings.canned_replies_everyone_can_edit");
+    const currentUserCanEdit = this.get("siteSettings.canned_replies_enabled") &&
+      currentUser &&
+      currentUser.can_edit_canned_replies
+    const canEdit = currentUserCanEdit ? currentUserCanEdit : everyoneCanEdit
+    this.set("canEdit", canEdit);
+    console.log('hello');
+
     component.setProperties({
       isVisible: false,
       loadingReplies: false,
       replies: [],
-      filteredReplies: []
+      filteredReplies: [],
     });
 
     if (!component.appEvents.has("canned-replies:show")) {
@@ -72,9 +85,11 @@ export default {
         .finally(() => {
           this.set("loadingReplies", false);
 
-          Ember.run.schedule("afterRender", () =>
-            document.querySelector(".canned-replies-filter").focus()
-          );
+          if (this.canEdit) {
+            Ember.run.schedule("afterRender", () =>
+              document.querySelector(".canned-replies-filter").focus()
+            );
+          }
         });
     },
 
