@@ -4,12 +4,13 @@ import { popupAjaxError } from "discourse/lib/ajax-error";
 import { getOwner } from "discourse-common/lib/get-owner";
 
 export default {
-
   setupComponent(args, component) {
-
-    const currentUser = this.get('currentUser');
-    const everyoneCanEdit = this.get("siteSettings.canned_replies_everyone_enabled") && this.get("siteSettings.canned_replies_everyone_can_edit");
-    const currentUserCanEdit = this.get("siteSettings.canned_replies_enabled") &&
+    const currentUser = this.get("currentUser");
+    const everyoneCanEdit =
+      this.get("siteSettings.canned_replies_everyone_enabled") &&
+      this.get("siteSettings.canned_replies_everyone_can_edit");
+    const currentUserCanEdit =
+      this.get("siteSettings.canned_replies_enabled") &&
       currentUser &&
       currentUser.can_edit_canned_replies;
     const canEdit = currentUserCanEdit ? currentUserCanEdit : everyoneCanEdit;
