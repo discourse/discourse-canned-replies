@@ -35,8 +35,18 @@ RSpec.describe CannedReply::CannedRepliesController do
       it 'should raise the right error' do
         user
 
-        post '/canned_replies'
+        get '/canned_replies'
         expect(response.status).to eq(404)
+      end
+    end
+
+    context 'as a normal user with everyone enabled' do
+      it 'should not raise an error' do
+        SiteSetting.canned_replies_everyone_enabled = true
+        user
+
+        get '/canned_replies'
+        expect(response.status).to eq(200)
       end
     end
 
@@ -89,6 +99,14 @@ RSpec.describe CannedReply::CannedRepliesController do
         delete '/canned_replies/someid'
         expect(response.status).to eq(404)
       end
+
+      it 'should raise the right error with everyone enabled' do
+        SiteSetting.canned_replies_everyone_enabled = true
+        user
+
+        delete '/canned_replies/someid'
+        expect(response.status).to eq(404)
+      end
     end
 
     let(:remove_canned_replies) do
@@ -125,11 +143,28 @@ RSpec.describe CannedReply::CannedRepliesController do
         remove_canned_replies
       end
     end
+
+    context 'as a regular user with everyone can edit enabled' do
+      it 'should be able to remove reply' do
+        SiteSetting.canned_replies_everyone_enabled = true
+        SiteSetting.canned_replies_everyone_can_edit = true
+        user
+
+        remove_canned_replies
+      end
+    end
   end
 
   describe 'editing a canned reply' do
     context 'as a normal user' do
       it 'should raise the right error' do
+        user
+
+        put '/canned_replies/someid'
+        expect(response.status).to eq(404)
+      end
+      it 'should raise the right error with everyone enabled' do
+        SiteSetting.canned_replies_everyone_enabled = true
         user
 
         put '/canned_replies/someid'
@@ -177,6 +212,15 @@ RSpec.describe CannedReply::CannedRepliesController do
         edit_canned_reply
       end
     end
+    context 'as a regular user with everyone can edit enabled' do
+      it 'should be able to edit a reply' do
+        SiteSetting.canned_replies_everyone_enabled = true
+        SiteSetting.canned_replies_everyone_can_edit = true
+        user
+
+        edit_canned_reply
+      end
+    end
   end
 
   describe 'recording canned replies usages' do
@@ -187,6 +231,18 @@ RSpec.describe CannedReply::CannedRepliesController do
 
         patch "/canned_replies/#{canned_reply[:id]}/use"
         expect(response.status).to eq(404)
+      end
+
+      it 'should be able to record a user with everyone enabled' do
+        SiteSetting.canned_replies_everyone_enabled = true
+        canned_reply
+        user
+
+        patch "/canned_replies/#{canned_reply[:id]}/use"
+        expect(response).to be_successful
+        _id, reply = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME).first
+
+        expect(reply["usages"]).to eq(1)
       end
     end
 
@@ -211,6 +267,14 @@ RSpec.describe CannedReply::CannedRepliesController do
 
         get "/canned_replies/#{canned_reply[:id]}/reply"
         expect(response.status).to eq(404)
+      end
+      it 'should succeed with everyone enabled' do
+        SiteSetting.canned_replies_everyone_enabled = true
+        canned_reply
+        user
+
+        get "/canned_replies/#{canned_reply[:id]}/reply"
+        expect(response).to be_successful
       end
     end
 

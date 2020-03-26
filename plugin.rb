@@ -148,8 +148,16 @@ after_initialize do
     end
   end
 
+  add_to_class(:user, :can_edit_canned_replies?) do
+    return true if staff?
+    return true if SiteSetting.canned_replies_everyone_can_edit
+    group_list = SiteSetting.canned_replies_groups.split("|").map(&:downcase)
+    groups.any? { |group| group_list.include?(group.name.downcase) }
+  end
+
   add_to_class(:user, :can_use_canned_replies?) do
     return true if staff?
+    return true if SiteSetting.canned_replies_everyone_enabled
     group_list = SiteSetting.canned_replies_groups.split("|").map(&:downcase)
     groups.any? { |group| group_list.include?(group.name.downcase) }
   end
@@ -158,11 +166,19 @@ after_initialize do
     object.can_use_canned_replies?
   end
 
+  add_to_serializer(:current_user, :can_edit_canned_replies) do
+    object.can_edit_canned_replies?
+  end
+
   require_dependency 'current_user'
   class CannedRepliesConstraint
     def matches?(request)
       provider = Discourse.current_user_provider.new(request.env)
-      provider.current_user&.can_use_canned_replies?
+      if request.get? || request.patch?
+        provider.current_user&.can_use_canned_replies?
+      else
+        provider.current_user&.can_edit_canned_replies?
+      end
     rescue Discourse::InvalidAccess, Discourse::ReadOnly
       false
     end

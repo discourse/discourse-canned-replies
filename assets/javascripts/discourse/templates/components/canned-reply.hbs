@@ -6,11 +6,13 @@
       icon="far-clipboard"
     }}
 
-    {{d-button
-      class="canned-replies-edit"
-      action=(action "editReply")
-      icon="pencil-alt"
-    }}
+    {{#if canEdit}}
+      {{d-button
+        class="canned-replies-edit"
+        action=(action "editReply")
+        icon="pencil-alt"
+      }}
+    {{/if}}
 
     <b>{{reply.title}}</b>
   </div>
