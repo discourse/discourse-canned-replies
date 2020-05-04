@@ -9,6 +9,8 @@ he:
   site_settings:
     canned_replies_enabled: 'להציג כפתור הוספת תגובה מוכנה בחלון כתיבת ההודעה?'
     canned_replies_groups: 'הוספת גישה לתגובות מוכנות לקבוצות שאינן לחברי סגל לפי שם קבוצה'
+    canned_replies_everyone_enabled: 'לאפשר לכולם להשתמש בתגובות מוכנות'
+    canned_replies_everyone_can_edit: 'לכולם יש את האפשרות ליצור, לערוך ולמחוק תגובות מוכנות מראש'
   replies:
     default_reply:
       title: "התגובה המוכנה הראשונה שלי"

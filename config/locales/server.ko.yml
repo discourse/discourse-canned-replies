@@ -5,4 +5,12 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-ko: {}
+ko:
+  site_settings:
+    canned_replies_enabled: '작성기 창에 미리 준비된 답장 삽입 버튼을 표시 하시겠습니까?'
+    canned_replies_groups: '비 직원 그룹의 미리 준비된 답변에 그룹 이름별로 액세스 권한 추가'
+    canned_replies_everyone_enabled: '모든 사람이 미리 준비된 답변을 사용할 수 있도록 허용'
+    canned_replies_everyone_can_edit: '모든 사람이 미리 준비된 답장을 작성, 편집 및 삭제하도록 허용'
+  replies:
+    default_reply:
+      title: "나의 첫 통조림 답변"

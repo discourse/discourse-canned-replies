@@ -9,6 +9,8 @@ sv:
   site_settings:
     canned_replies_enabled: 'Vill du visa knappen Infoga förberett svar i redigeringsfönstret?'
     canned_replies_groups: 'Lägg till åtkomst till förberedda svar för icke-personalgrupper efter gruppnamn'
+    canned_replies_everyone_enabled: 'Tillåt samtliga att använda förberedda svar'
+    canned_replies_everyone_can_edit: 'Tillåt samtliga att skapa, ändra eller radera förberedda svar'
   replies:
     default_reply:
       title: "Mitt första förberedda svar"

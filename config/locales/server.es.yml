@@ -9,6 +9,8 @@ es:
   site_settings:
     canned_replies_enabled: '¿Mostrar el botón de insertar respuestas predefinidas en el editor?'
     canned_replies_groups: 'Añadir acceso a las respuestas predefinidas para grupos que no sean parte del staff por nombre de grupo'
+    canned_replies_everyone_enabled: 'Permitir a todos usar respuestas enlatadas'
+    canned_replies_everyone_can_edit: 'Permitir a todos crear, editar, y borrar respuestas enlatadas'
   replies:
     default_reply:
       title: "Mi primera respuesta predefinida"

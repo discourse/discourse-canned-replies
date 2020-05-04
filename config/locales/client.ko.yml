@@ -8,11 +8,25 @@
 ko:
   js:
     canned_replies:
-      filter_hint: '제목...'
+      filter_hint: '표제...'
+      composer_button_text: "미리 준비된 답변"
       title:
         name: '제목'
+        invalid: 제목은 비워 둘 수 없습니다.
       content:
         name: '사이트 컨텐츠'
+        invalid: 내용은 비워 둘 수 없습니다.
       insert:
+        choose: "(답장 선택)"
+        insert_button: "답장 삽입"
         new_button: "새값"
         edit_button: "수정"
+        modal_title: "미리 준비된 답변 삽입"
+        sort:
+          alphabetically: "알파벳순으로 정렬"
+          usage: "사용 빈도별로 정렬"
+      add:
+        modal_title: "미리 준비된 답변 추가"
+      edit:
+        modal_title: "미리 준비된 답변 수정"
+        remove_confirm: "이 미리 준비된 답장을 삭제 하시겠습니까?"
