@@ -8,25 +8,25 @@
 fr:
   js:
     canned_replies:
-      filter_hint: 'titre...'
-      composer_button_text: "Réponses pré-définies"
+      filter_hint: 'titre…'
+      composer_button_text: "Réponses prédéfinies"
       title:
         name: 'Titre'
-        invalid: Le titre ne peut être vide.
+        invalid: Le titre ne peut pas être vide.
       content:
         name: 'Contenu'
-        invalid: Le contenu ne peut être vide.
+        invalid: Le contenu ne peut pas être vide.
       insert:
         choose: "(choisir une réponse)"
-        insert_button: "Insérer Réponse"
+        insert_button: "Insérer la réponse"
         new_button: "Nouveau"
         edit_button: "Modifier"
-        modal_title: "Insérer Réponse Pré-définie"
+        modal_title: "Insérer la réponse prédéfinie"
         sort:
           alphabetically: "Trier par ordre alphabétique"
           usage: "Trier par fréquence d'utilisation"
       add:
-        modal_title: "Ajouter une réponse pré-définie"
+        modal_title: "Ajouter une réponse prédéfinie"
       edit:
-        modal_title: "Modifier une réponse pré-définie"
-        remove_confirm: "Êtes-vous sûr de vouloir supprimer cette réponse pré-définie ?"
+        modal_title: "Modifier une réponse prédéfinie"
+        remove_confirm: "Êtes-vous sûr de vouloir supprimer cette réponse prédéfinie ?"
