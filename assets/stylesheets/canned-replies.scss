@@ -37,7 +37,7 @@
 }
 
 .canned-reply-title:hover {
-  background-color: $highlight-medium;
+  background-color: var(--highlight-medium, $highlight-medium);
   cursor: pointer;
 }
 
