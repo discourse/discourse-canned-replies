@@ -1,8 +1,20 @@
-# encoding: utf-8
-#
-# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
 #
 # To work with us on translations, join this project:
-# https://www.transifex.com/projects/p/discourse-org/
+# https://translate.discourse.org/
 
-pt: {}
+pt:
+  site_settings:
+    canned_replies_enabled: 'Mostrar o botão de inserção de resposta gravada na janela do compor?'
+    canned_replies_groups: 'Adicionar acesso para as respostas gravadas para os grupos não pertencentes à equipa por nome do grupo'
+    canned_replies_everyone_enabled: 'Permitir que todos utilizem as respostas gravadas'
+    canned_replies_everyone_can_edit: 'Permitir que todos criem, editem e eliminem as respostas gravadas'
+  replies:
+    default_reply:
+      title: "A minha primeira resposta gravada"
+      body: |
+        Este é um exemplo de resposta gravada.
+        Pode utilizar a **marcação** para estilizar as suas respostas. Clique no botão **nova** para criar novas respostas ou o botão **editar** para editar ou remover uma resposta existente gravada.
+
+        *Esta resposta gravada será adicionada quando a lista de respostas estiver vazia.*

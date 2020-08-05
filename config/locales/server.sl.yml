@@ -1,18 +1,20 @@
-# encoding: utf-8
-#
-# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
 #
 # To work with us on translations, join this project:
-# https://www.transifex.com/projects/p/discourse-org/
+# https://translate.discourse.org/
 
 sl:
   site_settings:
-    canned_replies_enabled: 'Prikaži vstavi pripravljen odgovor v oknu urejevalnika?'
+    canned_replies_enabled: 'Prikaži gumb za vstavljanje pripravljenega odgovora v oknu urejevalnika?'
+    canned_replies_groups: 'Omogoči uporabo pripravljenih odgovorov tudi drugim poimenskim skupinam uporabnikov, ne samo osebju'
+    canned_replies_everyone_enabled: 'Dovoli vsem, da uporabljajo pripravljene odgovore'
+    canned_replies_everyone_can_edit: 'Dovoli vsem ustvarjanje, urejanje in brisanje pripravljenih odgovorov'
   replies:
     default_reply:
       title: "Moj prvi pripravljen odgovor"
       body: |
         To je primer pripravljenega odgovora.
-        Uporabite lahko **markdown** za oblikovanje odgovorov. Kliknite na **nov** gumb da ustvarite nove odgovore ali **uredi** gumb za urejanje ali odstranite obstoječi pripravljen odgovor.
+        Za oblikovanje odgovorov lahko uporabite **markdown**. Kliknite na gumb **nov**, da ustvarite nove odgovore ali na gumb **uredi**, da uredite ali odstranite obstoječe odgovore.
 
         *Ta pripravljen odgovor bo dodan, če je seznam pripravljenih odgovorov prazen.*

@@ -1,14 +1,15 @@
-# encoding: utf-8
-#
-# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
 #
 # To work with us on translations, join this project:
-# https://www.transifex.com/projects/p/discourse-org/
+# https://translate.discourse.org/
 
 ru:
   site_settings:
     canned_replies_enabled: 'Отображать кнопку для вставки готовых ответов в редакторе?'
     canned_replies_groups: 'Добавить доступ к готовым ответам для групп, не связанных с персоналом, по имени группы'
+    canned_replies_everyone_enabled: 'Разрешить всем использовать готовые ответы'
+    canned_replies_everyone_can_edit: 'Разрешить всем создавать, редактировать и удалять готовые ответы'
   replies:
     default_reply:
       title: "Мой первый готовый ответ"
