@@ -3,6 +3,7 @@ import showModal from "discourse/lib/show-modal";
 import { ajax } from "discourse/lib/ajax";
 import { default as computed } from "ember-addons/ember-computed-decorators";
 import { popupAjaxError } from "discourse/lib/ajax-error";
+import I18n from "I18n";
 
 export default Ember.Controller.extend(ModalFunctionality, {
   replyTitle: "",

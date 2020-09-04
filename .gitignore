@@ -3,3 +3,5 @@
 .DS_Store
 node_modules/
 yarn-error.log
+node_modules
+.rubocop-https---raw-githubusercontent-com-discourse-*
