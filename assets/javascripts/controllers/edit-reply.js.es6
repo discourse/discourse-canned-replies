@@ -33,8 +33,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
         type: "PATCH",
         data: {
           title: this.replyTitle,
-          content: this.replyContent
-        }
+          content: this.replyContent,
+        },
       })
         .catch(popupAjaxError)
         .finally(() => {
@@ -44,22 +44,25 @@ export default Ember.Controller.extend(ModalFunctionality, {
     },
 
     remove() {
-      bootbox.confirm(I18n.t("canned_replies.edit.remove_confirm"), result => {
-        if (result) {
-          ajax(`/canned_replies/${this.replyId}`, {
-            type: "DELETE"
-          })
-            .then(() => {
-              this.send("closeModal");
-              if (this.site.mobileView) {
-                showModal("canned-replies");
-              } else {
-                this.appEvents.trigger("canned-replies:show");
-              }
+      bootbox.confirm(
+        I18n.t("canned_replies.edit.remove_confirm"),
+        (result) => {
+          if (result) {
+            ajax(`/canned_replies/${this.replyId}`, {
+              type: "DELETE",
             })
-            .catch(popupAjaxError);
+              .then(() => {
+                this.send("closeModal");
+                if (this.site.mobileView) {
+                  showModal("canned-replies");
+                } else {
+                  this.appEvents.trigger("canned-replies:show");
+                }
+              })
+              .catch(popupAjaxError);
+          }
         }
-      });
+      );
     },
 
     cancel() {
@@ -69,6 +72,6 @@ export default Ember.Controller.extend(ModalFunctionality, {
       } else {
         this.appEvents.trigger("canned-replies:show");
       }
-    }
-  }
+    },
+  },
 });

@@ -23,7 +23,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
   onShow() {
     ajax("/canned_replies")
-      .then(results => {
+      .then((results) => {
         this.set("replies", results.replies);
         // trigger update of the selected reply
         this.selectionChange();
@@ -36,7 +36,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
     const localSelectedReplyId = this.get("selectedReplyId");
 
     let localSelectedReply = "";
-    this.get("replies").forEach(entry => {
+    this.get("replies").forEach((entry) => {
       if (entry.id === localSelectedReplyId) {
         localSelectedReply = entry;
         return;
@@ -70,8 +70,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
       showModal("edit-reply").setProperties({
         replyId: this.selectedReplyId,
         replyTitle: this.get("selectedReply.title"),
-        replyContent: this.get("selectedReply.content")
+        replyContent: this.get("selectedReply.content"),
       });
-    }
-  }
+    },
+  },
 });

@@ -20,7 +20,7 @@ export default {
       isVisible: false,
       loadingReplies: false,
       replies: [],
-      filteredReplies: []
+      filteredReplies: [],
     });
 
     if (!component.appEvents.has("canned-replies:show")) {
@@ -33,10 +33,10 @@ export default {
       component.appEvents.on("canned-replies:hide", this, this.hideCanned);
     }
 
-    component.addObserver("listFilter", function() {
+    component.addObserver("listFilter", function () {
       const filterTitle = component.listFilter.toLowerCase();
       const filtered = component.replies
-        .map(reply => {
+        .map((reply) => {
           /* Give a relevant score to each reply. */
           reply.score = 0;
           if (reply.title.toLowerCase().indexOf(filterTitle) !== -1) {
@@ -46,7 +46,7 @@ export default {
           }
           return reply;
         })
-        .filter(reply => reply.score !== 0) // Filter irrelevant replies.
+        .filter((reply) => reply.score !== 0) // Filter irrelevant replies.
         .sort((a, b) => {
           /* Sort replies by relevance and title. */
           if (a.score !== b.score) {
@@ -73,10 +73,10 @@ export default {
       this.setProperties({ isVisible: true, loadingReplies: true });
 
       ajax("/canned_replies")
-        .then(results => {
+        .then((results) => {
           this.setProperties({
             replies: results.replies,
-            filteredReplies: results.replies
+            filteredReplies: results.replies,
           });
         })
         .catch(popupAjaxError)
@@ -101,6 +101,6 @@ export default {
       composer.send("closeModal");
 
       showModal("new-reply").set("newContent", composer.model.reply);
-    }
-  }
+    },
+  },
 };

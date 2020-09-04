@@ -11,7 +11,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   onShow() {
     this.setProperties({
       newTitle: "",
-      newContent: ""
+      newContent: "",
     });
   },
 
@@ -24,7 +24,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
     save() {
       ajax("/canned_replies", {
         type: "POST",
-        data: { title: this.newTitle, content: this.newContent }
+        data: { title: this.newTitle, content: this.newContent },
       })
         .then(() => {
           this.send("closeModal");
@@ -44,6 +44,6 @@ export default Ember.Controller.extend(ModalFunctionality, {
       } else {
         this.appEvents.trigger("canned-replies:show");
       }
-    }
-  }
+    },
+  },
 });

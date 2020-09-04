@@ -5,7 +5,7 @@ import { clearPopupMenuOptionsCallback } from "discourse/controllers/composer";
 acceptance("Canned Replies", {
   loggedIn: true,
   settings: {
-    canned_replies_enabled: true
+    canned_replies_enabled: true,
   },
   pretend(server, helper) {
     server.patch("/canned_replies/cd6680d7a04caaac1274e6f37429458c/use", () => {
@@ -36,28 +36,28 @@ acceptance("Canned Replies", {
             id: "ce5fc200ab90dd0d5ac597ca9bb4708b",
             title: "Small markdown example",
             excerpt: "markdown",
-            content: "**markdown**"
+            content: "**markdown**",
           },
           {
             id: "cd6680d7a04caaac1274e6f37429458c",
             title: "My first canned reply",
             excerpt: "This is an example canned reply",
             content:
-              "This is an example canned reply.\nYou can user **markdown** to style your replies. Click the **new** button to create new replies or the **edit** button to edit or remove an existing canned reply.\n\n*This canned reply will be added when the replies list is empty.*"
+              "This is an example canned reply.\nYou can user **markdown** to style your replies. Click the **new** button to create new replies or the **edit** button to edit or remove an existing canned reply.\n\n*This canned reply will be added when the replies list is empty.*",
           },
           {
             id: "1a1987620aa49135344abe65eb43302d",
             title: "Testing",
             excerpt: "",
             content: "<script>alert('ahah')</script>",
-            usages: 1
+            usages: 1,
           },
           {
             id: "5317b7fd066d3d4c15acde92d70f0377",
             title: "This is a test",
             excerpt: "Testing",
             content: "Testing testin **123**",
-            usages: 1
+            usages: 1,
           },
           {
             id: "04697870e02acfef3c2130dab92fe6d8",
@@ -65,21 +65,21 @@ acceptance("Canned Replies", {
             excerpt:
               "Hi %{reply_to_username,fallback:there}, regards %{my_username}.",
             content:
-              "Hi %{reply_to_username,fallback:there}, regards %{my_username}."
-          }
-        ]
+              "Hi %{reply_to_username,fallback:there}, regards %{my_username}.",
+          },
+        ],
       });
     });
   },
   beforeEach() {
     clearPopupMenuOptionsCallback();
-  }
+  },
 });
 
-QUnit.test("Inserting canned replies", async assert => {
+QUnit.test("Inserting canned replies", async (assert) => {
   updateCurrentUser({
     can_use_canned_replies: true,
-    can_edit_canned_replies: true
+    can_edit_canned_replies: true,
   });
   const popUpMenu = selectKit(".toolbar-popup-menu-options");
 
@@ -113,10 +113,10 @@ QUnit.test("Inserting canned replies", async assert => {
   );
 });
 
-QUnit.test("Editing a canned reply", async assert => {
+QUnit.test("Editing a canned reply", async (assert) => {
   updateCurrentUser({
     can_use_canned_replies: true,
-    can_edit_canned_replies: true
+    can_edit_canned_replies: true,
   });
   const popUpMenu = selectKit(".toolbar-popup-menu-options");
 
@@ -134,17 +134,15 @@ QUnit.test("Editing a canned reply", async assert => {
   await click(".edit-reply-save-btn");
 
   assert.equal(
-    find(".canned-replies-footer .btn")
-      .text()
-      .trim(),
+    find(".canned-replies-footer .btn").text().trim(),
     I18n.t("saved")
   );
 });
 
-QUnit.test("Creating a new canned reply", async assert => {
+QUnit.test("Creating a new canned reply", async (assert) => {
   updateCurrentUser({
     can_use_canned_replies: true,
-    can_edit_canned_replies: true
+    can_edit_canned_replies: true,
   });
   const popUpMenu = selectKit(".toolbar-popup-menu-options");
 
@@ -177,10 +175,10 @@ QUnit.test("Creating a new canned reply", async assert => {
   await click(".new-reply-save-btn");
 });
 
-QUnit.test("Replacing variables", async assert => {
+QUnit.test("Replacing variables", async (assert) => {
   updateCurrentUser({
     can_use_canned_replies: true,
-    can_edit_canned_replies: true
+    can_edit_canned_replies: true,
   });
   const popUpMenu = selectKit(".toolbar-popup-menu-options");
 
@@ -193,18 +191,16 @@ QUnit.test("Replacing variables", async assert => {
   await click(".canned-replies-apply:eq(4)");
 
   assert.equal(
-    find(".d-editor-input")
-      .val()
-      .trim(),
+    find(".d-editor-input").val().trim(),
     "Hi there, regards eviltrout.",
     "it should replace variables"
   );
 });
 
-QUnit.test("Reset modal content", async assert => {
+QUnit.test("Reset modal content", async (assert) => {
   updateCurrentUser({
     can_use_canned_replies: true,
-    can_edit_canned_replies: true
+    can_edit_canned_replies: true,
   });
   const popUpMenu = selectKit(".toolbar-popup-menu-options");
 

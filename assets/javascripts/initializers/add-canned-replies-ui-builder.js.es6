@@ -11,8 +11,8 @@ function initializeCannedRepliesUIBuilder(api) {
           this.appEvents.trigger("composer:show-preview");
           this.appEvents.trigger("canned-replies:show");
         }
-      }
-    }
+      },
+    },
   });
 
   api.addToolbarPopupMenuOptionsCallback(() => {
@@ -20,7 +20,7 @@ function initializeCannedRepliesUIBuilder(api) {
       id: "canned_replies_button",
       icon: "far-clipboard",
       action: "showCannedRepliesButton",
-      label: "canned_replies.composer_button_text"
+      label: "canned_replies.composer_button_text",
     };
   });
 }
@@ -38,5 +38,5 @@ export default {
     ) {
       withPluginApi("0.5", initializeCannedRepliesUIBuilder);
     }
-  }
+  },
 };

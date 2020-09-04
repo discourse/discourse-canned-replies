@@ -1,7 +1,7 @@
 import { ajax } from "discourse/lib/ajax";
 import { popupAjaxError } from "discourse/lib/ajax-error";
 
-export default function(replyId, replyTitle, replyContent, model) {
+export default function (replyId, replyTitle, replyContent, model) {
   // Replace variables with values.
   if (model) {
     const vars = {
@@ -13,7 +13,7 @@ export default function(replyId, replyTitle, replyContent, model) {
       reply_to_name: model.get("post.name"),
       last_poster_username: model.get("topic.last_poster_username"),
       reply_to_or_last_poster_username:
-        model.get("post.username") || model.get("topic.last_poster_username")
+        model.get("post.username") || model.get("topic.last_poster_username"),
     };
 
     for (let key in vars) {
@@ -48,6 +48,6 @@ export default function(replyId, replyTitle, replyContent, model) {
   }
 
   ajax(`/canned_replies/${replyId}/use`, {
-    type: "PATCH"
+    type: "PATCH",
   }).catch(popupAjaxError);
 }
