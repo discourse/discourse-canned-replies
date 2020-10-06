@@ -6,10 +6,10 @@
 
 ru:
   site_settings:
-    canned_replies_enabled: 'Отображать кнопку вставки готовых ответов в редакторе?'
+    canned_replies_enabled: 'Отображать кнопку вставки готовых ответов в редакторе'
     canned_replies_groups: 'Добавить доступ к готовым ответам для групп, не связанных с персоналом (по имени группы)'
-    canned_replies_everyone_enabled: 'Разрешить всем использовать готовые ответы'
-    canned_replies_everyone_can_edit: 'Разрешить всем создавать, редактировать и удалять готовые ответы'
+    canned_replies_everyone_enabled: 'Разрешать всем использовать готовые ответы'
+    canned_replies_everyone_can_edit: 'Разрешать всем создавать, редактировать и удалять готовые ответы'
   replies:
     default_reply:
       title: "Мой первый готовый ответ"
