@@ -4,4 +4,17 @@
 # To work with us on translations, join this project:
 # https://translate.discourse.org/
 
-ro: 
+ro:
+  site_settings:
+    canned_replies_enabled: 'Afișezi butonul de inserare răspuns predefinit în fereastra editorului?'
+    canned_replies_groups: 'Adaugă acces la răspunsurile predefinite pentru grupurile care nu fac parte din personal după numele grupului'
+    canned_replies_everyone_enabled: 'Permite oricui să folosească răspunsuri predefinite'
+    canned_replies_everyone_can_edit: 'Permite oricui să creeze, să editeze și să șteargă răspunsuri predefinite'
+  replies:
+    default_reply:
+      title: "Primul meu răspuns predefinit"
+      body: |
+        Acesta este un exemplu de răspuns predefinit.
+        Poţi utiliza **markdown** pentru a stiliza răspunsurile. Apasă pe butonul **nou** pentru a crea răspunsuri noi sau pe butonul **editează** pentru a edita sau a șterge un răspuns predefinit deja existent.
+
+        *Acest răspuns predefinit va fi adăugat când lista de răspunsuri este goală.*
