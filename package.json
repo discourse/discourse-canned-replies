@@ -1,6 +1,6 @@
 {
   "author": "Discourse",
-  "license": "MIT",
+  "license": "GPL-2.0-only",
   "devDependencies": {
     "eslint-config-discourse": "^1.1.3"
   }
