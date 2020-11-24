@@ -8,6 +8,8 @@ tr_TR:
   site_settings:
     canned_replies_enabled: 'Yazar penceresinde eklenen hazır yanıt düğmesini göster?'
     canned_replies_groups: 'Personel olmayan gruplar için hazır cevaplara grup adına göre erişim ekleyin'
+    canned_replies_everyone_enabled: 'Herkesin hazır cevapları kullanmasına izin ver'
+    canned_replies_everyone_can_edit: 'Herkesin hazır cevaplar oluşturmasına, düzenlemesine ve silmesine izin ver'
   replies:
     default_reply:
       title: "İlk hazır yanıtım"
