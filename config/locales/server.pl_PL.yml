@@ -8,6 +8,8 @@ pl_PL:
   site_settings:
     canned_replies_enabled: 'Pokazuj przycisk wstawiania sugerowanej odpowiedzi w oknie edytora?'
     canned_replies_groups: 'Dodaj dostęp do sugerowanych odpowiedzi dla grup o nazwie'
+    canned_replies_everyone_enabled: 'Pozwól wszystkim na używanie gotowych odpowiedzi'
+    canned_replies_everyone_can_edit: 'Pozwól wszystkim tworzyć, edytować i usuwać gotowe odpowiedzi'
   replies:
     default_reply:
       title: "Moja pierwsza sugerowana odpowiedź"
