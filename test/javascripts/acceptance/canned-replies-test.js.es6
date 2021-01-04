@@ -1,14 +1,17 @@
 import I18n from "I18n";
-import selectKit from "helpers/select-kit-helper";
-import { acceptance, updateCurrentUser } from "helpers/qunit-helpers";
+import selectKit from "discourse/tests/helpers/select-kit-helper";
+import {
+  acceptance,
+  updateCurrentUser,
+} from "discourse/tests/helpers/qunit-helpers";
 import { clearPopupMenuOptionsCallback } from "discourse/controllers/composer";
 
-acceptance("Canned Replies", {
-  loggedIn: true,
-  settings: {
+acceptance("Canned Replies", function (needs) {
+  needs.user();
+  needs.settings({
     canned_replies_enabled: true,
-  },
-  pretend(server, helper) {
+  });
+  needs.pretender((server, helper) => {
     server.patch("/canned_replies/cd6680d7a04caaac1274e6f37429458c/use", () => {
       return helper.response({});
     });
@@ -71,163 +74,161 @@ acceptance("Canned Replies", {
         ],
       });
     });
-  },
-  beforeEach() {
-    clearPopupMenuOptionsCallback();
-  },
-});
-
-QUnit.test("Inserting canned replies", async (assert) => {
-  updateCurrentUser({
-    can_use_canned_replies: true,
-    can_edit_canned_replies: true,
   });
-  const popUpMenu = selectKit(".toolbar-popup-menu-options");
+  needs.hooks.beforeEach(() => clearPopupMenuOptionsCallback());
 
-  await visit("/");
+  test("Inserting canned replies", async (assert) => {
+    updateCurrentUser({
+      can_use_canned_replies: true,
+      can_edit_canned_replies: true,
+    });
+    const popUpMenu = selectKit(".toolbar-popup-menu-options");
 
-  await click("#create-topic");
-  await fillIn(".d-editor-input", "beforeafter");
+    await visit("/");
 
-  const editorInput = $(".d-editor-input")[0];
-  editorInput.selectionStart = editorInput.selectionEnd = "before".length;
+    await click("#create-topic");
+    await fillIn(".d-editor-input", "beforeafter");
 
-  await popUpMenu.expand();
-  await popUpMenu.selectRowByValue("showCannedRepliesButton");
-  await click(".canned-reply-title");
+    const editorInput = $(".d-editor-input")[0];
+    editorInput.selectionStart = editorInput.selectionEnd = "before".length;
 
-  assert.ok(
-    find(".canned-replies-content")
-      .html()
-      .indexOf("<strong>markdown</strong>") !== -1,
-    "it should display the right cooked content"
-  );
+    await popUpMenu.expand();
+    await popUpMenu.selectRowByValue("showCannedRepliesButton");
+    await click(".canned-reply-title");
 
-  await click(
-    "#canned-reply-ce5fc200ab90dd0d5ac597ca9bb4708b .canned-replies-apply"
-  );
+    assert.ok(
+      find(".canned-replies-content")
+        .html()
+        .indexOf("<strong>markdown</strong>") !== -1,
+      "it should display the right cooked content"
+    );
 
-  assert.equal(
-    find(".d-editor-input").val(),
-    "before\n\n**markdown**\n\nafter",
-    "it should contain the right selected output"
-  );
-});
+    await click(
+      "#canned-reply-ce5fc200ab90dd0d5ac597ca9bb4708b .canned-replies-apply"
+    );
 
-QUnit.test("Editing a canned reply", async (assert) => {
-  updateCurrentUser({
-    can_use_canned_replies: true,
-    can_edit_canned_replies: true,
+    assert.equal(
+      find(".d-editor-input").val(),
+      "before\n\n**markdown**\n\nafter",
+      "it should contain the right selected output"
+    );
   });
-  const popUpMenu = selectKit(".toolbar-popup-menu-options");
 
-  await visit("/");
+  test("Editing a canned reply", async (assert) => {
+    updateCurrentUser({
+      can_use_canned_replies: true,
+      can_edit_canned_replies: true,
+    });
+    const popUpMenu = selectKit(".toolbar-popup-menu-options");
 
-  await click("#create-topic");
-  await popUpMenu.expand();
-  await popUpMenu.selectRowByValue("showCannedRepliesButton");
+    await visit("/");
 
-  await click(".canned-replies-edit");
+    await click("#create-topic");
+    await popUpMenu.expand();
+    await popUpMenu.selectRowByValue("showCannedRepliesButton");
 
-  await fillIn(".canned-replies-form-title-input", "Some title");
-  await fillIn(".canned-replies-form-content-input textarea", "Some content");
+    await click(".canned-replies-edit");
 
-  await click(".edit-reply-save-btn");
+    await fillIn(".canned-replies-form-title-input", "Some title");
+    await fillIn(".canned-replies-form-content-input textarea", "Some content");
 
-  assert.equal(
-    find(".canned-replies-footer .btn").text().trim(),
-    I18n.t("saved")
-  );
-});
+    await click(".edit-reply-save-btn");
 
-QUnit.test("Creating a new canned reply", async (assert) => {
-  updateCurrentUser({
-    can_use_canned_replies: true,
-    can_edit_canned_replies: true,
+    assert.equal(
+      find(".canned-replies-footer .btn").text().trim(),
+      I18n.t("saved")
+    );
   });
-  const popUpMenu = selectKit(".toolbar-popup-menu-options");
 
-  await visit("/");
+  test("Creating a new canned reply", async (assert) => {
+    updateCurrentUser({
+      can_use_canned_replies: true,
+      can_edit_canned_replies: true,
+    });
+    const popUpMenu = selectKit(".toolbar-popup-menu-options");
 
-  await click("#create-topic");
-  await popUpMenu.expand();
-  await popUpMenu.selectRowByValue("showCannedRepliesButton");
+    await visit("/");
 
-  await click(".canned-replies-new");
+    await click("#create-topic");
+    await popUpMenu.expand();
+    await popUpMenu.selectRowByValue("showCannedRepliesButton");
 
-  await fillIn(".canned-replies-form-title-input", "");
-  await fillIn(".canned-replies-form-content-input textarea", "");
+    await click(".canned-replies-new");
 
-  assert.equal(
-    find(".btn.new-reply-save-btn[disabled]").length,
-    1,
-    "save button should be disabled by default"
-  );
+    await fillIn(".canned-replies-form-title-input", "");
+    await fillIn(".canned-replies-form-content-input textarea", "");
 
-  await fillIn(".canned-replies-form-title-input", "Some title");
+    assert.equal(
+      find(".btn.new-reply-save-btn[disabled]").length,
+      1,
+      "save button should be disabled by default"
+    );
 
-  assert.equal(
-    find(".btn.new-reply-save-btn[disabled]").length,
-    1,
-    "save button should be disabled when content is blank"
-  );
+    await fillIn(".canned-replies-form-title-input", "Some title");
 
-  await fillIn(".canned-replies-form-content-input textarea", "Some content");
-  await click(".new-reply-save-btn");
-});
+    assert.equal(
+      find(".btn.new-reply-save-btn[disabled]").length,
+      1,
+      "save button should be disabled when content is blank"
+    );
 
-QUnit.test("Replacing variables", async (assert) => {
-  updateCurrentUser({
-    can_use_canned_replies: true,
-    can_edit_canned_replies: true,
+    await fillIn(".canned-replies-form-content-input textarea", "Some content");
+    await click(".new-reply-save-btn");
   });
-  const popUpMenu = selectKit(".toolbar-popup-menu-options");
 
-  await visit("/");
+  test("Replacing variables", async (assert) => {
+    updateCurrentUser({
+      can_use_canned_replies: true,
+      can_edit_canned_replies: true,
+    });
+    const popUpMenu = selectKit(".toolbar-popup-menu-options");
 
-  await click("#create-topic");
-  await popUpMenu.expand();
-  await popUpMenu.selectRowByValue("showCannedRepliesButton");
+    await visit("/");
 
-  await click(".canned-replies-apply:eq(4)");
+    await click("#create-topic");
+    await popUpMenu.expand();
+    await popUpMenu.selectRowByValue("showCannedRepliesButton");
 
-  assert.equal(
-    find(".d-editor-input").val().trim(),
-    "Hi there, regards eviltrout.",
-    "it should replace variables"
-  );
-});
+    await click(".canned-replies-apply:eq(4)");
 
-QUnit.test("Reset modal content", async (assert) => {
-  updateCurrentUser({
-    can_use_canned_replies: true,
-    can_edit_canned_replies: true,
+    assert.equal(
+      find(".d-editor-input").val().trim(),
+      "Hi there, regards eviltrout.",
+      "it should replace variables"
+    );
   });
-  const popUpMenu = selectKit(".toolbar-popup-menu-options");
 
-  await visit("/");
+  test("Reset modal content", async (assert) => {
+    updateCurrentUser({
+      can_use_canned_replies: true,
+      can_edit_canned_replies: true,
+    });
+    const popUpMenu = selectKit(".toolbar-popup-menu-options");
 
-  await click("#create-topic");
-  await popUpMenu.expand();
-  await popUpMenu.selectRowByValue("showCannedRepliesButton");
+    await visit("/");
 
-  await click(".canned-replies-new");
+    await click("#create-topic");
+    await popUpMenu.expand();
+    await popUpMenu.selectRowByValue("showCannedRepliesButton");
 
-  await fillIn(".canned-replies-form-title-input", "Some title");
-  await fillIn(".canned-replies-form-content-input textarea", "Some content");
+    await click(".canned-replies-new");
 
-  await click(".canned-replies-footer a");
+    await fillIn(".canned-replies-form-title-input", "Some title");
+    await fillIn(".canned-replies-form-content-input textarea", "Some content");
 
-  await click(".canned-replies-new");
+    await click(".canned-replies-footer a");
 
-  assert.equal(
-    find(".canned-replies-form-title-input").val(),
-    "",
-    "it should clear title"
-  );
-  assert.equal(
-    find(".canned-replies-form-content-input textarea").val(),
-    "",
-    "it should clear content"
-  );
+    await click(".canned-replies-new");
+
+    assert.equal(
+      find(".canned-replies-form-title-input").val(),
+      "",
+      "it should clear title"
+    );
+    assert.equal(
+      find(".canned-replies-form-content-input textarea").val(),
+      "",
+      "it should clear content"
+    );
+  });
 });
