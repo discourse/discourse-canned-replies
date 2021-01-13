@@ -12,6 +12,11 @@
   .content {
     margin-top: 10px;
   }
+
+  .btn.link,
+  .btn.local-dates {
+    display: none;
+  }
 }
 
 .mobile-view .canned-replies-modal {
