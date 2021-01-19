@@ -8,6 +8,8 @@ hy:
   site_settings:
     canned_replies_enabled: 'Ցուցադրե՞լ Մուտքագրել պահեստավորված պատասխան կոճակը կոմպոզերի պատուհանում:'
     canned_replies_groups: 'Ավելացնել պահեստավորված պատասխանների հասանելիություն անձնակազմի անդամ չհանդիսացող խմբերի համար՝ ըստ խմբի անվանման'
+    canned_replies_everyone_enabled: 'Allow everyone to use canned replies'
+    canned_replies_everyone_can_edit: 'Allow everyone to create, edit, and delete canned replies'
   replies:
     default_reply:
       title: "Իմ առաջին պահեստավորված պատասխանը"

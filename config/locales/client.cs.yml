@@ -7,6 +7,8 @@
 cs:
   js:
     canned_replies:
+      filter_hint: 'title...'
+      composer_button_text: "Canned replies"
       title:
         name: 'Nadpis'
         invalid: Nadpis nemůže být prázdný.
@@ -14,6 +16,16 @@ cs:
         name: 'Obsah'
         invalid: Obsah nemůže být prázdný.
       insert:
+        choose: "(choose a reply)"
         insert_button: "Vložit odpověď"
         new_button: "Noví"
         edit_button: "Upravit"
+        modal_title: "Insert Canned Reply"
+        sort:
+          alphabetically: "Sort alphabetically"
+          usage: "Sort by frequency of use"
+      add:
+        modal_title: "Add Canned Reply"
+      edit:
+        modal_title: "Edit Canned Reply"
+        remove_confirm: "Are you sure you want to remove this canned reply?"

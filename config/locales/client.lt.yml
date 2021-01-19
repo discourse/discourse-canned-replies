@@ -8,8 +8,24 @@ lt:
   js:
     canned_replies:
       filter_hint: 'antraštė...'
+      composer_button_text: "Canned replies"
       title:
         name: 'Antraštė'
+        invalid: Title can't be empty.
+      content:
+        name: 'Content'
+        invalid: Content can't be empty.
       insert:
+        choose: "(choose a reply)"
+        insert_button: "Insert Reply"
         new_button: "Naujas"
         edit_button: "Redaguoti"
+        modal_title: "Insert Canned Reply"
+        sort:
+          alphabetically: "Sort alphabetically"
+          usage: "Sort by frequency of use"
+      add:
+        modal_title: "Add Canned Reply"
+      edit:
+        modal_title: "Edit Canned Reply"
+        remove_confirm: "Are you sure you want to remove this canned reply?"

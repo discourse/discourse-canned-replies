@@ -7,6 +7,9 @@
 sw:
   site_settings:
     canned_replies_enabled: 'Onyesha Kitufe cha kuweka majibu yaliyohifadhiwa kwenye sehemu ya kuandika? '
+    canned_replies_groups: 'Add access to canned replies for non-staff groups by group name'
+    canned_replies_everyone_enabled: 'Allow everyone to use canned replies'
+    canned_replies_everyone_can_edit: 'Allow everyone to create, edit, and delete canned replies'
   replies:
     default_reply:
       title: "Jibu langu la kwanza lililohifadhiwa"

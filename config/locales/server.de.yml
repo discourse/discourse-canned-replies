@@ -8,6 +8,8 @@ de:
   site_settings:
     canned_replies_enabled: 'Zeige eine Editor-Schaltfläche zum Einfügen vorbereiteter Antworten'
     canned_replies_groups: 'Zugriff auf konservierte Antworten für Nicht-Team Gruppen nach Gruppenname gewähren'
+    canned_replies_everyone_enabled: 'Allow everyone to use canned replies'
+    canned_replies_everyone_can_edit: 'Allow everyone to create, edit, and delete canned replies'
   replies:
     default_reply:
       title: "Meine erste vorbereitete Antwort"

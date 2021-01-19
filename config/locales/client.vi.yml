@@ -8,6 +8,7 @@ vi:
   js:
     canned_replies:
       filter_hint: 'Tiêu đề'
+      composer_button_text: "Canned replies"
       title:
         name: 'Tiêu đề'
         invalid: Tiêu đề không được trống
@@ -16,5 +17,15 @@ vi:
         invalid: Nội dung không được trống
       insert:
         choose: "(chọn một câu trả lời)"
+        insert_button: "Insert Reply"
         new_button: "Mới"
         edit_button: "Sửa"
+        modal_title: "Insert Canned Reply"
+        sort:
+          alphabetically: "Sort alphabetically"
+          usage: "Sort by frequency of use"
+      add:
+        modal_title: "Add Canned Reply"
+      edit:
+        modal_title: "Edit Canned Reply"
+        remove_confirm: "Are you sure you want to remove this canned reply?"

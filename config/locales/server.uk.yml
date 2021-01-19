@@ -8,6 +8,8 @@ uk:
   site_settings:
     canned_replies_enabled: 'Показати кнопку вставляння готової відповіді у вікно композитора?'
     canned_replies_groups: 'Додайте доступ до готових відповідей для неспівробітників за назвою групи'
+    canned_replies_everyone_enabled: 'Allow everyone to use canned replies'
+    canned_replies_everyone_can_edit: 'Allow everyone to create, edit, and delete canned replies'
   replies:
     default_reply:
       title: "Моя перша готова відповідь"

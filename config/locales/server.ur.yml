@@ -8,6 +8,8 @@ ur:
   site_settings:
     canned_replies_enabled: 'کومپوزر کی ونڈو پر طہ شدہ جواب کا بٹن دکھائیں؟'
     canned_replies_groups: 'گروپ نام کے حساب سے غیر سٹاف گروپس کیلئے طہ شدہ جوابات تک رسائی شامل کریں'
+    canned_replies_everyone_enabled: 'Allow everyone to use canned replies'
+    canned_replies_everyone_can_edit: 'Allow everyone to create, edit, and delete canned replies'
   replies:
     default_reply:
       title: "میرا پہلا طہ شدہ جواب"

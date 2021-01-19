@@ -7,10 +7,25 @@
 zh_TW:
   js:
     canned_replies:
+      filter_hint: 'title...'
+      composer_button_text: "Canned replies"
       title:
         name: '標題'
+        invalid: Title can't be empty.
       content:
         name: '內容'
+        invalid: Content can't be empty.
       insert:
+        choose: "(choose a reply)"
+        insert_button: "Insert Reply"
         new_button: "新使用者"
         edit_button: "編輯"
+        modal_title: "Insert Canned Reply"
+        sort:
+          alphabetically: "Sort alphabetically"
+          usage: "Sort by frequency of use"
+      add:
+        modal_title: "Add Canned Reply"
+      edit:
+        modal_title: "Edit Canned Reply"
+        remove_confirm: "Are you sure you want to remove this canned reply?"

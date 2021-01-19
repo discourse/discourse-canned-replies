@@ -8,6 +8,7 @@ et:
   js:
     canned_replies:
       filter_hint: 'pealkiri...'
+      composer_button_text: "Canned replies"
       title:
         name: 'Pealkiri'
         invalid: Pealkiri ei saa olla tühi.
@@ -19,5 +20,12 @@ et:
         insert_button: "Sisesta vastus"
         new_button: "Uus"
         edit_button: "uuda"
+        modal_title: "Insert Canned Reply"
         sort:
           alphabetically: "Sorteeri tähestiku järjekorras"
+          usage: "Sort by frequency of use"
+      add:
+        modal_title: "Add Canned Reply"
+      edit:
+        modal_title: "Edit Canned Reply"
+        remove_confirm: "Are you sure you want to remove this canned reply?"

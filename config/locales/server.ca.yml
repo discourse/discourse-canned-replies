@@ -8,6 +8,8 @@ ca:
   site_settings:
     canned_replies_enabled: 'Mostra el botó d''inserció de resposta enllaunada en la finestra de redacció?'
     canned_replies_groups: 'Afegeix accés a les respostes enllaunades per a grups que no siguin de l''equip responsable, per nom de grup'
+    canned_replies_everyone_enabled: 'Allow everyone to use canned replies'
+    canned_replies_everyone_can_edit: 'Allow everyone to create, edit, and delete canned replies'
   replies:
     default_reply:
       title: "La meva primera resposta enllaunada"
