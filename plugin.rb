@@ -105,6 +105,8 @@ after_initialize do
       content = params.require(:content)
       user_id = current_user.id
 
+      guardian.ensure_can_edit_canned_replies!
+
       record = CannedReply::Reply.add(user_id, title, content)
       render json: record
     end
@@ -113,6 +115,9 @@ after_initialize do
       reply_id = params.require(:id)
       user_id  = current_user.id
       record = CannedReply::Reply.remove(user_id, reply_id)
+
+      guardian.ensure_can_edit_canned_replies!
+
       render json: record
     end
 
@@ -130,6 +135,8 @@ after_initialize do
       content = params.require(:content)
       user_id = current_user.id
 
+      guardian.ensure_can_edit_canned_replies!
+
       record = CannedReply::Reply.edit(user_id, reply_id, title, content)
       render json: record
     end
@@ -138,12 +145,18 @@ after_initialize do
       reply_id = params.require(:id)
       user_id  = current_user.id
       record = CannedReply::Reply.use(user_id, reply_id)
+
+      guardian.ensure_can_use_canned_replies!
+
       render json: record
     end
 
     def index
       user_id = current_user.id
       replies = CannedReply::Reply.all(user_id)
+
+      guardian.ensure_can_use_canned_replies!
+
       render json: { replies: replies }
     end
   end
@@ -160,6 +173,14 @@ after_initialize do
     return true if SiteSetting.canned_replies_everyone_enabled
     group_list = SiteSetting.canned_replies_groups.split("|").map(&:downcase)
     groups.any? { |group| group_list.include?(group.name.downcase) }
+  end
+
+  add_to_class(:guardian, :can_edit_canned_replies?) do
+    user && user.can_edit_canned_replies?
+  end
+
+  add_to_class(:guardian, :can_use_canned_replies?) do
+    user && user.can_use_canned_replies?
   end
 
   add_to_serializer(:current_user, :can_use_canned_replies) do

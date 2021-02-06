@@ -9,9 +9,21 @@ export default Ember.Controller.extend(ModalFunctionality, {
   selectedReply: null,
   selectedReplyId: "",
   loadingReplies: true,
+  canEdit: false,
 
   init() {
     this._super(...arguments);
+
+    const currentUser = this.get("currentUser");
+    const everyoneCanEdit =
+      this.get("siteSettings.canned_replies_everyone_enabled") &&
+      this.get("siteSettings.canned_replies_everyone_can_edit");
+    const currentUserCanEdit =
+      this.get("siteSettings.canned_replies_enabled") &&
+      currentUser &&
+      currentUser.can_edit_canned_replies;
+    const canEdit = currentUserCanEdit ? currentUserCanEdit : everyoneCanEdit;
+    this.set("canEdit", canEdit);
 
     this.replies = [];
   },
