@@ -7,13 +7,12 @@
 de:
   js:
     canned_replies:
-      filter_hint: 'Titel..'
       composer_button_text: "Vorbereitete Antworten"
       title:
-        name: 'Titel'
+        name: "Titel"
         invalid: Der Titel darf nicht leer sein.
       content:
-        name: 'Inhalt'
+        name: "Inhalt"
         invalid: Der Inhalt darf nicht leer sein.
       insert:
         choose: "(wähle eine Antwort)"
@@ -28,4 +27,3 @@ de:
         modal_title: "Vorbereitete Antwort hinzufügen"
       edit:
         modal_title: "Vorbereitete Antwort bearbeiten"
-        remove_confirm: "Möchtest du wirklich diese vorbereitete Antwort löschen?"

@@ -7,13 +7,12 @@
 ur:
   js:
     canned_replies:
-      filter_hint: 'عنوان...'
       composer_button_text: "طہ شدہ جوابات"
       title:
-        name: 'عنوان'
+        name: "عنوان"
         invalid: عنوان خالی نہیں ھو سکتا
       content:
-        name: 'متن'
+        name: "متن"
         invalid: متن خالی نہیں ھو سکتا
       insert:
         choose: "(ایک جواب کا انتخاب کیجیے)"
@@ -28,4 +27,3 @@ ur:
         modal_title: "طہ شدہ جواب شامل کریں"
       edit:
         modal_title: "طہ شدہ جواب میں ترمیم کریں"
-        remove_confirm: "کیا آپ واقعی یہ طہ شدہ جواب حذف کرنا چاہتے ہیں؟"

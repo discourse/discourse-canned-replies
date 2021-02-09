@@ -7,13 +7,12 @@
 fr:
   js:
     canned_replies:
-      filter_hint: 'titre…'
       composer_button_text: "Réponses prédéfinies"
       title:
-        name: 'Titre'
+        name: "Titre"
         invalid: Le titre ne peut pas être vide.
       content:
-        name: 'Contenu'
+        name: "Contenu"
         invalid: Le contenu ne peut pas être vide.
       insert:
         choose: "(choisir une réponse)"
@@ -28,4 +27,3 @@ fr:
         modal_title: "Ajouter une réponse prédéfinie"
       edit:
         modal_title: "Modifier une réponse prédéfinie"
-        remove_confirm: "Êtes-vous sûr de vouloir supprimer cette réponse prédéfinie ?"

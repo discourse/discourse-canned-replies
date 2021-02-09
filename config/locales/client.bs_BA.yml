@@ -7,13 +7,12 @@
 bs_BA:
   js:
     canned_replies:
-      filter_hint: 'naslov ...'
       composer_button_text: "Konzervirani odgovori"
       title:
-        name: 'Naslov'
+        name: "Naslov"
         invalid: Naslov ne može biti prazan.
       content:
-        name: 'Sadržaj'
+        name: "Sadržaj"
         invalid: Sadržaj ne može biti prazan.
       insert:
         choose: "(odaberite odgovor)"
@@ -28,4 +27,3 @@ bs_BA:
         modal_title: "Dodaj Konzervirani Odgovor"
       edit:
         modal_title: "Uredi Konzervirani Odgovor"
-        remove_confirm: "Jeste li sigurni da želite ukloniti ovaj spremni odgovor?"

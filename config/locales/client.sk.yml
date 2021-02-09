@@ -8,7 +8,7 @@ sk:
   js:
     canned_replies:
       title:
-        name: 'Názov'
+        name: "Názov"
       insert:
         new_button: "Nový"
         edit_button: "Upraviť"

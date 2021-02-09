@@ -8,7 +8,7 @@ th:
   js:
     canned_replies:
       title:
-        name: 'ชื่อเรื่อง'
+        name: "ชื่อเรื่อง"
       insert:
         new_button: "ใหม่"
         edit_button: "แก้ไข"

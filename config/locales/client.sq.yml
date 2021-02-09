@@ -8,9 +8,9 @@ sq:
   js:
     canned_replies:
       title:
-        name: 'Titulli'
+        name: "Titulli"
       content:
-        name: 'Content'
+        name: "Content"
       insert:
         new_button: "I Ri"
         edit_button: "Redakto"

@@ -8,10 +8,10 @@ cs:
   js:
     canned_replies:
       title:
-        name: 'Nadpis'
+        name: "Nadpis"
         invalid: Nadpis nemůže být prázdný.
       content:
-        name: 'Obsah'
+        name: "Obsah"
         invalid: Obsah nemůže být prázdný.
       insert:
         insert_button: "Vložit odpověď"

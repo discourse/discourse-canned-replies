@@ -7,13 +7,13 @@
 ru:
   js:
     canned_replies:
-      filter_hint: 'название...'
+      filter_hint: "Фильтр по названию..."
       composer_button_text: "Готовые ответы"
       title:
-        name: 'Название'
+        name: "Название"
         invalid: Название не может быть пустым.
       content:
-        name: 'Содержание'
+        name: "Содержание"
         invalid: Содержание не может быть пустым.
       insert:
         choose: "(выберите ответ)"
@@ -29,3 +29,4 @@ ru:
       edit:
         modal_title: "Редактировать готовый ответ"
         remove_confirm: "Вы действительно хотите удалить этот готовый ответ?"
+      back: "Назад"

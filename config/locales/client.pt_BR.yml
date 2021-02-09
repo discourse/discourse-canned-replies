@@ -7,13 +7,12 @@
 pt_BR:
   js:
     canned_replies:
-      filter_hint: 'título...'
       composer_button_text: "Respostas prontas"
       title:
-        name: 'Título'
+        name: "Título"
         invalid: Título não pode ficar vazio.
       content:
-        name: 'Conteúdo'
+        name: "Conteúdo"
         invalid: Conteúdo não pode ficar vazio.
       insert:
         choose: "(escolha uma resposta)"
@@ -28,4 +27,3 @@ pt_BR:
         modal_title: "Adicionar Resposta Pronta"
       edit:
         modal_title: "Editar Resposta Pronta"
-        remove_confirm: "Você tem certeza de que deseja remover esta resposta pronta?"

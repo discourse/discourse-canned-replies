@@ -7,13 +7,12 @@
 tr_TR:
   js:
     canned_replies:
-      filter_hint: 'Başlık...'
       composer_button_text: "Hazır cevaplar"
       title:
-        name: 'Başlık'
+        name: "Başlık"
         invalid: Başlık boş olamaz.
       content:
-        name: 'İçerik'
+        name: "İçerik"
         invalid: İçerik boş olamaz.
       insert:
         choose: "(bir yanıt seçin)"
@@ -28,4 +27,3 @@ tr_TR:
         modal_title: "Hazır Yanıt Ekle"
       edit:
         modal_title: "Hazır Yanıtı Düzenle"
-        remove_confirm: "Bu hazır yanıtı kaldırmak istediğinizden emin misiniz?"
