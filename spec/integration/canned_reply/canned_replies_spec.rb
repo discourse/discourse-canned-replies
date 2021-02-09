@@ -181,7 +181,7 @@ RSpec.describe CannedReply::CannedRepliesController do
 
       id, _new_reply = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME).first
 
-      put "/canned_replies/#{id}", params: {
+      patch "/canned_replies/#{id}", params: {
         title: 'new title', content: 'new content'
       }
 
@@ -191,6 +191,38 @@ RSpec.describe CannedReply::CannedRepliesController do
 
       expect(reply["title"]).to eq('new title')
       expect(reply["content"]).to eq('new content')
+    end
+
+    context 'as a normal user' do
+      before do
+        SiteSetting.canned_replies_everyone_enabled = true
+
+        canned_reply
+        user
+      end
+
+      it 'should not be able to edit a reply' do
+        patch "/canned_replies/#{canned_reply[:id]}", params: {
+          title: 'new title', content: 'new content'
+        }
+
+        expect(response.status).to eq(404)
+      end
+
+      it 'should be able to edit a reply when SiteSetting is enabled' do
+        SiteSetting.canned_replies_everyone_can_edit = true
+
+        patch "/canned_replies/#{canned_reply[:id]}", params: {
+          title: 'new title', content: 'new content'
+        }
+
+        expect(response).to be_successful
+
+        id, reply = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME).first
+
+        expect(reply["title"]).to eq('new title')
+        expect(reply["content"]).to eq('new content')
+      end
     end
 
     context 'as a staff' do

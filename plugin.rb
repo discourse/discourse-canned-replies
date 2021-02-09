@@ -105,8 +105,6 @@ after_initialize do
       content = params.require(:content)
       user_id = current_user.id
 
-      guardian.ensure_can_edit_canned_replies!
-
       record = CannedReply::Reply.add(user_id, title, content)
       render json: record
     end
@@ -115,8 +113,6 @@ after_initialize do
       reply_id = params.require(:id)
       user_id  = current_user.id
       record = CannedReply::Reply.remove(user_id, reply_id)
-
-      guardian.ensure_can_edit_canned_replies!
 
       render json: record
     end
@@ -135,8 +131,6 @@ after_initialize do
       content = params.require(:content)
       user_id = current_user.id
 
-      guardian.ensure_can_edit_canned_replies!
-
       record = CannedReply::Reply.edit(user_id, reply_id, title, content)
       render json: record
     end
@@ -146,16 +140,12 @@ after_initialize do
       user_id  = current_user.id
       record = CannedReply::Reply.use(user_id, reply_id)
 
-      guardian.ensure_can_use_canned_replies!
-
       render json: record
     end
 
     def index
       user_id = current_user.id
       replies = CannedReply::Reply.all(user_id)
-
-      guardian.ensure_can_use_canned_replies!
 
       render json: { replies: replies }
     end
@@ -175,14 +165,6 @@ after_initialize do
     groups.any? { |group| group_list.include?(group.name.downcase) }
   end
 
-  add_to_class(:guardian, :can_edit_canned_replies?) do
-    user && user.can_edit_canned_replies?
-  end
-
-  add_to_class(:guardian, :can_use_canned_replies?) do
-    user && user.can_use_canned_replies?
-  end
-
   add_to_serializer(:current_user, :can_use_canned_replies) do
     object.can_use_canned_replies?
   end
@@ -195,7 +177,7 @@ after_initialize do
   class CannedRepliesConstraint
     def matches?(request)
       provider = Discourse.current_user_provider.new(request.env)
-      if request.get? || request.patch?
+      if request.get? || (request.patch? && request.path[-4..-1] == '/use')
         provider.current_user&.can_use_canned_replies?
       else
         provider.current_user&.can_edit_canned_replies?
