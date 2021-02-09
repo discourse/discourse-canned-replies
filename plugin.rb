@@ -177,8 +177,8 @@ after_initialize do
   end
 
   add_to_class(:guardian, :can_edit_canned_replies?) do
-     user && user.can_edit_canned_replies?
-   end
+    user && user.can_edit_canned_replies?
+  end
 
   add_to_class(:guardian, :can_use_canned_replies?) do
     user && user.can_use_canned_replies?
