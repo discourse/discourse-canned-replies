@@ -135,7 +135,7 @@ acceptance("Canned Replies", function (needs) {
     await click(".edit-reply-save-btn");
 
     assert.equal(
-      find(".canned-replies-footer .btn").text().trim(),
+      find(".canned-replies-footer .edit-reply-save-btn").text().trim(),
       I18n.t("saved")
     );
   });
@@ -216,7 +216,7 @@ acceptance("Canned Replies", function (needs) {
     await fillIn(".canned-replies-form-title-input", "Some title");
     await fillIn(".canned-replies-form-content-input textarea", "Some content");
 
-    await click(".canned-replies-footer a");
+    await click(".modal-close");
 
     await click(".canned-replies-new");
 
