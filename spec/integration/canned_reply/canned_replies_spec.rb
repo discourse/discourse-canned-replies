@@ -36,7 +36,7 @@ RSpec.describe CannedReply::CannedRepliesController do
         user
 
         get '/canned_replies'
-        expect(response.status).to eq(404)
+        expect(response.status).to eq(403)
       end
     end
 
@@ -97,7 +97,7 @@ RSpec.describe CannedReply::CannedRepliesController do
         user
 
         delete '/canned_replies/someid'
-        expect(response.status).to eq(404)
+        expect(response.status).to eq(403)
       end
 
       it 'should raise the right error with everyone enabled' do
@@ -105,7 +105,7 @@ RSpec.describe CannedReply::CannedRepliesController do
         user
 
         delete '/canned_replies/someid'
-        expect(response.status).to eq(404)
+        expect(response.status).to eq(403)
       end
     end
 
@@ -161,14 +161,14 @@ RSpec.describe CannedReply::CannedRepliesController do
         user
 
         put '/canned_replies/someid'
-        expect(response.status).to eq(404)
+        expect(response.status).to eq(403)
       end
       it 'should raise the right error with everyone enabled' do
         SiteSetting.canned_replies_everyone_enabled = true
         user
 
         put '/canned_replies/someid'
-        expect(response.status).to eq(404)
+        expect(response.status).to eq(403)
       end
     end
 
@@ -206,7 +206,7 @@ RSpec.describe CannedReply::CannedRepliesController do
           title: 'new title', content: 'new content'
         }
 
-        expect(response.status).to eq(404)
+        expect(response.status).to eq(403)
       end
 
       it 'should be able to edit a reply when SiteSetting is enabled' do
@@ -262,7 +262,7 @@ RSpec.describe CannedReply::CannedRepliesController do
         user
 
         patch "/canned_replies/#{canned_reply[:id]}/use"
-        expect(response.status).to eq(404)
+        expect(response.status).to eq(403)
       end
 
       it 'should be able to record a user with everyone enabled' do
@@ -298,7 +298,7 @@ RSpec.describe CannedReply::CannedRepliesController do
         user
 
         get "/canned_replies/#{canned_reply[:id]}/reply"
-        expect(response.status).to eq(404)
+        expect(response.status).to eq(403)
       end
       it 'should succeed with everyone enabled' do
         SiteSetting.canned_replies_everyone_enabled = true

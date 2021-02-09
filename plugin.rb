@@ -98,9 +98,16 @@ after_initialize do
     requires_plugin CannedReply::PLUGIN_NAME
 
     before_action :ensure_logged_in
+    before_action :ensure_canned_replies_enabled
     skip_before_action :check_xhr
 
+    def ensure_canned_replies_enabled
+      guardian.ensure_can_use_canned_replies!
+    end
+
     def create
+      guardian.ensure_can_edit_canned_replies!
+
       title   = params.require(:title)
       content = params.require(:content)
       user_id = current_user.id
@@ -110,6 +117,8 @@ after_initialize do
     end
 
     def destroy
+      guardian.ensure_can_edit_canned_replies!
+
       reply_id = params.require(:id)
       user_id  = current_user.id
       record = CannedReply::Reply.remove(user_id, reply_id)
@@ -126,6 +135,8 @@ after_initialize do
     end
 
     def update
+      guardian.ensure_can_edit_canned_replies!
+
       reply_id = params.require(:id)
       title = params.require(:title)
       content = params.require(:content)
@@ -165,26 +176,20 @@ after_initialize do
     groups.any? { |group| group_list.include?(group.name.downcase) }
   end
 
+  add_to_class(:guardian, :can_edit_canned_replies?) do
+     user && user.can_edit_canned_replies?
+   end
+
+   add_to_class(:guardian, :can_use_canned_replies?) do
+     user && user.can_use_canned_replies?
+   end
+
   add_to_serializer(:current_user, :can_use_canned_replies) do
     object.can_use_canned_replies?
   end
 
   add_to_serializer(:current_user, :can_edit_canned_replies) do
     object.can_edit_canned_replies?
-  end
-
-  require_dependency 'current_user'
-  class CannedRepliesConstraint
-    def matches?(request)
-      provider = Discourse.current_user_provider.new(request.env)
-      if request.get? || (request.patch? && request.path[-4..-1] == '/use')
-        provider.current_user&.can_use_canned_replies?
-      else
-        provider.current_user&.can_edit_canned_replies?
-      end
-    rescue Discourse::InvalidAccess, Discourse::ReadOnly
-      false
-    end
   end
 
   CannedReply::Engine.routes.draw do
@@ -197,7 +202,7 @@ after_initialize do
   end
 
   Discourse::Application.routes.append do
-    mount ::CannedReply::Engine, at: "/canned_replies", constraints: CannedRepliesConstraint.new
+    mount ::CannedReply::Engine, at: "/canned_replies"
   end
 
 end
