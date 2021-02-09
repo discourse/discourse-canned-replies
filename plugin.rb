@@ -180,9 +180,9 @@ after_initialize do
      user && user.can_edit_canned_replies?
    end
 
-   add_to_class(:guardian, :can_use_canned_replies?) do
-     user && user.can_use_canned_replies?
-   end
+  add_to_class(:guardian, :can_use_canned_replies?) do
+    user && user.can_use_canned_replies?
+  end
 
   add_to_serializer(:current_user, :can_use_canned_replies) do
     object.can_use_canned_replies?
