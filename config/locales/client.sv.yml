@@ -7,13 +7,13 @@
 sv:
   js:
     canned_replies:
-      filter_hint: 'rubrik...'
+      filter_hint: "Filtrera efter titel..."
       composer_button_text: "Förberedda svar"
       title:
-        name: 'Rubrik'
+        name: "Rubrik"
         invalid: Rubriken kan inte vara tom.
       content:
-        name: 'Innehåll'
+        name: "Innehåll"
         invalid: Innehållet kan inte vara tomt.
       insert:
         choose: "(välj ett svar)"
@@ -28,4 +28,5 @@ sv:
         modal_title: "Lägg till förberett svar"
       edit:
         modal_title: "Redigera förberett svar"
-        remove_confirm: "Är du säker på att du vill ta bort detta förberedda svar?"
+        remove_confirm: "Är du säker på att du vill radera detta förberedda svar?"
+      back: "Tillbaka"

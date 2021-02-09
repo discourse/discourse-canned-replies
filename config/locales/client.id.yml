@@ -8,7 +8,7 @@ id:
   js:
     canned_replies:
       title:
-        name: 'Judul'
+        name: "Judul"
       insert:
         new_button: "Baru"
         edit_button: "Ubah"

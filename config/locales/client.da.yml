@@ -8,9 +8,9 @@ da:
   js:
     canned_replies:
       title:
-        name: 'Titel'
+        name: "Titel"
       content:
-        name: 'Indhold'
+        name: "Indhold"
       insert:
         new_button: "Ny"
         edit_button: "Rediger"

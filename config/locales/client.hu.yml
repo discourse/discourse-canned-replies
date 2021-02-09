@@ -7,13 +7,12 @@
 hu:
   js:
     canned_replies:
-      filter_hint: 'cím...'
       composer_button_text: "Eltett válaszok"
       title:
-        name: 'Cím'
+        name: "Cím"
         invalid: Cím nem lehet üres.
       content:
-        name: 'Tartalom'
+        name: "Tartalom"
         invalid: Tartalom nem lehet üres.
       insert:
         choose: "(válasz választása)"
@@ -28,4 +27,3 @@ hu:
         modal_title: "Eltett Válasz Hozzáadása"
       edit:
         modal_title: "Eltett Válasz Szerkesztése"
-        remove_confirm: "Biztos vagy benne, hogy el akarod távolítani ezt az eltett választ?"

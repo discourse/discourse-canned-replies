@@ -7,13 +7,12 @@
 sl:
   js:
     canned_replies:
-      filter_hint: 'naslov...'
       composer_button_text: "Pripravljeni odgovori"
       title:
-        name: 'Naslov'
+        name: "Naslov"
         invalid: Naslov ne sme biti prazen.
       content:
-        name: 'Vsebina'
+        name: "Vsebina"
         invalid: Vsebina ne sme biti prazna.
       insert:
         choose: "(izberi odgovor)"
@@ -28,4 +27,3 @@ sl:
         modal_title: "Dodaj pripravljen odgovor"
       edit:
         modal_title: "Uredi pripravljen odgovor"
-        remove_confirm: "Ali ste prepričani da želite odstraniti ta pripravljen odgovor?"

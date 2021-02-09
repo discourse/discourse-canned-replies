@@ -7,13 +7,12 @@
 it:
   js:
     canned_replies:
-      filter_hint: 'titolo...'
       composer_button_text: "Risposte predefinite"
       title:
-        name: 'Titolo'
+        name: "Titolo"
         invalid: Il titolo non può essere vuoto.
       content:
-        name: 'Contenuto'
+        name: "Contenuto"
         invalid: Il contenuto non può essere vuoto.
       insert:
         choose: "(scegli una risposta)"
@@ -28,4 +27,3 @@ it:
         modal_title: "Aggiungi Risposta Programmata"
       edit:
         modal_title: "Modifica Risposta Predefinita"
-        remove_confirm: "Sei sicuro di voler eliminare questa risposta predefinita?"

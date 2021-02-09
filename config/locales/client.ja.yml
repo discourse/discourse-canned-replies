@@ -8,9 +8,9 @@ ja:
   js:
     canned_replies:
       title:
-        name: 'タイトル'
+        name: "タイトル"
       content:
-        name: 'コンテンツ'
+        name: "コンテンツ"
       insert:
         new_button: "新規"
         edit_button: "編集"

@@ -7,13 +7,12 @@
 ar:
   js:
     canned_replies:
-      filter_hint: 'العنوان...'
       composer_button_text: "الردود المعلّبة"
       title:
-        name: 'العنوان'
+        name: "العنوان"
         invalid: لا يمكن للعنوان أن يكون فارغا.
       content:
-        name: 'محتوى'
+        name: "محتوى"
         invalid: المحتوى لا يمكن أ يكون فارغا.
       insert:
         choose: "(اختر ردّا)"
@@ -28,4 +27,3 @@ ar:
         modal_title: "أضف ردّا معلبا"
       edit:
         modal_title: "عدّل ردّا معلبا"
-        remove_confirm: "هل أنت متأكد أنك تريد حذف هذا الرد المعلّب؟"

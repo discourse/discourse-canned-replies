@@ -8,7 +8,7 @@ gl:
   js:
     canned_replies:
       title:
-        name: 'Título'
+        name: "Título"
       insert:
         new_button: "Novo"
         edit_button: "Editar"

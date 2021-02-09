@@ -7,12 +7,11 @@
 vi:
   js:
     canned_replies:
-      filter_hint: 'Tiêu đề'
       title:
-        name: 'Tiêu đề'
+        name: "Tiêu đề"
         invalid: Tiêu đề không được trống
       content:
-        name: 'Nội dung'
+        name: "Nội dung"
         invalid: Nội dung không được trống
       insert:
         choose: "(chọn một câu trả lời)"

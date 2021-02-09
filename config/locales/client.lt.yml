@@ -7,9 +7,8 @@
 lt:
   js:
     canned_replies:
-      filter_hint: 'antraštė...'
       title:
-        name: 'Antraštė'
+        name: "Antraštė"
       insert:
         new_button: "Naujas"
         edit_button: "Redaguoti"

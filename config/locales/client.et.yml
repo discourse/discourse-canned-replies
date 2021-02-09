@@ -7,12 +7,11 @@
 et:
   js:
     canned_replies:
-      filter_hint: 'pealkiri...'
       title:
-        name: 'Pealkiri'
+        name: "Pealkiri"
         invalid: Pealkiri ei saa olla tühi.
       content:
-        name: 'Sisu'
+        name: "Sisu"
         invalid: Sisu ei saa olla tühi.
       insert:
         choose: "(vali vastus)"

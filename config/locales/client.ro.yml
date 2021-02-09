@@ -7,13 +7,12 @@
 ro:
   js:
     canned_replies:
-      filter_hint: 'titlu...'
       composer_button_text: "Răspunsuri predefinite"
       title:
-        name: 'Titlu'
+        name: "Titlu"
         invalid: Titlul nu poate fi gol.
       content:
-        name: 'Conținut'
+        name: "Conținut"
         invalid: Conținutul nu poate fi gol.
       insert:
         choose: "(alege un răspuns)"
@@ -28,4 +27,3 @@ ro:
         modal_title: "Adaugă răspuns predefinit"
       edit:
         modal_title: "Editează răspunsul predefinit"
-        remove_confirm: "Ești sigur că vrei să ștergi această răspuns predefinit?"

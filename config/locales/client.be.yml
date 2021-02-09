@@ -8,7 +8,7 @@ be:
   js:
     canned_replies:
       title:
-        name: 'тытульны'
+        name: "тытульны"
       insert:
         new_button: "Новая"
         edit_button: "Рэдагаваць"

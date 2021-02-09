@@ -7,13 +7,12 @@
 he:
   js:
     canned_replies:
-      filter_hint: 'כותרת…'
       composer_button_text: "תגובות מוכנות"
       title:
-        name: 'כותרת'
+        name: "כותרת"
         invalid: הכותרת לא יכולה להיות ריקה.
       content:
-        name: 'תוכן'
+        name: "תוכן"
         invalid: התוכן לא יכול להיות ריק.
       insert:
         choose: "(נא לבחור תגובה)"
@@ -28,4 +27,4 @@ he:
         modal_title: "הוספת תגובה מוכנה"
       edit:
         modal_title: "עריכת תגובה מוכנה"
-        remove_confirm: "להסיר את התגובה המוכנה הזאת?"
+      back: "חזרה"

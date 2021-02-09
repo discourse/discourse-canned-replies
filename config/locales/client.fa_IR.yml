@@ -7,13 +7,12 @@
 fa_IR:
   js:
     canned_replies:
-      filter_hint: 'عنوان ...'
       composer_button_text: "پاسخ های آماده"
       title:
-        name: 'عنوان'
+        name: "عنوان"
         invalid: عنوان نمیتواند خالی باشد
       content:
-        name: 'محتوا'
+        name: "محتوا"
         invalid: محتوا نمیتوانتد خالی باشد.
       insert:
         choose: "(پاسخی انتخاب کن)"
@@ -28,4 +27,3 @@ fa_IR:
         modal_title: "پاسخ آماده را اضافه کن"
       edit:
         modal_title: "پاسخ آماده را ویرایش کن"
-        remove_confirm: "مطمئنید میخواهید این پاسخ آماده را حذف کنید؟"

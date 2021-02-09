@@ -8,7 +8,7 @@ lv:
   js:
     canned_replies:
       title:
-        name: 'Virsraksts'
+        name: "Virsraksts"
       insert:
         new_button: "Jauns"
         edit_button: "Labot"

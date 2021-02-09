@@ -8,7 +8,7 @@ el:
   js:
     canned_replies:
       title:
-        name: 'Τίτλος'
+        name: "Τίτλος"
       insert:
         new_button: "Νέο"
         edit_button: "Επεξεργασία"

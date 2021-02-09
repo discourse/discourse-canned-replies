@@ -7,11 +7,10 @@
 nb_NO:
   js:
     canned_replies:
-      filter_hint: 'tittel…'
       title:
-        name: 'Tittel'
+        name: "Tittel"
       content:
-        name: 'Innhold'
+        name: "Innhold"
       insert:
         choose: "(velg et svar)"
         new_button: "Ny"

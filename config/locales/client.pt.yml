@@ -8,9 +8,9 @@ pt:
   js:
     canned_replies:
       title:
-        name: 'Título'
+        name: "Título"
       content:
-        name: 'Conteúdo'
+        name: "Conteúdo"
       insert:
         new_button: "Novo"
         edit_button: "Editar"
