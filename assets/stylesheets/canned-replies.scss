@@ -19,31 +19,41 @@
   }
 }
 
-.mobile-view .canned-replies-modal {
-  min-height: 50vh;
-  box-sizing: border-box;
-  width: 100vw;
-  overflow-x: hidden;
-
-  .content {
-    max-height: 50vh;
+.canned-replies-edit-bar {
+  display: flex;
+  border-bottom: 1px solid var(--primary-low);
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+  input {
+    margin: 0 0 0 1em;
   }
-
-  .select-kit {
-    width: 100%;
-  }
-  .d-editor-preview-wrapper {
-    display: none;
+  .close {
+    margin-left: auto;
   }
 }
 
 .canned-replies-footer {
+  align-items: stretch;
   margin-top: 3px;
 }
 
-.canned-reply-title:hover {
-  background-color: var(--highlight-medium, $highlight-medium);
-  cursor: pointer;
+.canned-reply-title {
+  display: flex;
+  align-items: center;
+  button {
+    margin-right: 0.5em;
+  }
+
+  &:hover {
+    background-color: var(--highlight-medium, $highlight-medium);
+    cursor: pointer;
+  }
+}
+
+.canned-replies-title-text {
+  font-weight: bold;
+  margin-left: 0.5em;
+  @include ellipsis;
 }
 
 #reply-control {
@@ -59,4 +69,53 @@
 
 .canned-replies-form-title-input {
   width: 100%;
+}
+
+.canned-replies-content {
+  background: var(--primary-very-low);
+  padding: 0.75em;
+  margin-top: 0.5em;
+  box-sizing: border-box;
+  p:first-of-type {
+    margin-top: 0;
+  }
+  p:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.desktop-view {
+  .canned-replies-edit-back {
+    // This button is only needed on mobile because it's a modal within a modal
+    display: none;
+  }
+}
+
+.mobile-view .canned-replies-modal {
+  min-height: 50vh;
+  box-sizing: border-box;
+  width: 100vw;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+
+  > div,
+  form,
+  .canned-replies-form-content-wrapper {
+    // for making the edit input full-height
+    flex: 1 1 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .content {
+    max-height: 50vh;
+  }
+
+  .select-kit {
+    width: 100%;
+  }
+  .d-editor-preview-wrapper {
+    display: none;
+  }
 }

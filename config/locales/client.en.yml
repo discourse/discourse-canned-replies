@@ -1,13 +1,13 @@
 en:
   js:
     canned_replies:
-      filter_hint: 'title...'
+      filter_hint: "Filter by title..."
       composer_button_text: "Canned replies"
       title:
-        name: 'Title'
+        name: "Title"
         invalid: Title can't be empty.
       content:
-        name: 'Content'
+        name: "Content"
         invalid: Content can't be empty.
       insert:
         choose: "(choose a reply)"
@@ -22,4 +22,5 @@ en:
         modal_title: "Add Canned Reply"
       edit:
         modal_title: "Edit Canned Reply"
-        remove_confirm: "Are you sure you want to remove this canned reply?"
+        remove_confirm: "Are you sure you want to delete this canned reply?"
+      back: "Back"

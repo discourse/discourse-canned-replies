@@ -8,9 +8,14 @@
       label=savingLabel
       disabled=disableSaveButton}}
 
-  <a {{action "cancel"}}>{{i18n 'cancel'}}</a>
+      {{d-button 
+      action=(action "cancel")
+      icon="chevron-left"
+      label="canned_replies.back"
+      class="canned-replies-edit-back"
+      }}
 
-  {{d-button class="btn-danger pull-right"
+  {{d-button class="btn-danger"
       action=(action "remove")
       icon="trash-alt"
       disabled=saving}}
