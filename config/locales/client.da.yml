@@ -7,10 +7,19 @@
 da:
   js:
     canned_replies:
+      filter_hint: "Filtrer efter titel ..."
       title:
         name: "Titel"
+        invalid: Titel kan ikke være tom.
       content:
         name: "Indhold"
+        invalid: Indholdet kan ikke være tomt.
       insert:
+        choose: "(vælg et svar)"
+        insert_button: "Indsæt Svar"
         new_button: "Ny"
         edit_button: "Rediger"
+        sort:
+          alphabetically: "Sortér alfabetisk"
+          usage: "Sorter efter anvendelsesfrekvens"
+      back: "Tilbage"
