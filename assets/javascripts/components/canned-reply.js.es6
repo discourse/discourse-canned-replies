@@ -2,7 +2,6 @@ import showModal from "discourse/lib/show-modal";
 import applyReply from "discourse/plugins/discourse-canned-replies/lib/apply-reply";
 
 export default Ember.Component.extend({
-  isOpen: false,
   canEdit: false,
 
   init() {
@@ -20,10 +19,6 @@ export default Ember.Component.extend({
   },
 
   actions: {
-    toggle() {
-      this.toggleProperty("isOpen");
-    },
-
     apply() {
       const composer = Discourse.__container__.lookup("controller:composer");
 

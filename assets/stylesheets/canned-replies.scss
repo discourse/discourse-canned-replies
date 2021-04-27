@@ -41,7 +41,7 @@
   display: flex;
   align-items: center;
   button {
-    margin-right: 0.5em;
+    margin-left: 0.5em;
   }
 
   &:hover {
@@ -50,7 +50,7 @@
   }
 }
 
-.canned-replies-title-text {
+.canned-reply-title-text {
   font-weight: bold;
   margin-left: 0.5em;
   @include ellipsis;
@@ -64,6 +64,19 @@
 
   .canned-reply {
     padding-bottom: 1em;
+
+    .canned-reply-title {
+      display: flex;
+      align-items: center;
+
+      .canned-reply-title-text {
+        max-width: 75%;
+      }
+
+      .actions {
+        margin-left: auto;
+      }
+    }
   }
 }
 
