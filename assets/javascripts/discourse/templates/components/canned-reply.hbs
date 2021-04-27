@@ -1,25 +1,25 @@
-<div class="canned-reply" id="canned-reply-{{reply.id}}">
-  <div {{action "toggle"}} class="canned-reply-title">
-    {{d-button
-      class="canned-replies-apply"
-      action=(action "apply")
-      icon="far-clipboard"
-    }}
+<details class="canned-reply" id="canned-reply-{{reply.id}}">
+  <summary class="canned-reply-title">
+    <div class="canned-reply-title-text">{{reply.title}}</div>
 
-    {{#if canEdit}}
+    <div class="actions">
       {{d-button
-        class="canned-replies-edit"
-        action=(action "editReply")
-        icon="pencil-alt"
+        class="canned-replies-apply"
+        action=(action "apply")
+        icon="far-clipboard"
       }}
-    {{/if}}
 
-    <div class="canned-replies-title-text">{{reply.title}}</div>
-  </div>
-
-  {{#if isOpen}}
-    <div class="canned-replies-content">
-      {{{cook-text reply.content}}}
+      {{#if canEdit}}
+        {{d-button
+          class="canned-replies-edit"
+          action=(action "editReply")
+          icon="pencil-alt"
+        }}
+      {{/if}}
     </div>
-  {{/if}}
-</div>
+  </summary>
+
+  <div class="canned-replies-content">
+    {{cook-text reply.content}}
+  </div>
+</details>
