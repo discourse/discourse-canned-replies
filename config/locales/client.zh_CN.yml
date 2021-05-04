@@ -7,6 +7,7 @@
 zh_CN:
   js:
     canned_replies:
+      filter_hint: "按标题过滤..."
       composer_button_text: "归入方框的回复"
       title:
         name: "标题"
