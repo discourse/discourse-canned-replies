@@ -7,6 +7,7 @@
 de:
   js:
     canned_replies:
+      filter_hint: "Nach Titel filtern..."
       composer_button_text: "Vorbereitete Antworten"
       title:
         name: "Titel"
@@ -21,9 +22,11 @@ de:
         edit_button: "Bearbeiten"
         modal_title: "Vorbereitete Antwort einfügen"
         sort:
-          alphabetically: "Sortiere alphabetisch"
-          usage: "Sortiere nach Häufigkeit der Nutzung"
+          alphabetically: "Alphabetisch sortieren"
+          usage: "Sortieren nach Nutzungshäufigkeit"
       add:
         modal_title: "Vorbereitete Antwort hinzufügen"
       edit:
         modal_title: "Vorbereitete Antwort bearbeiten"
+        remove_confirm: "Möchtest du wirklich diese vorgefertigte Antwort löschen?"
+      back: "Zurück"

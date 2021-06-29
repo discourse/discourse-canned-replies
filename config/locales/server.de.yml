@@ -6,8 +6,10 @@
 
 de:
   site_settings:
-    canned_replies_enabled: 'Zeige eine Editor-Schaltfläche zum Einfügen vorbereiteter Antworten'
-    canned_replies_groups: 'Zugriff auf konservierte Antworten für Nicht-Team Gruppen nach Gruppenname gewähren'
+    canned_replies_enabled: 'Schaltfläche zum Einfügen vorgefertigter Antworten im Composer-Fenster anzeigen?'
+    canned_replies_groups: 'Zugriff auf vorgefertigte Antworten für Nicht-Team Gruppen auf Basis des Gruppennamens gewähren'
+    canned_replies_everyone_enabled: 'Jedem erlauben, vorgefertigte Antworten zu verwenden'
+    canned_replies_everyone_can_edit: 'Jedem erlauben, vorgefertigte Antworten zu erstellen, zu bearbeiten und zu löschen'
   replies:
     default_reply:
       title: "Meine erste vorbereitete Antwort"
