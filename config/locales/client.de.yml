@@ -8,7 +8,7 @@ de:
   js:
     canned_replies:
       filter_hint: "Nach Titel filtern..."
-      composer_button_text: "Vorbereitete Antworten"
+      composer_button_text: "Antwortvorlagen"
       title:
         name: "Titel"
         invalid: Der Titel darf nicht leer sein.
@@ -16,17 +16,17 @@ de:
         name: "Inhalt"
         invalid: Der Inhalt darf nicht leer sein.
       insert:
-        choose: "(wähle eine Antwort)"
+        choose: "(wähle eine Vorlage)"
         insert_button: "Antwort einfügen"
         new_button: "Neu"
         edit_button: "Bearbeiten"
-        modal_title: "Vorbereitete Antwort einfügen"
+        modal_title: "Antwortvorlage einfügen"
         sort:
           alphabetically: "Alphabetisch sortieren"
           usage: "Sortieren nach Nutzungshäufigkeit"
       add:
-        modal_title: "Vorbereitete Antwort hinzufügen"
+        modal_title: "Antwortvorlage hinzufügen"
       edit:
-        modal_title: "Vorbereitete Antwort bearbeiten"
-        remove_confirm: "Möchtest du wirklich diese vorgefertigte Antwort löschen?"
+        modal_title: "Antwortvorlage bearbeiten"
+        remove_confirm: "Möchtest du wirklich diese Antwortvorlage löschen?"
       back: "Zurück"
