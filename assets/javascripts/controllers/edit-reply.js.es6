@@ -1,7 +1,7 @@
 import ModalFunctionality from "discourse/mixins/modal-functionality";
 import showModal from "discourse/lib/show-modal";
 import { ajax } from "discourse/lib/ajax";
-import { default as computed } from "ember-addons/ember-computed-decorators";
+import discourseComputed from "discourse-common/utils/decorators";
 import { popupAjaxError } from "discourse/lib/ajax-error";
 import I18n from "I18n";
 
@@ -15,12 +15,12 @@ export default Ember.Controller.extend(ModalFunctionality, {
     this.set("saving", null);
   },
 
-  @computed("saving")
+  @discourseComputed("saving")
   savingLabel(saving) {
     return saving === null ? "save" : saving ? "saving" : "saved";
   },
 
-  @computed("replyTitle", "replyContent", "saving")
+  @discourseComputed("replyTitle", "replyContent", "saving")
   disableSaveButton(replyTitle, replyContent, saving) {
     return saving || replyTitle === "" || replyContent === "";
   },
