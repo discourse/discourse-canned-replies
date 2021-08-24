@@ -7,6 +7,7 @@
 ko:
   js:
     canned_replies:
+      filter_hint: "제목으로 필터링..."
       composer_button_text: "미리 준비된 답변"
       title:
         name: "제목"
@@ -27,3 +28,5 @@ ko:
         modal_title: "미리 준비된 답변 추가"
       edit:
         modal_title: "미리 준비된 답변 수정"
+        remove_confirm: "정말로 현재의 미리 준비된 답장을 삭제 하시겠습니까?"
+      back: "뒤로"
