@@ -3,6 +3,7 @@ import showModal from "discourse/lib/show-modal";
 
 function initializeCannedRepliesUIBuilder(api) {
   api.modifyClass("controller:composer", {
+    pluginId: "discourse-canned-replies",
     actions: {
       showCannedRepliesButton() {
         if (this.site.mobileView) {

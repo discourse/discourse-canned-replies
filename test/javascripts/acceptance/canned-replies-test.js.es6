@@ -1,13 +1,15 @@
 import I18n from "I18n";
 import selectKit from "discourse/tests/helpers/select-kit-helper";
-import {
-  acceptance,
-  updateCurrentUser,
-} from "discourse/tests/helpers/qunit-helpers";
+import { acceptance } from "discourse/tests/helpers/qunit-helpers";
+import { click, fillIn, visit } from "@ember/test-helpers";
+import { test } from "qunit";
 import { clearPopupMenuOptionsCallback } from "discourse/controllers/composer";
 
 acceptance("Canned Replies", function (needs) {
-  needs.user();
+  needs.user({
+    can_use_canned_replies: true,
+    can_edit_canned_replies: true,
+  });
   needs.settings({
     canned_replies_enabled: true,
   });
@@ -78,12 +80,6 @@ acceptance("Canned Replies", function (needs) {
   needs.hooks.beforeEach(() => clearPopupMenuOptionsCallback());
 
   test("Inserting canned replies", async (assert) => {
-    updateCurrentUser({
-      can_use_canned_replies: true,
-      can_edit_canned_replies: true,
-    });
-    const popUpMenu = selectKit(".toolbar-popup-menu-options");
-
     await visit("/");
 
     await click("#create-topic");
@@ -92,6 +88,7 @@ acceptance("Canned Replies", function (needs) {
     const editorInput = $(".d-editor-input")[0];
     editorInput.selectionStart = editorInput.selectionEnd = "before".length;
 
+    const popUpMenu = await selectKit(".toolbar-popup-menu-options");
     await popUpMenu.expand();
     await popUpMenu.selectRowByValue("showCannedRepliesButton");
     await click(".canned-reply-title");
@@ -115,11 +112,7 @@ acceptance("Canned Replies", function (needs) {
   });
 
   test("Editing a canned reply", async (assert) => {
-    updateCurrentUser({
-      can_use_canned_replies: true,
-      can_edit_canned_replies: true,
-    });
-    const popUpMenu = selectKit(".toolbar-popup-menu-options");
+    const popUpMenu = await selectKit(".toolbar-popup-menu-options");
 
     await visit("/");
 
@@ -141,11 +134,7 @@ acceptance("Canned Replies", function (needs) {
   });
 
   test("Creating a new canned reply", async (assert) => {
-    updateCurrentUser({
-      can_use_canned_replies: true,
-      can_edit_canned_replies: true,
-    });
-    const popUpMenu = selectKit(".toolbar-popup-menu-options");
+    const popUpMenu = await selectKit(".toolbar-popup-menu-options");
 
     await visit("/");
 
@@ -177,11 +166,7 @@ acceptance("Canned Replies", function (needs) {
   });
 
   test("Replacing variables", async (assert) => {
-    updateCurrentUser({
-      can_use_canned_replies: true,
-      can_edit_canned_replies: true,
-    });
-    const popUpMenu = selectKit(".toolbar-popup-menu-options");
+    const popUpMenu = await selectKit(".toolbar-popup-menu-options");
 
     await visit("/");
 
@@ -189,7 +174,9 @@ acceptance("Canned Replies", function (needs) {
     await popUpMenu.expand();
     await popUpMenu.selectRowByValue("showCannedRepliesButton");
 
-    await click(".canned-replies-apply:eq(4)");
+    await click(
+      "#canned-reply-04697870e02acfef3c2130dab92fe6d8 .canned-replies-apply"
+    );
 
     assert.equal(
       find(".d-editor-input").val().trim(),
@@ -199,11 +186,7 @@ acceptance("Canned Replies", function (needs) {
   });
 
   test("Reset modal content", async (assert) => {
-    updateCurrentUser({
-      can_use_canned_replies: true,
-      can_edit_canned_replies: true,
-    });
-    const popUpMenu = selectKit(".toolbar-popup-menu-options");
+    const popUpMenu = await selectKit(".toolbar-popup-menu-options");
 
     await visit("/");
 
