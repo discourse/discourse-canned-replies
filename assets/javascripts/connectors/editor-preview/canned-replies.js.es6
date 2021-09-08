@@ -17,7 +17,7 @@ export default {
     this.set("canEdit", canEdit);
 
     component.setProperties({
-      isVisible: false,
+      cannedVisible: false,
       loadingReplies: false,
       replies: [],
       filteredReplies: [],
@@ -70,7 +70,7 @@ export default {
   actions: {
     show() {
       $("#reply-control .d-editor-preview-wrapper > .d-editor-preview").hide();
-      this.setProperties({ isVisible: true, loadingReplies: true });
+      this.setProperties({ cannedVisible: true, loadingReplies: true });
 
       ajax("/canned_replies")
         .then((results) => {
@@ -93,7 +93,7 @@ export default {
 
     hide() {
       $(".d-editor-preview-wrapper > .d-editor-preview").show();
-      this.set("isVisible", false);
+      this.set("cannedVisible", false);
     },
 
     newReply() {
