@@ -6,8 +6,8 @@
 
 de:
   site_settings:
-    canned_replies_enabled: 'Schaltfläche zum Einfügen von Antwortvorlagen im Composer-Fenster anzeigen?'
-    canned_replies_groups: 'Zugriff auf Antwortvorlagen für Nicht-Team Gruppen auf Basis des Gruppennamens gewähren'
+    canned_replies_enabled: 'Schaltfläche zum Einfügen von Antwortvorlagen im Editor-Fenster anzeigen?'
+    canned_replies_groups: 'Zugriff auf Antwortvorlagen für Nicht-Team-Gruppen auf Basis des Gruppennamens gewähren'
     canned_replies_everyone_enabled: 'Jedem erlauben, Antwortvorlagen zu verwenden'
     canned_replies_everyone_can_edit: 'Jedem erlauben, Antwortvorlagen zu erstellen, zu bearbeiten und zu löschen'
   replies:
@@ -15,6 +15,6 @@ de:
       title: "Meine erste Antwortvorlage"
       body: |
         Das ist ein Beispiel für eine Antwortvorlage.
-        Du kannst **Markdown** verwenden, um deine Antworten zu formatieren. Klicke die **Neu**-Schaltfläche, um neue Antworten zu erstellen bzw. die **Bearbeiten**-Schaltfläche, um bestehende Vorlagen zu bearbeiten oder zu entfernen.
+        Du kannst **Markdown** verwenden, um deine Antworten zu formatieren. Klicke die **Neu**-Schaltfläche an, um neue Antworten zu erstellen, bzw. die **Bearbeiten**-Schaltfläche, um bestehende Vorlagen zu bearbeiten oder zu entfernen.
 
-        *Diese Antwortvorlage wird hinzugefügt, wenn die Antwortliste leer ist..*
+        *Diese Antwortvorlage wird hinzugefügt, wenn die Antwortliste leer ist.*

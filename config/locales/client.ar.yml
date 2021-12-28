@@ -7,23 +7,26 @@
 ar:
   js:
     canned_replies:
-      composer_button_text: "الردود المعلّبة"
+      filter_hint: "التصفية حسب العنوان..."
+      composer_button_text: "الردود الآلية"
       title:
         name: "العنوان"
-        invalid: لا يمكن للعنوان أن يكون فارغا.
+        invalid: لا يمكن للعنوان أن يكون فارغًا.
       content:
-        name: "محتوى"
-        invalid: المحتوى لا يمكن أ يكون فارغا.
+        name: "المحتوى"
+        invalid: لا يمكن للمحتوى أن يكون فارغًا.
       insert:
-        choose: "(اختر ردّا)"
-        insert_button: "أضف ردّا"
+        choose: "(اختر ردًا)"
+        insert_button: "أضف ردًا"
         new_button: "جديد"
-        edit_button: "عدّل"
-        modal_title: "أضف ردّا معلّبا"
+        edit_button: "تعديل"
+        modal_title: "إضافة رد محدَّد مسبقًا"
         sort:
-          alphabetically: "صنّف حسب الاسم"
-          usage: "صنّف حسب الاستعمال"
+          alphabetically: "الترتيب حسب الاسم"
+          usage: "الترتيب حسب تكرار الاستخدام"
       add:
-        modal_title: "أضف ردّا معلبا"
+        modal_title: "إضافة رد محدَّد مسبقًا"
       edit:
-        modal_title: "عدّل ردّا معلبا"
+        modal_title: "تعديل الرد المحدَّد مسبقًا"
+        remove_confirm: "هل تريد بالتأكيد حذف هذا الرد المحدَّد مسبقًا؟"
+      back: "الرجوع"

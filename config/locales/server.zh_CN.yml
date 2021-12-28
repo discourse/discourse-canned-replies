@@ -6,15 +6,15 @@
 
 zh_CN:
   site_settings:
-    canned_replies_enabled: '在编辑窗口上显示插入预设回复按钮？'
-    canned_replies_groups: '按群组名添加对非管理组的预设回复的访问权限'
-    canned_replies_everyone_enabled: '允许任何人使用预设的回复'
-    canned_replies_everyone_can_edit: '允许任何人创建、编辑和删除预设的回复'
+    canned_replies_enabled: '在编辑器窗口上显示“插入预设回复”按钮？'
+    canned_replies_groups: '按群组名称为非管理群组添加预设回复的访问权限'
+    canned_replies_everyone_enabled: '允许所有人使用预设回复'
+    canned_replies_everyone_can_edit: '允许所有人创建、编辑和删除预设回复'
   replies:
     default_reply:
       title: "我的第一个预设回复"
       body: |
-        这是一个预设回复的例子
-        您可以使用**markdown **来设置回复样式。单击**新**按钮以创建新回复，或单击**编辑**按钮以编辑或删除现有的预设回复。
+        这是一个示例预设回复。
+        您可以使用 **markdown ** 设置回复样式。点击**新建**按钮可以创建新回复，点击**编辑**按钮可以编辑或移除现有的预设回复。
 
-        *当回复列表为空时，将添加此预设回复。*
+        * 当回复名单为空时，将添加此预设回复。*

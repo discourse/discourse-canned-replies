@@ -7,10 +7,26 @@
 ja:
   js:
     canned_replies:
+      filter_hint: "タイトルでフィルタ..."
+      composer_button_text: "返信定型文"
       title:
         name: "タイトル"
+        invalid: タイトルを空白にできません。
       content:
         name: "コンテンツ"
+        invalid: コンテンツを空白にできません。
       insert:
+        choose: "（返信を選択）"
+        insert_button: "返信を挿入"
         new_button: "新規"
         edit_button: "編集"
+        modal_title: "返信定型文を挿入"
+        sort:
+          alphabetically: "アルファベット順に並べ替え"
+          usage: "使用頻度で並べ替え"
+      add:
+        modal_title: "返信定型文を追加"
+      edit:
+        modal_title: "返信定型文を編集"
+        remove_confirm: "この返信定型文を削除してもよろしいですか？"
+      back: "戻る"

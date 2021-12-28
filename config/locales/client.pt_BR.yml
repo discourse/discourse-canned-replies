@@ -7,23 +7,26 @@
 pt_BR:
   js:
     canned_replies:
-      composer_button_text: "Respostas prontas"
+      filter_hint: "Filtrar por título..."
+      composer_button_text: "Respostas predefinidas"
       title:
         name: "Título"
-        invalid: Título não pode ficar vazio.
+        invalid: O título não pode ficar vazio.
       content:
         name: "Conteúdo"
-        invalid: Conteúdo não pode ficar vazio.
+        invalid: O conteúdo não pode ficar vazio.
       insert:
         choose: "(escolha uma resposta)"
-        insert_button: "Inserir Resposta"
+        insert_button: "Inserir resposta"
         new_button: "Novo"
         edit_button: "Editar"
-        modal_title: "Inserir Resposta Pronta"
+        modal_title: "Inserir resposta predefinida"
         sort:
           alphabetically: "Ordenar alfabeticamente"
           usage: "Ordenar por frequência de uso"
       add:
-        modal_title: "Adicionar Resposta Pronta"
+        modal_title: "Adicionar resposta predefinida"
       edit:
-        modal_title: "Editar Resposta Pronta"
+        modal_title: "Editar resposta predefinida"
+        remove_confirm: "Você tem certeza de que deseja excluir esta resposta predefinida?"
+      back: "Voltar"

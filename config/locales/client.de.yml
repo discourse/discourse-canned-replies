@@ -7,7 +7,7 @@
 de:
   js:
     canned_replies:
-      filter_hint: "Nach Titel filtern..."
+      filter_hint: "Nach Titel filtern …"
       composer_button_text: "Antwortvorlagen"
       title:
         name: "Titel"

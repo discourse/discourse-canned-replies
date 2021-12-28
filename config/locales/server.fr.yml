@@ -6,15 +6,15 @@
 
 fr:
   site_settings:
-    canned_replies_enabled: 'Afficher le bouton pour insérer une réponse prédéfinie dans la fenêtre de l''éditeur ?'
+    canned_replies_enabled: 'Afficher le bouton pour insérer une réponse prédéfinie dans la fenêtre de rédaction ?'
     canned_replies_groups: 'Ajouter un accès aux réponses prédéfinies pour les groupes ne faisant pas partie des responsables par nom de groupe'
-    canned_replies_everyone_enabled: 'Autoriser tout le monde à utiliser des réponses prédéfinies'
+    canned_replies_everyone_enabled: 'Autoriser tout le monde à utiliser les réponses prédéfinies'
     canned_replies_everyone_can_edit: 'Autoriser tout le monde à créer, modifier et supprimer des réponses prédéfinies'
   replies:
     default_reply:
       title: "Ma première réponse prédéfinie"
       body: |
         Ceci est un exemple de réponse prédéfinie.
-        Vous pouvez utiliser le **Markdown** dans vos réponses. Cliquez sur le bouton **nouveau** pour créer de nouvelles réponses ou sur le bouton **modifier** pour modifier ou supprimer une réponse prédéfinie existante.
+        Vous pouvez utiliser le **marquage** dans vos réponses. Cliquez sur le bouton **nouveau** pour créer de nouvelles réponses ou sur le bouton **modifier** pour modifier ou supprimer une réponse prédéfinie existante.
 
-        *Cette réponse prédéfinie sera ajoutée quand la liste de réponses est vide.*
+        *Cette réponse prédéfinie sera ajoutée quand la liste de réponses sera vide.*
