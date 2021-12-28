@@ -6,8 +6,8 @@
 
 it:
   site_settings:
-    canned_replies_enabled: 'Mostrare il pulsante per inserire le risposte predefinite nel composer?'
-    canned_replies_groups: 'Aggiungi l''accesso alle risposte predefinite per i gruppi non-staff in base al nome del gruppo'
+    canned_replies_enabled: 'Mostrare il pulsante per inserire le risposte predefinite nella finestra di composizione?'
+    canned_replies_groups: 'Aggiungi l''accesso alle risposte predefinite per i gruppi non appartenenti allo staff in base al nome del gruppo'
     canned_replies_everyone_enabled: 'Consenti a tutti di utilizzare le risposte predefinite'
     canned_replies_everyone_can_edit: 'Consenti a tutti di creare, modificare ed eliminare le risposte predefinite'
   replies:

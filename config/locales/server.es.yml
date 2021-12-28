@@ -8,13 +8,13 @@ es:
   site_settings:
     canned_replies_enabled: '¿Mostrar el botón de insertar respuestas predefinidas en el editor?'
     canned_replies_groups: 'Añadir acceso a las respuestas predefinidas para grupos que no sean parte del staff por nombre de grupo'
-    canned_replies_everyone_enabled: 'Permitir a todos usar respuestas enlatadas'
-    canned_replies_everyone_can_edit: 'Permitir a todos crear, editar, y borrar respuestas enlatadas'
+    canned_replies_everyone_enabled: 'Permitir a todos usar respuestas predefinidas'
+    canned_replies_everyone_can_edit: 'Permitir a todos crear, editar, y eliminar respuestas predefinidas'
   replies:
     default_reply:
       title: "Mi primera respuesta predefinida"
       body: |
         Este es un ejemplo de una respuesta predefinida.
-        Puedes usar **markdown** para formatear tus respuestas. Haz clic en el botón de **nuevo** para crear nuevas respuestas o en el botón de **editar** para editar o eliminar alguna respuesta predefinida ya existente.
+        Puedes usar **marcado** para dar formato a tus respuestas. Haz clic en el botón **nueva** para crear nuevas respuestas o en el botón de **editar** para editar o eliminar alguna respuesta predefinida ya existente.
 
-        *Esta respuesta predefinida será añadida cuando la lista de respuestas esté vacía.*
+        *Esta respuesta predefinida se añadirá cuando la lista de respuestas esté vacía.*

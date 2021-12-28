@@ -5,3 +5,16 @@
 # https://translate.discourse.org/
 
 ja:
+  site_settings:
+    canned_replies_enabled: 'コンポーザーウィンドウに［返信定型文を挿入］ボタンを表示しますか？'
+    canned_replies_groups: 'グループ名でスタッフ以外のグループに返信定型文へのアクセスを追加する'
+    canned_replies_everyone_enabled: '返信定型文の使用を全員に許可する'
+    canned_replies_everyone_can_edit: '返信定型文の作成、編集、および削除を全員に許可する'
+  replies:
+    default_reply:
+      title: "私の最初の返信定型文"
+      body: |
+        これは返信定型文の例です。
+        **マークダウン**を使用して、返信にスタイルを設定できます。**新規**ボタンをクリックして新しい返信を作成するか、**編集**ボタンをクリックして既存の返信定型文を編集または削除します。
+
+        *この返信定型文は、返信リストが空である場合に追加されます。*

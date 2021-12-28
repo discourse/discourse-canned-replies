@@ -7,6 +7,7 @@
 it:
   js:
     canned_replies:
+      filter_hint: "Filtra per titolo..."
       composer_button_text: "Risposte predefinite"
       title:
         name: "Titolo"
@@ -24,6 +25,8 @@ it:
           alphabetically: "Ordina alfabeticamente"
           usage: "Ordina per frequenza di utilizzo"
       add:
-        modal_title: "Aggiungi Risposta Programmata"
+        modal_title: "Aggiungi Risposta Predefinita"
       edit:
         modal_title: "Modifica Risposta Predefinita"
+        remove_confirm: "Vuoi cancellare questa risposta predefinita?"
+      back: "Indietro"

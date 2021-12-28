@@ -6,13 +6,15 @@
 
 pt_BR:
   site_settings:
-    canned_replies_enabled: 'Mostrar botão de inserir resposta pronta na janela do compositor?'
-    canned_replies_groups: 'Adicionar acesso às respostas prontas para grupos não-staff por nome do grupo'
+    canned_replies_enabled: 'Mostrar botão de inserir resposta predefinida na janela do compositor?'
+    canned_replies_groups: 'Adicionar acesso às respostas predefinidas para grupos que são sejam de membros da equipe por nome do grupo'
+    canned_replies_everyone_enabled: 'Permitir que todas as pessoas usem respostas predefinidas'
+    canned_replies_everyone_can_edit: 'Permitir que todas as pessoas criem, editem e excluam respostas predefinidas'
   replies:
     default_reply:
-      title: "Minha primeira resposta pronta"
+      title: "Minha primeira resposta predefinida"
       body: |
-        Este é um exemplo de resposta pronta.
-        Você pode usar **markdown** para estilizar suas respostas. Clique no botão **novo** para criar novas respostas ou no botão **editar** para editar ou remover uma resposta pronta existente.
+        Este é um exemplo de resposta predefinida.
+        Você pode usar **markdown** para estilizar suas respostas. Clique no botão **novo** para criar novas respostas ou no botão **editar** para editar ou remover uma resposta predefinida existente.
 
-        *Esta resposta pronta será adicionada quando a lista de respostas estiver vazia.*
+        *Esta resposta predefinida será adicionada quando a lista de respostas estiver vazia.*

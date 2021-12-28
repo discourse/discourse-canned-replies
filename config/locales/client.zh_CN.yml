@@ -7,24 +7,26 @@
 zh_CN:
   js:
     canned_replies:
-      filter_hint: "按标题过滤..."
-      composer_button_text: "归入方框的回复"
+      filter_hint: "按标题筛选…"
+      composer_button_text: "预设回复"
       title:
         name: "标题"
-        invalid: 名字不能为空
+        invalid: 标题不能为空。
       content:
         name: "内容"
-        invalid: 内容不能为空
+        invalid: 内容不能为空。
       insert:
-        choose: "选择一个回复"
-        insert_button: "插入一个回复"
-        new_button: "新"
+        choose: "（选择回复）"
+        insert_button: "插入回复"
+        new_button: "新建"
         edit_button: "编辑"
-        modal_title: "插入一个归入方框的回复"
+        modal_title: "插入预设回复"
         sort:
-          alphabetically: "按照字母表排序"
-          usage: "按照使用频率排序"
+          alphabetically: "按字母顺序排序"
+          usage: "按使用频率排序"
       add:
-        modal_title: "添加一个归入方框的回复"
+        modal_title: "添加预设回复"
       edit:
-        modal_title: "编辑归入方框的回复"
+        modal_title: "编辑预设回复"
+        remove_confirm: "确定要删除此预设回复吗？"
+      back: "返回"

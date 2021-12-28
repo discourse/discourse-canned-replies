@@ -7,6 +7,7 @@
 es:
   js:
     canned_replies:
+      filter_hint: "Filtrar por título ..."
       composer_button_text: "Respuestas predefinidas"
       title:
         name: "Título"
@@ -27,3 +28,5 @@ es:
         modal_title: "Añadir respuesta predefinida"
       edit:
         modal_title: "Editar respuesta predefinida"
+        remove_confirm: "¿Seguro que quieres eliminar esta respuesta predefinida?"
+      back: "Atrás"
