@@ -6,8 +6,10 @@
 
 fi:
   site_settings:
-    canned_replies_enabled: 'Näytä lisää tallennettu vastaus viesti-ikkunassa?'
-    canned_replies_groups: 'Lisää pääsy tallennettuihin vastauksiin ei-henkilöstö ryhmille ryhmän nimen perusteella'
+    canned_replies_enabled: 'Näytä lisää tallennettu vastaus -painike viesti-ikkunassa?'
+    canned_replies_groups: 'Lisää pääsy tallennettuihin vastauksiin muille kuin henkilökunnan ryhmille ryhmän nimen perusteella'
+    canned_replies_everyone_enabled: 'Salli kaikkien käyttää tallennettuja vastauksia'
+    canned_replies_everyone_can_edit: 'Salli kaikkien luoda, muokata ja poistaa tallennettuja vastauksia'
   replies:
     default_reply:
       title: "Ensimmäinen tallennettu vastaukseni"
@@ -15,4 +17,4 @@ fi:
         Tämä on esimerkki tallennetusta vastauksesta.
         Vastausten muotoilussa voi käyttää **markdownia**. Voit aloittaa uuden vastauksen työstämisen klikkaamalla **Uusi**-painiketta. Voit muokata olemassa olevaa tallennettua vastausta tai poistaa sellaisen **Muokkaa**-painikkeen avulla.
 
-        Tämä tallennettu vastaus lisätään, kun muita tallennettuja vastauksia ei ole.
+        *Tämä tallennettu vastaus lisätään, kun muita tallennettuja vastauksia ei ole.*
