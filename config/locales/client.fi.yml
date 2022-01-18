@@ -7,6 +7,7 @@
 fi:
   js:
     canned_replies:
+      filter_hint: "Suodata otsikon mukaan..."
       composer_button_text: "Tallennetut vastaukset"
       title:
         name: "Otsikko"
@@ -16,7 +17,7 @@ fi:
         invalid: Sisältö ei voi olla tyhjä.
       insert:
         choose: "(valitse vastaus)"
-        insert_button: "Lisää"
+        insert_button: "Lisää vastaus"
         new_button: "Uusi"
         edit_button: "Muokkaa"
         modal_title: "Lisää tallennettu vastaus"
@@ -27,3 +28,5 @@ fi:
         modal_title: "Lisää tallennettu vastaus"
       edit:
         modal_title: "Muokkaa tallennettua vastausta"
+        remove_confirm: "Haluatko varmasti poistaa tämän tallennetun vastauksen?"
+      back: "Takaisin"

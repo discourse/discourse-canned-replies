@@ -16,7 +16,7 @@ de:
         name: "Inhalt"
         invalid: Der Inhalt darf nicht leer sein.
       insert:
-        choose: "(wähle eine Vorlage)"
+        choose: "(wähle eine Antwort)"
         insert_button: "Antwort einfügen"
         new_button: "Neu"
         edit_button: "Bearbeiten"
