@@ -1,6 +1,7 @@
 en:
   site_settings:
     canned_replies_enabled: 'Show insert canned reply button on composer window?'
+    canned_replies_category: 'Category to fetch the canned replies from'
     canned_replies_groups: 'Add access to canned replies for non-staff groups by group name'
     canned_replies_everyone_enabled: 'Allow everyone to use canned replies'
     canned_replies_everyone_can_edit: 'Allow everyone to create, edit, and delete canned replies'

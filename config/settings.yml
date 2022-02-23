@@ -2,6 +2,9 @@ plugins:
   canned_replies_enabled:
     default: true
     client: true
+  canned_replies_category:
+    default: ""
+    type: category
   canned_replies_groups:
     default: ""
     type: list

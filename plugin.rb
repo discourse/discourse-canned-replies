@@ -109,7 +109,7 @@ after_initialize do
     def create
       guardian.ensure_can_edit_canned_replies!
 
-      title   = params.require(:title)
+      title = params.require(:title)
       content = params.require(:content)
       user_id = current_user.id
 
@@ -121,7 +121,7 @@ after_initialize do
       guardian.ensure_can_edit_canned_replies!
 
       reply_id = params.require(:id)
-      user_id  = current_user.id
+      user_id = current_user.id
       record = CannedReply::Reply.remove(user_id, reply_id)
 
       render json: record
@@ -129,7 +129,7 @@ after_initialize do
 
     def reply
       reply_id = params.require(:id)
-      user_id  = current_user.id
+      user_id = current_user.id
 
       record = CannedReply::Reply.get_reply(user_id, reply_id)
       render json: record
@@ -149,17 +149,21 @@ after_initialize do
 
     def use
       reply_id = params.require(:id)
-      user_id  = current_user.id
+      user_id = current_user.id
       record = CannedReply::Reply.use(user_id, reply_id)
 
       render json: record
     end
 
     def index
-      user_id = current_user.id
-      replies = CannedReply::Reply.all(user_id)
+      category_id = SiteSetting.canned_replies_category.to_i
+      query = TopicQuery.new(current_user, { category: category_id }).list_latest
 
-      render json: { replies: replies }
+      list = query.topics.map do |topic|
+        { id: topic.id, title: topic.title, content: topic.first_post.raw, usages: 0 }
+      end
+
+      render json: { replies: list }
     end
   end
 
