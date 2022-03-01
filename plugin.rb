@@ -156,12 +156,16 @@ after_initialize do
     end
 
     def index
-      category_id =
-      #query = TopicQuery.new(current_user, { category: category_id }).list_canned_replies
       query = TopicQuery.new(current_user).list_canned_replies
 
       list = query.topics.map do |topic|
-        { id: topic.id, title: topic.title, content: topic.first_post.raw, usages: 0 }
+        {
+          id: topic.id,
+          title: topic.title,
+          content: topic.first_post.raw,
+          tags: topic.tags.map(&:name),
+          usages: 0
+        }
       end
 
       render json: { replies: list }
@@ -169,10 +173,12 @@ after_initialize do
   end
 
   require_dependency 'topic_query'
+
   class ::TopicQuery
     def list_canned_replies()
       create_list(:canned_replies, { category: SiteSetting.canned_replies_category.to_i }) do |topics|
         topics
+          .all
           .includes(:first_post)
           .where("categories.topic_id <> topics.id")
           .reorder("topics.title ASC")

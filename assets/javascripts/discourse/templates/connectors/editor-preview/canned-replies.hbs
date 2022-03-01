@@ -1,23 +1,19 @@
 {{#if cannedVisible}}
   <div class="d-editor-preview">
     {{#conditional-loading-spinner condition=loadingReplies}}
-      {{#if canEdit}}
-        <div class="canned-replies-edit-bar">
-          {{d-button class="canned-replies-new"
-              action=(action "newReply")
-              icon="plus"
-              label="canned_replies.insert.new_button"}}
-          {{text-field class="canned-replies-filter" value=listFilter placeholder=(i18n "canned_replies.filter_hint")}}
+      <div class="canned-replies-edit-bar">
+        {{canned-tag-drop
+          availableTags=availableTags
+          tagId=selectedTag
+          onChange=(action "changeSelectedTag")
+        }}
+        {{text-field class="canned-replies-filter" value=listFilter placeholder=(i18n "canned_replies.filter_hint")}}
 
-          {{d-button class="modal-close close btn-flat"
-              action=(action "hide")
-              icon="times"}}
-        </div>
-      {{/if}}
-
-      {{#each filteredReplies as |r|}}
-        {{canned-reply reply=r}}
-      {{/each}}
+        {{d-button class="modal-close close btn-flat"
+                   action=(action "hide")
+                   icon="times"}}
+      </div>
+      {{canned-replies-list replies=replies selectedTag=selectedTag listFilter=listFilter}}
     {{/conditional-loading-spinner}}
   </div>
 {{/if}}
