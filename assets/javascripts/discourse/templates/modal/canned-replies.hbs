@@ -28,25 +28,7 @@
 {{/d-modal-body}}
 
 <div class="modal-footer">
-  {{#if canEdit}}
-    {{d-button
-      class="pull-left canned-replies-new"
-      action=(action "newReply")
-      icon="plus"
-      label="canned_replies.insert.new_button"
-    }}
-  {{/if}}
-
   {{#if selectedReply}}
-    {{#if canEdit}}
-      {{d-button
-        class="pull-left canned-replies-edit"
-        action=(action "editReply")
-        icon="pencil-alt"
-        label="canned_replies.insert.edit_button"
-      }}
-    {{/if}}
-
     {{d-button
       class="btn-primary pull-right canned-replies-apply"
       action=(action "apply")

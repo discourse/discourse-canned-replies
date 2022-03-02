@@ -1,6 +1,5 @@
 import Controller from "@ember/controller";
 import ModalFunctionality from "discourse/mixins/modal-functionality";
-import showModal from "discourse/lib/show-modal";
 import { ajax } from "discourse/lib/ajax";
 import { observes } from "discourse-common/utils/decorators";
 import { popupAjaxError } from "discourse/lib/ajax-error";
@@ -10,21 +9,9 @@ export default Controller.extend(ModalFunctionality, {
   selectedReply: null,
   selectedReplyId: "",
   loadingReplies: true,
-  canEdit: false,
 
   init() {
     this._super(...arguments);
-
-    const currentUser = this.get("currentUser");
-    const everyoneCanEdit =
-      this.siteSettings.canned_replies_everyone_enabled &&
-      this.siteSettings.canned_replies_everyone_can_edit;
-    const currentUserCanEdit =
-      this.siteSettings.canned_replies_enabled &&
-      currentUser &&
-      currentUser.can_edit_canned_replies;
-    const canEdit = currentUserCanEdit ? currentUserCanEdit : everyoneCanEdit;
-    this.set("canEdit", canEdit);
 
     this.replies = [];
   },
@@ -69,22 +56,6 @@ export default Controller.extend(ModalFunctionality, {
       );
 
       this.send("closeModal");
-    },
-
-    newReply() {
-      this.send("closeModal");
-
-      showModal("new-reply").set("newContent", this.composerModel.reply);
-    },
-
-    editReply() {
-      this.send("closeModal");
-
-      showModal("edit-reply").setProperties({
-        replyId: this.selectedReplyId,
-        replyTitle: this.get("selectedReply.title"),
-        replyContent: this.get("selectedReply.content"),
-      });
     },
   },
 });

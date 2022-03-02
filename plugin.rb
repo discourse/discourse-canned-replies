@@ -30,52 +30,24 @@ after_initialize do
   class CannedReply::Reply
     class << self
 
-      def add(user_id, title, content)
-        id = SecureRandom.hex(16)
-        record = { id: id, title: title, content: content }
+      def all(user)
+        query = TopicQuery.new(user).list_canned_replies
 
-        replies = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME) || {}
-
-        replies[id] = record
-        PluginStore.set(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME, replies)
-
-        record
-      end
-
-      def edit(user_id, reply_id, title, content)
-        record = { id: reply_id, title: title, content: content }
-        remove(user_id, reply_id)
-
-        replies = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME) || {}
-
-        replies[reply_id] = record
-        PluginStore.set(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME, replies)
-
-        record
-      end
-
-      def all(user_id)
-        replies = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME)
-
-        if replies.blank?
-          add_default_reply
-          replies = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME)
+        query.topics.map do |topic|
+          {
+            id: topic.id,
+            title: topic.title,
+            content: topic.first_post.raw,
+            tags: topic.tags.map(&:name),
+            usages: 0
+          }
         end
-
-        return [] if replies.blank?
-        replies.values.sort_by { |reply| reply['title'] || '' }
       end
 
       def get_reply(user_id, reply_id)
         replies = all(user_id)
 
         replies.detect { |reply| reply['id'] == reply_id }
-      end
-
-      def remove(user_id, reply_id)
-        replies = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME)
-        replies.delete(reply_id)
-        PluginStore.set(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME, replies)
       end
 
       def use(user_id, reply_id)
@@ -106,44 +78,11 @@ after_initialize do
       guardian.ensure_can_use_canned_replies!
     end
 
-    def create
-      guardian.ensure_can_edit_canned_replies!
-
-      title = params.require(:title)
-      content = params.require(:content)
-      user_id = current_user.id
-
-      record = CannedReply::Reply.add(user_id, title, content)
-      render json: record
-    end
-
-    def destroy
-      guardian.ensure_can_edit_canned_replies!
-
-      reply_id = params.require(:id)
-      user_id = current_user.id
-      record = CannedReply::Reply.remove(user_id, reply_id)
-
-      render json: record
-    end
-
     def reply
       reply_id = params.require(:id)
       user_id = current_user.id
 
       record = CannedReply::Reply.get_reply(user_id, reply_id)
-      render json: record
-    end
-
-    def update
-      guardian.ensure_can_edit_canned_replies!
-
-      reply_id = params.require(:id)
-      title = params.require(:title)
-      content = params.require(:content)
-      user_id = current_user.id
-
-      record = CannedReply::Reply.edit(user_id, reply_id, title, content)
       render json: record
     end
 
@@ -156,19 +95,9 @@ after_initialize do
     end
 
     def index
-      query = TopicQuery.new(current_user).list_canned_replies
+      replies = CannedReply::Reply.all(current_user)
 
-      list = query.topics.map do |topic|
-        {
-          id: topic.id,
-          title: topic.title,
-          content: topic.first_post.raw,
-          tags: topic.tags.map(&:name),
-          usages: 0
-        }
-      end
-
-      render json: { replies: list }
+      render json: { replies: replies }
     end
   end
 
@@ -186,22 +115,11 @@ after_initialize do
     end
   end
 
-  add_to_class(:user, :can_edit_canned_replies?) do
-    return true if staff?
-    return true if SiteSetting.canned_replies_everyone_can_edit
-    group_list = SiteSetting.canned_replies_groups.split("|").map(&:downcase)
-    groups.any? { |group| group_list.include?(group.name.downcase) }
-  end
-
   add_to_class(:user, :can_use_canned_replies?) do
     return true if staff?
     return true if SiteSetting.canned_replies_everyone_enabled
     group_list = SiteSetting.canned_replies_groups.split("|").map(&:downcase)
     groups.any? { |group| group_list.include?(group.name.downcase) }
-  end
-
-  add_to_class(:guardian, :can_edit_canned_replies?) do
-    user && user.can_edit_canned_replies?
   end
 
   add_to_class(:guardian, :can_use_canned_replies?) do
@@ -212,12 +130,8 @@ after_initialize do
     object.can_use_canned_replies?
   end
 
-  add_to_serializer(:current_user, :can_edit_canned_replies) do
-    object.can_edit_canned_replies?
-  end
-
   CannedReply::Engine.routes.draw do
-    resources :canned_replies, path: '/', only: [:index, :create, :destroy, :update] do
+    resources :canned_replies, path: '/', only: [:index] do
       member do
         get "reply"
         patch "use"

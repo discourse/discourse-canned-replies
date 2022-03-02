@@ -1,4 +1,3 @@
-import I18n from "I18n";
 import selectKit from "discourse/tests/helpers/select-kit-helper";
 import { acceptance } from "discourse/tests/helpers/qunit-helpers";
 import { click, fillIn, visit } from "@ember/test-helpers";
@@ -109,60 +108,6 @@ acceptance("Canned Replies", function (needs) {
       "before\n\n**markdown**\n\nafter",
       "it should contain the right selected output"
     );
-  });
-
-  test("Editing a canned reply", async (assert) => {
-    const popUpMenu = await selectKit(".toolbar-popup-menu-options");
-
-    await visit("/");
-
-    await click("#create-topic");
-    await popUpMenu.expand();
-    await popUpMenu.selectRowByValue("showCannedRepliesButton");
-
-    await click(".canned-replies-edit");
-
-    await fillIn(".canned-replies-form-title-input", "Some title");
-    await fillIn(".canned-replies-form-content-input textarea", "Some content");
-
-    await click(".edit-reply-save-btn");
-
-    assert.equal(
-      find(".canned-replies-footer .edit-reply-save-btn").text().trim(),
-      I18n.t("saved")
-    );
-  });
-
-  test("Creating a new canned reply", async (assert) => {
-    const popUpMenu = await selectKit(".toolbar-popup-menu-options");
-
-    await visit("/");
-
-    await click("#create-topic");
-    await popUpMenu.expand();
-    await popUpMenu.selectRowByValue("showCannedRepliesButton");
-
-    await click(".canned-replies-new");
-
-    await fillIn(".canned-replies-form-title-input", "");
-    await fillIn(".canned-replies-form-content-input textarea", "");
-
-    assert.equal(
-      find(".btn.new-reply-save-btn[disabled]").length,
-      1,
-      "save button should be disabled by default"
-    );
-
-    await fillIn(".canned-replies-form-title-input", "Some title");
-
-    assert.equal(
-      find(".btn.new-reply-save-btn[disabled]").length,
-      1,
-      "save button should be disabled when content is blank"
-    );
-
-    await fillIn(".canned-replies-form-content-input textarea", "Some content");
-    await click(".new-reply-save-btn");
   });
 
   test("Replacing variables", async (assert) => {

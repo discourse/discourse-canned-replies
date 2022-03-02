@@ -1,23 +1,10 @@
-import showModal from "discourse/lib/show-modal";
 import { ajax } from "discourse/lib/ajax";
 import { popupAjaxError } from "discourse/lib/ajax-error";
-import { getOwner } from "discourse-common/lib/get-owner";
 import { ALL_TAGS_ID } from "select-kit/components/tag-drop";
 import { schedule } from "@ember/runloop";
 
 export default {
   setupComponent(args, component) {
-    const currentUser = this.get("currentUser");
-    const everyoneCanEdit =
-      this.get("siteSettings.canned_replies_everyone_enabled") &&
-      this.get("siteSettings.canned_replies_everyone_can_edit");
-    const currentUserCanEdit =
-      this.get("siteSettings.canned_replies_enabled") &&
-      currentUser &&
-      currentUser.can_edit_canned_replies;
-    const canEdit = currentUserCanEdit ? currentUserCanEdit : everyoneCanEdit;
-    this.set("canEdit", canEdit);
-
     component.setProperties({
       cannedVisible: false,
       loadingReplies: false,
@@ -73,24 +60,15 @@ export default {
         .finally(() => {
           this.set("loadingReplies", false);
 
-          if (this.canEdit) {
-            schedule("afterRender", () =>
-              document.querySelector(".canned-replies-filter").focus()
-            );
-          }
+          schedule("afterRender", () =>
+            document.querySelector(".canned-replies-filter").focus()
+          );
         });
     },
 
     hide() {
       $(".d-editor-preview-wrapper > .d-editor-preview").show();
       this.set("cannedVisible", false);
-    },
-
-    newReply() {
-      const composer = getOwner(this).lookup("controller:composer");
-      composer.send("closeModal");
-
-      showModal("new-reply").set("newContent", composer.model.reply);
     },
   },
 };
