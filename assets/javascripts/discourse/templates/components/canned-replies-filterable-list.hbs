@@ -1,0 +1,15 @@
+{{#conditional-loading-spinner condition=loadingReplies}}
+  <div class="canned-replies-filter-bar">
+    {{canned-tag-drop
+      availableTags=availableTags
+      tagId=selectedTag
+      onChange=(action "changeSelectedTag")
+    }}
+    {{text-field class="canned-replies-filter" value=listFilter placeholder=(i18n "canned_replies.filter_hint")}}
+  </div>
+  <div class="canned-replies-list">
+  {{#each filteredReplies as |r|}}
+    {{canned-reply reply=r afterInsertReply=afterInsertReply}}
+  {{/each}}
+  </div>
+{{/conditional-loading-spinner}}

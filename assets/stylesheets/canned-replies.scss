@@ -1,5 +1,6 @@
 .canned-replies-modal {
   max-width: 1080px;
+
   .canned-replies-sort-usage,
   .canned-replies-sort-alpha {
     display: inline-block;
@@ -19,14 +20,24 @@
   }
 }
 
-.canned-replies-edit-bar {
+.canned-replies-filter-bar {
   display: flex;
+  max-width: var(--modal-max-width);
+
   border-bottom: 1px solid var(--primary-low);
   margin-bottom: 1em;
   padding-bottom: 1em;
+
+  .select-kit {
+    width: clamp(30%, 40%, 50%);
+  }
+
   input {
+    flex: 1;
+    width: 100%;
     margin: 0 0 0 1em;
   }
+
   .close {
     margin-left: auto;
   }
@@ -37,16 +48,27 @@
   margin-top: 3px;
 }
 
-.canned-reply-title {
-  display: flex;
-  align-items: center;
-  button {
-    margin-left: 0.5em;
-  }
+.canned-replies-list {
+  .canned-reply {
+    padding-bottom: 1em;
 
-  &:hover {
-    background-color: var(--highlight-medium);
-    cursor: pointer;
+    .canned-reply-title {
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        background-color: var(--highlight-medium);
+        cursor: pointer;
+      }
+
+      .canned-reply-title-text {
+        max-width: 75%;
+      }
+
+      .actions {
+        margin-left: auto;
+      }
+    }
   }
 }
 
@@ -61,27 +83,6 @@
     height: 100%;
     width: 100%;
   }
-
-  .canned-reply {
-    padding-bottom: 1em;
-
-    .canned-reply-title {
-      display: flex;
-      align-items: center;
-
-      .canned-reply-title-text {
-        max-width: 75%;
-      }
-
-      .actions {
-        margin-left: auto;
-      }
-    }
-  }
-}
-
-.canned-replies-form-title-input {
-  width: 100%;
 }
 
 .canned-replies-content {
@@ -89,18 +90,13 @@
   padding: 0.75em;
   margin-top: 0.5em;
   box-sizing: border-box;
+
   p:first-of-type {
     margin-top: 0;
   }
+
   p:last-of-type {
     margin-bottom: 0;
-  }
-}
-
-.desktop-view {
-  .canned-replies-edit-back {
-    // This button is only needed on mobile because it's a modal within a modal
-    display: none;
   }
 }
 
@@ -108,26 +104,15 @@
   min-height: 50vh;
   box-sizing: border-box;
   width: 100vw;
+  max-width: var(--modal-max-width);
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-
-  > div,
-  form,
-  .canned-replies-form-content-wrapper {
-    // for making the edit input full-height
-    flex: 1 1 100%;
-    display: flex;
-    flex-direction: column;
-  }
 
   .content {
     max-height: 50vh;
   }
 
-  .select-kit {
-    width: 100%;
-  }
   .d-editor-preview-wrapper {
     display: none;
   }

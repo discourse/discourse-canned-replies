@@ -1,3 +1,4 @@
+import Component from "@ember/component";
 import applyReply from "discourse/plugins/discourse-canned-replies/lib/apply-reply";
 import Component from "@ember/component";
 import { getOwner } from "discourse-common/lib/get-owner";
@@ -14,7 +15,8 @@ export default Component.extend({
         composer.model
       );
 
-      this.appEvents.trigger("canned-replies:hide");
+      // run parametrized action (if available) after insert the reply
+      this.afterInsertReply?.();
     },
   },
 });

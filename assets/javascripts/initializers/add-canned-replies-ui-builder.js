@@ -7,7 +7,7 @@ function initializeCannedRepliesUIBuilder(api) {
     actions: {
       showCannedRepliesButton() {
         if (this.site.mobileView) {
-          showModal("canned-replies").set("composerModel", this.model);
+          showModal("canned-replies-mobile").set("composerModel", this.model);
         } else {
           this.appEvents.trigger("composer:show-preview");
           this.appEvents.trigger("canned-replies:show");
