@@ -2,7 +2,7 @@
 
 # name: discourse-canned-replies
 # about: Add canned replies through the composer
-# version: 1.2
+# version: 2.0.0
 # authors: Jay Pfaffman and André Pereira
 # url: https://github.com/discourse/discourse-canned-replies
 # transpile_js: true
@@ -15,8 +15,6 @@ register_svg_icon "far-clipboard" if respond_to?(:register_svg_icon)
 
 after_initialize do
 
-  load File.expand_path('../app/jobs/onceoff/rename_canned_replies.rb', __FILE__)
-
   module ::CannedReply
     PLUGIN_NAME ||= "discourse-canned-replies".freeze
     STORE_NAME ||= "replies".freeze
@@ -25,6 +23,18 @@ after_initialize do
       engine_name CannedReply::PLUGIN_NAME
       isolate_namespace CannedReply
     end
+  end
+
+  [
+    '../app/jobs/onceoff/rename_canned_replies.rb',
+    "../app/models/discourse_canned_replies/usage_count.rb",
+    "../lib/discourse_canned_replies/topic_extension.rb",
+    "../lib/discourse_canned_replies/topic_query_extension.rb",
+  ].each { |path| load File.expand_path(path, __FILE__) }
+
+  reloadable_patch do |plugin|
+    Topic.class_eval { prepend DiscourseCannedReplies::TopicExtension }
+    TopicQuery.class_eval { prepend DiscourseCannedReplies::TopicQueryExtension }
   end
 
   class CannedReply::Reply
@@ -39,7 +49,7 @@ after_initialize do
             title: topic.title,
             content: topic.first_post.raw,
             tags: topic.tags.map(&:name),
-            usages: 0
+            usages: topic.canned_reply_usage_count
           }
         end
       end
@@ -51,12 +61,7 @@ after_initialize do
       end
 
       def use(user_id, reply_id)
-        replies = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME)
-        reply = replies[reply_id]
-        reply['usages'] ||= 0
-        reply['usages'] += 1
-        replies[reply_id] = reply
-        PluginStore.set(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME, replies)
+        Topic.find_by(id: reply_id).increment_canned_reply_usage_count!
       end
 
       def add_default_reply()
@@ -98,20 +103,6 @@ after_initialize do
       replies = CannedReply::Reply.all(current_user)
 
       render json: { replies: replies }
-    end
-  end
-
-  require_dependency 'topic_query'
-
-  class ::TopicQuery
-    def list_canned_replies()
-      create_list(:canned_replies, { category: SiteSetting.canned_replies_category.to_i }) do |topics|
-        topics
-          .all
-          .includes(:first_post)
-          .where("categories.topic_id <> topics.id")
-          .reorder("topics.title ASC")
-      end
     end
   end
 
