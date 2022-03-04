@@ -5,6 +5,7 @@
 # version: 1.2
 # authors: Jay Pfaffman and André Pereira
 # url: https://github.com/discourse/discourse-canned-replies
+# transpile_js: true
 
 enabled_site_setting :canned_replies_enabled
 
