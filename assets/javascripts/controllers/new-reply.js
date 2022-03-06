@@ -1,10 +1,11 @@
+import Controller from "@ember/controller";
 import ModalFunctionality from "discourse/mixins/modal-functionality";
 import showModal from "discourse/lib/show-modal";
 import { ajax } from "discourse/lib/ajax";
 import discourseComputed from "discourse-common/utils/decorators";
 import { popupAjaxError } from "discourse/lib/ajax-error";
 
-export default Ember.Controller.extend(ModalFunctionality, {
+export default Controller.extend(ModalFunctionality, {
   newTitle: "",
   newContent: "",
 

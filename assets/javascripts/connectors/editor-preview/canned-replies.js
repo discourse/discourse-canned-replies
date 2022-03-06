@@ -2,6 +2,7 @@ import showModal from "discourse/lib/show-modal";
 import { ajax } from "discourse/lib/ajax";
 import { popupAjaxError } from "discourse/lib/ajax-error";
 import { getOwner } from "discourse-common/lib/get-owner";
+import { schedule } from "@ember/runloop";
 
 export default {
   setupComponent(args, component) {
@@ -84,7 +85,7 @@ export default {
           this.set("loadingReplies", false);
 
           if (this.canEdit) {
-            Ember.run.schedule("afterRender", () =>
+            schedule("afterRender", () =>
               document.querySelector(".canned-replies-filter").focus()
             );
           }
