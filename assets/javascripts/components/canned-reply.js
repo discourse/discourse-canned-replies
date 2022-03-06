@@ -1,7 +1,9 @@
+import Component from "@ember/component";
 import showModal from "discourse/lib/show-modal";
 import applyReply from "discourse/plugins/discourse-canned-replies/lib/apply-reply";
+import { getOwner } from "discourse-common/lib/get-owner";
 
-export default Ember.Component.extend({
+export default Component.extend({
   canEdit: false,
 
   init() {
@@ -20,7 +22,7 @@ export default Ember.Component.extend({
 
   actions: {
     apply() {
-      const composer = Discourse.__container__.lookup("controller:composer");
+      const composer = getOwner(this).lookup("controller:composer");
 
       applyReply(
         this.get("reply.id"),
@@ -33,7 +35,7 @@ export default Ember.Component.extend({
     },
 
     editReply() {
-      const composer = Discourse.__container__.lookup("controller:composer");
+      const composer = getOwner(this).lookup("controller:composer");
 
       composer.send("closeModal");
       showModal("edit-reply").setProperties({
