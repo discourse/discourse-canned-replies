@@ -1,7 +1,4 @@
-import { ajax } from "discourse/lib/ajax";
-import { popupAjaxError } from "discourse/lib/ajax-error";
-
-export default function (replyId, replyTitle, replyContent, model) {
+export function prepareReply(replyTitle, replyContent, model) {
   // Replace variables with values.
   if (model) {
     const vars = {
@@ -41,13 +38,20 @@ export default function (replyId, replyTitle, replyContent, model) {
     }
   }
 
-  // Finally insert canned reply.
-  model.appEvents.trigger("composer:insert-block", replyContent);
+  return { replyTitle, replyContent };
+}
+
+export function insertReplyIntoComposer({ replyTitle, replyContent }) {
+  const model = this.get("model");
+
+  // insert the title if blank
   if (model && !model.title) {
     model.set("title", replyTitle);
   }
 
-  ajax(`/canned_replies/${replyId}/use`, {
-    type: "PATCH",
-  }).catch(popupAjaxError);
+  // insert the content of the reply in the compose
+  this.appEvents.trigger("composer:insert-block", replyContent);
+
+  // hide the canned reply panel
+  this.send("hide");
 }

@@ -9,7 +9,7 @@
   </div>
   <div class="canned-replies-list">
   {{#each filteredReplies as |r|}}
-    {{canned-reply reply=r afterInsertReply=afterInsertReply}}
+    {{canned-reply reply=r model=model onInsertReply=onInsertReply}}
   {{/each}}
   </div>
 {{/conditional-loading-spinner}}

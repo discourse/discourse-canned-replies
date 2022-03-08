@@ -7,7 +7,7 @@ function initializeCannedRepliesUIBuilder(api) {
     actions: {
       showCannedRepliesButton() {
         if (this.site.mobileView) {
-          showModal("canned-replies-mobile").set("composerModel", this.model);
+          showModal("canned-replies-modal");
         } else {
           this.appEvents.trigger("composer:show-preview");
           this.appEvents.trigger("canned-replies:show");
@@ -32,10 +32,10 @@ export default {
   initialize(container) {
     const siteSettings = container.lookup("site-settings:main");
     const currentUser = container.lookup("current-user:main");
+
     if (
       siteSettings.canned_replies_enabled &&
-      currentUser &&
-      currentUser.can_use_canned_replies
+      currentUser?.can_use_canned_replies
     ) {
       withPluginApi("0.5", initializeCannedRepliesUIBuilder);
     }

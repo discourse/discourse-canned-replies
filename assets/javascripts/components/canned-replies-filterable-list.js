@@ -1,10 +1,13 @@
 import Component from "@ember/component";
+import { action } from "@ember/object";
 import { ajax } from "discourse/lib/ajax";
 import { popupAjaxError } from "discourse/lib/ajax-error";
 import discourseComputed from "discourse-common/utils/decorators";
 import { ALL_TAGS_ID, NO_TAG_ID } from "select-kit/components/tag-drop";
 
 export default Component.extend({
+  classNames: ["canned-replies-filterable-list"],
+
   init() {
     this._super(...arguments);
 
@@ -17,42 +20,8 @@ export default Component.extend({
     });
   },
 
-  _load() {
-    ajax("/canned_replies")
-      .then((results) => {
-        this.setProperties({
-          replies: results.replies,
-          availableTags: Object.values(
-            results.replies.reduce((availableTags, reply) => {
-              reply.tags.forEach((tag) => {
-                if (availableTags[tag]) availableTags[tag].count += 1;
-                else availableTags[tag] = { id: tag, name: tag, count: 1 };
-              });
-
-              return availableTags;
-            }, {})
-          ),
-        });
-      })
-      .catch(popupAjaxError)
-      .finally(() => {
-        this.set("loadingReplies", false);
-
-        Ember.run.schedule("afterRender", () =>
-          document.querySelector(".canned-replies-filter").focus()
-        );
-      });
-  },
-
   didInsertElement() {
-    this.appEvents.on("canned-replies:load", this, this._load);
     this._load();
-  },
-
-  willDestroyElement() {
-    if (this.appEvents.has("canned-replies:load")) {
-      this.appEvents.off("canned-replies:load", this, this._load);
-    }
   },
 
   @discourseComputed("replies", "selectedTag", "listFilter")
@@ -91,9 +60,35 @@ export default Component.extend({
     );
   },
 
-  actions: {
-    changeSelectedTag(tagId) {
-      this.set("selectedTag", tagId);
-    },
+  @action
+  changeSelectedTag(tagId) {
+    this.set("selectedTag", tagId);
+  },
+
+  _load() {
+    ajax("/canned_replies")
+      .then((results) => {
+        this.setProperties({
+          replies: results.replies,
+          availableTags: Object.values(
+            results.replies.reduce((availableTags, reply) => {
+              reply.tags.forEach((tag) => {
+                if (availableTags[tag]) availableTags[tag].count += 1;
+                else availableTags[tag] = { id: tag, name: tag, count: 1 };
+              });
+
+              return availableTags;
+            }, {})
+          ),
+        });
+      })
+      .catch(popupAjaxError)
+      .finally(() => {
+        this.set("loadingReplies", false);
+
+        Ember.run.schedule("afterRender", () =>
+          document.querySelector(".canned-replies-filter").focus()
+        );
+      });
   },
 });

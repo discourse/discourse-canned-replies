@@ -2,8 +2,6 @@ import { computed } from "@ember/object";
 import TagDrop from "select-kit/components/tag-drop";
 
 export default TagDrop.extend({
-  pluginApiIdentifiers: ["canned-tag-drop"],
-
   topTags: computed("availableTags.[]", function () {
     // sort tags descending by count and ascending by name
     return (this.availableTags || []).sort((a, b) => {
@@ -34,6 +32,8 @@ export default TagDrop.extend({
 
   actions: {
     onChange(tagId, tag) {
+      // overrides the action onChange of the parent with the value received in
+      // the property onChange in the handlebars template
       this.onChange && this.onChange(tagId, tag);
     },
   },

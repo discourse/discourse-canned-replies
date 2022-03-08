@@ -1,5 +1,5 @@
 {{#if cannedVisible}}
   <div class="d-editor-preview">
-    {{canned-replies-filterable-list afterInsertReply=(action "hide")}}
+    {{canned-replies-filterable-list model=model onInsertReply=(action "insertReply")}}
   </div>
 {{/if}}

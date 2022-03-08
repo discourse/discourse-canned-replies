@@ -1,34 +1,47 @@
+import { action } from "@ember/object";
+import { getOwner } from "discourse-common/lib/get-owner";
+import { insertReplyIntoComposer } from "../../lib/apply-reply";
+
+const SELECTOR_EDITOR_PREVIEW =
+  "#reply-control .d-editor-preview-wrapper > .d-editor-preview";
+
 export default {
   setupComponent(args, component) {
-    component.set("cannedVisible", false);
+    component.setProperties({
+      cannedVisible: false,
+      model: getOwner(this).lookup("controller:composer").model,
+    });
 
-    if (!component.appEvents.has("canned-replies:show")) {
-      this.showCanned = () => component.send("show");
-      component.appEvents.on("canned-replies:show", this, this.showCanned);
-    }
+    this.showCanned = () => component.send("show");
+    component.appEvents.on("canned-replies:show", this, this.showCanned);
 
-    if (!component.appEvents.has("canned-replies:hide")) {
-      this.hideCanned = () => component.send("hide");
-      component.appEvents.on("canned-replies:hide", this, this.hideCanned);
-    }
+    this.hideCanned = () => component.send("hide");
+    component.appEvents.on("canned-replies:hide", this, this.hideCanned);
   },
 
   teardownComponent(component) {
-    if (component.appEvents.has("canned-replies:show") && this.showCanned) {
-      component.appEvents.off("canned-replies:show", this, this.showCanned);
-      component.appEvents.off("canned-replies:hide", this, this.hideCanned);
-    }
+    component.appEvents.off("canned-replies:show", this, this.showCanned);
+    component.appEvents.off("canned-replies:hide", this, this.hideCanned);
   },
 
-  actions: {
-    show() {
-      $("#reply-control .d-editor-preview-wrapper > .d-editor-preview").hide();
-      this.set("cannedVisible", true);
-    },
+  shouldRender(args, component) {
+    return !component.site.mobileView;
+  },
 
-    hide() {
-      $(".d-editor-preview-wrapper > .d-editor-preview").show();
-      this.set("cannedVisible", false);
-    },
+  @action
+  show() {
+    $(SELECTOR_EDITOR_PREVIEW).hide();
+    this.set("cannedVisible", true);
+  },
+
+  @action
+  hide() {
+    $(SELECTOR_EDITOR_PREVIEW).show();
+    this.set("cannedVisible", false);
+  },
+
+  @action
+  insertReply(reply) {
+    insertReplyIntoComposer.call(this, reply);
   },
 };
