@@ -8,7 +8,8 @@ module DiscourseCannedReplies
           .all
           .includes(:first_post)
           .includes(:canned_reply_usage)
-          .where("categories.topic_id <> topics.id")
+          .where(visible: true, archived: false) # filter out archived or unlisted topics
+          .where("categories.topic_id <> topics.id") # filter out the category description topic
           .reorder("topics.title ASC")
       end
     end
