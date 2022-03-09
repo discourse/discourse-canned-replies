@@ -43,8 +43,12 @@ export default Component.extend({
         .filter((reply) => reply.score !== 0)
         // Filter only replies tagged with the selected tag.
         .filter((reply) => {
-          if (selectedTag === ALL_TAGS_ID) return true;
-          if (selectedTag === NO_TAG_ID && reply.tags.length === 0) return true;
+          if (selectedTag === ALL_TAGS_ID) {
+            return true;
+          }
+          if (selectedTag === NO_TAG_ID && reply.tags.length === 0) {
+            return true;
+          }
 
           return reply.tags.indexOf(selectedTag) > -1;
         })
@@ -73,8 +77,11 @@ export default Component.extend({
           availableTags: Object.values(
             results.replies.reduce((availableTags, reply) => {
               reply.tags.forEach((tag) => {
-                if (availableTags[tag]) availableTags[tag].count += 1;
-                else availableTags[tag] = { id: tag, name: tag, count: 1 };
+                if (availableTags[tag]) {
+                  availableTags[tag].count += 1;
+                } else {
+                  availableTags[tag] = { id: tag, name: tag, count: 1 };
+                }
               });
 
               return availableTags;

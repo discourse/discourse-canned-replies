@@ -8,8 +8,8 @@
     {{text-field class="canned-replies-filter" value=listFilter placeholder=(i18n "canned_replies.filter_hint")}}
   </div>
   <div class="canned-replies-list">
-  {{#each filteredReplies as |r|}}
-    {{canned-reply reply=r model=model onInsertReply=onInsertReply}}
-  {{/each}}
+    {{#each filteredReplies as |r|}}
+      {{canned-reply reply=r model=model onInsertReply=onInsertReply}}
+    {{/each}}
   </div>
 {{/conditional-loading-spinner}}

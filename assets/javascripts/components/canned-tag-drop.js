@@ -5,8 +5,12 @@ export default TagDrop.extend({
   topTags: computed("availableTags.[]", function () {
     // sort tags descending by count and ascending by name
     return (this.availableTags || []).sort((a, b) => {
-      if (a.count !== b.count) return b.count - a.count; // descending
-      if (a.name !== b.name) return a.name < b.name ? -1 : 1; // ascending
+      if (a.count !== b.count) {
+        return b.count - a.count;
+      } // descending
+      if (a.name !== b.name) {
+        return a.name < b.name ? -1 : 1;
+      } // ascending
       return 0;
     });
   }),
@@ -20,7 +24,9 @@ export default TagDrop.extend({
         return this.defaultItem(tag, tag);
       })
       .filter((tag) => {
-        if (filter == null) return true;
+        if (filter == null) {
+          return true;
+        }
 
         const tagFilter = filter.toLowerCase();
         return (
