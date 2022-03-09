@@ -2,6 +2,7 @@
   "author": "Discourse",
   "license": "GPL-2.0-only",
   "devDependencies": {
+    "@arkweid/lefthook": "^0.7.7",
     "eslint-config-discourse": "^2.0.0"
   }
 }

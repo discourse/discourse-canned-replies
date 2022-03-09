@@ -1,0 +1,65 @@
+pre-commit:
+  parallel: true
+  commands:
+    rubocop:
+      glob: "*.rb"
+      run: bundle exec rubocop --parallel {staged_files}
+    prettier:
+      glob: "*.js"
+      include: "assets/javascripts|test/javascripts"
+      run: yarn prettier --list-different {staged_files}
+    prettier-scss:
+      glob: "*.scss"
+      include: "assets/stylesheets"
+      run: yarn prettier --list-different {staged_files}
+    eslint:
+      glob: "*.js"
+      include: "assets/javascripts|test/javascripts"
+      run: yarn eslint -f compact {staged_files}
+    ember-template-lint:
+      run: yarn run ember-template-lint {staged_files}
+    yaml-syntax:
+      glob: "*.{yaml,yml}"
+      run: bundle exec yaml-lint {staged_files}
+
+commands: &commands
+  bundle-install:
+    files: git diff --name-only HEAD main
+    glob: "{Gemfile,Gemfile.lock,*.gemspec}"
+    run: bundle install
+  yarn-install:
+    files: git diff --name-only HEAD main
+    glob: "{package.json,yarn.lock}"
+    run: yarn install
+
+post-checkout:
+  commands: *commands
+
+post-merge:
+  commands: *commands
+
+post-rewrite:
+  commands: *commands
+
+lints:
+  parallel: true
+  commands:
+    rubocop:
+      run: bundle exec rubocop --parallel
+    prettier:
+      glob: "*.js"
+      include: "assets/javascripts|test/javascripts"
+      run: yarn prettier --list-different {all_files}
+    prettier-scss:
+      glob: "*.scss"
+      include: "assets/stylesheets"
+      run: yarn prettier --list-different {all_files}
+    eslint-assets-js:
+      run: yarn eslint assets/javascripts
+    eslint-test-js:
+      run: yarn eslint test/javascripts
+    ember-template-lint:
+      run: yarn run ember-template-lint assets/javascripts
+    yaml-syntax:
+      glob: "*.{yaml,yml}"
+      run: bundle exec yaml-lint {all_files}
