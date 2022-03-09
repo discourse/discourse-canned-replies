@@ -107,14 +107,17 @@ after_initialize do
   end
 
   add_to_class(:user, :can_use_canned_replies?) do
-    return true if staff?
-    return true if SiteSetting.canned_replies_everyone_enabled
-    group_list = SiteSetting.canned_replies_groups.split("|").map(&:downcase)
-    groups.any? { |group| group_list.include?(group.name.downcase) }
+    return false if SiteSetting.canned_replies_category.blank?
+
+    category = Category.find_by(id: SiteSetting.canned_replies_category.to_i)
+    return false if category.blank?
+
+    # the user can use canned replies if can see in the source category
+    guardian.can_see?(category)
   end
 
   add_to_class(:guardian, :can_use_canned_replies?) do
-    user && user.can_use_canned_replies?
+    user&.can_use_canned_replies?
   end
 
   add_to_serializer(:current_user, :can_use_canned_replies) do
