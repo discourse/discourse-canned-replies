@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-describe CannedReply do
+describe DiscourseCannedReplies do
   let(:user) { Fabricate(:user) }
   let(:admin) { Fabricate(:admin) }
   let(:group) { Fabricate(:group) }

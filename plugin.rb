@@ -15,126 +15,48 @@ register_svg_icon "far-clipboard" if respond_to?(:register_svg_icon)
 
 after_initialize do
 
-  module ::CannedReply
+  module ::DiscourseCannedReplies
     PLUGIN_NAME ||= "discourse-canned-replies".freeze
     STORE_NAME ||= "replies".freeze
 
     class Engine < ::Rails::Engine
-      engine_name CannedReply::PLUGIN_NAME
-      isolate_namespace CannedReply
+      engine_name DiscourseCannedReplies::PLUGIN_NAME
+      isolate_namespace DiscourseCannedReplies
     end
   end
 
   [
     '../app/jobs/onceoff/rename_canned_replies.rb',
+    "../app/controllers/discourse_canned_replies/replies_controller.rb",
     "../app/models/discourse_canned_replies/usage_count.rb",
+    "../app/serializers/discourse_canned_replies/replies_serializer.rb",
+    "../lib/discourse_canned_replies/guardian_extension.rb",
     "../lib/discourse_canned_replies/topic_extension.rb",
     "../lib/discourse_canned_replies/topic_query_extension.rb",
+    "../lib/discourse_canned_replies/user_extension.rb",
   ].each { |path| load File.expand_path(path, __FILE__) }
 
   reloadable_patch do |plugin|
+    Guardian.class_eval { prepend DiscourseCannedReplies::GuardianExtension }
     Topic.class_eval { prepend DiscourseCannedReplies::TopicExtension }
     TopicQuery.class_eval { prepend DiscourseCannedReplies::TopicQueryExtension }
-  end
-
-  class CannedReply::Reply
-    class << self
-
-      def all(user)
-        query = TopicQuery.new(user).list_canned_replies
-
-        query.topics.map do |topic|
-          {
-            id: topic.id,
-            title: topic.title,
-            content: topic.first_post.raw,
-            tags: topic.tags.map(&:name),
-            usages: topic.canned_reply_usage_count
-          }
-        end
-      end
-
-      def get_reply(user_id, reply_id)
-        replies = all(user_id)
-
-        replies.detect { |reply| reply['id'] == reply_id }
-      end
-
-      def use(user_id, reply_id)
-        Topic.find_by(id: reply_id).increment_canned_reply_usage_count!
-      end
-
-      def add_default_reply()
-        add(1, I18n.t("replies.default_reply.title"), I18n.t("replies.default_reply.body"))
-      end
-    end
-  end
-
-  require_dependency "application_controller"
-
-  class CannedReply::CannedRepliesController < ::ApplicationController
-    requires_plugin CannedReply::PLUGIN_NAME
-
-    before_action :ensure_logged_in
-    before_action :ensure_canned_replies_enabled
-    skip_before_action :check_xhr
-
-    def ensure_canned_replies_enabled
-      guardian.ensure_can_use_canned_replies!
-    end
-
-    def reply
-      reply_id = params.require(:id)
-      user_id = current_user.id
-
-      record = CannedReply::Reply.get_reply(user_id, reply_id)
-      render json: record
-    end
-
-    def use
-      reply_id = params.require(:id)
-      user_id = current_user.id
-      record = CannedReply::Reply.use(user_id, reply_id)
-
-      render json: record
-    end
-
-    def index
-      replies = CannedReply::Reply.all(current_user)
-
-      render json: { replies: replies }
-    end
-  end
-
-  add_to_class(:user, :can_use_canned_replies?) do
-    return false if SiteSetting.canned_replies_category.blank?
-
-    category = Category.find_by(id: SiteSetting.canned_replies_category.to_i)
-    return false if category.blank?
-
-    # the user can use canned replies if can see in the source category
-    guardian.can_see?(category)
-  end
-
-  add_to_class(:guardian, :can_use_canned_replies?) do
-    user&.can_use_canned_replies?
+    User.class_eval { prepend DiscourseCannedReplies::UserExtension }
   end
 
   add_to_serializer(:current_user, :can_use_canned_replies) do
     object.can_use_canned_replies?
   end
 
-  CannedReply::Engine.routes.draw do
+  Discourse::Application.routes.append do
+    mount ::DiscourseCannedReplies::Engine, at: "/canned_replies"
+  end
+
+  DiscourseCannedReplies::Engine.routes.draw do
     resources :canned_replies, path: '/', only: [:index] do
       member do
-        get "reply"
         patch "use"
       end
     end
-  end
-
-  Discourse::Application.routes.append do
-    mount ::CannedReply::Engine, at: "/canned_replies"
   end
 
 end

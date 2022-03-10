@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe CannedReply::CannedRepliesController do
+RSpec.describe DiscourseCannedReplies::CannedRepliesController do
   let(:moderator) do
     user = Fabricate(:moderator)
     sign_in(user)
@@ -35,7 +35,7 @@ RSpec.describe CannedReply::CannedRepliesController do
     canned_replies_category
   end
 
-  let(:canned_reply) { CannedReply::Reply.add(moderator, 'some title', 'some content') }
+  let(:canned_reply) { DiscourseCannedReplies::Reply.add(moderator, 'some title', 'some content') }
 
   describe 'listing canned replies' do
     context 'as a normal user' do
@@ -114,7 +114,7 @@ RSpec.describe CannedReply::CannedRepliesController do
 
         patch "/canned_replies/#{canned_reply[:id]}/use"
         expect(response).to be_successful
-        _id, reply = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME).first
+        _id, reply = PluginStore.get(DiscourseCannedReplies::PLUGIN_NAME, DiscourseCannedReplies::STORE_NAME).first
 
         expect(reply["usages"]).to eq(1)
       end
@@ -126,7 +126,7 @@ RSpec.describe CannedReply::CannedRepliesController do
 
         expect(response).to be_successful
 
-        _id, reply = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME).first
+        _id, reply = PluginStore.get(DiscourseCannedReplies::PLUGIN_NAME, DiscourseCannedReplies::STORE_NAME).first
 
         expect(reply["usages"]).to eq(1)
       end

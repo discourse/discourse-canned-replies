@@ -73,9 +73,9 @@ export default Component.extend({
     ajax("/canned_replies")
       .then((results) => {
         this.setProperties({
-          replies: results.replies,
+          replies: results.canned_replies,
           availableTags: Object.values(
-            results.replies.reduce((availableTags, reply) => {
+            results.canned_replies.reduce((availableTags, reply) => {
               reply.tags.forEach((tag) => {
                 if (availableTags[tag]) {
                   availableTags[tag].count += 1;
