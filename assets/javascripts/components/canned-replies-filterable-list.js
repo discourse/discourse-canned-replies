@@ -74,19 +74,21 @@ export default Component.extend({
       .then((results) => {
         this.setProperties({
           replies: results.canned_replies,
-          availableTags: Object.values(
-            results.canned_replies.reduce((availableTags, reply) => {
-              reply.tags.forEach((tag) => {
-                if (availableTags[tag]) {
-                  availableTags[tag].count += 1;
-                } else {
-                  availableTags[tag] = { id: tag, name: tag, count: 1 };
-                }
-              });
+          availableTags: this.siteSettings.tagging_enabled
+            ? Object.values(
+                results.canned_replies.reduce((availableTags, reply) => {
+                  reply.tags.forEach((tag) => {
+                    if (availableTags[tag]) {
+                      availableTags[tag].count += 1;
+                    } else {
+                      availableTags[tag] = { id: tag, name: tag, count: 1 };
+                    }
+                  });
 
-              return availableTags;
-            }, {})
-          ),
+                  return availableTags;
+                }, {})
+              )
+            : [],
         });
       })
       .catch(popupAjaxError)

@@ -9,7 +9,7 @@ module DiscourseCannedReplies
     skip_before_action :check_xhr
 
     def ensure_canned_replies_enabled
-      guardian.ensure_can_use_canned_replies!
+      raise Discourse::InvalidAccess.new unless guardian.can_use_canned_replies?
     end
 
     def use
