@@ -15,7 +15,7 @@ function cannedRepliesPretender(server, helper) {
   );
 }
 
-acceptance("Canned Replies", function (needs) {
+acceptance("discourse-canned-replies", function (needs) {
   needs.settings({
     canned_replies_enabled: true,
     tagging_enabled: true,
@@ -117,30 +117,33 @@ acceptance("Canned Replies", function (needs) {
   });
 });
 
-acceptance("Canned Replies with tags disabled in Settings", function (needs) {
-  needs.settings({
-    canned_replies_enabled: true,
-    tagging_enabled: false,
-  });
-  needs.user({
-    can_use_canned_replies: true,
-  });
+acceptance(
+  "discourse-canned-replies - with tags disabled in Settings",
+  function (needs) {
+    needs.settings({
+      canned_replies_enabled: true,
+      tagging_enabled: false,
+    });
+    needs.user({
+      can_use_canned_replies: true,
+    });
 
-  needs.pretender(cannedRepliesPretender);
-  needs.hooks.beforeEach(() => clearPopupMenuOptionsCallback());
+    needs.pretender(cannedRepliesPretender);
+    needs.hooks.beforeEach(() => clearPopupMenuOptionsCallback());
 
-  test("Filtering by tags", async (assert) => {
-    const popUpMenu = await selectKit(".toolbar-popup-menu-options");
+    test("Filtering by tags", async (assert) => {
+      const popUpMenu = await selectKit(".toolbar-popup-menu-options");
 
-    await visit("/");
+      await visit("/");
 
-    await click("#create-topic");
-    await popUpMenu.expand();
-    await popUpMenu.selectRowByValue("showCannedRepliesButton");
+      await click("#create-topic");
+      await popUpMenu.expand();
+      await popUpMenu.selectRowByValue("showCannedRepliesButton");
 
-    assert.ok(
-      !exists(".canned-replies-filter-bar .tag-drop"),
-      "tag drop down is not displayed"
-    );
-  });
-});
+      assert.ok(
+        !exists(".canned-replies-filter-bar .tag-drop"),
+        "tag drop down is not displayed"
+      );
+    });
+  }
+);
