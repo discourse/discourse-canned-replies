@@ -1,21 +1,19 @@
 # frozen_string_literal: true
 
-require "rails_helper"
+require 'rails_helper'
 require_relative '../helpers/topics_helper'
 
-RSpec.configure do |c|
-  c.include DiscourseCannedReplies::TopicsHelper
-end
+RSpec.configure { |c| c.include DiscourseCannedReplies::TopicsHelper }
 
 describe DiscourseCannedReplies::CannedRepliesSerializer do
   fab!(:canned_reply) { Fabricate(:canned_reply) } # uncategorized
-  fab!(:tag1) { Fabricate(:tag, topics: [canned_reply], name: "tag1") }
-  fab!(:tag2) { Fabricate(:tag, topics: [canned_reply], name: "tag2") }
+  fab!(:tag1) { Fabricate(:tag, topics: [canned_reply], name: 'tag1') }
+  fab!(:tag2) { Fabricate(:tag, topics: [canned_reply], name: 'tag2') }
 
   subject(:serializer) { described_class.new(canned_reply, root: false) }
 
   context 'when serializing canned replies' do
-    it "serializes correctly to json including tags when tagging is enabled" do
+    it 'serializes correctly to json including tags when tagging is enabled' do
       SiteSetting.tagging_enabled = true
 
       json = serializer.as_json
@@ -28,7 +26,7 @@ describe DiscourseCannedReplies::CannedRepliesSerializer do
       expect(json[:usages]).to eq(0)
     end
 
-    it "serializes correctly to json excluding tags when tagging is disabled" do
+    it 'serializes correctly to json excluding tags when tagging is disabled' do
       SiteSetting.tagging_enabled = false
 
       json = serializer.as_json

@@ -5,6 +5,7 @@ GEM
     parallel (1.19.2)
     parser (2.7.1.4)
       ast (~> 2.4.1)
+    prettier (2.0.0)
     rainbow (3.0.0)
     regexp_parser (1.7.1)
     rexml (3.2.5)
@@ -32,6 +33,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  prettier
   rubocop-discourse
   yaml-lint
 

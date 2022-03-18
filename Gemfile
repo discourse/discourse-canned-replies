@@ -5,4 +5,5 @@ source 'https://rubygems.org'
 group :development do
   gem 'rubocop-discourse'
   gem 'yaml-lint'
+  gem 'prettier'
 end

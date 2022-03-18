@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "rails_helper"
+require 'rails_helper'
 
 describe DiscourseCannedReplies::TopicExtension do
   fab!(:topic) { Fabricate(:topic) }
@@ -10,13 +10,13 @@ describe DiscourseCannedReplies::TopicExtension do
   end
 
   context 'canned_reply_usage_count' do
-    it "retrieves usage count as expected" do
+    it 'retrieves usage count as expected' do
       expect(topic.canned_reply_usage_count).to eq(0)
     end
   end
 
   context 'increment_canned_reply_usage_count!' do
-    it "increments usage count as expected" do
+    it 'increments usage count as expected' do
       expect(topic.canned_reply_usage_count).to eq(0)
 
       topic.increment_canned_reply_usage_count!

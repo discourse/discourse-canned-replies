@@ -11,13 +11,12 @@ enabled_site_setting :canned_replies_enabled
 
 register_asset 'stylesheets/canned-replies.scss'
 
-register_svg_icon "far-clipboard" if respond_to?(:register_svg_icon)
+register_svg_icon 'far-clipboard' if respond_to?(:register_svg_icon)
 
 after_initialize do
-
   module ::DiscourseCannedReplies
-    PLUGIN_NAME ||= "discourse-canned-replies".freeze
-    STORE_NAME ||= "replies".freeze
+    PLUGIN_NAME ||= 'discourse-canned-replies'.freeze
+    STORE_NAME ||= 'replies'.freeze
 
     class Engine < ::Rails::Engine
       engine_name DiscourseCannedReplies::PLUGIN_NAME
@@ -25,21 +24,23 @@ after_initialize do
     end
   end
 
-  [
-    '../app/jobs/onceoff/rename_canned_replies.rb',
-    "../app/controllers/discourse_canned_replies/replies_controller.rb",
-    "../app/models/discourse_canned_replies/usage_count.rb",
-    "../app/serializers/discourse_canned_replies/replies_serializer.rb",
-    "../lib/discourse_canned_replies/guardian_extension.rb",
-    "../lib/discourse_canned_replies/topic_extension.rb",
-    "../lib/discourse_canned_replies/topic_query_extension.rb",
-    "../lib/discourse_canned_replies/user_extension.rb",
+  %w[
+    ../app/jobs/onceoff/rename_canned_replies.rb
+    ../app/controllers/discourse_canned_replies/replies_controller.rb
+    ../app/models/discourse_canned_replies/usage_count.rb
+    ../app/serializers/discourse_canned_replies/replies_serializer.rb
+    ../lib/discourse_canned_replies/guardian_extension.rb
+    ../lib/discourse_canned_replies/topic_extension.rb
+    ../lib/discourse_canned_replies/topic_query_extension.rb
+    ../lib/discourse_canned_replies/user_extension.rb
   ].each { |path| load File.expand_path(path, __FILE__) }
 
   reloadable_patch do |plugin|
     Guardian.class_eval { prepend DiscourseCannedReplies::GuardianExtension }
     Topic.class_eval { prepend DiscourseCannedReplies::TopicExtension }
-    TopicQuery.class_eval { prepend DiscourseCannedReplies::TopicQueryExtension }
+    TopicQuery.class_eval do
+      prepend DiscourseCannedReplies::TopicQueryExtension
+    end
     User.class_eval { prepend DiscourseCannedReplies::UserExtension }
   end
 
@@ -48,14 +49,12 @@ after_initialize do
   end
 
   Discourse::Application.routes.append do
-    mount ::DiscourseCannedReplies::Engine, at: "/canned_replies"
+    mount ::DiscourseCannedReplies::Engine, at: '/canned_replies'
   end
 
   DiscourseCannedReplies::Engine.routes.draw do
     resources :canned_replies, path: '/', only: [:index] do
-      member do
-        patch "use"
-      end
+      member { patch 'use' }
     end
   end
 end

@@ -2,7 +2,9 @@
 
 module DiscourseCannedReplies::TopicExtension
   def self.prepended(base)
-    base.has_one :canned_reply_usage, class_name: 'DiscourseCannedReplies::UsageCount', dependent: :destroy
+    base.has_one :canned_reply_usage,
+                 class_name: 'DiscourseCannedReplies::UsageCount',
+                 dependent: :destroy
   end
 
   def canned_reply_usage_count

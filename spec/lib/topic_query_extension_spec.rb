@@ -1,44 +1,49 @@
 # frozen_string_literal: true
 
-require "rails_helper"
+require 'rails_helper'
 require_relative '../helpers/topics_helper'
 
-RSpec.configure do |c|
-  c.include DiscourseCannedReplies::TopicsHelper
-end
+RSpec.configure { |c| c.include DiscourseCannedReplies::TopicsHelper }
 
 describe DiscourseCannedReplies::TopicQueryExtension do
   fab!(:user) { Fabricate(:user) }
   fab!(:unrelated_category) { Fabricate(:category_with_definition) }
   fab!(:unrelated_topic) { Fabricate(:topic, category: unrelated_category) }
   fab!(:canned_replies_category) { Fabricate(:category_with_definition) }
-  fab!(:canned_replies) { Fabricate.times(100, :random_canned_reply, category: canned_replies_category) }
+  fab!(:canned_replies) do
+    Fabricate.times(
+      100,
+      :random_canned_reply,
+      category: canned_replies_category
+    )
+  end
 
   context 'list_canned_replies' do
-    before do
-      SiteSetting.canned_replies_category = canned_replies_category.id
+    before { SiteSetting.canned_replies_category = canned_replies_category.id }
+
+    it 'raises an error when SiteSetting.canned_replies_category is not set' do
+      SiteSetting.canned_replies_category = ''
+      expect { TopicQuery.new(user).list_canned_replies }.to raise_error(
+        Discourse::SiteSettingMissing
+      )
     end
 
-    it "raises an error when SiteSetting.canned_replies_category is not set" do
-      SiteSetting.canned_replies_category = ""
-      expect { TopicQuery.new(user).list_canned_replies }.to raise_error(Discourse::SiteSettingMissing)
-    end
-
-    it "retrieves all topics" do
+    it 'retrieves all topics' do
       topics = TopicQuery.new(user).list_canned_replies.topics
       expect(topics.size).to eq(canned_replies.size)
     end
 
-    it "filter out the category description topic" do
+    it 'filter out the category description topic' do
       expect(canned_replies_category.topic_id).not_to eq(nil)
 
       topics = TopicQuery.new(user).list_canned_replies.topics
-      topics_without_category_description = topics.filter { |topic| topic.id != canned_replies_category.topic_id }
+      topics_without_category_description =
+        topics.filter { |topic| topic.id != canned_replies_category.topic_id }
 
       expect(topics.size).to eq(topics_without_category_description.size)
     end
 
-    it "retrieves closed topics" do
+    it 'retrieves closed topics' do
       topics = TopicQuery.new(user).list_canned_replies.topics
       expect(topics.size).to eq(canned_replies.size)
 
@@ -51,20 +56,22 @@ describe DiscourseCannedReplies::TopicQueryExtension do
       expect(topics.size).to eq(canned_replies.size)
     end
 
-    it "filter out unlisted topics" do
+    it 'filter out unlisted topics' do
       topics = TopicQuery.new(user).list_canned_replies.topics
       expect(topics.size).to eq(canned_replies.size)
 
       unlisted_replies = canned_replies.sample(canned_replies.size * 0.15)
       expect(topics.size).not_to eq(unlisted_replies.size)
 
-      unlisted_replies.each { |reply| reply.update_status('visible', false, user) }
+      unlisted_replies.each do |reply|
+        reply.update_status('visible', false, user)
+      end
 
       topics = TopicQuery.new(user).list_canned_replies.topics
       expect(topics.size).to eq(canned_replies.size - unlisted_replies.size)
     end
 
-    it "filter out archived topics" do
+    it 'filter out archived topics' do
       topics = TopicQuery.new(user).list_canned_replies.topics
       expect(topics.size).to eq(canned_replies.size)
 
@@ -77,7 +84,7 @@ describe DiscourseCannedReplies::TopicQueryExtension do
       expect(topics.size).to eq(canned_replies.size - archived_replies.size)
     end
 
-    it "filter out deleted topics" do
+    it 'filter out deleted topics' do
       topics = TopicQuery.new(user).list_canned_replies.topics
       expect(topics.size).to eq(canned_replies.size)
 
@@ -90,7 +97,7 @@ describe DiscourseCannedReplies::TopicQueryExtension do
       expect(topics.size).to eq(canned_replies.size - deleted_replies.size)
     end
 
-    it "sorts retrieved replies by title" do
+    it 'sorts retrieved replies by title' do
       sorted_replies = canned_replies.sort_by(&:title)
       expect(sorted_replies).not_to eq(canned_replies)
 
