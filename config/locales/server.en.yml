@@ -5,6 +5,16 @@ en:
     canned_replies_groups: 'Add access to canned replies for non-staff groups by group name'
     canned_replies_everyone_enabled: 'Allow everyone to use canned replies'
     canned_replies_everyone_can_edit: 'Allow everyone to create, edit, and delete canned replies'
+  default_category:
+    name: Canned Replies
+    description: | 
+      This category is used to store canned replies.
+    
+      Canned replies allow users to store replies for frequently repeated use. 
+      
+      Each topic in this category represents a different canned reply. **The first post** of each topic is used as the template for the reply.
+      
+      Note that every user with access in this category will be allowed to used canned replies.
   replies:
     default_reply:
       title: "My first canned reply"

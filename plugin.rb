@@ -16,7 +16,6 @@ register_svg_icon 'far-clipboard' if respond_to?(:register_svg_icon)
 after_initialize do
   module ::DiscourseCannedReplies
     PLUGIN_NAME ||= 'discourse-canned-replies'.freeze
-    STORE_NAME ||= 'replies'.freeze
 
     class Engine < ::Rails::Engine
       engine_name DiscourseCannedReplies::PLUGIN_NAME
