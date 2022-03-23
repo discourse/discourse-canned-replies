@@ -3,8 +3,8 @@
 class CreateDiscourseCannedRepliesUsageCount < ActiveRecord::Migration[6.1]
   def up
     create_table :discourse_canned_replies_usage_count do |t|
-      t.integer :topic_id
-      t.integer :usage_count
+      t.integer :topic_id, null: false
+      t.integer :usage_count, null: false, default: 0
 
       t.timestamps
     end
