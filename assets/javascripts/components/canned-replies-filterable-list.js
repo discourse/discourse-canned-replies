@@ -1,5 +1,6 @@
 import Component from "@ember/component";
 import { action } from "@ember/object";
+import { schedule } from "@ember/runloop";
 import { ajax } from "discourse/lib/ajax";
 import { popupAjaxError } from "discourse/lib/ajax-error";
 import discourseComputed from "discourse-common/utils/decorators";
@@ -95,7 +96,7 @@ export default Component.extend({
       .finally(() => {
         this.set("loadingReplies", false);
 
-        Ember.run.schedule("afterRender", () =>
+        schedule("afterRender", () =>
           document.querySelector(".canned-replies-filter").focus()
         );
       });
