@@ -32,9 +32,9 @@ export default Component.extend({
         .map((reply) => {
           /* Give a relevant score to each reply. */
           reply.score = 0;
-          if (reply.title.toLowerCase().indexOf(filterTitle) !== -1) {
+          if (reply.title.toLowerCase().includes(filterTitle)) {
             reply.score += 2;
-          } else if (reply.content.toLowerCase().indexOf(filterTitle) !== -1) {
+          } else if (reply.content.toLowerCase().includes(filterTitle)) {
             reply.score += 1;
           }
           return reply;
@@ -50,7 +50,7 @@ export default Component.extend({
             return true;
           }
 
-          return reply.tags.indexOf(selectedTag) > -1;
+          return reply.tags.includes(selectedTag);
         })
         .sort((a, b) => {
           /* Sort replies by relevance and title. */

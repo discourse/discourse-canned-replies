@@ -30,8 +30,8 @@ export default TagDrop.extend({
 
         const tagFilter = filter.toLowerCase();
         return (
-          tag.id.toLowerCase().indexOf(tagFilter) !== -1 ||
-          tag.name.toLowerCase().indexOf(tagFilter) !== -1
+          tag.id.toLowerCase().includes(tagFilter) ||
+          tag.name.toLowerCase().includes(tagFilter)
         );
       });
   },
