@@ -28,9 +28,16 @@ describe DiscourseCannedReplies::TopicQueryExtension do
       )
     end
 
-    it 'retrieves all topics' do
+    it 'retrieves all topics in the category' do
       topics = TopicQuery.new(user).list_canned_replies.topics
       expect(topics.size).to eq(canned_replies.size)
+    end
+
+    it 'limits retrieved topics to SiteSetting.canned_replies_max_replies_fetched' do
+      SiteSetting.canned_replies_max_replies_fetched = 42
+
+      topics = TopicQuery.new(user).list_canned_replies.topics
+      expect(topics.size).to eq(SiteSetting.canned_replies_max_replies_fetched)
     end
 
     it 'filter out the category description topic' do
