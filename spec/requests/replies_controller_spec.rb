@@ -326,7 +326,7 @@ describe DiscourseCannedReplies::CannedRepliesController do
         expect(response.status).to eq(200)
 
         parsed = response.parsed_body
-        expected_response = serialize_topics([canned_reply3].sort_by(&:title))
+        expected_response = serialize_topics([canned_reply3])
 
         expect(parsed['canned_replies']).to eq(expected_response)
         expect(parsed['canned_replies'][0]['usages']).to eq(0)
@@ -340,7 +340,7 @@ describe DiscourseCannedReplies::CannedRepliesController do
         parsed = response.parsed_body
 
         canned_reply3.reload
-        expected_response = serialize_topics([canned_reply3].sort_by(&:title))
+        expected_response = serialize_topics([canned_reply3])
 
         expect(parsed['canned_replies']).to eq(expected_response)
         expect(parsed['canned_replies'][0]['usages']).to eq(1)
