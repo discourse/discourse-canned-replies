@@ -18,26 +18,25 @@ discourseModule(
         reply_to_or_last_poster_username: "dracula",
       };
 
-      // there must be a more elegant way to do this
-      const fakeModel = EmberObject.extend({
-        user: EmberObject.extend({
+      const fakeModel = EmberObject.create({
+        user: {
           username: expectedVariables.my_username,
           name: expectedVariables.my_name,
-        }).create(),
-        topic: EmberObject.extend({
-          details: EmberObject.extend({
-            created_by: EmberObject.extend({
+        },
+        topic: {
+          details: {
+            created_by: {
               username: expectedVariables.original_poster_username,
               name: expectedVariables.original_poster_name,
-            }).create(),
-          }).create(),
+            },
+          },
           last_poster_username: expectedVariables.last_poster_username,
-        }).create(),
-        post: EmberObject.extend({
+        },
+        post: {
           username: expectedVariables.reply_to_username,
           name: expectedVariables.reply_to_name,
-        }).create(),
-      }).create();
+        },
+      });
 
       Object.keys(expectedVariables).forEach((key) => {
         let template, expected, preparedReply;
