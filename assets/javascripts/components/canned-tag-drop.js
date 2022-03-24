@@ -2,7 +2,8 @@ import { computed } from "@ember/object";
 import TagDrop from "select-kit/components/tag-drop";
 
 export default TagDrop.extend({
-  topTags: computed("availableTags.[]", function () {
+  @computed("availableTags.[]")
+  get topTags() {
     // sort tags descending by count and ascending by name
     return (this.availableTags || []).sort((a, b) => {
       if (a.count !== b.count) {
@@ -13,7 +14,7 @@ export default TagDrop.extend({
       } // ascending
       return 0;
     });
-  }),
+  },
 
   search(filter) {
     return (this.content || [])
