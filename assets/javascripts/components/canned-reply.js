@@ -20,7 +20,7 @@ export default Component.extend({
     this.get("onInsertReply")?.(reply);
 
     ajax(`/canned_replies/${this.get("reply.id")}/use`, {
-      type: "PATCH",
+      type: "POST",
     }).catch(popupAjaxError);
   },
 });

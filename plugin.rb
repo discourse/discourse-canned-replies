@@ -53,7 +53,7 @@ after_initialize do
 
   DiscourseCannedReplies::Engine.routes.draw do
     resources :canned_replies, path: '/', only: [:index] do
-      member { patch 'use' }
+      member { post 'use' }
     end
   end
 end

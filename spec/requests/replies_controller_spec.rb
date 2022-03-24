@@ -331,7 +331,7 @@ describe DiscourseCannedReplies::CannedRepliesController do
         expect(parsed['canned_replies']).to eq(expected_response)
         expect(parsed['canned_replies'][0]['usages']).to eq(0)
 
-        patch "/canned_replies/#{canned_reply3.id}/use"
+        post "/canned_replies/#{canned_reply3.id}/use"
         expect(response.status).to eq(200)
 
         get '/canned_replies'

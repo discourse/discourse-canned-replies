@@ -11,7 +11,7 @@ function cannedRepliesPretender(server, helper) {
 
   server.get(repliesPath, () => helper.response(replies));
   replies.canned_replies.forEach((reply) =>
-    server.patch(`${repliesPath}/${reply.id}/use`, () => helper.response({}))
+    server.post(`${repliesPath}/${reply.id}/use`, () => helper.response({}))
   );
 }
 
