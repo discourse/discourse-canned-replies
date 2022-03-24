@@ -97,7 +97,7 @@ export default Component.extend({
         this.set("loadingReplies", false);
 
         schedule("afterRender", () =>
-          document.querySelector(".canned-replies-filter").focus()
+          document.querySelector(".canned-replies-filter")?.focus()
         );
       });
   },
