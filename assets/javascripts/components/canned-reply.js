@@ -11,15 +11,15 @@ export default Component.extend({
   @action
   apply() {
     const reply = prepareReply(
-      this.get("reply.title"),
-      this.get("reply.content"),
+      this.reply.title,
+      this.reply.content,
       this.model
     );
 
     // run parametrized action to insert the reply
-    this.get("onInsertReply")?.(reply);
+    this.onInsertReply?.(reply);
 
-    ajax(`/canned_replies/${this.get("reply.id")}/use`, {
+    ajax(`/canned_replies/${this.reply.id}/use`, {
       type: "POST",
     }).catch(popupAjaxError);
   },
