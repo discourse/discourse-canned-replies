@@ -1,11 +1,11 @@
-import { computed } from "@ember/object";
+import discourseComputed from "discourse-common/utils/decorators";
 import TagDrop from "select-kit/components/tag-drop";
 
 export default TagDrop.extend({
-  @computed("availableTags.[]")
-  get topTags() {
+  @discourseComputed("availableTags.[]")
+  topTags(availableTags) {
     // sort tags descending by count and ascending by name
-    return (this.availableTags || []).sort((a, b) => {
+    return (availableTags || []).sort((a, b) => {
       if (a.count !== b.count) {
         return b.count - a.count;
       } // descending
