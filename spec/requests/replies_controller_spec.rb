@@ -312,6 +312,44 @@ describe DiscourseCannedReplies::CannedRepliesController do
   end
 
   describe '#use' do
+    context 'check if the id received belongs to a canned reply' do
+      before do
+        SiteSetting.canned_replies_category = canned_replies_parent_category.id
+
+        sign_in(admin)
+        Group.refresh_automatic_groups!
+      end
+
+      it 'should return 422 when id does not belong to a valid topic' do
+        post '/canned_replies/404/use'
+        expect(response.status).to eq(422)
+      end
+
+      it 'should return 422 when topic does not belong to canned reply category or its subcategories' do
+        post "/canned_replies/#{other_topic1.id}/use"
+        expect(response.status).to eq(422)
+      end
+
+      it 'should return 200 if the topic belongs to the canned replies category' do
+        post "/canned_replies/#{canned_reply0.id}/use"
+        expect(response.status).to eq(200)
+      end
+
+      it 'should return 200 if the topic belongs to the canned replies subcategories' do
+        post "/canned_replies/#{canned_reply3.id}/use"
+        expect(response.status).to eq(200)
+
+        post "/canned_replies/#{canned_reply4.id}/use"
+        expect(response.status).to eq(200)
+
+        post "/canned_replies/#{canned_reply5.id}/use"
+        expect(response.status).to eq(200)
+
+        post "/canned_replies/#{canned_reply6.id}/use"
+        expect(response.status).to eq(200)
+      end
+    end
+
     context 'when a canned reply is used' do
       before do
         SiteSetting.canned_replies_category =
@@ -321,7 +359,7 @@ describe DiscourseCannedReplies::CannedRepliesController do
         sign_in(moderator)
       end
 
-      it 'it should increment usage count' do
+      it 'should increment usage count' do
         get '/canned_replies'
         expect(response.status).to eq(200)
 

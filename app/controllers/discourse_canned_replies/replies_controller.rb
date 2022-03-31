@@ -14,7 +14,23 @@ module DiscourseCannedReplies
 
     def use
       reply_id = params.require(:id)
-      record = Topic.find_by(id: reply_id).increment_canned_reply_usage_count!
+      topic = Topic.find_by(id: reply_id)
+
+      if topic.blank?
+        return render_json_error('Invalid canned reply id', status: 422)
+      end
+
+      canned_replies_category = SiteSetting.canned_replies_category.to_i
+      subcategory_ids = Category.subcategory_ids(canned_replies_category)
+
+      unless topic.category_id == canned_replies_category ||
+               subcategory_ids.include?(topic.category_id)
+        return(
+          render_json_error('Id does not belong to a canned reply', status: 422)
+        )
+      end
+
+      record = topic.increment_canned_reply_usage_count!
 
       render json: record
     end

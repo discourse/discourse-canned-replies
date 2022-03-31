@@ -98,6 +98,7 @@ describe DiscourseCannedReplies::TopicQueryExtension do
 
     it 'sorts retrieved replies by title' do
       sorted_replies = canned_replies.sort_by(&:title)
+
       # just to ensure the test sample isn't sorted because that would render the real test after the
       # query to be useless
       expect(sorted_replies).not_to eq(canned_replies)
