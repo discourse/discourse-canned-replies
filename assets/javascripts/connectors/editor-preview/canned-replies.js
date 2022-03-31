@@ -30,13 +30,21 @@ export default {
 
   @action
   show() {
-    $(SELECTOR_EDITOR_PREVIEW).hide();
+    const elemEditorPreview = document.querySelector(SELECTOR_EDITOR_PREVIEW);
+    if (elemEditorPreview) {
+      elemEditorPreview.style.display = "none";
+    }
+
     this.set("cannedVisible", true);
   },
 
   @action
   hide() {
-    $(SELECTOR_EDITOR_PREVIEW).show();
+    const elemEditorPreview = document.querySelector(SELECTOR_EDITOR_PREVIEW);
+    if (elemEditorPreview) {
+      elemEditorPreview.style.display = "";
+    }
+
     this.set("cannedVisible", false);
   },
 

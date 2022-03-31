@@ -1,6 +1,10 @@
 import { click, fillIn, visit } from "@ember/test-helpers";
 import { clearPopupMenuOptionsCallback } from "discourse/controllers/composer";
-import { acceptance, exists } from "discourse/tests/helpers/qunit-helpers";
+import {
+  acceptance,
+  exists,
+  query,
+} from "discourse/tests/helpers/qunit-helpers";
 import selectKit from "discourse/tests/helpers/select-kit-helper";
 import { test } from "qunit";
 import CannedRepliesFixtures from "../fixtures/canned-replies-fixtures";
@@ -64,7 +68,7 @@ acceptance("discourse-canned-replies", function (needs) {
     await click("#canned-reply-1 .canned-replies-apply");
 
     assert.equal(
-      find(".d-editor-input").val().trim(),
+      query(".d-editor-input").value.trim(),
       "Cupcake ipsum dolor sit amet cotton candy cheesecake jelly. Candy canes sugar plum soufflé sweet roll jelly-o danish jelly muffin. I love jelly-o powder topping carrot cake toffee.",
       "it should insert the canned reply in the composer"
     );
@@ -92,7 +96,7 @@ acceptance("discourse-canned-replies", function (needs) {
     await click("#canned-reply-8 .canned-replies-apply");
 
     assert.equal(
-      find(".d-editor-input").val().trim(),
+      query(".d-editor-input").value.trim(),
       "Testing testin **123**",
       "it should insert the canned reply in the composer"
     );
@@ -110,7 +114,7 @@ acceptance("discourse-canned-replies", function (needs) {
     await click("#canned-reply-9 .canned-replies-apply");
 
     assert.equal(
-      find(".d-editor-input").val().trim(),
+      query(".d-editor-input").value.trim(),
       "Hi there, regards eviltrout.",
       "it should replace variables"
     );
