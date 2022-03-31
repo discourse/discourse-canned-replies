@@ -55,8 +55,6 @@ describe DiscourseCannedReplies::TopicQueryExtension do
       expect(topics.size).to eq(canned_replies.size)
 
       closed_replies = canned_replies.sample(canned_replies.size * 0.2)
-      expect(topics.size).not_to eq(closed_replies.size)
-
       closed_replies.each { |reply| reply.update_status('closed', true, user) }
 
       topics = TopicQuery.new(user).list_canned_replies.topics
@@ -68,8 +66,6 @@ describe DiscourseCannedReplies::TopicQueryExtension do
       expect(topics.size).to eq(canned_replies.size)
 
       unlisted_replies = canned_replies.sample(canned_replies.size * 0.15)
-      expect(topics.size).not_to eq(unlisted_replies.size)
-
       unlisted_replies.each do |reply|
         reply.update_status('visible', false, user)
       end
@@ -83,8 +79,6 @@ describe DiscourseCannedReplies::TopicQueryExtension do
       expect(topics.size).to eq(canned_replies.size)
 
       archived_replies = canned_replies.sample(canned_replies.size * 0.25)
-      expect(topics.size).not_to eq(archived_replies.size)
-
       archived_replies.each { |reply| reply.update_attribute :archived, true }
 
       topics = TopicQuery.new(user).list_canned_replies.topics
@@ -96,8 +90,6 @@ describe DiscourseCannedReplies::TopicQueryExtension do
       expect(topics.size).to eq(canned_replies.size)
 
       deleted_replies = canned_replies.sample(canned_replies.size * 0.2)
-      expect(topics.size).not_to eq(deleted_replies.size)
-
       deleted_replies.each { |reply| reply.trash! }
 
       topics = TopicQuery.new(user).list_canned_replies.topics
@@ -106,6 +98,8 @@ describe DiscourseCannedReplies::TopicQueryExtension do
 
     it 'sorts retrieved replies by title' do
       sorted_replies = canned_replies.sort_by(&:title)
+      # just to ensure the test sample isn't sorted because that would render the real test after the
+      # query to be useless
       expect(sorted_replies).not_to eq(canned_replies)
 
       topics = TopicQuery.new(user).list_canned_replies.topics
