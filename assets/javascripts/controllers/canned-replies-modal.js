@@ -17,6 +17,6 @@ export default Controller.extend(ModalFunctionality, {
 
   @action
   insertReply(reply) {
-    insertReplyIntoComposer.call(this, reply);
+    insertReplyIntoComposer(this, reply);
   },
 });

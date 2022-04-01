@@ -47,6 +47,6 @@ export default {
 
   @action
   insertReply(reply) {
-    insertReplyIntoComposer.call(this, reply);
+    insertReplyIntoComposer(this, reply);
   },
 };

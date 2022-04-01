@@ -41,8 +41,8 @@ export function prepareReply(replyTitle, replyContent, model) {
   return { replyTitle, replyContent };
 }
 
-export function insertReplyIntoComposer({ replyTitle, replyContent }) {
-  const model = this.get("model");
+export function insertReplyIntoComposer(context, { replyTitle, replyContent }) {
+  const model = context.get("model");
 
   // insert the title if blank
   if (model && !model.title) {
@@ -50,8 +50,8 @@ export function insertReplyIntoComposer({ replyTitle, replyContent }) {
   }
 
   // insert the content of the reply in the compose
-  this.appEvents.trigger("composer:insert-block", replyContent);
+  context.appEvents.trigger("composer:insert-block", replyContent);
 
   // hide the canned reply panel
-  this.send("hide");
+  context.send("hide");
 }
