@@ -12,16 +12,13 @@ export default {
       model: getOwner(this).lookup("controller:composer").model,
     });
 
-    this.showCanned = () => component.send("show");
-    component.appEvents.on("canned-replies:show", this, this.showCanned);
-
-    this.hideCanned = () => component.send("hide");
-    component.appEvents.on("canned-replies:hide", this, this.hideCanned);
+    this.appEvents.on("canned-replies:show", this, "show");
+    this.appEvents.on("canned-replies:hide", this, "hide");
   },
 
-  teardownComponent(component) {
-    component.appEvents.off("canned-replies:show", this, this.showCanned);
-    component.appEvents.off("canned-replies:hide", this, this.hideCanned);
+  teardownComponent() {
+    this.appEvents.off("canned-replies:show", this, "show");
+    this.appEvents.off("canned-replies:hide", this, "hide");
   },
 
   shouldRender(args, component) {
