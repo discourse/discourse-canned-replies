@@ -123,7 +123,8 @@ task 'canned-replies:migrate-to-v2' => [:environment] do |_, args|
 
           puts '',
                '****************************',
-               "Using existing_category #{existing_category.name}(id: #{existing_category.id}) defined in Settings.canned_replies_category",
+               "Using existing_category #{existing_category.name}(id: #{existing_category.id}) defined in ",
+               'Settings.canned_replies_category',
                'Please note that access to canned replies will follow this existing_category security settings',
                '****************************',
                ''
