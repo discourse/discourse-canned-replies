@@ -2,6 +2,7 @@ import { click, fillIn, visit } from "@ember/test-helpers";
 import { clearPopupMenuOptionsCallback } from "discourse/controllers/composer";
 import {
   acceptance,
+  count,
   exists,
   query,
 } from "discourse/tests/helpers/qunit-helpers";
@@ -60,7 +61,7 @@ acceptance("discourse-canned-replies", function (needs) {
 
     await tagDropdown.selectRowByIndex(0);
     assert.equal(
-      document.querySelectorAll(".canned-replies-list .canned-reply").length,
+      count(".canned-replies-list .canned-reply"),
       1,
       "it should filter replies by tag"
     );
@@ -88,7 +89,7 @@ acceptance("discourse-canned-replies", function (needs) {
       "test"
     );
     assert.equal(
-      document.querySelectorAll(".canned-replies-list .canned-reply").length,
+      count(".canned-replies-list .canned-reply"),
       2,
       "it should filter by text"
     );
