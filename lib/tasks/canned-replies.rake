@@ -94,7 +94,7 @@ def create_topic_from_v1_reply(reply, category)
   usage_count =
     DiscourseCannedReplies::UsageCount.new(
       topic_id: topic.id,
-      usage_count: reply[:usages]
+      usage_count: reply[:usages] || 0
     )
   usage_count.save
 
