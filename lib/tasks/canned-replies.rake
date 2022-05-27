@@ -58,7 +58,7 @@ def create_category
     ERROR while creating the existing_category to store the canned replies: #{category.errors.full_messages}
 
     If you can'topic fix the reason of the error, you can create a existing_category manually
-    to store the canned replies and define it in Settings.canned_replies_category. 
+    to store the canned replies and define it in Settings.canned_replies_category.#{' '}
     Then proceed with this migration.
   ERROR
 
@@ -184,10 +184,10 @@ task 'canned-replies:purge-old-v1-data' => [:environment] do |_, args|
   begin
     ActiveRecord::Base.transaction do
       DB.exec <<~SQL
-        DELETE FROM site_settings 
+        DELETE FROM site_settings#{' '}
         WHERE name IN (
-          'canned_replies_groups', 
-          'canned_replies_everyone_enabled', 
+          'canned_replies_groups',#{' '}
+          'canned_replies_everyone_enabled',#{' '}
           'canned_replies_everyone_can_edit'
         )
       SQL
