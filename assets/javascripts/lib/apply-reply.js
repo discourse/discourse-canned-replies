@@ -4,6 +4,8 @@ export function prepareReply(replyTitle, replyContent, model) {
     const vars = {
       my_username: model.get("user.username"),
       my_name: model.get("user.name"),
+      topic_title: model.get("topic.title"),
+      topic_url: model.get("topic.url"),
       original_poster_username: model.get("topic.details.created_by.username"),
       original_poster_name: model.get("topic.details.created_by.name"),
       reply_to_username: model.get("post.username"),

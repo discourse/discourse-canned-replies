@@ -10,6 +10,8 @@ discourseModule(
       const expectedVariables = {
         my_username: "heisenberg",
         my_name: "Walter White",
+        topic_title: "Villains",
+        topic_url: "/t/villains/6",
         original_poster_username: "mr_hide",
         original_poster_name: "Dr. Henry Jekyll",
         reply_to_username: "dracula",
@@ -31,6 +33,8 @@ discourseModule(
             },
           },
           last_poster_username: expectedVariables.last_poster_username,
+          title: "Villains",
+          url: "/t/villains/6",
         },
         post: {
           username: expectedVariables.reply_to_username,
