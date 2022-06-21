@@ -1,0 +1,29 @@
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
+#
+# To work with us on translations, join this project:
+# https://translate.discourse.org/
+
+hr:
+  js:
+    canned_replies:
+      composer_button_text: "Preddefinirani odgovori"
+      title:
+        name: "Naslov"
+        invalid: Naslov ne može biti prazan.
+      content:
+        name: "Sadržaj"
+        invalid: Sadržaj ne može biti prazan.
+      insert:
+        choose: "(izaberite odgovor)"
+        insert_button: "Unesite odgovor"
+        new_button: "Novo"
+        edit_button: "Izmijeni"
+        modal_title: "Umetnite predefinirani odgovor"
+        sort:
+          alphabetically: "Poredaj po abecedi"
+          usage: "Poredaj prema učestalosti upotrebe"
+      add:
+        modal_title: "Dodaj predefinirani odgovor"
+      edit:
+        modal_title: "Uredi predefinirani odgovor"
