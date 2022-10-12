@@ -83,6 +83,9 @@ acceptance("Canned Replies", function (needs) {
     await visit("/");
 
     await click("#create-topic");
+    const categoryChooser = selectKit(".category-chooser");
+    await categoryChooser.expand();
+    await categoryChooser.selectRowByValue(2);
     await fillIn(".d-editor-input", "beforeafter");
 
     const editorInput = $(".d-editor-input")[0];
@@ -171,6 +174,9 @@ acceptance("Canned Replies", function (needs) {
     await visit("/");
 
     await click("#create-topic");
+    const categoryChooser = selectKit(".category-chooser");
+    await categoryChooser.expand();
+    await categoryChooser.selectRowByValue(2);
     await popUpMenu.expand();
     await popUpMenu.selectRowByValue("showCannedRepliesButton");
 
