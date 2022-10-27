@@ -5,9 +5,10 @@ import { ajax } from "discourse/lib/ajax";
 import discourseComputed from "discourse-common/utils/decorators";
 import { popupAjaxError } from "discourse/lib/ajax-error";
 import I18n from "I18n";
-import bootbox from "bootbox";
+import { inject as service } from "@ember/service";
 
 export default Controller.extend(ModalFunctionality, {
+  dialog: service(),
   replyTitle: "",
   replyContent: "",
   replyId: "",
@@ -46,25 +47,23 @@ export default Controller.extend(ModalFunctionality, {
     },
 
     remove() {
-      bootbox.confirm(
-        I18n.t("canned_replies.edit.remove_confirm"),
-        (result) => {
-          if (result) {
-            ajax(`/canned_replies/${this.replyId}`, {
-              type: "DELETE",
+      this.dialog.deleteConfirm({
+        message: I18n.t("canned_replies.edit.remove_confirm"),
+        didConfirm: () => {
+          return ajax(`/canned_replies/${this.replyId}`, {
+            type: "DELETE",
+          })
+            .then(() => {
+              this.send("closeModal");
+              if (this.site.mobileView) {
+                showModal("canned-replies");
+              } else {
+                this.appEvents.trigger("canned-replies:show");
+              }
             })
-              .then(() => {
-                this.send("closeModal");
-                if (this.site.mobileView) {
-                  showModal("canned-replies");
-                } else {
-                  this.appEvents.trigger("canned-replies:show");
-                }
-              })
-              .catch(popupAjaxError);
-          }
-        }
-      );
+            .catch(popupAjaxError);
+        },
+      });
     },
 
     cancel() {
