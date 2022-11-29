@@ -7,13 +7,14 @@
 nl:
   js:
     canned_replies:
+      filter_hint: "Filteren op titel..."
       composer_button_text: "Sjabloonantwoorden"
       title:
         name: "Titel"
-        invalid: Titel kan niet leeg zijn.
+        invalid: Titel mag niet leeg zijn.
       content:
         name: "Inhoud"
-        invalid: Inhoud kan niet leeg zijn.
+        invalid: Inhoud mag niet leeg zijn.
       insert:
         choose: "(kies een antwoord)"
         insert_button: "Antwoord invoegen"
@@ -27,3 +28,5 @@ nl:
         modal_title: "Sjabloonantwoord toevoegen"
       edit:
         modal_title: "Sjabloonantwoord bewerken"
+        remove_confirm: "Weet je zeker dat je dit sjabloonantwoord wilt verwijderen?"
+      back: "Terug"
