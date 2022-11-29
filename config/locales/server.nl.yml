@@ -6,15 +6,15 @@
 
 nl:
   site_settings:
-    canned_replies_enabled: 'Knop Sjabloonantwoord invoegen in editorvenster tonen?'
-    canned_replies_groups: 'Toegang tot sjabloonantwoorden voor niet-stafgroepen toevoegen op groepsnaam'
-    canned_replies_everyone_enabled: 'Iedereen mag sjabloonantwoorden gebruiken'
-    canned_replies_everyone_can_edit: 'Iedereen mag sjabloonantwoorden maken, bewerken en verwijderen'
+    canned_replies_enabled: 'Knop Sjabloonantwoord invoegen weergeven in editorvenster?'
+    canned_replies_groups: 'Toegang tot sjabloonantwoorden voor niet-medewerkergroepen toevoegen op groepsnaam'
+    canned_replies_everyone_enabled: 'Iedereen toestaan sjabloonantwoorden te gebruiken'
+    canned_replies_everyone_can_edit: 'Iedereen toestaan sjabloonantwoorden te maken, bewerken en verwijderen'
   replies:
     default_reply:
       title: "Mijn eerste sjabloonantwoord"
       body: |
         Dit is een voorbeeld van een sjabloonantwoord.
-        U kunt **markdown** gebruiken om stijlen aan uw antwoorden te geven. Klik op de knop **Nieuw** om nieuwe antwoorden te maken of op de knop **Bewerken** om een bestaand sjabloonantwoord te bewerken of te verwijderen.
+        Je kunt **markdown** gebruiken om stijl aan je antwoorden te geven. Klik op de knop **Nieuw** om een nieuw antwoord te maken of op de knop **Bewerken** om een bestaand sjabloonantwoord te bewerken of te verwijderen.
 
         *Dit sjabloonantwoord wordt toegevoegd wanneer de antwoordenlijst leeg is.*
