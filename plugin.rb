@@ -9,13 +9,12 @@
 
 enabled_site_setting :canned_replies_enabled
 
-register_asset 'stylesheets/canned-replies.scss'
+register_asset "stylesheets/canned-replies.scss"
 
 register_svg_icon "far-clipboard" if respond_to?(:register_svg_icon)
 
 after_initialize do
-
-  load File.expand_path('../app/jobs/onceoff/rename_canned_replies.rb', __FILE__)
+  load File.expand_path("../app/jobs/onceoff/rename_canned_replies.rb", __FILE__)
 
   module ::CannedReply
     PLUGIN_NAME ||= "discourse-canned-replies".freeze
@@ -29,7 +28,6 @@ after_initialize do
 
   class CannedReply::Reply
     class << self
-
       def add(user_id, title, content)
         id = SecureRandom.hex(16)
         record = { id: id, title: title, content: content }
@@ -63,13 +61,13 @@ after_initialize do
         end
 
         return [] if replies.blank?
-        replies.values.sort_by { |reply| reply['title'] || '' }
+        replies.values.sort_by { |reply| reply["title"] || "" }
       end
 
       def get_reply(user_id, reply_id)
         replies = all(user_id)
 
-        replies.detect { |reply| reply['id'] == reply_id }
+        replies.detect { |reply| reply["id"] == reply_id }
       end
 
       def remove(user_id, reply_id)
@@ -81,8 +79,8 @@ after_initialize do
       def use(user_id, reply_id)
         replies = PluginStore.get(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME)
         reply = replies[reply_id]
-        reply['usages'] ||= 0
-        reply['usages'] += 1
+        reply["usages"] ||= 0
+        reply["usages"] += 1
         replies[reply_id] = reply
         PluginStore.set(CannedReply::PLUGIN_NAME, CannedReply::STORE_NAME, replies)
       end
@@ -109,7 +107,7 @@ after_initialize do
     def create
       guardian.ensure_can_edit_canned_replies!
 
-      title   = params.require(:title)
+      title = params.require(:title)
       content = params.require(:content)
       user_id = current_user.id
 
@@ -121,7 +119,7 @@ after_initialize do
       guardian.ensure_can_edit_canned_replies!
 
       reply_id = params.require(:id)
-      user_id  = current_user.id
+      user_id = current_user.id
       record = CannedReply::Reply.remove(user_id, reply_id)
 
       render json: record
@@ -129,7 +127,7 @@ after_initialize do
 
     def reply
       reply_id = params.require(:id)
-      user_id  = current_user.id
+      user_id = current_user.id
 
       record = CannedReply::Reply.get_reply(user_id, reply_id)
       render json: record
@@ -149,7 +147,7 @@ after_initialize do
 
     def use
       reply_id = params.require(:id)
-      user_id  = current_user.id
+      user_id = current_user.id
       record = CannedReply::Reply.use(user_id, reply_id)
 
       render json: record
@@ -177,24 +175,16 @@ after_initialize do
     groups.any? { |group| group_list.include?(group.name.downcase) }
   end
 
-  add_to_class(:guardian, :can_edit_canned_replies?) do
-    user && user.can_edit_canned_replies?
-  end
+  add_to_class(:guardian, :can_edit_canned_replies?) { user && user.can_edit_canned_replies? }
 
-  add_to_class(:guardian, :can_use_canned_replies?) do
-    user && user.can_use_canned_replies?
-  end
+  add_to_class(:guardian, :can_use_canned_replies?) { user && user.can_use_canned_replies? }
 
-  add_to_serializer(:current_user, :can_use_canned_replies) do
-    object.can_use_canned_replies?
-  end
+  add_to_serializer(:current_user, :can_use_canned_replies) { object.can_use_canned_replies? }
 
-  add_to_serializer(:current_user, :can_edit_canned_replies) do
-    object.can_edit_canned_replies?
-  end
+  add_to_serializer(:current_user, :can_edit_canned_replies) { object.can_edit_canned_replies? }
 
   CannedReply::Engine.routes.draw do
-    resources :canned_replies, path: '/', only: [:index, :create, :destroy, :update] do
+    resources :canned_replies, path: "/", only: %i[index create destroy update] do
       member do
         get "reply"
         patch "use"
@@ -202,8 +192,5 @@ after_initialize do
     end
   end
 
-  Discourse::Application.routes.append do
-    mount ::CannedReply::Engine, at: "/canned_replies"
-  end
-
+  Discourse::Application.routes.append { mount ::CannedReply::Engine, at: "/canned_replies" }
 end
