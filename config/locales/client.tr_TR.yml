@@ -7,6 +7,7 @@
 tr_TR:
   js:
     canned_replies:
+      filter_hint: "Başlığa göre filtrele"
       composer_button_text: "Hazır cevaplar"
       title:
         name: "Başlık"
@@ -27,3 +28,5 @@ tr_TR:
         modal_title: "Hazır Yanıt Ekle"
       edit:
         modal_title: "Hazır Yanıtı Düzenle"
+        remove_confirm: "Bu hazır yanıtı silmek istediğinizden emin misiniz?"
+      back: "Geri"
