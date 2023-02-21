@@ -12,3 +12,4 @@ el:
       insert:
         new_button: "Νέο"
         edit_button: "Επεξεργασία"
+      back: "Πίσω"

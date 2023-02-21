@@ -12,3 +12,4 @@ gl:
       insert:
         new_button: "Novo"
         edit_button: "Editar"
+      back: "Volver"

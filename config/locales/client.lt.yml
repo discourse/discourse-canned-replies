@@ -12,3 +12,4 @@ lt:
       insert:
         new_button: "Naujas"
         edit_button: "Redaguoti"
+      back: "Atgal"
