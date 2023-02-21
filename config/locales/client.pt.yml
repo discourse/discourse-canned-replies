@@ -14,3 +14,4 @@ pt:
       insert:
         new_button: "Novo"
         edit_button: "Editar"
+      back: "Retroceder"

@@ -12,3 +12,4 @@ bg:
       insert:
         new_button: "Нов"
         edit_button: "Редактирай"
+      back: "Назад"

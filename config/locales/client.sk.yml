@@ -12,3 +12,4 @@ sk:
       insert:
         new_button: "Nový"
         edit_button: "Upraviť"
+      back: "Späť"

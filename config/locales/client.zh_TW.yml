@@ -14,3 +14,4 @@ zh_TW:
       insert:
         new_button: "新使用者"
         edit_button: "編輯"
+      back: "上一步"

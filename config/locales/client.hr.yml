@@ -27,3 +27,4 @@ hr:
         modal_title: "Dodaj predefinirani odgovor"
       edit:
         modal_title: "Uredi predefinirani odgovor"
+      back: "Natrag"

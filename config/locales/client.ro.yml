@@ -27,3 +27,4 @@ ro:
         modal_title: "Adaugă răspuns predefinit"
       edit:
         modal_title: "Editează răspunsul predefinit"
+      back: "Înapoi"

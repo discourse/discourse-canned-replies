@@ -27,3 +27,4 @@ bs_BA:
         modal_title: "Dodaj Konzervirani Odgovor"
       edit:
         modal_title: "Uredi Konzervirani Odgovor"
+      back: "Prethodno"

@@ -12,3 +12,4 @@ th:
       insert:
         new_button: "ใหม่"
         edit_button: "แก้ไข"
+      back: "กลับ"

@@ -12,3 +12,4 @@ lv:
       insert:
         new_button: "Jauns"
         edit_button: "Labot"
+      back: "Atpakaļ"

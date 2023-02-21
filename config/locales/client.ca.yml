@@ -27,3 +27,4 @@ ca:
         modal_title: "Afegeix una resposta enllaunada"
       edit:
         modal_title: "Edita la resposta enllaunada"
+      back: "Enrere"

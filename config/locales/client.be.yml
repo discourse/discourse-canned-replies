@@ -12,3 +12,4 @@ be:
       insert:
         new_button: "Новая"
         edit_button: "Рэдагаваць"
+      back: "Назад"
