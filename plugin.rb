@@ -13,33 +13,15 @@ register_asset "stylesheets/canned-replies.scss"
 
 register_svg_icon "far-clipboard" if respond_to?(:register_svg_icon)
 
+module ::DiscourseCannedReplies
+  PLUGIN_NAME = "discourse-canned-replies"
+  STORE_NAME = "replies"
+end
+
+require_relative "lib/discourse_canned_replies/engine"
+
 after_initialize do
-  module ::DiscourseCannedReplies
-    PLUGIN_NAME = "discourse-canned-replies"
-    STORE_NAME = "replies"
-
-    class Engine < ::Rails::Engine
-      engine_name DiscourseCannedReplies::PLUGIN_NAME
-      isolate_namespace DiscourseCannedReplies
-    end
-  end
-
-  require_relative "app/controllers/discourse_canned_replies/canned_replies_controller.rb"
   require_relative "app/jobs/onceoff/rename_canned_replies.rb"
-  require_relative "app/models/discourse_canned_replies/reply.rb"
-
-  DiscourseCannedReplies::Engine.routes.draw do
-    resources :canned_replies, path: "/", only: %i[index create destroy update] do
-      member do
-        get "reply"
-        patch "use"
-      end
-    end
-  end
-
-  Discourse::Application.routes.append do
-    mount ::DiscourseCannedReplies::Engine, at: "/canned_replies"
-  end
 
   add_to_class(:user, :can_edit_canned_replies?) do
     return true if staff?

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module DiscourseCannedReplies
+module ::DiscourseCannedReplies
   class CannedRepliesController < ::ApplicationController
     requires_plugin DiscourseCannedReplies::PLUGIN_NAME
     before_action :ensure_logged_in

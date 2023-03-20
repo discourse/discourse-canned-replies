@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module DiscourseCannedReplies
+module ::DiscourseCannedReplies
   class Reply
     def self.add(user_id, title, content)
       id = SecureRandom.hex(16)
