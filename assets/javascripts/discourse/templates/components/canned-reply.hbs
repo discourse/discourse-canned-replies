@@ -3,18 +3,18 @@
     <div class="canned-reply-title-text">{{reply.title}}</div>
 
     <div class="actions">
-      {{d-button
+      <DButton
         class="canned-replies-apply"
-        action=(action "apply")
-        icon="far-clipboard"
-      }}
+        @action={{action "apply"}}
+        @icon="far-clipboard"
+      />
 
       {{#if canEdit}}
-        {{d-button
+        <DButton
           class="canned-replies-edit"
-          action=(action "editReply")
-          icon="pencil-alt"
-        }}
+          @action={{action "editReply"}}
+          @icon="pencil-alt"
+        />
       {{/if}}
     </div>
   </summary>

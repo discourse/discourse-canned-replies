@@ -1,16 +1,15 @@
-{{#d-modal-body
-  title="canned_replies.add.modal_title"
-  class="canned-replies-modal"
-}}
-  {{canned-replies-form title=newTitle content=newContent}}
-{{/d-modal-body}}
+<DModalBody
+  @title="canned_replies.add.modal_title"
+  @class="canned-replies-modal"
+>
+  <CannedRepliesForm @title={{newTitle}} @content={{newContent}} />
+</DModalBody>
 
 <div class="modal-footer canned-replies-footer">
-  {{d-button
+  <DButton
     class="btn-primary new-reply-save-btn"
-    action=(action "save")
-    label="save"
-    disabled=disableSaveButton
-  }}
-
+    @action={{action "save"}}
+    @label="save"
+    @disabled={{disableSaveButton}}
+  />
 </div>
