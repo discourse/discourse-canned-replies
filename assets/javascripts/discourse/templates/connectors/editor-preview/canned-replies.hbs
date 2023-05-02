@@ -1,31 +1,31 @@
 {{#if cannedVisible}}
   <div class="d-editor-preview">
-    {{#conditional-loading-spinner condition=loadingReplies}}
+    <ConditionalLoadingSpinner @condition={{loadingReplies}}>
       {{#if canEdit}}
         <div class="canned-replies-edit-bar">
-          {{d-button
+          <DButton
             class="canned-replies-new"
-            action=(action "newReply")
-            icon="plus"
-            label="canned_replies.insert.new_button"
-          }}
-          {{text-field
-            class="canned-replies-filter"
-            value=listFilter
-            placeholder=(i18n "canned_replies.filter_hint")
-          }}
+            @action={{action "newReply"}}
+            @icon="plus"
+            @label="canned_replies.insert.new_button"
+          />
+          <TextField
+            @class="canned-replies-filter"
+            @value={{listFilter}}
+            @placeholder={{i18n "canned_replies.filter_hint"}}
+          />
 
-          {{d-button
+          <DButton
             class="modal-close close btn-flat"
-            action=(action "hide")
-            icon="times"
-          }}
+            @action={{action "hide"}}
+            @icon="times"
+          />
         </div>
       {{/if}}
 
       {{#each filteredReplies as |r|}}
-        {{canned-reply reply=r}}
+        <CannedReply @reply={{r}} />
       {{/each}}
-    {{/conditional-loading-spinner}}
+    </ConditionalLoadingSpinner>
   </div>
 {{/if}}

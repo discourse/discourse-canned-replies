@@ -1,29 +1,29 @@
-{{#d-modal-body
-  title="canned_replies.edit.modal_title"
-  class="canned-replies-modal"
-}}
-  {{canned-replies-form title=replyTitle content=replyContent}}
-{{/d-modal-body}}
+<DModalBody
+  @title="canned_replies.edit.modal_title"
+  @class="canned-replies-modal"
+>
+  <CannedRepliesForm @title={{replyTitle}} @content={{replyContent}} />
+</DModalBody>
 
 <div class="modal-footer canned-replies-footer">
-  {{d-button
+  <DButton
     class="btn-primary edit-reply-save-btn"
-    action=(action "save")
-    label=savingLabel
-    disabled=disableSaveButton
-  }}
+    @action={{action "save"}}
+    @label={{savingLabel}}
+    @disabled={{disableSaveButton}}
+  />
 
-  {{d-button
-    action=(action "cancel")
-    icon="chevron-left"
-    label="canned_replies.back"
+  <DButton
+    @action={{action "cancel"}}
+    @icon="chevron-left"
+    @label="canned_replies.back"
     class="canned-replies-edit-back"
-  }}
+  />
 
-  {{d-button
+  <DButton
     class="btn-danger"
-    action=(action "remove")
-    icon="trash-alt"
-    disabled=saving
-  }}
+    @action={{action "remove"}}
+    @icon="trash-alt"
+    @disabled={{saving}}
+  />
 </div>
