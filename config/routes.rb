@@ -9,6 +9,4 @@ DiscourseCannedReplies::Engine.routes.draw do
   end
 end
 
-Discourse::Application.routes.append do
-  mount ::DiscourseCannedReplies::Engine, at: "/canned_replies"
-end
+Discourse::Application.routes.draw { mount ::DiscourseCannedReplies::Engine, at: "/canned_replies" }
