@@ -1,3 +1,7 @@
+# DEPRECATED
+
+This plugin is no longer supported. Please migrate to the [new discourse-templates plugin](https://meta.discourse.org/t/discourse-templates/229250).
+
 # Canned replies plugin
 This plugin adds support for inserting a canned reply into the composer window via a UI.
 
