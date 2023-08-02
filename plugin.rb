@@ -21,6 +21,10 @@ end
 require_relative "lib/discourse_canned_replies/engine"
 
 after_initialize do
+  AdminDashboardData.add_problem_check do
+    "The discourse-canned-replies plugin is no longer supported. Please <a href='https://meta.discourse.org/t/discourse-templates/229250'>migrate to the new discourse-templates plugin</a> and uninstall discourse-canned-replies."
+  end
+
   require_relative "app/jobs/onceoff/rename_canned_replies.rb"
 
   add_to_class(:user, :can_edit_canned_replies?) do
