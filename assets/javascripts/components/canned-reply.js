@@ -37,7 +37,7 @@ export default Component.extend({
     editReply() {
       const composer = getOwner(this).lookup("controller:composer");
 
-      composer.send("closeModal");
+      getOwner(this).lookup("service:modal").close();
       showModal("edit-reply").setProperties({
         composerModel: composer.composerModel,
         replyId: this.get("reply.id"),
