@@ -99,7 +99,7 @@ export default {
 
     newReply() {
       const composer = getOwner(this).lookup("controller:composer");
-      composer.send("closeModal");
+      getOwner(this).lookup("service:modal").close();
 
       showModal("new-reply").set("newContent", composer.model.reply);
     },
